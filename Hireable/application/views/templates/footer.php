@@ -4,7 +4,7 @@
           <div class="row">
             <div class="col-lg-3 col-md-3 col-xs-12">
               <div class="widget">
-                <div class="footer-logo"><img src="<?php echo base_url(); ?>assets/img/logo-footer.png" alt=""></div>
+                <div class="footer-logo"><img src="<?php echo base_url(); ?>assets/img/footer-logo.png" alt=""></div>
                 <div class="textwidget">
                   <p>Sed consequat sapien faus quam bibendum convallis quis in nulla. Pellentesque volutpat odio eget diam cursus semper.</p>
                 </div>
@@ -57,7 +57,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="site-info text-center">
-                <p>Designed and Developed by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
+                <p>Designed and Developed by <a href="https://codegirls.consulnet.net/" rel="nofollow">Codegirls</a></p>
               </div>     
             </div>
           </div>

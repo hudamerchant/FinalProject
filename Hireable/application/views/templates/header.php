@@ -15,17 +15,17 @@ include_once('head.php');
                 <span class="lni-menu"></span>
                 <span class="lni-menu"></span>
               </button>
-              <a href="index.html" class="navbar-brand"><img src="<?php echo base_url(); ?>assets/img/logo.png" alt=""></a>
+              <a href="index.html" class="navbar-brand"><img src="<?php echo base_url(); ?>assets/img/logo1.png" alt=""></a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
               <ul class="navbar-nav mr-auto w-100 justify-content-end">
                 <li class="nav-item">
-                  <a class="nav-link" href="Home">
+                  <a class="nav-link" href="<?php echo site_url('/Home'); ?>">
                     Home
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="About_us">
+                  <a class="nav-link" href="<?php echo site_url('/About_us'); ?>">
                     About us
                   </a>
                 </li>

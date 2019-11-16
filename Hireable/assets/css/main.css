@@ -608,7 +608,7 @@ button:focus {
 }
 
 .navbar-brand img {
-  width: 80%;
+  width: 33%;
 }
 
 .top-nav-collapse {
@@ -4204,6 +4204,9 @@ footer .footer-Content p {
 
 .footer-logo {
   margin-bottom: 0;
+}
+.footer-logo img{
+  width: 60%;
 }
 
 .textwidget {
