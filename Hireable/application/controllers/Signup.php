@@ -15,8 +15,8 @@ class Signup extends MY_Controller
             $this->form_validation->set_rules('name', 'name', 'required');
             $this->form_validation->set_rules('dob', 'dob', 'required');
             $this->form_validation->set_rules('gender', 'gender', 'required');
-            $this->form_validation->set_rules('email', 'email', 'required');
-            $this->form_validation->set_rules('password', 'password', 'required');
+            $this->form_validation->set_rules('email', 'email', 'required|is_unique[users.email]|valid_email');
+            $this->form_validation->set_rules('password', 'password', 'required|min_length[8]');
             $this->form_validation->set_rules('role', 'role', 'required');
 
             if($this->form_validation->run() == True) {
