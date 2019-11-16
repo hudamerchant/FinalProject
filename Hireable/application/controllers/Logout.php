@@ -4,9 +4,8 @@
     class Logout extends MY_Controller{
         public function index(){
             $data['view'] = 'Logout';
-            $this->session->set_userdata('logged_in',false);
+            $this->session->unset_userdata('logged_in');
             $this->load->view('layout',$data);
-            redirect('Login');
         }
     }
 

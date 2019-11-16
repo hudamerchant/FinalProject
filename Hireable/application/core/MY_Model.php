@@ -19,8 +19,12 @@ class MY_Model extends CI_Model
         $query = $this->db->get_where($this->table_name,$data)->row();
         return $query;
     }
-    public function getData(){
-        $query = $this->db->get($this->table_name)->result();
-        return $query;
+    public function getData(array $where = [] ){
+        if(count($where) > 0)
+        {
+            $this->db->where( $where );    
+        }
+            $query = $this->db->get($this->table_name);
+            return $query;
     }
 } 
