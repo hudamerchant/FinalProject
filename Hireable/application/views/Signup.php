@@ -4,6 +4,7 @@
         <p class="alert alert-success"><?php  echo $this->session->flashdata("status");?></p>
         <?php
     }
+    else{
 ?>
 <div class="container">
     <div class="row">

@@ -29,7 +29,26 @@ include_once('head.php');
                     About us
                   </a>
                 </li>
-                
+                <?php
+                  if(isset($_SESSION['freelancerRole'])){
+                    ?>
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo site_url('/Freelancer'); ?>">
+                          Profile
+                        </a>
+                      </li>
+                    <?php
+                  }
+                  if(isset($_SESSION['ClientRole'])){
+                    ?>
+                      <li class="nav-item">
+                        <a class="nav-link" href="<?php echo site_url('/Client'); ?>">
+                          Profile
+                        </a>
+                      </li>
+                    <?php
+                  }
+                ?>
                 <li class="button-group">
                   <a href="<?php echo site_url('/Signup'); ?>" class="button btn btn-common">Sign up</a>
                 </li>
@@ -42,7 +61,8 @@ include_once('head.php');
                 <li class="button-group">
                   <a href="<?php echo site_url('/Login'); ?>" class="button btn btn-common">Login</a>
                 </li>
-                <?php } ?>
+                <?php }
+                ?>
               </ul>
             </div>
           </div>

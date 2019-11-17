@@ -47,10 +47,12 @@ class Login extends MY_Controller
                             $this->session->set_userdata('user_info' , $query->email );
                             if($query->role_id == 1)
                             {
+                                $this->session->set_userdata('freelancerRole','1');
                                 redirect(site_url('Freelancer'));
                             }
                             elseif($query->role_id == 2)
                             {
+                                $this->session->set_userdata('ClientRole','2');
                                 redirect(site_url('Client'));
                             }
                             
