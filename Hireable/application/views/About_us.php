@@ -18,8 +18,24 @@
         <div class="col-lg-6 col-md-6 col-xs-12">
         <div class="about-content">
             <h3>About Job Career</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est modi, saepe hic esse maxime quasi, sapiente ex debitis quis dolorum unde, neque quibusdam eveniet nobis enim porro repudiandae nesciunt quidem.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni delectus soluta adipisci beatae ullam quisquam, quia recusandae rem assumenda, praesentium porro sequi eaque doloremque tenetur incidunt officiis explicabo optio perferendis.</p>
+            <p>We empower people worldwide to build their business from the ground up and
+            becoming financially and professionally independent.</p>
+            <h3>Our culture</h3>
+            <p>We love what we do and collaborate every day hungry to change the world of
+            work</p>
+            <h3>A world of opportunities</h3>
+            <p>Through HIREABLE businesses get more done, connecting with freelancers to
+            work on projects from web and mobile app development to SEO, social media
+            marketing, content writing, graphic design, admin help and thousands of other
+            projects. HIREABLE makes it fast, simple, and cost-effective to find, hire, work
+            with, and pay the best professionals anywhere, any time.</p>
+            <h3>Hireable mission</h3>
+            <p>To create economic opportunities so people have better lives.</p>
+            <h3>Hireable values</h3>
+            <p>Put our community first.
+            Inspire a boundless future of work.
+            Build amazing teams.
+            Have a bias towards action.</p>
             <a href="#" class="btn btn-common">Learn More</a>
         </div>
         </div>
@@ -87,7 +103,7 @@
       <div class="container">
         <div class="section-header">  
           <h2 class="section-title">Clients Review</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ellentesque dignissim quam et <br> metus effici turac fringilla lorem facilisis.</p>      
+          <p>Some of the most promising tech startups are using Freelancer every day to build their products and help run their operations. But don't take our word for it, here is what some of our customers had to say:</p>      
         </div>
         <div class="row justify-content-center">
           <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -100,7 +116,7 @@
                     </div>
                   </div>
                   <div class="content-inner">
-                    <p class="description">Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui.</p>
+                    <p class="description">"I am amazed by the number of quality freelancers we found on the site. It took us very little time to find the right people that we are looking for. I am also very impressed by the professionalism expressed in communication and project planning. This will be my go-to place for any outsourcing needs." </p>
                     <div class="author-info">
                       <h2>Jessica</h2>
                       <span>Senior Accountant</span>
@@ -116,7 +132,7 @@
                     </div>
                   </div>
                   <div class="content-inner">
-                    <p class="description">Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui.</p>
+                    <p class="description">"Hireable has been a life saver. Their strong pool of outsourced talent has helped us increase productivity and focus solely on building a great product." </p>
                     <div class="author-info">
                       <h2>John Doe</h2>
                       <span>Project Menager</span>
@@ -132,7 +148,7 @@
                     </div>
                   </div>
                   <div class="content-inner">
-                    <p class="description">Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui Morbi quam enim, cursus non erat pretium veh icula finibus ex stibulum venenatis viverra dui.</p>
+                    <p class="description">"We posted several jobs on Hireable, and they immediately had tens and sometimes hundreds of bids. While the freelancers varied in skill level, the Freelancer rating system made it easy to identify those who had successfully completed similar jobs. Hireable is great for saving our time on quick jobs. And it's incredibly cheap too." </p>
                     <div class="author-info">
                       <h2>Helen</h2>
                       <span>Engineer</span>

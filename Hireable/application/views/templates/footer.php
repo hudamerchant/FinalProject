@@ -6,7 +6,9 @@
               <div class="widget">
                 <div class="footer-logo"><img src="<?php echo base_url(); ?>assets/img/footer-logo.png" alt=""></div>
                 <div class="textwidget">
-                  <p>Sed consequat sapien faus quam bibendum convallis quis in nulla. Pellentesque volutpat odio eget diam cursus semper.</p>
+                  <li>Work with curated freelance talent from all over the world.</li>
+                  <li>Manage the entire project with Hireable.</li>
+                  <li>Pay securely with confidence.</li>
                 </div>
               </div>
             </div>
@@ -30,7 +32,7 @@
             <div class="col-lg-3 col-md-4 col-xs-12">
               <div class="widget">
                 <h3 class="block-title">Subscribe Now</h3>
-                <p>Sed consequat sapien faus quam bibendum convallis.</p> 
+                <p>Join over 10,500 people who receive bi-weekly web marketing tips.</p> 
                 <form method="post" id="subscribe-form" name="subscribe-form" class="validate">
                   <div class="form-group is-empty">
                     <input type="email" value="" name="Email" class="form-control" id="EMAIL" placeholder="Enter Email..." required="">

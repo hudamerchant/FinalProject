@@ -4,7 +4,8 @@
           <div class="col-lg-10 col-md-12 col-xs-12">
             <div class="contents">
               <h2 class="head-title">Find the job that fits your life</h2>
-              <p>Aliquam vestibulum cursus felis. In iaculis iaculis sapien ac condimentum. Vestibulum congue posuere lacus, <br> id tincidunt nisi porta sit amet. Suspendisse et sapien varius, pellentesque dui non.</p>
+              <p>Our community of expert freelancers gives you the power 
+              to find the right person for any project in minutes.</p>
               <div class="job-search-form">
                 <form>
                   <div class="row">

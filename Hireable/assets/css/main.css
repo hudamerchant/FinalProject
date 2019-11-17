@@ -4451,3 +4451,9 @@ footer .menu li .small-title {
   color: #333;
   font-weight: 400;
 }
+.section-header p {
+  padding: 0px 216px;
+}
+.textwidget li {
+  list-style-type: none;
+}

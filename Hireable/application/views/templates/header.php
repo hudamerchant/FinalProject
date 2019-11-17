@@ -49,9 +49,15 @@ include_once('head.php');
                     <?php
                   }
                 ?>
-                <li class="button-group">
-                  <a href="<?php echo site_url('/Signup'); ?>" class="button btn btn-common">Sign up</a>
-                </li>
+                <?php 
+                  if(!isset($_SESSION['logged_in'])){
+                    ?>
+                      <li class="button-group">
+                        <a href="<?php echo site_url('/Signup'); ?>" class="button btn btn-common">Sign up</a>
+                      </li>
+                    <?php
+                  }
+                ?>
                 <?php if ($this->session->userdata('logged_in')) { ?>
                 <li class="button-group">
                   <a href="<?php echo site_url('/Logout'); ?>" class="button btn btn-common">Logout</a>
