@@ -66,7 +66,7 @@ class Signup extends MY_Controller
                     }
                     else
                     {                    
-                        $data['error']      = 'Incorrect Password';
+                        $data['error']      = 'Passwords dont match';
                         $this->load->view('layout',$data);
                         
                     }

@@ -12,7 +12,7 @@
             <form method="post">
                 <div class="form-group">
                     <label>Email</label>
-                    <input class="form-control" name="email" type="email" >
+                    <input class="form-control" name="email" type="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
                     <?php echo form_error('email', '<div class="error text-danger">', '</div>'); ?>
                 </div>
                 <div class="form-group">

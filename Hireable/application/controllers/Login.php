@@ -57,7 +57,7 @@ class Login extends MY_Controller
     
                         }
                         else{
-                            $this->session->set_flashdata("error","Passwords dont match");
+                            $this->session->set_flashdata("error","Incorrect Password");
                             redirect('Login');
                         }
                     }
