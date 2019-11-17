@@ -2,7 +2,7 @@
 include_once('head.php');
 ?>
 <!-- Header Section Start -->
-<header id="home" class="hero-area"> 
+<!-- <header id="home" class="hero-area">  -->
       <!-- Navbar Start -->
       <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar">
         <div class="container">

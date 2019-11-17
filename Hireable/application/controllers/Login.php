@@ -25,7 +25,7 @@ class Login extends MY_Controller
         {
             $data['view'] = 'Login';
             $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Login -'.$data['site_title'];
+            $data['page_title'] = 'Login - '.$data['site_title'];
     
             if(isset($_POST['submit'])){
                 $this->form_validation->set_rules('email', 'email', 'required');

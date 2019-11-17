@@ -25,7 +25,7 @@ class Signup extends MY_Controller
         {
             $data['view'] = 'Signup';
             $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Signup -'.$data['site_title'];
+            $data['page_title'] = 'Signup - '.$data['site_title'];
 
             if(isset($_POST['submit'])){
                 $this->form_validation->set_rules('name', 'name', 'required');

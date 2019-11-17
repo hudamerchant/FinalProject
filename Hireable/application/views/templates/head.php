@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/owl.theme.default.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/slicknav.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/main.css">    
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/main.css?v1">    
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/responsive.css">
 
 </head>
