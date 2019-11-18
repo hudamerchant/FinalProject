@@ -27,4 +27,8 @@ class MY_Model extends CI_Model
             $query = $this->db->get($this->table_name);
             return $query;
     }
+    public function updateData(array $data = [] ){
+        $query = $this->db->update($this->table_name, $data , [$data['email'] => 'email']);    
+        return $query;
+    }
 } 

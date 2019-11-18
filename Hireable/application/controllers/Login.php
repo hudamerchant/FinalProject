@@ -32,7 +32,6 @@ class Login extends MY_Controller
                 $this->form_validation->set_rules('password', 'password', 'required');
     
                 if($this->form_validation->run() == True) {
-                    $this->load->view('layout',$data);
                     $this->load->model('Users');
                     $data = [
                         'email' => $_POST['email']
@@ -42,7 +41,6 @@ class Login extends MY_Controller
                         $password = $_POST['password'];
                         
                         if(password_verify($password,$query->password)){
-                            $this->load->view('layout',$data);
                             $this->session->set_userdata('logged_in' , True );
                             $this->session->set_userdata('user_info' , $query->email );
                             if($query->role_id == 1)
