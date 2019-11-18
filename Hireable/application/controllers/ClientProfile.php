@@ -8,5 +8,6 @@
             $data['page_title'] = 'Profile -'.$data['site_title']; 
             $this->load->view('layout',$data);
     }
+}
 
 ?>
