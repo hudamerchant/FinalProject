@@ -22,7 +22,7 @@
                 }
                 elseif($user->role_id == 2)
                 {
-                    redirect(site_url('ClientProfile'));
+                    redirect(site_url('Client'));
                 }
             }
             else

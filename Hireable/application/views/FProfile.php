@@ -23,7 +23,20 @@
                         <li><?php echo $freelancer_info->email ?></li>
                     </ul>
                 </div>
-            </div>
+                <div>
+                <h6><b>*Please add your reviews here</b></h6>
+                    <form method="POST">
+                             <div class="form-group col-xs-12">
+                             <!-- <label>REVIEWS</label>
+                             <input type="text" class="form-control"> -->
+                             <label>REVIEWS:</label>
+                             <textarea id="comments" rows="6" cols="30">
+                             </textarea>
+                             </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form> 
+                </div>
+                    </div>
             <div class="col-lg-8 col-md-8 col-xs-12">
                 <div class="inner-box my-resume">
                     <div class="author-resume">

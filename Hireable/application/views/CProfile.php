@@ -20,7 +20,22 @@
                         <li><?php echo $client_info->dob ?></li>
                         <li><?php echo $client_info->gender ?></li>
                         <li><?php echo $client_info->email ?></li>
-                </div>
+                    </ul> 
+                    </div>
+                    <div>
+                        <h6><b>*Please add your reviews here</b></h6>
+                    <form method="POST">
+                             <div class="form-group">
+                             <!-- <label>REVIEWS</label>
+                             <input type="text" class="form-control"> -->
+                             <label>REVIEWS:</label>
+                             <textarea id="comments" rows="6" cols="30">
+                             </textarea>
+                             </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form> 
+                    </div>
+             
             </div>
             <div class="col-lg-8 col-md-8 col-xs-12">
                 <div class="inner-box my-resume">
@@ -44,7 +59,8 @@
                                 <!-- <label for="profile">Profile Photo</label> -->
                                 <input class="form-control" type="file" name="profile" id="profile">
 
-                            </div>
+                                </div>
+                        
                             <div class="about-me item">
                                 <h3>About Me</h3>
                                 <p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur a dolor ac ligula fermentum eusmod ac ullamcorper nulla. Integer blandit uitricies aliquam. Pellentesque quis dui varius, dapibus vilit id, ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet ruturm eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendririt eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis Luctus nibh sed veneatis. </p>
