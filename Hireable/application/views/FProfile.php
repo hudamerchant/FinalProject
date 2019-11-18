@@ -18,6 +18,9 @@
 
 <ul class="list-item">
 <li><?php echo $freelancer_info->name ?></li>
+<li><?php echo $freelancer_info->dob ?></li>
+<li><?php echo $freelancer_info->gender ?></li>
+<li><?php echo $freelancer_info->email ?></li>
 </ul>
 </div>
 </div>
@@ -25,8 +28,17 @@
 <div class="inner-box my-resume">
 <div class="author-resume">
 <div class="thumb">
-<img src="<?php echo base_url(); ?>assets/img/resume/img-1.png" alt="">
+<img src="<?php echo base_url(); ?>assets/img/testimonial/img4.png" alt="">
 </div>
+
+<!-- <input type="file"> -->
+<!-- <form action="" method="POST" enctype='multipart/form-data'> -->
+<!-- <div class="form-group">
+                <label for="profile">Profile Photo</label>
+                <input class="form-control" type="file" name="profile" id="profile">
+            </div>  -->
+            <!-- </form> -->
+
 <div class="author-info">
 <h3>Mark Anderson</h3>
 <p class="sub-title">UI/UX Designer</p>
@@ -38,6 +50,14 @@
 <a href="#" class="linkedin"><i class="lni-linkedin-fill"></i></a>
 </div>
 </div>
+
+<form action="" method="POST" enctype='multipart/form-data'> 
+ <div class="form-group col-md-5">
+                <!-- <label for="profile">Profile Photo</label> -->
+                <input class="form-control" type="file" name="profile" id="profile">
+               
+ </div>  
+</form> 
 </div>
 <div class="about-me item">
 <h3>About Me</h3>

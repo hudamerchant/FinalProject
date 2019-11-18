@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $user   = $this->Users->getData($where)->row();
                 if($user->role_id == 2)
                 {
-                    $data['view']       = 'CDashboard';
+                    $data['view']       = 'CProfile';
                     $data['site_title'] = 'Hireable';
                     $data['page_title'] = 'Dashboard -'.$data['site_title'];                    
                     $this->load->view('layout',$data);

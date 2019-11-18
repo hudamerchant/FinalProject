@@ -16,21 +16,26 @@
 <div class="right-sideabr">
 <h4>Manage Account</h4>
 <ul class="list-item">
+<li><?php echo $client_info->name ?></li>
+<li><?php echo $client_info->dob ?></li>
+<li><?php echo $client_info->gender ?></li>
+<li><?php echo $client_info->email ?></li>
+<!-- </ul>
 <li><a class="active" href="resume.html">My Resume</a></li>
 <li><a href="bookmarked.html">Bookmarked Jobs</a></li>
 <li><a href="notifications.html">Notifications <span class="notinumber">2</span></a></li>
 <li><a href="manage-applications.html">Manage Applications</a></li>
 <li><a href="job-alerts.html">Job Alerts</a></li>
 <li><a href="change-password.html">Change Password</a></li>
-<li><a href="index.html">Sing Out</a></li>
-</ul>
+<li><a href="index.html">Sign Out</a></li>
+</ul> -->
 </div>
 </div>
 <div class="col-lg-8 col-md-8 col-xs-12">
 <div class="inner-box my-resume">
 <div class="author-resume">
 <div class="thumb">
-<img src="<?php echo base_url(); ?>assets/img/resume/img-1.png" alt="">
+<img src="<?php echo base_url(); ?>assets/img/testimonial/img4.png" alt="">
 </div>
 <div class="author-info">
 <h3>Mark Anderson</h3>
@@ -43,6 +48,11 @@
 <a href="#" class="linkedin"><i class="lni-linkedin-fill"></i></a>
 </div>
 </div>
+<form action="" method="POST" enctype='multipart/form-data'> 
+ <div class="form-group col-md-5">
+                <!-- <label for="profile">Profile Photo</label> -->
+                <input class="form-control" type="file" name="profile" id="profile">
+               
 </div>
 <div class="about-me item">
 <h3>About Me</h3>

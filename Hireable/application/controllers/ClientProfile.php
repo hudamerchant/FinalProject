@@ -15,11 +15,14 @@
                     $data['view'] = 'CProfile';
                     $data['site_title'] = 'Hireable';
                     $data['page_title'] = 'Profile -'.$data['site_title']; 
+
+                    //Client info
+                    $data['client_info'] = $user;
                     $this->load->view('layout',$data);
                 }
-                elseif($user->role_id == 1)
+                elseif($user->role_id == 2)
                 {
-                    redirect(site_url('Freelancer'));
+                    redirect(site_url('ClientProfile'));
                 }
             }
             else
