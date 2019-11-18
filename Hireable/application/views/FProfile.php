@@ -1,20 +1,20 @@
 <div class="page-header">
-<div class="container">
-<div class="row">
-<div class="col-lg-12">
-<div class="inner-header">
-<h3>Freelancer Profile</h3>
-</div>
-</div>
-</div>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner-header">
+                    <h3>Freelancer Profile</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="section">
-<div class="container">
-<div class="row">
-<div class="col-lg-4 col-md-4 col-xs-12">
-<div class="right-sideabr">
-<h4>Manage Account<a href='#' > Edit </a></h4>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="right-sideabr">
+                    <h4>Manage Account<a href='#'> Edit </a></h4>
 
 <ul class="list-item">
 <li><?php echo $freelancer_info->name ?></li>
