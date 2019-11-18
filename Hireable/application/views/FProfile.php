@@ -3,7 +3,7 @@
 <div class="row">
 <div class="col-lg-12">
 <div class="inner-header">
-<h3>Resume</h3>
+<h3>Freelancer Profile</h3>
 </div>
 </div>
 </div>
@@ -14,15 +14,10 @@
 <div class="row">
 <div class="col-lg-4 col-md-4 col-xs-12">
 <div class="right-sideabr">
-<h4>Manage Account</h4>
+<h4>Manage Account<a href='#' > Edit </a></h4>
+
 <ul class="list-item">
-<li><a class="active" href="resume.html">My Resume</a></li>
-<li><a href="bookmarked.html">Bookmarked Jobs</a></li>
-<li><a href="notifications.html">Notifications <span class="notinumber">2</span></a></li>
-<li><a href="manage-applications.html">Manage Applications</a></li>
-<li><a href="job-alerts.html">Job Alerts</a></li>
-<li><a href="change-password.html">Change Password</a></li>
-<li><a href="index.html">Sing Out</a></li>
+<li><?php echo $freelancer_info->name ?></li>
 </ul>
 </div>
 </div>

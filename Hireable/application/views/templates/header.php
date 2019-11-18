@@ -33,7 +33,7 @@ include_once('head.php');
                   if(isset($_SESSION['freelancerRole'])){
                     ?>
                       <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('/Freelancer'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('/FreelancerProfile'); ?>">
                           Profile
                         </a>
                       </li>
@@ -42,7 +42,7 @@ include_once('head.php');
                   if(isset($_SESSION['ClientRole'])){
                     ?>
                       <li class="nav-item">
-                        <a class="nav-link" href="<?php echo site_url('/Client'); ?>">
+                        <a class="nav-link" href="<?php echo site_url('/ClientProfile'); ?>">
                           Profile
                         </a>
                       </li>
