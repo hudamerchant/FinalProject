@@ -7,7 +7,7 @@
               <p>Our community of expert freelancers gives you the power 
               to find the right person for any project in minutes.</p>
               <div class="job-search-form">
-                <form>
+                <form action="<?php echo site_url('/Search'); ?>">
                   <div class="row">
                     <div class="col-md-11 ">
                       <div class="form-group">
@@ -94,51 +94,6 @@
               <h3>24/7 support</h3>
               <p>We're always here to help. Our support consists of real people who are available 24/7.</p>
           </div>
-          <!-- <div class="col-lg-4 col-md-6 col-xs-12 f-category border-bottom-0 ">
-            <a href="browse-jobs.html">
-              <div class="icon bg-color-4">
-               <i class="lni-display"></i>
-              </div>
-              <h3>Technologies</h3>
-              <p>(5100 jobs)</p>
-            </a>
-          </div>
-          <div class="col-lg-4 col-md-6 col-xs-12 f-category border-bottom-0">
-            <a href="browse-jobs.html">
-              <div class="icon bg-color-5">
-                <i class="lni-brush"></i>
-              </div>
-              <h3>Art/Design</h3>
-              <p>(5079 jobs)</p>
-            </a>
-          </div>            
-          <div class="col-lg-4 col-md-6 col-xs-12 f-category border-right-0 border-bottom-0">
-            <a href="browse-jobs.html">
-              <div class="icon bg-color-6">
-              <i class="lni-heart"></i>
-              </div>
-              <h3>Healthcare</h3>
-              <p>(3235 jobs)</p>
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12 f-category border-bottom-0">
-            <a href="browse-jobs.html">
-              <div class="icon bg-color-7">
-               <i class="lni-funnel"></i>
-              </div> 
-              <h3>Science</h3>
-              <p>(1800 jobs)</p> 
-            </a>
-          </div>            
-          <div class="col-lg-3 col-md-6 col-xs-12 f-category border-right-0 border-bottom-0">
-            <a href="browse-jobs.html">
-              <div class="icon bg-color-8">
-               <i class="lni-cup"></i>
-              </div>
-              <h3>Food Services</h3>
-              <p>(4286 jobs)</p>
-            </a>
-          </div> -->
         </div>
       </div>
     </section>
