@@ -2,3 +2,14 @@
     margin : 0 auto;
     margin-top: 50px;
 }
+.dashboard-section {
+    padding: 20px 45px;
+}
+.col-lg-8 {
+    margin: 0 auto;
+    margin-top: 0px;
+}
+.main-section{
+    padding: 0;
+    padding-top: 55px;
+}

@@ -3,7 +3,7 @@
      
 ?>
 <main>
-    <section class="section">
+    <section class="section main-section">
 <?php
     include_once($view.'.php');
      

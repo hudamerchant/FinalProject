@@ -37,6 +37,11 @@ include_once('head.php');
                 Profile
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('/Freelancer'); ?>">
+                Dashboard
+              </a>
+            </li>
           <?php
           }
           if (isset($_SESSION['ClientRole'])) {
@@ -44,6 +49,11 @@ include_once('head.php');
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url('/ClientProfile'); ?>">
                 Profile
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('/Client'); ?>">
+                Dashboard
               </a>
             </li>
           <?php

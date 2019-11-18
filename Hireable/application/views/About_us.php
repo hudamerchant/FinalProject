@@ -99,7 +99,7 @@
 </section>
 <!-- Counter Section End -->
 <!-- Testimonial Section Start -->
-<section id="testimonial" class="section bg-gray">
+<section id="testimonial" class="section">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">Clients Review</h2>
