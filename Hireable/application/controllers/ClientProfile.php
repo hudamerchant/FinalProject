@@ -1,14 +1,12 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class About_us extends MY_Controller{
+    class ClientProfile extends MY_Controller{
         public function index(){
-            $data['view'] = 'About_us';
+            $data['view'] = 'CProfile';
             $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'About Us -'.$data['site_title']; 
+            $data['page_title'] = 'Profile -'.$data['site_title']; 
             $this->load->view('layout',$data);
-    
-        }
     }
 
 ?>

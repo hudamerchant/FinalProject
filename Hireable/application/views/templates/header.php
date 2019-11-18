@@ -15,7 +15,7 @@ include_once('head.php');
                 <span class="lni-menu"></span>
                 <span class="lni-menu"></span>
               </button>
-              <a href="index.html" class="navbar-brand"><img src="<?php echo base_url(); ?>assets/img/logo1.png" alt=""></a>
+              <a href="<?php echo site_url('/Home'); ?>" class="navbar-brand"><img src="<?php echo base_url(); ?>assets/img/logo1.png" alt=""></a>
             </div>
             <div class="collapse navbar-collapse" id="main-navbar">
               <ul class="navbar-nav mr-auto w-100 justify-content-end">
