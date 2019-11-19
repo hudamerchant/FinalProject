@@ -56,6 +56,9 @@ include_once('head.php');
                 Dashboard
               </a>
             </li>
+            <li class="button-group">
+              <a href="<?php echo site_url('/AddProject'); ?>" class="button btn btn-common">Post a project</a>
+            </li>
           <?php
           }
           ?>
