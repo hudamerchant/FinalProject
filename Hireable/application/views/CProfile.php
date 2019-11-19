@@ -22,19 +22,19 @@
                         <li><?php echo $client_info->email ?></li>
                     </ul> 
                     </div>
-                    <div>
+                    <!-- <div>
                         <h6><b>*Please add your reviews here</b></h6>
                     <form method="POST">
                              <div class="form-group">
-                             <!-- <label>REVIEWS</label>
+                             <label>REVIEWS</label>
                              <input type="text" class="form-control"> -->
-                             <label>REVIEWS:</label>
+                             <!-- <label>REVIEWS:</label>
                              <textarea id="comments" rows="6" cols="30">
                              </textarea>
                              </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form> 
-                    </div>
+                    </div> --> 
              
             </div>
             <div class="col-lg-8 col-md-8 col-xs-12">
@@ -44,7 +44,7 @@
                             <img src="<?php echo base_url(); ?>assets/img/testimonial/img4.png" alt="">
                         </div>
                         <div class="author-info">
-                            <h3>Mark Anderson</h3>
+                            <h3><b><?php echo $client_info->name ?></b></h3>
                             <p class="sub-title">UI/UX Designer</p>
                             <p><span class="address"><i class="lni-map-marker"></i>Mahattan, NYC, USA</span> <span><i class="ti-phone"></i>(+01) 211-123-5678</span></p>
                             <div class="social-link">
@@ -89,8 +89,46 @@
                                 <p>Bachelor of Computer Science</p>
                                 <span class="date">2010-2014</span>
                             </div>
+                            
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+    <div class="mx-auto" style="width: 800px;">
+	<div class="well mt-5">
+        <h1 class="text-center"><b>CLIENT REVIEWS</b></h1>
+        <div class="list-group">
+          <div class="list-group-item active bg-info">
+
+                <div class="col-md-6">
+                <form method="POST">
+                             <div class="form-group col-xs-12">
+                             <label>REVIEWS:</label>
+                             <textarea type= "text" id="comments" rows="6" cols="30">
+                             </textarea>
+                             <!-- </div> -->
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                            </div>
+                </form> 
+                </div>
+                <div class="col-md-3 text-center">
+                    <h2> 14240 <small class="text-dark"> REVIEWS </small></h2>
+                    <button type="button" class="btn btn-default btn-lg btn-dark"> Review Now! </button>
+                    <div class="stars">
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </div>
+                    <p class="text-dark"> Average 4.5 <small> / </small> 5 </p>
+                    </div>
+                </div>
+    </div>
+        </div>
+        </div>
+</div>
+	</div>
+    
