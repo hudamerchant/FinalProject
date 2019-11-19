@@ -16,10 +16,16 @@
                 $data['view']       = 'updateFProfile';
                 $data['site_title'] = 'Hireable';
                 $data['page_title'] = 'Update -'.$data['site_title'];
+                $this->load->model('Categories');
+                $categories         = $this->Categories->getData()->result();
+                $data['categories'] = $categories;
+
                 $this->load->model('Users');
+
                 if($this->session->userdata('logged_in')){
                     $where  = [ 'email' => $this->session->userdata('user_info') ];
                     $user   = $this->Users->getData($where)->row();
+                    
                     if($user->role_id == 2)
                     {
                         return redirect(site_url('updateCProfile'));

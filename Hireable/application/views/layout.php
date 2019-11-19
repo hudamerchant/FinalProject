@@ -4,11 +4,11 @@
 ?>
 <main>
     <section class="section main-section">
-<?php
+        <?php
     include_once($view.'.php');
      
 ?>
-</section>
+    </section>
 </main>
 <?php
     include_once('templates/footer.php');
