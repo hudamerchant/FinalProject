@@ -69,9 +69,9 @@
                         <p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur a dolor ac ligula fermentum eusmod ac ullamcorper nulla. Integer blandit uitricies aliquam. Pellentesque quis dui varius, dapibus vilit id, ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet ruturm eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendririt eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis Luctus nibh sed veneatis. </p>
                     </div>
                     <form class="form-ad">
-                        <h6><b class="mt-5">REVIEWS</b></h6>
+                        
                         <div class="form-group">
-                            <label class="control-label">Freelancer Reviews</label>
+                            <label class="control-label pt-5"><b class="text-dark">Please add your reviews here</b></label>
                             <textarea class="form-control" rows="5"></textarea>
                         </div>
                         <div class="form-group">
@@ -86,9 +86,27 @@
                         </div>
 
                     </form>
+                    <!-- <div class="col-lg-8 col-md-8 col-xs-8"> -->
+    <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
+        <div class="manager-resumes-item">
+            <div class="manager-content">
+                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                <div class="manager-info">
+                    <div class="manager-name">
+                        <h4><a href="#">Freelancer</a></h4>
+                        <h5>freelancer@example.com</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="item-body">
+                <div class="content">
+                    <b>Review</b>
+                    <p>4 Kabla ya kusanyiko wazazi fulani wameona inafaa kuzungumza na watoto wao kuhusu mwenendo unaofaa.</p>
+        </div>
+            </div>
                 </div>
             </div>
         </div>      
-    </div> 
+    </div>  
 <!-- </div> -->
 

@@ -67,9 +67,8 @@
                             </div>
 
                             <form class="form-ad">
-                        <h6><b class="mt-5">REVIEWS</b></h6>
                         <div class="form-group">
-                            <label class="control-label">Client Reviews</label>
+                            <label class="control-label pt-5"><b class="text-dark">Please add your reviews here</b></label>
                             <textarea class="form-control" rows="5"></textarea>
                         </div>
                         <div class="form-group">
@@ -84,6 +83,24 @@
                         </div>
 
                     </form>
+        <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
+        <div class="manager-resumes-item">
+            <div class="manager-content">
+                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                <div class="manager-info">
+                    <div class="manager-name">
+                        <h4><a href="#">Client</a></h4>
+                        <h5>client@example.com</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="item-body">
+                <div class="content">
+                    <b>Review</b>
+                    <p>4 Kabla ya kusanyiko wazazi fulani wameona inafaa kuzungumza na watoto wao kuhusu mwenendo unaofaa.</p>
+        </div>
+            </div>
+                </div>
                 </div>
     </div>
         </div>
