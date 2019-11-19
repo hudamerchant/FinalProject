@@ -37,6 +37,7 @@
                             $update_data    =   [   'name'  => $name,
                                                     'email' => $email,
                                                 ];
+                                                
                             $profile_data   =   [ 'p_description' => $p_description ];
                             $skills         =   ['skill' => $skills ];
                             $query = $this->Users->updateData($data);

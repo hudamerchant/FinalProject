@@ -38,6 +38,15 @@
                             </select>
                             <?php echo form_error('skills') ?>
                         </div>
+                        <div class="form-group ">
+                            <label class="control-label"></label>   
+                            <label class="control-label">Categories</label><br>
+                            <select class="js-example-basic-multiple col-md-12" name="skills[]" multiple="multiple">
+                            <option value="kuch">Kuch</option>
+                            <option value="bhi">Bhi</option>
+                            </select>
+                            <?php echo form_error('skills') ?>
+                        </div>
                         <div class="form-group">
                             <label class="control-label">Profile Description</label>
                             <textarea name="p_description" class="form-control" rows="7"></textarea>
