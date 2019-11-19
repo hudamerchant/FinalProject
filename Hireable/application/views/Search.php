@@ -16,6 +16,26 @@
 <?php
 if (isset($_SESSION['freelancerRole'])) {
     ?>
+    <div class="row space-100 justify-content-center">
+        <div class="col-lg-10 col-md-12 col-xs-12">
+            <div class="contents">
+                <div class="job-search-form freelancer-search">
+                    <form action="<?php echo site_url('/Search'); ?>">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Search for any skill">
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-6 col-xs-12">
+                                <button type="submit" class="button"><i class="lni-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-8 col-md-8 col-xs-8">
         <div class="manager-resumes-item">
             <div class="manager-content">

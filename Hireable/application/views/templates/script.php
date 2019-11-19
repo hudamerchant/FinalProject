@@ -7,3 +7,6 @@
     <script src="<?php echo base_url(); ?>assets/js/waypoints.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+ <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+

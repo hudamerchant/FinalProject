@@ -13,3 +13,24 @@
     padding: 0;
     padding-top: 55px;
 }
+.freelancer-search{
+    background: #f2f2f2;    
+}
+.freelancer-search-icon{
+    margin-top: 0px;
+    /* margin-top: 12px; */
+    margin-left: 0px;       
+}
+.freelancer-form{
+    padding: 12px 13px 0px;    
+}
+.freelancer-search-icon .freelancer-search-button{
+    padding: 5px 6px;
+}
+.lni-search:hover{
+    color:white;
+    
+}
+.freelancer-search-icon:hover , .freelancer-search-button:hover  {
+    color: #00BCD4;
+}

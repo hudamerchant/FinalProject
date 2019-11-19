@@ -42,6 +42,17 @@ include_once('head.php');
                 Dashboard
               </a>
             </li>
+            <li>
+            <div class="job-search-form freelancer-search-icon freelancer-form">
+            <!-- <form action="<?php echo site_url('/Search'); ?>"> -->
+                        <div class="row">
+              <!-- <div class="col-lg-1 col-md-6 col-xs-12"> -->
+                <a href="<?php echo site_url('/Search'); ?>" class="button freelancer-search-button"><i class="lni-search"></i></a>
+              <!-- </div> -->
+              </div>
+            <!-- </form> -->
+            </div>
+            </li>
           <?php
           }
           if (isset($_SESSION['ClientRole'])) {
