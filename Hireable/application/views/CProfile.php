@@ -65,70 +65,36 @@
                                 <h3>About Me</h3>
                                 <p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur a dolor ac ligula fermentum eusmod ac ullamcorper nulla. Integer blandit uitricies aliquam. Pellentesque quis dui varius, dapibus vilit id, ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet ruturm eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendririt eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis Luctus nibh sed veneatis. </p>
                             </div>
-                            <div class="work-experence item">
-                                <h3>Work Experience</h3>
-                                <h4>UI/UX Designer</h4>
-                                <h5>Bannana INC.</h5>
-                                <span class="date">Fab 2017-Present(5year)</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero vero, dolores, officia quibusdam architecto sapiente eos voluptas odit ab veniam porro quae possimus itaque, quas! Tempora sequi nobis, atque incidunt!</p>
-                                <p><a href="#">4 Projects</a></p>
-                                <br>
-                                <h4>UI Designer</h4>
-                                <h5>Whale Creative</h5>
-                                <span class="date">Fab 2017-Present(2year)</span>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero vero, dolores, officia quibusdam architecto sapiente eos voluptas odit ab veniam porro quae possimus itaque, quas! Tempora sequi nobis, atque incidunt!</p>
-                                <p><a href="#">4 Projects</a></p>
-                            </div>
-                            <div class="education item">
-                                <h3>Education</h3>
-                                <h4>Massachusetts Institute Of Technology</h4>
-                                <p>Bachelor of Computer Science</p>
-                                <span class="date">2010-2014</span>
-                                <br>
-                                <h4>Massachusetts Institute Of Technology</h4>
-                                <p>Bachelor of Computer Science</p>
-                                <span class="date">2010-2014</span>
-                            </div>
-                            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-    <div class="mx-auto" style="width: 800px;">
-	<div class="well mt-5">
-        <h1 class="text-center"><b>CLIENT REVIEWS</b></h1>
-        <div class="list-group">
-          <div class="list-group-item active bg-info">
 
-                <div class="col-md-6">
-                <form method="POST">
-                             <div class="form-group col-xs-12">
-                             <label>REVIEWS:</label>
-                             <textarea type= "text" id="comments" rows="6" cols="30">
-                             </textarea>
-                             <!-- </div> -->
-                            <button type="submit" class="btn btn-dark">Submit</button>
+                            <form class="form-ad">
+                        <h6><b class="mt-5">REVIEWS</b></h6>
+                        <div class="form-group">
+                            <label class="control-label">Client Reviews</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="button-group">
+                                <div class="action-buttons">
+                                    <div class="upload-button">
+                                        <button class="btn btn-common">Submit</button>
+                                        <!-- <input id="cover_img_file_2" type="file"> -->
+                                    </div>
+                                </div>
                             </div>
-                </form> 
-                </div>
-                <div class="col-md-3 text-center">
-                    <h2> 14240 <small class="text-dark"> REVIEWS </small></h2>
-                    <button type="button" class="btn btn-default btn-lg btn-dark"> Review Now! </button>
-                    <div class="stars">
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </div>
-                    <p class="text-dark"> Average 4.5 <small> / </small> 5 </p>
-                    </div>
+                        </div>
+
+                    </form>
                 </div>
     </div>
         </div>
         </div>
 </div>
 	</div>
+    
+                            
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
