@@ -42,17 +42,23 @@ include_once('head.php');
                 Dashboard
               </a>
             </li>
-            <li>
-            <div class="job-search-form freelancer-search-icon freelancer-form">
-            <!-- <form action="<?php echo site_url('/Search'); ?>"> -->
-                        <div class="row">
-              <!-- <div class="col-lg-1 col-md-6 col-xs-12"> -->
-                <a href="<?php echo site_url('/Search'); ?>" class="button freelancer-search-button"><i class="lni-search"></i></a>
-              <!-- </div> -->
-              </div>
-            <!-- </form> -->
-            </div>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('/freelancerBids'); ?>">
+                View bids
+              </a>
             </li>
+            <li>
+              <div class="job-search-form freelancer-search-icon freelancer-form">
+                <!-- <form action="<?php echo site_url('/Search'); ?>"> -->
+                <div class="row">
+                  <!-- <div class="col-lg-1 col-md-6 col-xs-12"> -->
+                  <a href="<?php echo site_url('/Search'); ?>" class="button freelancer-search-button"><i class="lni-search"></i></a>
+                  <!-- </div> -->
+                </div>
+                <!-- </form> -->
+              </div>
+            </li>
+            
           <?php
           }
           if (isset($_SESSION['ClientRole'])) {
@@ -67,8 +73,10 @@ include_once('head.php');
                 Dashboard
               </a>
             </li>
-            <li class="button-group">
-              <a href="<?php echo site_url('/AddProject'); ?>" class="button btn btn-common">Post a project</a>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('/AddProject'); ?>">
+                Post a Project
+              </a>
             </li>
           <?php
           }

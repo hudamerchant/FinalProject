@@ -24,7 +24,7 @@ if (isset($_SESSION['freelancerRole'])) {
                         <div class="row">
                             <div class="col-md-11 ">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Search for any skill">
+                                    <input class="form-control" type="text" placeholder="Search for any project">
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-6 col-xs-12">
