@@ -46,7 +46,7 @@ class Login extends MY_Controller
                             if($query->role_id == 1)
                             {
                                 $this->session->set_userdata('freelancerRole','1');
-                                redirect(site_url('Freelancer'));
+                                redirect(site_url('updateFProfile'));
                             }
                             elseif($query->role_id == 2)
                             {

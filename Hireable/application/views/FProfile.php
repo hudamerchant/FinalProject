@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-xs-12">
                 <div class="right-sideabr">
-                    <h4>Manage Account<a href='#'> Edit </a></h4>
+                    <h4>Manage Account<a href='<?php echo site_url('updateFProfile') ?>'> Edit </a></h4>
 
                     <ul class="list-item">
                         <li><?php echo $freelancer_info->name ?></li>
