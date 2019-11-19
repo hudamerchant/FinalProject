@@ -36,8 +36,6 @@
                                 <?php foreach($categories as $category){?>
                                         <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
                                     <?php } ?>
-                            <option value="kuch">Kuch</option>
-                            <option value="bhi">Bhi</option>
                             </select>
                             <?php echo form_error('skills') ?>
                         </div>
