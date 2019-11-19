@@ -50,6 +50,7 @@
                                 // $profile_data   =   [   'profile_description' => $p_description, 
                                 //                         'user_id'             => $user->user_id ];
                                 // $skills         =   ['skill' => $skills ];
+                               
                                 // // $query = $this->Users->updateData($data);
                                 // // if($query){
                                 // //     var_dump('hello');die;

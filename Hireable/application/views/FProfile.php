@@ -21,6 +21,13 @@
                         <li><?php echo $freelancer_info->dob ?></li>
                         <li><?php echo $freelancer_info->gender ?></li>
                         <li><?php echo $freelancer_info->email ?></li>
+                        <li>Skills
+                            <ul>
+                            <li class="skill-list" >skill 1</li>
+                            <li class="skill-list" >skill 1</li>
+                            <li class="skill-list" >skill 1</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <div>
