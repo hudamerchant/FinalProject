@@ -34,3 +34,7 @@
 .freelancer-search-icon:hover , .freelancer-search-button:hover  {
     color: #00BCD4;
 }
+.right-sideabr .list-item .skill-list {
+    padding: 15px 20px;
+    border-bottom: 0px solid #f7f7f7;
+}

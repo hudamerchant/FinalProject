@@ -16,10 +16,16 @@
                 $data['view']       = 'updateFProfile';
                 $data['site_title'] = 'Hireable';
                 $data['page_title'] = 'Update -'.$data['site_title'];
+                $this->load->model('Categories');
+                $categories         = $this->Categories->getData()->result();
+                $data['categories'] = $categories;
+
                 $this->load->model('Users');
+
                 if($this->session->userdata('logged_in')){
                     $where  = [ 'email' => $this->session->userdata('user_info') ];
                     $user   = $this->Users->getData($where)->row();
+                    
                     if($user->role_id == 2)
                     {
                         return redirect(site_url('updateCProfile'));
@@ -50,6 +56,7 @@
                                 // $profile_data   =   [   'profile_description' => $p_description, 
                                 //                         'user_id'             => $user->user_id ];
                                 // $skills         =   ['skill' => $skills ];
+                               
                                 // // $query = $this->Users->updateData($data);
                                 // // if($query){
                                 // //     var_dump('hello');die;

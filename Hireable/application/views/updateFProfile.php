@@ -32,18 +32,10 @@
                         <div class="form-group ">
                             <label class="control-label"></label>   
                             <label class="control-label">Skills</label><br>
-                            <select class="js-example-basic-multiple col-md-12" name="skills[]" multiple="multiple">
-                            <option value="kuch">Kuch</option>
-                            <option value="bhi">Bhi</option>
-                            </select>
-                            <?php echo form_error('skills') ?>
-                        </div>
-                        <div class="form-group ">
-                            <label class="control-label"></label>   
-                            <label class="control-label">Categories</label><br>
-                            <select class="js-example-basic-multiple col-md-12" name="skills[]" multiple="multiple">
-                            <option value="kuch">Kuch</option>
-                            <option value="bhi">Bhi</option>
+                            <select class="js-example-basic-multiple col-md-12 " name="categories[]" multiple="multiple" >
+                                <?php foreach($categories as $category){?>
+                                        <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
+                                    <?php } ?>
                             </select>
                             <?php echo form_error('skills') ?>
                         </div>
