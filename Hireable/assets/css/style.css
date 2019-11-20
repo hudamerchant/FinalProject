@@ -51,3 +51,9 @@
 .client-dashboard-item{
     box-sizing: unset;
 }
+.client-dashboard-center{
+    text-align: center;
+}
+.manager-resumes-item .item-body .tag-list span{
+    margin:3px;
+}
