@@ -25,6 +25,19 @@
                     <p>Kuch bhi</p>
                     <h5>Project Description</h5>
                     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi umsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit</p>
+                    <h5>Project Skills</h5>
+                    <div class="manager-resumes-item client-dashboard-manager">
+                        <div class="item-body client-dashboard-item">
+                            <div class="resume-skills client-dashboard-resume">
+                                <div class="tag-list">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>Bootstrap</span>
+                                    <span>Wordpress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <h5>Project Bids</h5>
                     <div class="manager-resumes-item">
                         <div class="manager-content">
@@ -72,6 +85,19 @@
                     <p>Kuch bhi</p>
                     <h5>Project Description</h5>
                     <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi umsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit</p>
+                    <h5>Project Skills</h5>
+                    <div class="manager-resumes-item client-dashboard-manager">
+                        <div class="item-body client-dashboard-item">
+                            <div class="resume-skills client-dashboard-resume">
+                                <div class="tag-list">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>Bootstrap</span>
+                                    <span>Wordpress</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <h5>Project Bids</h5>
                     <div class="manager-resumes-item">
                         <div class="manager-content">
@@ -89,7 +115,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

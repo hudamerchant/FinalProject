@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['projectInserted'])){
+    ?>
+    <p class="alert alert-success"><?php  echo $this->session->flashdata("projectInserted");?></p>
+    <?php
+}
+?>
 <section id="content">
     <div class="container">
         <div class="row justify-content-center">
@@ -18,12 +25,13 @@
                         <div class="form-group ">
                             <label class="control-label"></label>   
                             <label class="control-label">Skills</label><br>
-                            <select class="js-example-basic-multiple col-md-12 " name="categories[]" multiple="multiple" >
+                            <select class="js-example-basic-multiple col-md-12 " name="categories[]" multiple="multiple">
                                 <?php foreach($categories as $category){?>
                                         <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
                                     <?php } ?>
                             </select>
                             <?php echo form_error('categories[]') ?>
+                            
                         </div>
                         <div class="form-group">
                             <div class="button-group">
