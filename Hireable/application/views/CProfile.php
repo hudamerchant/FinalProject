@@ -14,14 +14,14 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-xs-12">
                 <div class="right-sideabr">
-                <h4>Manage Account<a href='<?php echo site_url('updateCProfile') ?>'> Edit </a></h4>
+                    <h4>Manage Account<a href='<?php echo site_url('updateCProfile') ?>'> Edit </a></h4>
                     <ul class="list-item">
                         <li><?php echo $client_info->name ?></li>
                         <li><?php echo $client_info->dob ?></li>
                         <li><?php echo $client_info->gender ?></li>
                         <li><?php echo $client_info->email ?></li>
-                    </ul> 
-                    </div>
+                    </ul>
+                </div>
             </div>
             <div class="col-lg-8 col-md-8 col-xs-12">
                 <div class="inner-box my-resume">
@@ -41,7 +41,8 @@
                         <div class="author-info d-inline-block ml-3">
                             <h3><b><?php echo $client_info->name ?></b></h3>
                             <p class="sub-title">UI/UX Designer</p>
-                            <p><span class="address"><i class="lni-map-marker"></i>Mahattan, NYC, USA</span> <span><i class="ti-phone"></i>(+01) 211-123-5678</span></p>
+                            <p><span class="address"><i class="lni-map-marker"></i>Mahattan, NYC, USA</span> <span><i
+                                        class="ti-phone"></i>(+01) 211-123-5678</span></p>
                             <div class="social-link">
                                 <a href="#" class="Twitter"><i class="lni-twitter-filled"></i></a>
                                 <a href="#" class="facebook"><i class="lni-facebook-filled"></i></a>
@@ -63,41 +64,43 @@
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common">Submit</button>
+                        <form action="" method="POST" enctype='multipart/form-data'>
+                            <div class="form-group col-md-5">
+                                <!-- <label for="profile">Profile Photo</label> -->
+                                <input class="form-control" type="file" name="profile" id="profile">
+
+                            </div>
+                            </form>
+                            <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
+                            <div class="manager-resumes-item">
+                                <div class="manager-content">
+                                    <a href="resume.html"><img class="resume-thumb"
+                                            src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                                    <div class="manager-info">
+                                        <div class="manager-name">
+                                            <h4><a href="#">Client</a></h4>
+                                            <h5>client@example.com</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="content">
+                                        <b>Review</b>
+                                        <p>4 Kabla ya kusanyiko wazazi fulani wameona inafaa kuzungumza na watoto wao
+                                            kuhusu mwenendo unaofaa.</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </form>
-        <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
-        <div class="manager-resumes-item">
-            <div class="manager-content">
-                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                <div class="manager-info">
-                    <div class="manager-name">
-                        <h4><a href="#">Client</a></h4>
-                        <h5>client@example.com</h5>
                     </div>
                 </div>
             </div>
-            <div class="item-body">
-                <div class="content">
-                    <b>Review</b>
-                    <p>4 Kabla ya kusanyiko wazazi fulani wameona inafaa kuzungumza na watoto wao kuhusu mwenendo unaofaa.</p>
         </div>
-            </div>
-                </div>
-                </div>
     </div>
-        </div>
-        </div>
 </div>
-	</div>
-    
-                            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+
+
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -6,21 +6,17 @@
         parent::__construct();
         }
         public function index(){
-
-            // if($this->session->userdata('profile_updated'))
-            // {
-            //     redirect(site_url('Freelancer'));
-            // }
-            // else
-            // {         
                 $data['view']       = 'updateFProfile';
                 $data['site_title'] = 'Hireable';
                 $data['page_title'] = 'Update -'.$data['site_title'];
+
+                //loading models
+                $this->load->model('Users');
                 $this->load->model('Categories');
+
                 $categories         = $this->Categories->getData()->result();
                 $data['categories'] = $categories;
 
-                $this->load->model('Users');
 
                 if($this->session->userdata('logged_in')){
                     $where  = [ 'email' => $this->session->userdata('user_info') ];
@@ -36,32 +32,40 @@
                         {
                             $this->session->set_userdata('profile_updated', True );
                             $this->form_validation->set_rules('name', 'name', 'required');
-                            $this->form_validation->set_rules('skills', 'skills', 'required');
+                            $this->form_validation->set_rules('categories', 'categories', 'required');
                             $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email');
                             $this->form_validation->set_rules('p_description', 'project description', 'required');
                             if($this->form_validation->run() == True) {
 
                                 $name          = $this->input->post('name');
                                 $email         = $this->input->post('email');
-                                $skills        = $this->input->post('skills');
                                 $categories    = $this->input->post('categories');
                                 $p_description = $this->input->post('p_description');
 
-                                $this->load->model('Users');
-
-                                // $update_data    =   [   'name'  => $name,
-                                //                         'email' => $email,
-                                //                     ];
+                                $update_data    =   [   'name'              => $name,
+                                                        'email'             => $email,
+                                                        'updated_profile'   => 1
+                                                    ];
                                                     
-                                // $profile_data   =   [   'profile_description' => $p_description, 
-                                //                         'user_id'             => $user->user_id ];
-                                // $skills         =   ['skill' => $skills ];
+                                $profile_data   =   [   'profile_description' => $p_description, 
+                                                        'user_id'             => $user->user_id 
+                                                    ];
+                                
+                                //$categories     =   []; 
+                                var_dump($categories);die;
+
+                                // foreach($categories as $index => $category){
+                                //     $categories[$index] 
+                                //     = ['category_id' => ,
+                                //         'user_id'    => ];
+                                // }
+                                
                                
-                                // // $query = $this->Users->updateData($data);
-                                // // if($query){
-                                // //     var_dump('hello');die;
+                                // $query = $this->Users->updateData($data);
+                                // if($query){
+                                //     var_dump('hello');die;
                                     
-                                // // }
+                                // }
 
                                 
                             }
