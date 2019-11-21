@@ -102,7 +102,7 @@
 <section id="testimonial" class="section">
   <div class="container">
     <div class="section-header">
-      <h2 class="section-title">Clients Review</h2>
+      <h2 class="section-title">Testimonials</h2>
       <p>Some of the most promising tech startups are using Freelancer every day to build their products and help run their operations. But don't take our word for it, here is what some of our customers had to say:</p>
     </div>
     <div class="row justify-content-center">

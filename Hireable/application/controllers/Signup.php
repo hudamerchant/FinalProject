@@ -68,7 +68,7 @@ class Signup extends MY_Controller
                         ];
                         
                         $this->Users->insertRecord($data);
-                        $this->session->set_flashdata("status","Your account has been created successfully!");
+                        $this->session->set_flashdata("status","Your account has been created successfully! You can login now.");
                         redirect(site_url('Login'));
                     }
                     else
