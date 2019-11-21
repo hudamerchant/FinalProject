@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         function __construct(){
             parent::__construct();
         }
-        public function index(){ 
+        public function index( $project_apply_id = false){ 
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
@@ -17,9 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $data['page_title'] = 'Dashboard -'.$data['site_title'];     
                     $this->load->model('Projects');
                     $projects = $this->Projects->getData()->result(); 
-                    $count = 0;
 
                     if($projects){
+                        $count = 0;
                         // var_dump($projects);die; 
                         $this->session->set_flashdata("projectsPresent",true);
                         foreach ($projects as $project) {
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $data['projects'][$count]['title'] = $project->project_title;
                             $data['projects'][$count]['description'] = $project->project_descript;
                             $data['projects'][$count]['project_id'] = $project->project_id;
-                            // $data['projects'][$count]['user_id'] = $project->user_id;
+                            //$data['projects'][$count]['user_id'] = $project->user_id;
                             $whereUserId = [
                                 'user_id' => $project->user_id
                             ];
@@ -50,8 +50,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $data['projects'][$count]['categories'][] = $category->category;
                             }
                             $count++;
-                            // var_dump($data['projects'][$count]['categories']);die;
                         }
+                        if($project_apply_id){
+                            $freelanerBidWhere = [
+                                'user_id' => $user->user_id,
+                                'project_id' => $project_apply_id
+                            ];
+                            $this->load->model('ProjectBid');
+                            $this->ProjectBid->insertRecord($freelanerBidWhere);
+                            $this->session->set_flashdata("Bid",'Bid success');
+                            return redirect(site_url('Freelancer'));
+                        }
+                        
                     }    
                              
                     $this->load->view('layout',$data);
@@ -60,6 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 {
                     redirect(site_url('Client'));
                 }
+                $this->load->view('layout',$data);
             }
             else
             {
