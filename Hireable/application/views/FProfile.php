@@ -1,10 +1,3 @@
-<?php
-if(isset($_SESSION['reviewInserted'])){
-    ?>
-    <p class="alert alert-success"><?php  echo $this->session->flashdata("reviewInserted");?></p>
-    <?php
-}
-?>
 <div class="page-header">
     <div class="container">
         <div class="row">
@@ -85,6 +78,16 @@ if(isset($_SESSION['reviewInserted'])){
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common" name="submit">Submit</button>
+                                        <div>
+                            <?php
+                               if(isset($_SESSION['reviewInserted'])){
+                             ?>
+                         <p class="alert alert-success mt-3"><?php  echo $this->session->flashdata("reviewInserted");?></p>
+    
+                          <?php
+                          }
+                          ?>
+                          </div>
                                     </div>
                                 </div>
                             </div>

@@ -96,8 +96,11 @@
                                 <div class="item-body">
                                     <div class="content">
                                         <b>Review</b>
-                                        <p>4 Kabla ya kusanyiko wazazi fulani wameona inafaa kuzungumza na watoto wao
-                                            kuhusu mwenendo unaofaa.</p>
+                                        <p><?php var_dump($comment);die;?></p>
+                                        <p><?php echo isset($comments) ? $comments[0] : '' ; ?></p>
+                                        <p><?php echo $comments[0] ?></p>
+                                        <p><?php var_dump ($comment)?></p>
+
                                     </div>
                                 </div>
                             </div>

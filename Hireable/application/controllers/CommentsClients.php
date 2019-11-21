@@ -18,6 +18,7 @@
                 }
                 elseif($user->role_id == 2)
                 {
+                    // die('abcd');
                     $data['view'] = 'CProfile';
                     $data['site_title'] = 'Hireable';
                     $data['page_title'] = 'Profile -'.$data['site_title']; 
@@ -27,10 +28,18 @@
                    
                     //loading database table Client_rating
                     $this->load->model('CommentsClient');
-                    $Comment = $this->CommentsClient->getData()->result();
-                    $data['review'] =$Comment; 
-                    // var_dump($data);die;
+                    $reviews = $this->CommentsClient->getData()->result();
+                    //  var_dump($review);die;
                     
+                        foreach($reviews as $review)
+                        {
+                            // echo $review;
+                            $arr[] = $review->review;
+                        }
+                 
+                    $data['comments'] = $arr;
+
+                    $this->load->view('layout',$data);
                     if(isset($_POST['submit']))
                     
                     {
@@ -49,14 +58,16 @@
 
                         $this->CommentsClient->insertRecord($reviewData);
                         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-
+                        
                     }
                     else{
+                        
                         $this->load->view('layout',$data);
                     }
                 }
+                
                 else{
-                    $this->load->view('layout',$data);
+                     $this->load->view('layout',$data);
                 }
                    
                  };
