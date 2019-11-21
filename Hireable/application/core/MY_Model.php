@@ -56,8 +56,8 @@ class MY_Model extends CI_Model
             }
         }
     }
-    public function updateData(array $data = [] ){
-        $query = $this->db->update($this->table_name, $data , [$data['email'] => 'email']);    
+    public function updateData(array $data = [], array $where = [] ){
+        $query = $this->db->update($this->table_name, $data , $where );    
         return $query;
     }
 } 

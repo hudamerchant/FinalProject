@@ -37,6 +37,10 @@
                             <input type="text" class="form-control" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : $client_info->email ?>">
                             <?php echo form_error('email') ?>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label">Organization Description</label>
+                            <textarea name="org_description" class="form-control" rows="7"></textarea>
+                        </div>
                         
                         <input type="submit" name="submit" value="Save" class="btn btn-common">
 

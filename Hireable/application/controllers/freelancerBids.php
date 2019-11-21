@@ -6,8 +6,20 @@
         public function index(){
             $data['view'] = 'freelancerBids';
             $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Bids -'.$data['site_title'];                    
-            $this->load->view('layout',$data);
+            $data['page_title'] = 'Bids -'.$data['site_title'];
+            if($this->session->userdata('logged_in')){
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData($where)->row();
+                if($user->updated_profile == 0)
+                {
+                    return redirect(site_url('updateFProfile'));
+                }
+                else
+                {
+                    $this->load->view('layout',$data);
+                }
+    
+            }
         }
     }
 

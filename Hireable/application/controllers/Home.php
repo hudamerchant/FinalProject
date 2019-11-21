@@ -5,8 +5,24 @@
         public function index(){
             $data['view'] = 'Home';
             $data['page_title'] = 'Home';
-            $this->load->view('layout',$data);
+            if($this->session->userdata('logged_in')){
+                $this->load->model('Users');
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData($where)->row();
+                if($user->updated_profile == 0)
+                {
+                    return redirect(site_url('updateFProfile'));
+                }
+                else
+                {
+                    $this->load->view('layout',$data);
+                }
     
+            }
+            else
+            {
+                $this->load->view('layout',$data);
+            }
         }
     }
 

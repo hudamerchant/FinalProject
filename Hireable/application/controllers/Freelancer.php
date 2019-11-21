@@ -65,6 +65,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }    
                              
                     $this->load->view('layout',$data);
+                    $data['page_title'] = 'Dashboard -'.$data['site_title'];
+                    if($user->updated_profile == 0)
+                    {
+                        return redirect(site_url('updateFProfile'));
+                    }
+                    else
+                    {
+                        $this->load->view('layout',$data);
+                    }
                 }
                 elseif($user->role_id == 2)
                 {

@@ -14,7 +14,14 @@ class Signup extends MY_Controller
             $user   = $this->Users->getData($where)->row();
             if($user->role_id == 1)
             {
-                redirect(site_url('Freelancer'));
+                if($user->updated_profile == 0)
+                {
+                    return redirect(site_url('updateFProfile'));
+                }
+                else
+                {
+                    redirect(site_url('Freelancer'));
+                }
             }
             elseif($user->role_id == 2)
             {

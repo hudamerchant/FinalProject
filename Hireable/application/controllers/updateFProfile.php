@@ -13,9 +13,12 @@
                 //loading models
                 $this->load->model('Users');
                 $this->load->model('Categories');
-
+                $this->load->model('FreelancerCategories');
+                $this->load->model('FProfile');
+                
                 $categories         = $this->Categories->getData()->result();
                 $data['categories'] = $categories;
+
 
 
                 if($this->session->userdata('logged_in')){
@@ -28,11 +31,11 @@
                     }
                     else
                     {
+                        
                         if(isset($_POST['submit']))
                         {
-                            $this->session->set_userdata('profile_updated', True );
                             $this->form_validation->set_rules('name', 'name', 'required');
-                            $this->form_validation->set_rules('categories', 'categories', 'required');
+                            $this->form_validation->set_rules('categories[]', 'skills', 'required');
                             $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email');
                             $this->form_validation->set_rules('p_description', 'project description', 'required');
                             if($this->form_validation->run() == True) {
@@ -51,22 +54,27 @@
                                                         'user_id'             => $user->user_id 
                                                     ];
                                 
-                                //$categories     =   []; 
-                                var_dump($categories);die;
+                                foreach ($categories as $category) {
 
-                                // foreach($categories as $index => $category){
-                                //     $categories[$index] 
-                                //     = ['category_id' => ,
-                                //         'user_id'    => ];
-                                // }
-                                
-                               
-                                // $query = $this->Users->updateData($data);
-                                // if($query){
-                                //     var_dump('hello');die;
-                                    
-                                // }
+                                        $freelancerCategoryData = [
+                                            'category_id'   => $category,
+                                            'user_id'       => $user->user_id
+                                        ];
+    
+                                        $this->FreelancerCategories->insertRecord($freelancerCategoryData);
+    
+                                    }
 
+                                    $this->FreelancerCategories->insertRecord($freelancerCategoryData);
+    
+                                }
+                                //update users table
+                                $where = ['user_id' => $user->user_id];
+                                $this->Users->updateData($update_data , $where);
+
+                                //insert profile description in profile table
+                                $this->FProfile->insertRecord($profile_data);
+                                return redirect(site_url('Freelancer'));
                                 
                             }
                             else
@@ -75,19 +83,14 @@
                                 $this->load->view('layout',$data);
                             }
                         }  
-                        else
-                        {
-                            $data['freelancer_info'] = $user;
-                            $this->load->view('layout',$data);
-                        }
-                    }
-                    
+                        
+
                 }
                 else
-                {                
-                    redirect(site_url('Login'));
+                {
+                    $data['freelancer_info'] = $user;
+                    $this->load->view('layout',$data);
                 }
-
-            // }
         }
     }
+    

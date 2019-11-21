@@ -18,7 +18,15 @@
 
                     //Freelancer info
                     $data['freelancer_info'] = $user;
-                    $this->load->view('layout',$data);
+
+                    if($user->updated_profile == 0)
+                    {
+                        return redirect(site_url('updateFProfile'));
+                    }
+                    else
+                    {
+                        $this->load->view('layout',$data);
+                    }
                 }
                 elseif($user->role_id == 2)
                 {

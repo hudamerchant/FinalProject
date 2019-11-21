@@ -14,11 +14,26 @@ class Login extends MY_Controller
             $user   = $this->Users->getData($where)->row();
             if($user->role_id == 1)
             {
-                redirect(site_url('Freelancer'));
+                if($user->updated_profile)
+                {
+                    redirect(site_url('Freelancer'));
+                }
+                else
+                {
+                    return redirect(site_url('updateFProfile'));
+                }
+
             }
             elseif($user->role_id == 2)
             {
-                redirect(site_url('Client'));
+                if($user->updated_profile)
+                {
+                    redirect(site_url('Client'));
+                }
+                else
+                {
+                    return redirect(site_url('updateCProfile'));
+                }
             }
         }
         else
@@ -46,7 +61,14 @@ class Login extends MY_Controller
                             if($query->role_id == 1)
                             {
                                 $this->session->set_userdata('freelancerRole','1');
-                                redirect(site_url('updateFProfile'));
+                                if($query->updated_profile == 0)
+                                {
+                                    return redirect(site_url('updateFProfile'));
+                                }
+                                else
+                                {
+                                    return redirect(site_url('FreelancerProfile'));
+                                }
                             }
                             elseif($query->role_id == 2)
                             {

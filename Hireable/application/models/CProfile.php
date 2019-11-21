@@ -1,13 +1,11 @@
-
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FreelancerCategories extends MY_Model
+class CProfile extends MY_Model
 {
     function __construct()
     {
         parent::__construct();
-        $this->table_name = "freelancer_category";
+        $this->table_name = "client_profile";
     }
-    
 }
