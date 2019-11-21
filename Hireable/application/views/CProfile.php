@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="inner-header">
-                    <h3>Resume</h3>
+                    <h3>Client Profile</h3>
                 </div>
             </div>
         </div>
