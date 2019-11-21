@@ -70,7 +70,7 @@
                             <?php
                                if(isset($_SESSION['reviewInserted'])){
                              ?>
-                         <p class="alert alert-success mt-3"><?php  echo $this->session->flashdata("reviewInserted");?></p>
+                         <p class="alert alert-info mt-3"><?php  echo $this->session->flashdata("reviewInserted");?></p>
     
                           <?php
                           }

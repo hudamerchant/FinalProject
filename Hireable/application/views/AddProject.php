@@ -1,7 +1,7 @@
 <?php
 if(isset($_SESSION['projectInserted'])){
     ?>
-    <p class="alert alert-success"><?php  echo $this->session->flashdata("projectInserted");?></p>
+    <p class="alert alert-info"><?php  echo $this->session->flashdata("projectInserted");?></p>
     <?php
 }
 ?>
