@@ -8,7 +8,8 @@
             $data['site_title'] = 'Hireable';
             $data['page_title'] = 'Bids -'.$data['site_title'];
             if($this->session->userdata('logged_in')){
-                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $this->load->model('Users');
+                $where  = [ 'email' => $this->session->userdata('user_info') ];                
                 $user   = $this->Users->getData($where)->row();
                 if($user->updated_profile == 0)
                 {
