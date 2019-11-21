@@ -26,8 +26,8 @@
                     //loading database table categories
                     $this->load->model('Categories');
                     $categories         = $this->Categories->getData()->result();
-                    $data['categories'] = $categories;                    
-
+                    $data['categories'] = $categories;        
+                   
                     if(isset($_POST['submit'])){
 
                         $this->form_validation->set_rules('project-title', 'project title', 'required');

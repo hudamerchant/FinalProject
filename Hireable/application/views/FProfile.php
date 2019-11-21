@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION['reviewInserted'])){
+    ?>
+    <p class="alert alert-success"><?php  echo $this->session->flashdata("reviewInserted");?></p>
+    <?php
+}
+?>
 <div class="page-header">
     <div class="container">
         <div class="row">
@@ -66,18 +73,18 @@
                         <h3>About Me</h3>
                         <p>Nullam semper erat arcu, ac tincidunt sem venenatis vel. Curabitur a dolor ac ligula fermentum eusmod ac ullamcorper nulla. Integer blandit uitricies aliquam. Pellentesque quis dui varius, dapibus vilit id, ipsum. Morbi ac eros feugiat, lacinia elit ut, elementum turpis. Curabitur justo sapien, tempus sit amet ruturm eu, commodo eu lacus. Morbi in ligula nibh. Maecenas ut mi at odio hendririt eleif end tempor vitae augue. Fusce eget arcu et nibh dapibus maximus consectetur in est. Sed iaculis Luctus nibh sed veneatis. </p>
                     </div>
-                    <form class="form-ad">
+                    <form class="form-ad" method="post">
 
 
                         <div class="form-group">
                             <label class="control-label pt-3"><h6>Please add your reviews here</h6></label>
-                            <textarea class="form-control" rows="5"></textarea>
+                            <textarea class="form-control" name='review' rows="5"></textarea>
                         </div>
                         <div class="form-group">
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div class="upload-button">
-                                        <button class="btn btn-common">Submit</button>
+                                        <button class="btn btn-common" name="submit">Submit</button>
                                     </div>
                                 </div>
                             </div>
