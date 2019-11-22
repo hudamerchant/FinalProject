@@ -14,12 +14,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 {
                     $data['view']       = 'FDashboard';
                     $data['site_title'] = 'Hireable';
-                    $data['page_title'] = 'Dashboard -'.$data['site_title'];     
-                    $this->load->model('Projects');
+                    $data['page_title'] = 'Dashboard -'.$data['site_title'];
+                    //applied projects
+                    
+                    $data['applied'] = [];
                     $this->load->model('ProjectBid');
-                    $where = [] ;
+                    $where      = ['user_id' => $user->user_id];
+                    $applied    = $this->ProjectBid->getData($where)->result();
+                    foreach($applied as $v){
+                        $data['applied'][] = $v->project_id;
+                    }
+                    
+                    $this->load->model('Projects');
                     $projects = $this->Projects->getData()->result(); 
-
                     if($projects){
                         $count = 0;
                         // var_dump($projects);die; 
@@ -62,14 +69,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $result = $this->ProjectBid->getData($freelanerBidWhere)->row();
                             if($result == null)
                             {
-                                $this->ProjectBid->insertRecord($freelanerBidWhere);    
+                                $this->ProjectBid->insertRecord($freelanerBidWhere);
                             }
                             $this->session->set_flashdata("Bid",'Bid success');
                             return redirect(site_url('Freelancer'));
                         }
                         
                     }    
-                             
+                    
                     $this->load->view('layout',$data);
                     $data['page_title'] = 'Dashboard -'.$data['site_title'];
                     if($user->updated_profile == 0)

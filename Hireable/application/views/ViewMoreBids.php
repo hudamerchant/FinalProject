@@ -31,7 +31,7 @@ if (isset($_SESSION['projectsBidsPresent'])) {
                                         <div class="manager-meta">
                                             <span class="location"><i class="lni-map-marker"></i> Cupertino, CA, USA</span>
                                             <span class="rate"><i class="lni-alarm-clock"></i> $55 per hour</span>
-                                            <span><a href="#" class="btn btn-common">Hire</a></span>
+                                            <span><a href="<?php echo site_url('HireFreelancer/index/'.$project_bid['bid_user_id']) ?>" class="btn btn-common">Hire</a></span>
                                         </div>
                                     </div>
                                 </div>
