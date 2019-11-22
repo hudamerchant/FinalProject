@@ -77,12 +77,6 @@
                           }
                           ?>
                           </div>
-                                <!-- <label for="profile">Profile Photo</label> -->
-                                <input class="form-control" type="file" name="profile" id="profile">
-
-                                                    <?php
-                                                    }
-                                                    ?>
                                                 </div>
                                                 <!-- <label for="profile">Profile Photo</label> -->
                                                 <input class="form-control" type="file" name="profile" id="profile">
