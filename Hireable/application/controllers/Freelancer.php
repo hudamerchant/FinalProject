@@ -16,6 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $data['site_title'] = 'Hireable';
                     $data['page_title'] = 'Dashboard -'.$data['site_title'];     
                     $this->load->model('Projects');
+                    $this->load->model('ProjectBid');
+                    $where = [] ;
                     $projects = $this->Projects->getData()->result(); 
 
                     if($projects){
@@ -53,11 +55,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
                         if($project_apply_id){
                             $freelanerBidWhere = [
-                                'user_id' => $user->user_id,
-                                'project_id' => $project_apply_id
+                                'user_id'       => $user->user_id,
+                                'project_id'    => $project_apply_id
                             ];
                             $this->load->model('ProjectBid');
-                            $this->ProjectBid->insertRecord($freelanerBidWhere);
+                            $result = $this->ProjectBid->getData($freelanerBidWhere)->row();
+                            if($result == null)
+                            {
+                                $this->ProjectBid->insertRecord($freelanerBidWhere);    
+                            }
                             $this->session->set_flashdata("Bid",'Bid success');
                             return redirect(site_url('Freelancer'));
                         }

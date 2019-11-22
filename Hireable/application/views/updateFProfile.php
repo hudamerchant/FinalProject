@@ -37,7 +37,7 @@
                                         <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
                                     <?php } ?>
                             </select>
-                            <?php echo form_error('categories') ?>
+                            <?php echo form_error('categories[]') ?>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Profile Description</label>

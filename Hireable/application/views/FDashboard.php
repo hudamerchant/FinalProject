@@ -19,10 +19,11 @@ if(isset($_SESSION['Bid'])){
 ?>
 <?php
 if (isset($_SESSION['projectsPresent'])) {
+    // var_dump($projects);die;
     foreach ($projects as $project) {
 
         ?>
-        <div class="col-lg-8 col-md-8 col-xs-8">
+        <div class="col-lg-8 col-md-8 col-xs-8 project">
             <div class="manager-resumes-item">
                 <div class="manager-content">
                     <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
@@ -55,7 +56,7 @@ if (isset($_SESSION['projectsPresent'])) {
                         </div>
                         <div class="resume-exp float-right">
                             
-                            <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs">Apply</a>
+                            <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs"  >Apply</a>
                         </div>
                     </div>
                 </div>
