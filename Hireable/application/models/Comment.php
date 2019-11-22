@@ -2,12 +2,12 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CommentClient extends MY_Model
+class Comment extends MY_Model
 {
     function __construct()
     {
         parent::__construct();
-        $this->table_name = "freelancer_rating";
+        $this->table_name = "client_rating";
     }
     
 }

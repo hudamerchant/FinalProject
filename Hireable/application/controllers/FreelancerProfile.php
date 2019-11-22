@@ -17,16 +17,33 @@
                     $data['page_title'] = 'Profile -'.$data['site_title']; 
 
                     //Freelancer info
-                    $data['freelancer_info'] = $user;
+                   // $data['freelancer_info'] = $user;
 
-                    if($user->updated_profile == 0)
-                    {
-                        return redirect(site_url('updateFProfile'));
+                    $this->load->model('Comment');
+                    $reviews = $this->Comment->getData()->result();
+                    // $data['review'] =$Comment; 
+                     //var_dump($this->data);die;
+                    foreach ($reviews as $review) {
+        
+                        $arr[] = $review->review;
                     }
-                    else
-                    {
-                        $this->load->view('layout',$data);
-                    }
+                    //var_dump($arr);die;
+
+                    $data['comment'] = $arr;
+
+                    $data['freelancer_info'] = $user;
+                  //  $this->load->view('layout', $data);
+
+
+                    // if($user->updated_profile == 0)
+                    // {
+                    //     return redirect(site_url('updateFProfile'));
+                    // }
+                    // else
+                    // {
+                    //     $this->load->view('layout',$data);
+                    // }
+                    
                 }
                 elseif($user->role_id == 2)
                 {
