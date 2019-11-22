@@ -35,6 +35,7 @@ class Signup extends MY_Controller
             $data['page_title'] = 'Signup - '.$data['site_title'];
 
             if(isset($_POST['submit'])){
+                $this->load->helper('Other');
                 $this->form_validation->set_rules('name', 'name', 'required');
                 $this->form_validation->set_rules('dob', 'dob', 'required');
                 $this->form_validation->set_rules('gender', 'gender', 'required');
@@ -45,7 +46,7 @@ class Signup extends MY_Controller
                 if($this->form_validation->run() == True) {
                 
                     $name           = $this->input->post('name');
-                    $dob            = $this->input->post('dob');
+                    $dob            = dbDate($this->input->post('dob'));
                     $role           = $this->input->post('role');
                     $gender         = $this->input->post('gender');
                     $email          = $this->input->post('email');

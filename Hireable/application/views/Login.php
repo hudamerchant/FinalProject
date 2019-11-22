@@ -15,7 +15,7 @@ if (isset($_SESSION['status'])) {
         <div class="row justify-content-center">
             <div class="col-lg-9 col-md-12 col-xs-12">
                 <div class="add-resume box">
-                    <form class="form-ad" method="post">
+                    <form class="form-ad" method="post" >
                         <h3>Login</h3>
                         <div class="form-group">
                             <label class="control-label">Email</label>

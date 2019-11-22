@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MY_Model extends CI_Model
 {
-    protected $table_name;
+    public $table_name;
 
     function __construct()
     {
@@ -58,6 +58,18 @@ class MY_Model extends CI_Model
     }
     public function updateData(array $data = [], array $where = [] ){
         $query = $this->db->update($this->table_name, $data , $where );    
+        return $query;
+    }
+    public function joins($firstTableForJoin , $joinWithTable , $joinWithColumnName , array $where = [] , array $array = []){
+        if(count($where) > 0)
+        {
+            $this->db->where( $where );    
+        }
+        $this->db->select($array);
+        $this->db->from($firstTableForJoin);
+        $this->db->join($joinWithTable, $joinWithTable.'.'.$joinWithColumnName.'='.$this->table_name.'.'.$joinWithColumnName );
+        $query = $this->db->get();
+
         return $query;
     }
 } 
