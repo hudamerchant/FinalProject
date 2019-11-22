@@ -26,7 +26,7 @@ include_once('head.php');
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('/About_us'); ?>">
-              About us
+              About Us
             </a>
           </li>
           <?php
@@ -44,7 +44,7 @@ include_once('head.php');
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url('/freelancerBids'); ?>">
-                View bids
+                View Bids
               </a>
             </li>
             <li>

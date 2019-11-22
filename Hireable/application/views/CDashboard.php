@@ -1,10 +1,3 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h1 class="col align-self-center">Welcome Client</h1>
-        </div>
-    </div>
-</div> -->
 <div class="page-header">
     <div class="container">
         <div class="row">
@@ -19,11 +12,7 @@
 <?php
 if (isset($_SESSION['projectsPresent'])) {
     if ($projects) {
-
-
         foreach ($projects as $project) {
-            // var_dump($projects);die;
-
             ?>
             <section class="job-detail section dashboard-section">
                 <div class="container">
@@ -39,66 +28,38 @@ if (isset($_SESSION['projectsPresent'])) {
                                     <div class="item-body client-dashboard-item">
                                         <div class="resume-skills client-dashboard-resume">
                                             <div class="tag-list">
-                                                <?php foreach ($project['categories'] as  $category) {
-                                                                ?>
+                                                <?php foreach ($project['categories'] as  $category) 
+                                                {
+                                                ?>
                                                     <span><?php echo $category ?></span>
-
-                                                <?php }  ?>
-                                                <!-- <span>CSS3</span>
-                                            <span>Bootstrap</span>
-                                            <span>Wordpress</span> -->
+                                                <?php 
+                                                }  
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <h5>Project Bids</h5>
-                                <!-- <div class="manager-resumes-item">
-                                <div class="manager-content">
-                                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
-                                    <div class="manager-info">
-                                        <div class="manager-name">
-                                            <h4><a href="#">Zane Joyner</a></h4>
-                                            <h5>Front-end developer</h5>
-                                        </div>
-                                        <div class="manager-meta">
-                                            <span class="location"><i class="lni-map-marker"></i> Cupertino, CA, USA</span>
-                                            <span class="rate"><i class="lni-alarm-clock"></i> $55 per hour</span>
-                                            <span><a href="#" class="btn btn-common">Hire</a></span>
-                                        </div>
+                                <div class="manager-info">
+                                    <div class="manager-meta">
+                                        <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View more bids</a></span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="manager-resumes-item">
-                                <div class="manager-content">
-                                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
-                                    <div class="manager-info">
-                                        <div class="manager-name">
-                                            <h4><a href="#">Zane Joyner</a></h4>
-                                            <h5>Front-end developer</h5>
-                                        </div>
-                                        <div class="manager-meta">
-                                            <span class="location"><i class="lni-map-marker"></i> Cupertino, CA, USA</span>
-                                            <span class="rate"><i class="lni-alarm-clock"></i> $55 per hour</span>
-                                            <span><a href="#" class="btn btn-common">Hire</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            
-                            <div class="manager-info">
-                                <div class="manager-meta">
-                                    <span><a  class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View more bids</a></span>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
     <?php
-            }
         }
-    } else {
+    } 
+    else 
+        {
+            redirect($this->uri->uri_string());
+        }
+} 
+else 
+{
         ?>
     <section class="job-detail section dashboard-section">
         <div class="container">

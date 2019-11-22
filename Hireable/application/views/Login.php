@@ -18,12 +18,12 @@ if (isset($_SESSION['status'])) {
                     <form class="form-ad" method="post" >
                         <h3>Login</h3>
                         <div class="form-group">
-                            <label class="control-label">Email</label>
+                            <label class="control-label">Email*</label>
                             <input class="form-control" name="email" type="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
                             <?php echo form_error('email', '<div class="error text-danger">', '</div>'); ?>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Password</label>
+                            <label class="control-label">Password*</label>
                             <input class="form-control" name="password" type="password">
                             <?php echo form_error('password', '<div class="error text-danger">', '</div>'); ?>
                         </div>

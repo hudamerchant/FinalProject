@@ -60,3 +60,16 @@
 .view-more-bids-anchor{
     padding: 4px 12px;
 }
+span.signup-span {
+    margin-left: 8px;
+}
+span.profile-li-span {
+    font-weight: bold;
+    margin-right: 6px;
+}
+.right-sideabr .list-item .profile-li-skill-list{
+    padding: 8px 20px;
+}
+a.profile-anchor {
+    margin-left: 117px;
+}
