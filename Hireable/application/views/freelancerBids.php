@@ -15,7 +15,7 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
         ?>
         <div class="col-lg-8 col-md-8 col-xs-8">
             <div class="manager-resumes-item">
-                <div class="manager-content">
+                <div class="manager-content ">
                     <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
                     <div class="manager-info">
                         <div class="manager-name">
@@ -26,11 +26,19 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
                     </div>
                 </div>
                 <div class="item-body">
-                    <div class="content">
+                    <div class="content project-details-content">
                         <b>Project Title</b>
                         <p><?php echo $result->project_title ?></p>
-
-                    </div>                    
+                    </div>        
+                    <div class="manager-content project-details-manager-content">
+                        <div class="item-body">            
+                            <div class="resume-skills project-details-resume-skills">
+                                <div class="resume-exp float-right">
+                                    <a href="<?php echo site_url('ProjectDetails/index/'.$result->project_id) ?>"  name="submit" class="btn btn-common btn-xs "  >View project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

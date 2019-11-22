@@ -26,6 +26,11 @@
 }
 .freelancer-search-icon .freelancer-search-button{
     padding: 5px 6px;
+    
+}
+.freelancer-search-icon:hover .freelancer-search-button:hover{
+    background: #00BCD4;
+    color: #fff;
 }
 .lni-search:hover{
     color:white;
@@ -72,4 +77,16 @@ span.profile-li-span {
 }
 a.profile-anchor {
     margin-left: 117px;
+}
+.manager-resumes-item .item-body .project-details-resume-skills{
+    margin-top: 0px;
+    border-top: none;
+    padding: 0px 30px 5px;
+}
+.manager-resumes-item .item-body .project-details-content{
+    padding: 8px 30px;
+}
+.manager-resumes-item .project-details-manager-content{
+    padding: 0;
+    background: none;
 }

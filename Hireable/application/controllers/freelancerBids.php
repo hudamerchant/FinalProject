@@ -30,9 +30,12 @@
                             ];
                             
                             $this->load->model('Projects');
+                            
                             $fetchingProjects []= ['table_name'=>'project_bids', 'column_with'=>'project_bids.project_id = projects.project_id']; 
                             $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'projects.user_id = users.user_id']; 
-                            $selectArray = ['project_bids'.'.user_id',                            
+                            
+                            $selectArray = ['project_bids'.'.user_id', 
+                            'project_bids'.'.project_id',                           
                             'projects'.'.project_title',                            
                             'users'.'.name',
                             'users'.'.email'
