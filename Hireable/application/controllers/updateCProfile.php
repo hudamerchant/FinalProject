@@ -37,21 +37,19 @@
                             $org_description    = $this->input->post('org_description');
     
                             $update_data    =   [   'name'              => $name,
-                                                    'dob'                = $dob,
-                                                    'gender'             = $gender,                        
+                                                    'dob'               => $dob,
+                                                    'gender'            => $gender,                        
                                                     'email'             => $email,
                                                     'updated_profile'   => 1
                                                 ];
     
-                            if(!empty($org_description))
-                            {
-                                $org_data       =   [   'org_description' => $org_description, 
-                                                        'user_id'         => $user->user_id 
+                            if (!empty($org_description)) {
+                                $org_data       =   [   'org_description' => $org_description,
+                                                        'user_id'         => $user->user_id
                                                     ];
                                 //insert organization description in profile table
                                 $this->CProfile->insertRecord($org_data);
-                                return redirect(site_url('Client'));   
-    
+                                return redirect(site_url('Client'));
                             }
     
                             $where = ['user_id' => $user->user_id];
@@ -72,6 +70,11 @@
                 }
                 
             }
+            else
+            {
+                redirect(site_url('Login'));
+            }
+
             
         }
     }

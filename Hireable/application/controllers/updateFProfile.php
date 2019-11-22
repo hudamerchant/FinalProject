@@ -31,15 +31,12 @@
                     }
                     else
                     {
-                        
-                        if(isset($_POST['submit']))
-                        {
+                        if (isset($_POST['submit'])) {
                             $this->form_validation->set_rules('name', 'name', 'required');
                             $this->form_validation->set_rules('categories[]', 'skills', 'required');
                             $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email');
                             $this->form_validation->set_rules('p_description', 'project description', 'required');
-                            if($this->form_validation->run() == True) {
-
+                            if ($this->form_validation->run() == true) {
                                 $name          = $this->input->post('name');
                                 $email         = $this->input->post('email');
                                 $categories    = $this->input->post('categories');
@@ -50,46 +47,42 @@
                                                         'updated_profile'   => 1
                                                     ];
                                                     
-                                $profile_data   =   [   'profile_description' => $p_description, 
-                                                        'user_id'             => $user->user_id 
+                                $profile_data   =   [   'profile_description' => $p_description,
+                                                        'user_id'             => $user->user_id
                                                     ];
                                 
                                 foreach ($categories as $category) {
-
-                                        $freelancerCategoryData = [
+                                    $freelancerCategoryData = [
                                             'category_id'   => $category,
                                             'user_id'       => $user->user_id
                                         ];
     
-                                        $this->FreelancerCategories->insertRecord($freelancerCategoryData);
-    
-                                    }
-
                                     $this->FreelancerCategories->insertRecord($freelancerCategoryData);
-    
                                 }
+
+                                $this->FreelancerCategories->insertRecord($freelancerCategoryData);
+                            
                                 //update users table
                                 $where = ['user_id' => $user->user_id];
-                                $this->Users->updateData($update_data , $where);
+                                $this->Users->updateData($update_data, $where);
 
                                 //insert profile description in profile table
                                 $this->FProfile->insertRecord($profile_data);
                                 return redirect(site_url('Freelancer'));
-                                
-                            }
-                            else
-                            {
+                            } else {
                                 $data['freelancer_info'] = $user;
-                                $this->load->view('layout',$data);
+                                $this->load->view('layout', $data);
                             }
-                        }  
-                        
+                        } else {
+                            $data['freelancer_info'] = $user;
+                            $this->load->view('layout', $data);
+                        }
+                    }
 
                 }
                 else
                 {
-                    $data['freelancer_info'] = $user;
-                    $this->load->view('layout',$data);
+                    redirect(site_url('Login'));
                 }
         }
     }

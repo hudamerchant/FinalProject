@@ -55,9 +55,7 @@ if (isset($_SESSION['projectsPresent'])) {
                         </div>
                         <div class="resume-exp float-right">
                             
-                            <a href="<?php echo base_url('index.php/Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs">Apply</a>
-                            <!-- <input class="btn btn-common btn-xs" value="Apply" name="submit" type="submit"> -->
-                            
+                            <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs">Apply</a>
                         </div>
                     </div>
                 </div>
