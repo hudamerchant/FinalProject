@@ -22,43 +22,25 @@
                         'user_id' => $user->user_id
                     ];
                     $userBids = $this->ProjectBid->getData($whereUserId)->result();
-                    //var_dump($userBids);die;
+                    
                     if($userBids){
                         $this->session->set_flashdata("freelancerBidsPresent",true);
-                        $this->load->model('Projects');
-                        $count=0;
-                        foreach ($userBids as $userBid) {
-
                             $whereUserId = [
                                 'project_bids.user_id' => $user->user_id
                             ];
-                            $selectArray = [$this->ProjectBid->table_name.'.user_id',
-                            $this->ProjectBid->table_name.'.project_id',
-                            $this->Projects->table_name.'.project_title',
-                            $this->Projects->table_name.'.project_descript'
+                            
+                            $this->load->model('Projects');
+                            $fetchingProjects []= ['table_name'=>'project_bids', 'column_with'=>'project_bids.project_id = projects.project_id']; 
+                            $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'projects.user_id = users.user_id']; 
+                            $selectArray = ['project_bids'.'.user_id',                            
+                            'projects'.'.project_title',                            
+                            'users'.'.name',
+                            'users'.'.email'
                             ];
+
+                            $results = $this->Projects->multiple_joins($fetchingProjects,$whereUserId,$selectArray)->result();
                             
-                            $fetchingProjects = $this->ProjectBid->joins('project_bids','projects','project_id',$whereUserId,$selectArray)->result();
-                            // var_dump($this->db->last_query());die;
-                            if($fetchingProjects){
-                                
-                                //var_dump($fetchingProjects);die;
-                                $i = 0;
-                                
-                                foreach ($fetchingProjects as $fetchingProject) {
-                                    //var_dump($fetchingProjects);
-                                    
-                                    $data['freelancerBids'][$i]['project_title'] = $fetchingProject->project_title;
-                                    
-                                    $i++;
-                                }
-                            }
-                            
-                            $data['freelancerBids'][$count]['project_id'] = $userBid->project_id;
-                            $count++;
-                            
-                        }
-                        //var_dump($data['freelancerBids']);
+                            $data['results'] = $results; 
                     }
                     $this->load->view('layout',$data);
                 }
