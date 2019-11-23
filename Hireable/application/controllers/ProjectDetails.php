@@ -2,15 +2,21 @@
     defined('BASEPATH') OR exit('No direct script access allowed');
 
     class ProjectDetails extends MY_Controller{
-        public function index($project_apply_id = false){
-            function __construct(){
-                parent::__construct();
-            }
-                $this->load->model('Users');
-                if($this->session->userdata('logged_in')){
-                    $where  = [ 'email' => $this->session->userdata('user_info') ];
-                    $user   = $this->Users->getData($where)->row();
-                    if($user->role_id == 1)
+        function __construct(){
+            parent::__construct();
+        }
+        public function index($project_apply_id = false){    
+            $this->load->model('Users');
+            if($this->session->userdata('logged_in')){
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData($where)->row();
+                if($user->role_id == 1)
+                {
+                    if(!$user->updated_profile)
+                    {
+                        return redirect(site_url('updateFProfile'));
+                    }
+                    else
                     {
                         $data['view'] = 'ProjectDetails';
                         $data['site_title'] = 'Hireable';
@@ -66,19 +72,18 @@
                             //var_dump($projects);die;
                         }
 
-                        $this->load->view('layout',$data);
-                    }
-                    elseif($user->role_id == 2)
-                    {
-                        redirect(site_url('Client'));
+                        return $this->load->view('layout',$data);
                     }
                 }
-                else
+                elseif($user->role_id == 2)
                 {
-                    redirect(site_url('Login'));
+                    return redirect(site_url('Client'));
                 }
-
-    
+            }
+            else
+            {
+                return redirect(site_url('Login'));
+            }
         }
     }
 

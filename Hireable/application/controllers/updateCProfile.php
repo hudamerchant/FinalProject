@@ -59,23 +59,20 @@
                         else
                         {
                             $data['client_info'] = $user;
-                            $this->load->view('layout',$data);
+                            return $this->load->view('layout',$data);
                         }
                     }
                     else
                     {
                         $data['client_info'] = $user;
-                        $this->load->view('layout',$data);
+                        return $this->load->view('layout',$data);
                     }  
                 }
-                
             }
             else
             {
-                redirect(site_url('Login'));
+                return redirect(site_url('Login'));
             }
-
-            
         }
     }
 

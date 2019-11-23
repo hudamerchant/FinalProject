@@ -10,20 +10,13 @@
                 $this->load->model('Users');
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData($where)->row();
-                if($user->updated_profile == 0)
+                if(!$user->updated_profile)
                 {
                     return redirect(site_url('updateFProfile'));
                 }
-                else
-                {
-                    $this->load->view('layout',$data);
-                }
     
             }
-            else
-            {
-                $this->load->view('layout',$data);
-            }
+            $this->load->view('layout',$data);
         }
     }
 ?>

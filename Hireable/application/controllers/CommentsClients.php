@@ -16,56 +16,63 @@ class CommentsClients extends MY_Controller
             $user   = $this->Users->getData($where)->row();
 
             if ($user->role_id == 1) {
-                redirect(site_url('Freelancer'));
+                return redirect(site_url('Freelancer'));
             } elseif ($user->role_id == 2) {
-                // die('abcd');
-                $this->data['view'] = 'CProfile';
-                $this->data['site_title'] = 'Hireable';
-                $this->data['page_title'] = 'Profile -' . $this->data['site_title'];
-
-                $this->data['client_info'] = $user; 
-
-                //loading database table freelancer_rating
-                $this->load->model('CommentsClient');
-                $reviews = $this->CommentsClient->getData()->result();
-                //  var_dump($reviews);die;
-
-                foreach ($reviews as $review) {
-                    // echo $review;
-                    $arr[] = $review->review;
+                if(!$user->updated_profile)
+                {
+                    return redirect(site_url('updateCProfile'));
                 }
-                // var_dump($arr);die;
+                else
+                {
+                    // die('abcd');
+                    $this->data['view'] = 'CProfile';
+                    $this->data['site_title'] = 'Hireable';
+                    $this->data['page_title'] = 'Profile -' . $this->data['site_title'];
 
+                    $this->data['client_info'] = $user; 
 
-                $this->data['comments'] = $arr;
-                // var_dump($this->data['comments']);die;
+                    //loading database table freelancer_rating
+                    $this->load->model('CommentsClient');
+                    $reviews = $this->CommentsClient->getData()->result();
+                    //  var_dump($reviews);die;
 
-                 if (isset($_POST['submit'])) {
-
-                    $this->form_validation->set_rules('review', 'Please add your reviews here', 'required');
-                    // var_dump($review);die;
-                    if ($this->form_validation->run() == True) {
-                        $review = $this->input->post('review');
-                        // var_dump($review);die;
-                        $reviewData = [
-                            'review' => $review,
-                            'user_id' => $user->user_id
-                        ];
-
-                        // var_dump($reviewData);die;
-                       
-                        $this->CommentsClient->insertRecord($reviewData);
-                        $this->session->set_flashdata("reviewInserted", "Review inserted successfully!");
-                        //  $this->load->view('layout', $this->data);
-                    } else {
-                        $this->load->view('layout', $this->data);
+                    foreach ($reviews as $review) {
+                        // echo $review;
+                        $arr[] = $review->review;
                     }
-                } else {
-                    $this->load->view('layout', $this->data);
+                    // var_dump($arr);die;
+
+
+                    $this->data['comments'] = $arr;
+                    // var_dump($this->data['comments']);die;
+
+                    if (isset($_POST['submit'])) {
+
+                        $this->form_validation->set_rules('review', 'Please add your reviews here', 'required');
+                        // var_dump($review);die;
+                        if ($this->form_validation->run() == True) {
+                            $review = $this->input->post('review');
+                            // var_dump($review);die;
+                            $reviewData = [
+                                'review' => $review,
+                                'user_id' => $user->user_id
+                            ];
+
+                            // var_dump($reviewData);die;
+                        
+                            $this->CommentsClient->insertRecord($reviewData);
+                            $this->session->set_flashdata("reviewInserted", "Review inserted successfully!");
+                            //  $this->load->view('layout', $this->data);
+                        } else {
+                            return $this->load->view('layout', $this->data);
+                        }
+                    } else {
+                        return $this->load->view('layout', $this->data);
+                    }   
                 }
             }
         } else {
-             redirect(site_url('Login'));
+            return redirect(site_url('Login'));
         }
     }
 }
