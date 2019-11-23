@@ -12,6 +12,7 @@
 <?php
 if (isset($_SESSION['projectsPresent'])) {
     if ($projects) {
+        var_dump($projects);die;
         foreach ($projects as $project) {
             ?>
             <section class="job-detail section dashboard-section">
@@ -42,6 +43,7 @@ if (isset($_SESSION['projectsPresent'])) {
                                 <h5>Project Bids</h5>
                                 <div class="manager-info">
                                     <div class="manager-meta">
+                                        <?php //if($project['project_id'] =) ?>
                                         <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View more bids</a></span>
                                     </div>
                                 </div>

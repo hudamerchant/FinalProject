@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $this->load->view('layout',$data);
                         $data['page_title'] = 'Dashboard -'.$data['site_title'];
     
-                        $this->load->view('layout',$data);
+                        return $this->load->view('layout',$data);
                     }
                     
                 }
