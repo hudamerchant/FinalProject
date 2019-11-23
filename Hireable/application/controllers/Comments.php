@@ -29,6 +29,7 @@
                     $reviews = $this->Comment->getData()->result();
                     // $data['review'] =$Comment; 
                      // var_dump($this->data);die;
+                     $arr = [];
                     foreach ($reviews as $review) {
                       //  var_dump($review) ;die;
                         $arr[] = $review->review;
@@ -54,11 +55,11 @@
                             'user_id' => $user->user_id
                         ];
 
-                        // var_dump($reviewData);die;
+                     var_dump($reviewData);die;
 
                         $this->Comment->insertRecord($reviewData);
                         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-                        // $this->load->view('layout', $this->data);
+                    // $this->load->view('layout', $this->data);
                     
                     }
                    

@@ -22,7 +22,7 @@ class ClientProfile extends MY_Controller
                 $this->load->model('CommentsClient');
                 $reviews = $this->CommentsClient->getData()->result();
                 //  var_dump($reviews);die;
-
+                $arr = [];
                 foreach ($reviews as $review) {
                     // echo $review;
                     $arr[] = $review->review;
@@ -34,7 +34,38 @@ class ClientProfile extends MY_Controller
 
                 //Client info
                 $data['client_info'] = $user;
-                $this->load->view('layout', $data);
+                if(isset($_POST['submit']))
+                    
+                {
+                    $this->form_validation->set_rules('review', 'Review', 'required');
+                    if($this->form_validation->run() == True)
+                    {
+                        $review = $this->input->post('review');
+                        // var_dump($review);die;
+                    
+                        $reviewData = [
+                            'review' => $review,
+                            'user_id' => $user->user_id
+                        ];
+
+                     //var_dump($reviewData);die;
+
+                        $this->CommentsClient->insertRecord($reviewData);
+                        $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
+                        $this->load->view('layout',$data);
+                    
+                    }
+                   
+                    else {
+                        $this->load->view('layout', $data);
+                    }
+                }
+                else
+                    {
+                        $this->load->view('layout',$data);
+
+                    }
+               // $this->load->view('layout', $data);
             } elseif ($user->role_id == 2) {
                 redirect(site_url('Client'));
             }

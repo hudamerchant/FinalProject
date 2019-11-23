@@ -64,9 +64,10 @@
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div class="upload-button">
-                                        <button class="btn btn-common" name="submit">Submit</button>
-                        <form action="" method="POST" enctype='multipart/form-data'>
-                            <div class="form-group col-md-5">
+                                    <button class="btn btn-common" name="submit">Submit</button>
+                                        <!-- <button class="btn btn-common" name="submit">Submit</button>
+                        <form action="" method="POST" enctype='multipart/form-data'> -->
+                            <!-- <div class="form-group col-md-5"> -->
                             <div>
                             <?php
                                if(isset($_SESSION['reviewInserted'])){
@@ -79,7 +80,7 @@
                           </div>
                                                 </div>
                                                 <!-- <label for="profile">Profile Photo</label> -->
-                                                <input class="form-control" type="file" name="profile" id="profile">
+                                                <!-- <input class="form-control" type="file" name="profile" id="profile"> -->
 
                                             </div>
                                         </form>

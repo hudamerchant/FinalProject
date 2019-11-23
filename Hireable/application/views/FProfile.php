@@ -73,16 +73,7 @@
                                 <div class="action-buttons">
                                     <div class="upload-button">
                                         <button class="btn btn-common" name="submit">Submit</button>
-                                        <div>
-                            <?php
-                               if(isset($_SESSION['reviewInserted'])){
-                             ?>
-                         <p class="alert alert-info mt-3"><?php  echo $this->session->flashdata("reviewInserted");?></p>
-    
-                          <?php
-                          }
-                          ?>
-                          </div>
+                                       
                                         <form action="" method="POST" enctype='multipart/form-data'>
                                             <div class="form-group col-md-5">
                                                 <div>
