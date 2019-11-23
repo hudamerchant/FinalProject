@@ -36,150 +36,81 @@ if (isset($_SESSION['freelancerRole'])) {
             </div>
         </div>
     </div>
-    <div class="col-lg-8 col-md-8 col-xs-8">
-        <div class="manager-resumes-item">
-            <div class="manager-content">
-                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                <div class="manager-info">
-                    <div class="manager-name">
-                        <h4><a href="#">Client name</a></h4>
-                        <h5>client@example.com</h5>
-                    </div>
-                    <!-- <div class="manager-meta">
-                        <span class="location"><i class="ti-location-pin"></i> Cupertino, CA, USA</span>
-                        <span class="rate"><i class="ti-time"></i> $55 per hour</span>
-                    </div> -->
-                </div>
-            </div>
-            <div class="item-body">
-                <div class="content">
-                    <b>Project Title</b>
-                    <p>Kuch bhi</p>
-                    <b>Project Description</b>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi umsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit</p>
-                </div>
-                <div class="resume-skills">
-                    <div class="tag-list float-left">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Bootstrap</span>
-                        <span>Wordpress</span>
-                    </div>
-                    <div class="resume-exp float-right">
-                        <a href="#" class="btn btn-common btn-xs">Apply</a>
+    <?php
+if(isset($_SESSION['Bid'])){
+    ?>
+    <p class="alert alert-info"><?php  echo $this->session->flashdata("Bid");?></p>
+    <?php
+}
+?>
+<?php
+if (isset($_SESSION['projectsPresent'])) {
+    // var_dump($projects);die;
+    foreach ($projects as $project) {
+
+        ?>
+        <div class="col-lg-8 col-md-8 col-xs-8 project">
+            <div class="manager-resumes-item">
+                <div class="manager-content">
+                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                    <div class="manager-info">
+                        <div class="manager-name">
+                            <h4><a href="#"><?php echo $project['name'] ?></a></h4>
+                            <h5><?php echo $project['email'] ?></h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-8 col-md-8 col-xs-8">
-        <div class="manager-resumes-item">
-            <div class="manager-content">
-                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                <div class="manager-info">
-                    <div class="manager-name">
-                        <h4><a href="#">Client name</a></h4>
-                        <h5>client@example.com</h5>
+                <div class="item-body">
+                    <div class="content">
+                        <b>Project Title</b>
+                        <p><?php echo $project['title'] ?></p>
+                        <b>Project Description</b>
+                        <p><?php echo $project['description'] ?></p>
                     </div>
-                    <!-- <div class="manager-meta">
-                        <span class="location"><i class="ti-location-pin"></i> Cupertino, CA, USA</span>
-                        <span class="rate"><i class="ti-time"></i> $55 per hour</span>
-                    </div> -->
-                </div>
-            </div>
-            <div class="item-body">
-                <div class="content">
-                    <b>Project Title</b>
-                    <p>Kuch bhi</p>
-                    <b>Project Description</b>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi umsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit</p>
-                </div>
-                <div class="resume-skills">
-                    <div class="tag-list float-left">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Bootstrap</span>
-                        <span>Wordpress</span>
-                    </div>
-                    <div class="resume-exp float-right">
-                        <a href="#" class="btn btn-common btn-xs">Apply</a>
+                    <div class="resume-skills">
+                        <div class="tag-list">
+
+                            <?php 
+                            foreach ($project['categories'] as  $category) {
+                            ?>
+                                <span><?php echo $category ?></span>
+
+                            <?php 
+                            }  
+                            ?>
+                            
+                        </div>
+                        <div class="resume-exp float-right">
+                            <?php if(in_array($project['project_id'], $applied))
+                            {?>
+                            <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs disabled bg-success"  >Applied</a>
+                            <?php }else{?>
+                                <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >Apply</a>
+                            <?php }  ?>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-8 col-md-8 col-xs-8">
-        <div class="manager-resumes-item">
-            <div class="manager-content">
-                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                <div class="manager-info">
-                    <div class="manager-name">
-                        <h4><a href="#">Client name</a></h4>
-                        <h5>client@example.com</h5>
-                    </div>
-                    <!-- <div class="manager-meta">
-                        <span class="location"><i class="ti-location-pin"></i> Cupertino, CA, USA</span>
-                        <span class="rate"><i class="ti-time"></i> $55 per hour</span>
-                    </div> -->
-                </div>
-            </div>
-            <div class="item-body">
-                <div class="content">
-                    <b>Project Title</b>
-                    <p>Kuch bhi</p>
-                    <b>Project Description</b>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi umsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit</p>
-                </div>
-                <div class="resume-skills">
-                    <div class="tag-list float-left">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Bootstrap</span>
-                        <span>Wordpress</span>
-                    </div>
-                    <div class="resume-exp float-right">
-                        <a href="#" class="btn btn-common btn-xs">Apply</a>
+    <?php
+        }
+    } else {
+        ?>
+    <section class="job-detail section dashboard-section">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-8 col-md-12 col-xs-12">
+                    <div class="content-area">
+                        <h5 class="client-dashboard-center">No projects yet</h5>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-lg-8 col-md-8 col-xs-8">
-        <div class="manager-resumes-item">
-            <div class="manager-content">
-                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                <div class="manager-info">
-                    <div class="manager-name">
-                        <h4><a href="#">Client name</a></h4>
-                        <h5>client@example.com</h5>
-                    </div>
-                    <!-- <div class="manager-meta">
-                        <span class="location"><i class="ti-location-pin"></i> Cupertino, CA, USA</span>
-                        <span class="rate"><i class="ti-time"></i> $55 per hour</span>
-                    </div> -->
-                </div>
-            </div>
-            <div class="item-body">
-                <div class="content">
-                    <b>Project Title</b>
-                    <p>Kuch bhi</p>
-                    <b>Project Description</b>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi umsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit</p>
-                </div>
-                <div class="resume-skills">
-                    <div class="tag-list float-left">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Bootstrap</span>
-                        <span>Wordpress</span>
-                    </div>
-                    <div class="resume-exp float-right">
-                        <a href="#" class="btn btn-common btn-xs">Apply</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
+<?php
+}
+?>
 <?php
 } else {
     ?>
@@ -198,12 +129,13 @@ if (isset($_SESSION['freelancerRole'])) {
                     <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
                     <div class="manager-info">
                         <div class="manager-name">
+                            
                             <h4><a href="#"><?php echo $freelancer->name ?></a></h4>
                             <h5><?php echo $freelancer->email ?></h5>
                         </div>
                         <div class="manager-info">
                             <div class="manager-meta search-manager-meta">
-                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('FreelancerProfileForClients') ?>">View Profile</a></span>
+                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('FreelancerProfileForClients/index/'.$freelancer->user_id) ?>">View Profile</a></span>
                             </div>
                         </div>
                         <div class="manager-info">

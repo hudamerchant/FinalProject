@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         function __construct(){
             parent::__construct();
         }
-        public function index(){ 
+        public function index($bid_project_id = false){ 
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
 
@@ -29,8 +29,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             'user_id' => $user->user_id
                         ];
                         $projects = $this->Projects->getData($where)->result();
+
+
+                        //fetching project status from project bid table
+                        $this->load->model('ProjectBid');
+                        $where = [
+                            'user_id'       => $user->user_id,
+                            'project_id'    
+                        ];
+                        $projects = $this->Projects->getData($where)->result();
+
+
                         $count = 0;
-    
                         if($projects){
                             $this->session->set_flashdata("projectsPresent",true);
                             foreach ($projects as $project) {
@@ -56,6 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 }
                                 $count++;
                             }
+                            
                         }
                         
                         return $this->load->view('layout',$data);

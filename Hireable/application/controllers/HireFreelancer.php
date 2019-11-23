@@ -9,7 +9,7 @@
         }
         public function index($bid_user_id = false, $bid_project_id = false)
         {
-            $data['view'] = 'ViewMoreBids';
+            $data['view']       = 'Client';
             $data['site_title'] = 'Hireable';
             $data['page_title'] = 'View Bids - '.$data['site_title'];
             $this->load->model('Users');
@@ -38,13 +38,17 @@
                             
                             $status_update = [
                                 'status' => 1
-                            ] ;
+                            ];
         
-                            $accept_bid = $this->ProjectBid->updateData($status_update, $where);
+                            $bid_accepted = $this->ProjectBid->updateData($status_update, $where);
+                            if($bid_accepted)
+                            {
+                                return redirect(site_url('Client/'.$bid_project_id));
+                            }
                         }
         
                     }
-                } 
+                }
             }
             else
             {

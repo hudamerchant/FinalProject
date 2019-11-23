@@ -42,11 +42,6 @@ include_once('head.php');
                 Dashboard
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('/freelancerBids'); ?>">
-                View Bids
-              </a>
-            </li>
             <li>
               <div class="job-search-form freelancer-search-icon freelancer-form">
                 <!-- <form action="<?php echo site_url('/Search'); ?>"> -->

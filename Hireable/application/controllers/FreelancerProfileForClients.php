@@ -2,7 +2,7 @@
     defined('BASEPATH') OR exit('No direct script access allowed');
 
     class FreelancerProfileForClients extends MY_Controller{
-        public function index($project_apply_id = false){
+        public function index($freelancer_user_id = false){
             function __construct(){
                 parent::__construct();
             }
@@ -20,6 +20,26 @@
                     $data['view'] = 'FreelancerProfileForClients';
                     $data['site_title'] = 'Hireable';
                     $data['page_title'] = 'Freelancer Profile - '.$data['site_title']; 
+
+                    if($freelancer_user_id){
+                        $count = 0;
+                        $whereUserId = [
+                            'user_id' => $freelancer_user_id
+                        ];
+                        $freelancerData = $this->Users->getData($whereUserId)->row();
+                        $data['freelancerDetails'][$count]['name'] = $freelancerData->name;
+                        $data['freelancerDetails'][$count]['dob'] = $freelancerData->dob;
+                        $data['freelancerDetails'][$count]['gender'] = $freelancerData->gender;
+                        $data['freelancerDetails'][$count]['email'] = $freelancerData->email;
+
+                        $freelancerDetails = $data['freelancerDetails'];
+
+                        foreach($freelancerDetails as $freelancerDetail){
+                            
+                            $data['freelancerDetail'] = $freelancerDetail;
+                        }
+
+                    }
     
                     $this->load->view('layout',$data);
                 }
