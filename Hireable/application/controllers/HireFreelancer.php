@@ -1,11 +1,34 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class HireFreelancer extends MY_Controller{
-        function __construct(){
+    class HireFreelancer extends MY_Controller
+    {
+        public function __construct()
+        {
             parent::__construct();
         }
-        function index($bid_user_id = false){
-            echo $bid_user_id;
+        public function index($bid_user_id = false, $bid_project_id = false)
+        {
+            $data['view'] = 'ViewMoreBids';
+            $data['site_title'] = 'Hireable';
+            $data['page_title'] = 'View Bids - '.$data['site_title'];
+            $this->load->model('Users');
+            if ($this->session->userdata('logged_in')) {
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData($where)->row();
+                if ($bid_user_id && $bid_project_id) {
+                    $this->load->model('ProjectBid');
+                    $where = [
+                        'user_id'       => $bid_user_id,
+                        'project_id'    => $bid_project_id
+                    ];
+                    
+                    $status_update = [
+                        'status' => 1
+                    ] ;
+
+                    $accept_bid = $this->ProjectBid->updateData($status_update, $where);
+                }
+            }
         }
     }

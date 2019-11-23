@@ -6,6 +6,7 @@
             $data['view'] = 'Search';
             $data['site_title'] = 'Hireable';
             $data['page_title'] = 'Search - '.$data['site_title'];
+            $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData($where)->row();
