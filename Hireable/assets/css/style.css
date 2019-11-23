@@ -108,3 +108,7 @@ a.profile-anchor {
 .client-profile-h6{
     margin-top: 1.5rem;
 }
+.manager-resumes-item .manager-content .manager-info .search-manager-meta{
+    float: none;
+    margin-bottom: 2px;
+}

@@ -186,66 +186,40 @@ if (isset($_SESSION['freelancerRole'])) {
     <div class="col-lg-8 col-md-12 col-xs-12">
         <div class="job-alerts-item candidates">
             <!-- <h3 class="alerts-title">Manage Resumes</h3> -->
+
+<?php
+    if($freelancers){
+        foreach ($freelancers as $freelancer) {
+        
+?>
+
             <div class="manager-resumes-item">
                 <div class="manager-content">
                     <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
                     <div class="manager-info">
                         <div class="manager-name">
-                            <h4><a href="#">Zane Joyner</a></h4>
-                            <h5>Front-end developer</h5>
+                            <h4><a href="#"><?php echo $freelancer->name ?></a></h4>
+                            <h5><?php echo $freelancer->email ?></h5>
                         </div>
-                        <div class="manager-meta">
-                            <span class="location"><i class="lni-map-marker"></i> Cupertino, CA, USA</span>
-                            <span class="rate"><i class="lni-alarm-clock"></i> $55 per hour</span>
+                        <div class="manager-info">
+                            <div class="manager-meta search-manager-meta">
+                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('FreelancerProfileForClients') ?>">View Profile</a></span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="manager-resumes-item">
-                <div class="manager-content">
-                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
-                    <div class="manager-info">
-                        <div class="manager-name">
-                            <h4><a href="#">Zane Joyner</a></h4>
-                            <h5>Front-end developer</h5>
-                        </div>
-                        <div class="manager-meta">
-                            <span class="location"><i class="lni-map-marker"></i> Cupertino, CA, USA</span>
-                            <span class="rate"><i class="lni-alarm-clock"></i> $55 per hour</span>
+                        <div class="manager-info">
+                            <div class="manager-meta search-manager-meta">
+                                <span><a class="btn btn-common view-more-bids-anchor" href="">Contact</a></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="manager-resumes-item">
-                <div class="manager-content">
-                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
-                    <div class="manager-info">
-                        <div class="manager-name">
-                            <h4><a href="#">Zane Joyner</a></h4>
-                            <h5>Front-end developer</h5>
-                        </div>
-                        <div class="manager-meta">
-                            <span class="location"><i class="lni-map-marker"></i> Cupertino, CA, USA</span>
-                            <span class="rate"><i class="lni-alarm-clock"></i> $55 per hour</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="manager-resumes-item">
-                <div class="manager-content">
-                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
-                    <div class="manager-info">
-                        <div class="manager-name">
-                            <h4><a href="#">Zane Joyner</a></h4>
-                            <h5>Front-end developer</h5>
-                        </div>
-                        <div class="manager-meta">
-                            <span class="location"><i class="lni-map-marker"></i> Cupertino, CA, USA</span>
-                            <span class="rate"><i class="lni-alarm-clock"></i> $55 per hour</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+<?php
+        }
+    }
+?>
+
         </div>
     </div>
     </div>

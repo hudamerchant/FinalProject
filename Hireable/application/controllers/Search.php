@@ -16,6 +16,12 @@
                 }
                 else
                 {
+                    $whereRoleId = [
+                        'role_id' => 1
+                    ];
+                    $freelancers   = $this->Users->getData($whereRoleId)->result();
+                    // var_dump($freelancers);die;
+                    $data['freelancers'] = $freelancers;
                     return $this->load->view('layout',$data);
                 }
             }
