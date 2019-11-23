@@ -11,57 +11,33 @@
     </div>
 </div>
 <?php
-if(isset($_SESSION['Bid'])){
-    ?>
-    <p class="alert alert-info"><?php  echo $this->session->flashdata("Bid");?></p>
-    <?php
-}
-?>
-<?php
-if (isset($_SESSION['projectsPresent'])) {
-    // var_dump($projects);die;
-    foreach ($projects as $project) {
-
+if (isset($_SESSION['freelancerBidsPresent'])) {
+    foreach ($results as $result) {
         ?>
-        <div class="col-lg-8 col-md-8 col-xs-8 project">
+        <div class="col-lg-8 col-md-8 col-xs-8">
             <div class="manager-resumes-item">
-                <div class="manager-content">
+                <div class="manager-content ">
                     <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
                     <div class="manager-info">
                         <div class="manager-name">
-                            <h4><a href="#"><?php echo $project['name'] ?></a></h4>
-                            <h5><?php echo $project['email'] ?></h5>
+                            
+                            <h4><a href="#"><?php echo $result->name ?></a></h4>
+                            <h5><?php echo $result->email ?></h5>
                         </div>
                     </div>
                 </div>
                 <div class="item-body">
-                    <div class="content">
+                    <div class="content project-details-content">
                         <b>Project Title</b>
-                        <p><?php echo $project['title'] ?></p>
-                        <b>Project Description</b>
-                        <p><?php echo $project['description'] ?></p>
-                    </div>
-                    <div class="resume-skills">
-                        <div class="tag-list">
-
-                            <?php 
-                            foreach ($project['categories'] as  $category) {
-                            ?>
-                                <span><?php echo $category ?></span>
-
-                            <?php 
-                            }  
-                            ?>
-                            
-                        </div>
-                        <div class="resume-exp float-right">
-                            <?php if(in_array($project['project_id'], $applied))
-                            {?>
-                            <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs disabled bg-success"  >Applied</a>
-                            <?php }else{?>
-                                <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >Apply</a>
-                            <?php }  ?>
-                            
+                        <p><?php echo $result->project_title ?></p>
+                    </div>        
+                    <div class="manager-content project-details-manager-content">
+                        <div class="item-body">            
+                            <div class="resume-skills project-details-resume-skills">
+                                <div class="resume-exp float-right">
+                                    <a href="<?php echo site_url('ProjectDetails/index/'.$result->project_id) ?>"  name="submit" class="btn btn-common btn-xs "  >View project</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +52,17 @@ if (isset($_SESSION['projectsPresent'])) {
             <div class="row justify-content-between">
                 <div class="col-lg-8 col-md-12 col-xs-12">
                     <div class="content-area">
-                        <h5 class="client-dashboard-center">No projects yet</h5>
+                        <h5 class="client-dashboard-center">No bids yet</h5>
+                        <p class="client-dashboard-center">Go back to your dashboard</p>
+                        <div class="form-group">
+                            <div class="button-group">
+                                <div class="action-buttons">
+                                    <div class="client-dashboard-center">
+                                        <a href="<?php echo site_url('Freelancer'); ?>"><button class="btn btn-common " type="submit" name="submit" value="">Dashboard</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
