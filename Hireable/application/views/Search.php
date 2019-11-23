@@ -198,12 +198,13 @@ if (isset($_SESSION['freelancerRole'])) {
                     <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
                     <div class="manager-info">
                         <div class="manager-name">
+                            
                             <h4><a href="#"><?php echo $freelancer->name ?></a></h4>
                             <h5><?php echo $freelancer->email ?></h5>
                         </div>
                         <div class="manager-info">
                             <div class="manager-meta search-manager-meta">
-                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('FreelancerProfileForClients') ?>">View Profile</a></span>
+                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('FreelancerProfileForClients/index/'.$freelancer->user_id) ?>">View Profile</a></span>
                             </div>
                         </div>
                         <div class="manager-info">
