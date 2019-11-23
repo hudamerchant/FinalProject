@@ -69,5 +69,8 @@
                     $this->load->view('layout',$data);
                 }
             }
+            else{
+                redirect(site_url('Login'));
+            }
         }
     }

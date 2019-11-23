@@ -36,6 +36,7 @@
                                     $data['projects'][$count]['title'] = $project->project_title;
                                     $data['projects'][$count]['description'] = $project->project_descript;
                                     $data['projects'][$count]['project_id'] = $project->project_id;
+                                    $data['projects'][$count]['user_id'] = $project->user_id;
 
                                     $whereUserId = [
                                         'user_id' => $project->user_id
