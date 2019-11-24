@@ -1,7 +1,21 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-11">
-        <form class="form-ad" method="post">
+<?php
+if (isset($_SESSION['error'])) {
+    ?>
+    <p class="alert alert-info"><?php echo $this->session->flashdata("error"); ?></p>
+<?php
+}
+if (isset($_SESSION['status'])) {
+    ?>
+    <p class="alert alert-info"><?php echo $this->session->flashdata("status"); ?></p>
+<?php
+}
+?>
+<section id="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-12 col-xs-12">
+                <div class="add-resume box">
+                <form class="form-ad" method="post">
                         <div class="form-group">
                             <label class="control-label pt-3"><h6>Please add your reviews here</h6></label>
                             <textarea class="form-control" rows="5" name="review"></textarea>
@@ -33,39 +47,8 @@
 
                                             </div>
                                         </form>
-                                        <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
-                                        <?php //foreach($comment as $comments)
-                                                    //{
-                                                     ?>
-                                        <div class="manager-resumes-item">
-                                            <div class="manager-content">
-                                                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                                                <div class="manager-info">
-                                                    <div class="manager-name">
-                                                        <h4><a href="#">Client</a></h4>
-                                                        <h5>client@example.com</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item-body">
-                                                <div class="content">
-                                                    <b>Review</b>
-                                                    
-                                                    <P><?php //echo $comments?>
-                                                    
-                                                </p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php //} ?>
-                                    </div>
-                                <!-- </div> -->
-                            </div>
-                        </div>
-
-                   
-    
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
