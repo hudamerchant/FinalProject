@@ -10,13 +10,16 @@
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData($where)->row();
-                if(!$user->updated_profile)
-                {
-                    return redirect(site_url('updateFProfile'));
-                }
-                else
-                {
-                    if ($user->role_id == 1) {
+                
+                if ($user->role_id == 1) {
+                    $role_id = $user->role_id;
+                    if(!$user->updated_profile)
+                    {
+                        return redirect(site_url('updateFProfile'));
+                    }
+                    else
+                    {
+                        $projects = $this->search($role_id);
                         //applied projects
                         $data['applied'] = [];
                         $this->load->model('ProjectBid');
@@ -25,27 +28,33 @@
                         foreach($applied as $v){
                             $data['applied'][] = $v->project_id;
                         }
-                        
-                        $this->load->model('Projects');
-                        $projects = $this->Projects->getData()->result(); 
-                        if($projects){
+
+                        // $this->load->model('Projects');
+                        // $projects = $this->Projects->getData()->result();
+                        if(!count($projects))
+                        {
+                            $msg = 'Sorry! No Result Found.';
+                            $data['msg'] = $msg;
+                        } 
+                        else
+                        {
                             $count = 0;
                             // var_dump($projects);die; 
                             $this->session->set_flashdata("projectsPresent",true);
                             foreach ($projects as $project) {
-                                 
+                                    
                                 $category_id = [];
                                 $data['projects'][$count]['title'] = $project->project_title;
                                 $data['projects'][$count]['description'] = $project->project_descript;
                                 $data['projects'][$count]['project_id'] = $project->project_id;
-                                //$data['projects'][$count]['user_id'] = $project->user_id;
+                                $data['projects'][$count]['user_id'] = $project->user_id;
                                 $whereUserId = [
                                     'user_id' => $project->user_id
                                 ];
                                 $userIdData = $this->Users->getData($whereUserId)->row();
                                 $data['projects'][$count]['name'] = $userIdData->name;
                                 $data['projects'][$count]['email'] = $userIdData->email;
-    
+
                                 $this->load->model('ProjectCategories');
                                 $projectCategoryWhere = [
                                     'project_id' => $project->project_id
@@ -74,23 +83,36 @@
                                 }
                                 $this->session->set_flashdata("Bid",'Bid success');
                                 return redirect(site_url('Freelancer'));
-                            }
-                            
+                            }   
                         }
                     }
-                    elseif($user->role_id == 2){
-                        $whereRoleId = [
-                            'role_id' => 1
-                        ];
-                        $freelancers   = $this->Users->getData($whereRoleId)->result();
-                        $data['freelancers'] = $freelancers;
-                        
-                    }
-                    return $this->load->view('layout',$data);
                 }
+                elseif($user->role_id == 2){
+                    $role_id = $user->role_id;
+                    if(!$user->updated_profile)
+                    {
+                        return redirect(site_url('updateCProfile'));
+                    }
+                    else
+                    {
+                        $freelancers = $this->search($role_id);
+                        if(!count($freelancers))
+                        {
+                            $msg = 'Sorry! No Result Found.';
+                            $data['msg'] = $msg;
+                        }
+                        else
+                        {
+                            $data['freelancers'] = $freelancers;
+                        }
+                    }
+                }    
+                return $this->load->view('layout',$data);
             }
             else
-            {
+            {  
+                $freelancers = $this->search();
+                $data['freelancers'] = $freelancers;
                 return $this->load->view('layout',$data);
             }
         }

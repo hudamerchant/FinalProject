@@ -49,11 +49,12 @@
                                                     ];
                                 //insert organization description in profile table
                                 $this->CProfile->insertRecord($org_data);
-                                return redirect(site_url('Client'));
                             }
-    
+                            
                             $where = ['user_id' => $user->user_id];
                             $this->Users->updateData($update_data , $where);
+                            
+                            return redirect(site_url('Client'));
     
                         }
                         else
