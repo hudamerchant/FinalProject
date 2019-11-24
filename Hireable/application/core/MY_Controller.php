@@ -17,23 +17,28 @@ class MY_Controller extends CI_Controller
             if(!empty(trim($skill)))
             {
                 $this->load->model('FCategories');
-                $where = [
+                $like = [
                     'category' =>  $_REQUEST['skill']
                 ];
-                $search_results = $this->FCategories->joins('categories', 'category_id', $where)->result();
-
-                foreach($search_results as $search_result)
+                $search_results = $this->FCategories->joins('categories', 'category_id', $like)->result();
+                if(!count($search_results))
                 {
-                    $users[] = $search_result->user_id;
+                    $freelancers = [];
                 }
-                foreach($users as $user)
+                else
                 {
-                    $where = [
-                        'user_id' => $user
-                    ];
-                    $freelancers[]   = $this->Users->getData($where)->row();
-                }
-                
+                    foreach($search_results as $search_result)
+                    {
+                        $users[] = $search_result->user_id;
+                    }
+                    foreach($users as $user)
+                    {
+                        $where = [
+                            'user_id' => $user
+                        ];
+                        $freelancers[]   = $this->Users->getData($where)->row();
+                    }    
+                }                
             }
             else
             {
@@ -48,7 +53,6 @@ class MY_Controller extends CI_Controller
             return $freelancers; 
         }
     }
-    
 }
 
 ?>

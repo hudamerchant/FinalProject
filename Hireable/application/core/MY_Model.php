@@ -19,10 +19,14 @@ class MY_Model extends CI_Model
         $query = $this->db->get_where($this->table_name,$data)->row();
         return $query;
     }
-    public function getData(array $where = [] ){
+    public function getData(array $like = []  , array $where = []){
         if(count($where) > 0)
         {
             $this->db->where( $where );    
+        }
+        if(count($like) > 0)
+        {
+            $this->db->like( $like );    
         }
             $query = $this->db->get($this->table_name);
             return $query;
@@ -60,7 +64,11 @@ class MY_Model extends CI_Model
         $query = $this->db->update($this->table_name, $data , $where );    
         return $query;
     }
-    public function joins($firstTableForJoin , $joinWithColumnName , array $where = []){
+    public function joins($firstTableForJoin , $joinWithColumnName , array $like = [] , array $where = []){
+        if(count($like) > 0)
+        {
+            $this->db->like( $like );    
+        }
         if(count($where) > 0)
         {
             $this->db->where( $where );    

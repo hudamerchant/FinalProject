@@ -139,7 +139,11 @@ if (isset($_SESSION['projectsPresent'])) {
             <!-- <h3 class="alerts-title">Manage Resumes</h3> -->
 
 <?php
-    if($freelancers){
+    if(isset($msg))
+    {?>
+        <p><?php echo $msg ?></p>
+    <?php }
+    elseif(isset($freelancers)){
         foreach ($freelancers as $freelancer) {
         
 ?>

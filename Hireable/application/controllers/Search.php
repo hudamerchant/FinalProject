@@ -86,11 +86,16 @@
                     }
                     else
                     {
-                        $whereRoleId = [
-                            'role_id' => 1
-                        ];
-                        $freelancers   = $this->Users->getData($whereRoleId)->result();
-                        $data['freelancers'] = $freelancers;
+                        $freelancers = $this->search();
+                        if(!count($freelancers))
+                        {
+                            $msg = 'Sorry! No Result Found.';
+                            $data['msg'] = $msg;
+                        }
+                        else
+                        {
+                            $data['freelancers'] = $freelancers;
+                        }
                     }
                 }    
                 return $this->load->view('layout',$data);
