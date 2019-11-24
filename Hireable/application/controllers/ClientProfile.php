@@ -23,6 +23,19 @@ class ClientProfile extends MY_Controller
                     $data['view'] = 'CProfile';
                     $data['site_title'] = 'Hireable';
                     $data['page_title'] = 'Profile -' . $data['site_title'];
+
+                    if(isset($_POST['file_submit'])){
+                        if(isset($_FILES['userfile'])){
+
+                            var_dump($_FILES['userfile']);
+                            $file = $this->upload_file();
+                            if($file){
+                                var_dump(base_url().'assets/uploads/');
+                                var_dump($file);die;
+                            }
+                        }
+                        
+                    }
     
                     //loading database table freelancer_rating
                     $this->load->model('CommentsClient');
@@ -71,6 +84,7 @@ class ClientProfile extends MY_Controller
                             return $this->load->view('layout',$data);
     
                         }
+                    
                    // $this->load->view('layout', $data);
                 }
                 

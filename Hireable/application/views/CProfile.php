@@ -9,6 +9,9 @@
         </div>
     </div>
 </div>
+<?php //if(isset($error)){
+    //echo $error; 
+//} ?>
 <div class="section">
     <div class="container">
         <div class="row">
@@ -26,10 +29,14 @@
             <div class="col-lg-8 col-md-8 col-xs-12">
                 <div class="inner-box my-resume">
                     <div class="author-resume">
-                        <div class="col-md-3 d-inline-block">
+                        <div class="col-md-3 d-inline-block client-profile-margin">
                             <div class="user-pic">
                                 <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
-                                <a href="#" class="btn btn-common mt-2 ml-2">Upload</a>
+                                <form enctype="multipart/form-data" method="post">
+                                <input type="file" name="userfile">
+                                 <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">
+                                <!--<a href="#" class="btn btn-common mt-2 ml-2">Upload</a> -->
+                                </form>
                             </div>
                         </div>
                         <!-- <form action="" method="POST" enctype='multipart/form-data'>
