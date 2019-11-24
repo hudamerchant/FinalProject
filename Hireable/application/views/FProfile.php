@@ -9,6 +9,13 @@
         </div>
     </div>
 </div>
+<?php 
+if(isset($_SESSION['profilePicUploaded'])){
+    ?>
+    <p class="alert alert-info"><?php  echo $this->session->flashdata("profilePicUploaded");?></p>
+    <?php
+} 
+?>
 <div class="section">
     <div class="container">
         <div class="row">
@@ -34,18 +41,17 @@
             <div class="col-lg-8 col-md-8 col-xs-12">
                 <div class="inner-box my-resume">
                     <div class="author-resume">
-                        <div class="col-md-3 d-inline-block">
+                        <div class="col-md-3 d-inline-block client-profile-margin">
                             <div class="user-pic">
                                 <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
-                                <a href="#" class="btn btn-common mt-2 ml-2">Upload</a>
+                                <form enctype="multipart/form-data" method="post">
+                                <input type="file" name="userfile">
+                                <?php echo form_error('userfile') ?>
+                                 <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">                                
+                                </form>
                             </div>
                         </div>
-                        <!-- <form action="" method="POST" enctype='multipart/form-data'>
-                        <div class="form-group">
-                          <label for="profile">Profile</label>
-                          <input class="form-control" type="file" name="profile" id="profile">
-                        </div> 
-                        </form> -->
+                        
                         <div class="author-info d-inline-block ml-3">
                             <h3><b><?php echo $freelancer_info->name ?></b></h3>
                             <p class="sub-title">UI/UX Designer</p>
