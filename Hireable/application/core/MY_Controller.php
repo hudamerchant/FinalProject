@@ -104,7 +104,7 @@ class MY_Controller extends CI_Controller
         }
     }
     public function upload_file(){
-        $config['upload_path']          = base_url().'assets/uploads/';
+        $config['upload_path']          = 'assets/uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 5000;
         $config['max_width']            = 1024;
