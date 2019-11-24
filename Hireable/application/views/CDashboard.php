@@ -12,7 +12,7 @@
 <?php
 if (isset($_SESSION['projectsPresent'])) {
     if ($projects) {
-        var_dump($projects);die;
+        //var_dump($projects);die;
         foreach ($projects as $project) {
             ?>
             <section class="job-detail section dashboard-section">
@@ -20,6 +20,17 @@ if (isset($_SESSION['projectsPresent'])) {
                     <div class="row justify-content-between">
                         <div class="col-lg-8 col-md-12 col-xs-12">
                             <div class="content-area">
+                            <div class="manager-info">
+                                    <div class="manager-meta search-manager-meta">
+                                        <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php //echo site_url('EditProject/index/'.$project['project_id']) ?>">Delete Project</a></span>
+                                    </div>
+                                </div>
+                                <div class="manager-info">
+                                    <div class="manager-meta search-manager-meta">
+                                        <span><a class="btn btn-common view-more-bids-anchor float-right" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Edit Project</a></span>
+                                    </div>
+                                </div>
+                                <h4>Project</h4>
                                 <h5>Project Title</h5>
                                 <p><?php echo $project['title'] ?></p>
                                 <h5>Project Description</h5>
@@ -47,6 +58,7 @@ if (isset($_SESSION['projectsPresent'])) {
                                         <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View more bids</a></span>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
