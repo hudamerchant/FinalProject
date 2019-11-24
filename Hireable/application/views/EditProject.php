@@ -7,11 +7,12 @@
 ?>
 <?php 
     if($project_data){
+        $selected_categories = $project_data['categories'];
         // $count = 0;
         // foreach ($project_data['categoryDetails'] as $key => $categoryDetails) {
         //     foreach ($categoryDetails as $categoryDetail) {
         //         var_dump($categoryDetail);
-        //             // var_dump($project_data['categoryDetails'][$categoryDetails][$count]);
+                    // var_dump($project_data['categoryDetails'][$categoryDetails][$count]);
                 
         //     }
         //     $count++;
@@ -41,20 +42,21 @@
                                     <?php 
                                     foreach($categories as $category){
                                         ?>
-                                        <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
+                                        <option value="<?php echo $category->category_id ?>"<?php echo (in_array($category->category,$selected_categories) ? 'selected' : ''  ) ?>><?php echo $category->category ?> </option>            
                                         <?php 
                                     } 
                                     ?>
                                     <?php 
-                                    $count = 0;
-                                    foreach ($project_data['categoryDetails']['project_categories'] as $categoryDetails) {
+                                    
+                                    // $count = 0;
+                                    // foreach ($project_data['categoryDetails']['project_categories'] as $categoryDetails) {
                                         
                                             ?>
-                                                <option selected value="<?php echo $project_data['categoryDetails']['category_id'][$count] ?>"><?php echo $project_data['categoryDetails']['project_categories'][$count] ?></option>
+                                                <!-- <option selected value="<?php //echo $project_data['categoryDetails']['category_id'][$count] ?>"><?php echo $project_data['categoryDetails']['project_categories'][$count] ?></option> -->
                                             <?php
                                        
-                                        $count++;
-                                    }
+                                    //     $count++;
+                                    // }
                                     ?>
                             </select>
                             <?php echo form_error('categories[]') ?>

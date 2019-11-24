@@ -92,4 +92,12 @@ class MY_Model extends CI_Model
         }
         return $this->db->get();
     }
+    public function deleteData(array $where = []){
+        if(count($where) > 0)
+        {
+            $this->db->where($where);
+        }
+        $query = $this->db->delete($this->table_name);
+        return $query; 
+    }
 } 

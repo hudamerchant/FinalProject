@@ -35,7 +35,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $this->load->model('ProjectBid');
                         $where = [
                             'user_id'       => $user->user_id,
-                            'project_id'    
                         ];
                         $projects = $this->Projects->getData($where)->result();
 
