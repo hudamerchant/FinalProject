@@ -60,18 +60,18 @@ class MY_Model extends CI_Model
         $query = $this->db->update($this->table_name, $data , $where );    
         return $query;
     }
-    // public function joins($firstTableForJoin , $joinWithTable , $joinWithColumnName , array $where = [] , array $array = []){
-    //     if(count($where) > 0)
-    //     {
-    //         $this->db->where( $where );    
-    //     }
-    //     $this->db->select($array);
-    //     $this->db->from($firstTableForJoin);
-    //     $this->db->join($joinWithTable, $joinWithTable.'.'.$joinWithColumnName.'='.$this->table_name.'.'.$joinWithColumnName );
-    //     $query = $this->db->get();
+    public function joins($firstTableForJoin , $joinWithColumnName , array $where = []){
+        if(count($where) > 0)
+        {
+            $this->db->where( $where );    
+        }
+        $this->db->select('*');
+        $this->db->from($firstTableForJoin);
+        $this->db->join($this->table_name, $firstTableForJoin.'.'.$joinWithColumnName.'='.$this->table_name.'.'.$joinWithColumnName );
+        $query = $this->db->get();
 
-    //     return $query;
-    // }
+        return $query;
+    }
     public function multiple_joins($fetchingProjects,$where,$select){
         if(count($where) > 0)
         {

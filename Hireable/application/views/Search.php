@@ -24,7 +24,7 @@ if (isset($_SESSION['freelancerRole'])) {
                         <div class="row">
                             <div class="col-md-11 ">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Search for any project">
+                                    <input name='required-skill' class="form-control" type="text" placeholder="Search for any project">
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-6 col-xs-12">
@@ -114,6 +114,26 @@ if (isset($_SESSION['projectsPresent'])) {
 <?php
 } else {
     ?>
+    <div class="row space-100 justify-content-center">
+        <div class="col-lg-10 col-md-12 col-xs-12">
+            <div class="contents">
+                <div class="job-search-form freelancer-search">
+                    <form action="<?php echo site_url('/Search'); ?>">
+                        <div class="row">
+                            <div class="col-md-11 ">
+                                <div class="form-group">
+                                    <input name ='skill' class="form-control" type="text" placeholder="Search for any skill" value="<?php echo ($this->session->flashdata('search') != null ? $this->session->flashdata('search') : '' ) ?>">
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-6 col-xs-12">
+                                <button type="submit" class="button"><i class="lni-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-lg-8 col-md-12 col-xs-12">
         <div class="job-alerts-item candidates">
             <!-- <h3 class="alerts-title">Manage Resumes</h3> -->
