@@ -68,7 +68,7 @@
                                 $project_category_ids[] = $result->project_category_id;
                                 // $data['project_data']['categoryDetails']['project_categories'][] = $result->category;
                                 // var_dump($data['project_data']['categoryDetails']['category_id'][$count]);                                $count++;
-                                // var_dump($data['project_data']['categoryDetails']['project_categories'][$count]);          
+                                // var_dump($data['project_data']['categoryDetails']['project_categories'][$count]);
                             }
                             if (isset($_POST['submit'])) {
                                 $this->form_validation->set_rules('project-title', 'project title', 'required');
@@ -96,28 +96,35 @@
                                     $this->load->model('ProjectCategories');
 
                                     //if user deletes the categories
-                                    if(count($project_category_ids) > count($categoriesInput))//decrease
+                                    if (count($project_category_ids) > count($categoriesInput)) //decrease
                                     {
-                                        $delete_categories_id = array_diff($project_category_ids,$categoriesInput);
+                                        $delete_categories_id = array_diff($project_category_ids, $categoriesInput);
+                                        foreach ($delete_categories_id as $category_id) {
+                                            $where = [
+                                                'category_id' => $category_id,
+                                                'project_id' => $project_id
+                                            ];
+                                            $this->ProjectCategories->deleteData($where);
+                                        }
+                                        
+                                        $count = 0 ;
+                                        foreach ($categoriesInput as $category_id) {
+                                            $projectCategoryData = [
+                                                    'category_id' => $category_id,
+                                                    'project_id' => $project_id,
+                                                    'updated_at' => date("Y-m-d H:i:s")
+                                                ];
+                                            $where_project_category = [
+                                                'project_category_id' => $project_category_ids[$count]
+                                            ];
+                                            $this->ProjectCategories->updateData($projectCategoryData, $where_project_category);
+                                            $count++;
+                                        }
                                     }
                                     //if user add select more categories
                                     elseif(count($categoriesInput) > count($project_category_ids))//increase
                                     {
                                         $insert_categories_id = array_diff($categoriesInput,$project_category_ids);
-                                    }
-                                    if(isset($delete_categories_id))
-                                    {
-                                        foreach($delete_categories_id as $category_id)
-                                        {
-                                            $where = [
-                                                'category_id' => $category_id,
-                                                'project_id' => $project_id
-                                            ];
-                                            $this->ProjectCategories->deleteData( $where );
-                                        }
-                                    }
-                                    elseif(isset($insert_categories_id))
-                                    {
                                         foreach($insert_categories_id as $category_id)
                                         {
                                             $insert_data = [
@@ -127,33 +134,51 @@
                                             ];
                                             $this->ProjectCategories->insertRecord( $insert_data );
                                         }
-                                        
-                                    }die;
-                                    $count = 0 ;
-                                    foreach ($categoriesInput as $category_id) {
-                                        $projectCategoryData = [
-                                                'category_id' => $category_id,
-                                                'project_id' => $project_id,
-                                                'updated_at' => date("Y-m-d H:i:s")
+
+                                        $count = 0 ;
+                                        foreach ($categoriesInput as $category_id) {
+                                            $projectCategoryData = [
+                                                    'category_id' => $category_id,
+                                                    'project_id' => $project_id,
+                                                    'updated_at' => date("Y-m-d H:i:s")
+                                                ];
+                                            $where_project_category = [
+                                                'project_category_id' => $project_category_ids[$count]
                                             ];
-                                        $where_project_category = [
-                                            'project_category_id' => $project_category_ids[$count]
-                                        ];
-                                        $this->ProjectCategories->updateData($projectCategoryData, $where_project_category );
-                                        $count++;
-                                    }   
+                                            $this->ProjectCategories->updateData($projectCategoryData, $where_project_category);
+                                            $count++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        $count = 0 ;
+                                        foreach ($categoriesInput as $category_id) {
+                                            $projectCategoryData = [
+                                                    'category_id' => $category_id,
+                                                    'project_id' => $project_id,
+                                                    'updated_at' => date("Y-m-d H:i:s")
+                                                ];
+                                            $where_project_category = [
+                                                'project_category_id' => $project_category_ids[$count]
+                                            ];
+                                            $this->ProjectCategories->updateData($projectCategoryData, $where_project_category);
+                                            $count++;
+                                        }
+                                    }
                                     return redirect(site_url('Client'));
-                                } else {
-                                    return $this->load->view('layout', $data);
                                 }
-                            } else {
+                            }
+                            else {
                                 return $this->load->view('layout', $data);
                             }
+                        } else {
+                            return $this->load->view('layout', $data);
                         }
-                    }
-                }
+                    } 
+                }             //
             } else {
                 return redirect(site_url('Login'));
             }
+                        
         }
     }
