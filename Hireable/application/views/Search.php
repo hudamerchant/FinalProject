@@ -24,7 +24,7 @@ if (isset($_SESSION['freelancerRole'])) {
                         <div class="row">
                             <div class="col-md-11 ">
                                 <div class="form-group">
-                                    <input name='required-skill' class="form-control" type="text" placeholder="Search for any project">
+                                    <input name='required-skill' class="form-control" type="text" placeholder="Search for any project" value="<?php echo ($this->session->flashdata('search') != null ? $this->session->flashdata('search') : '' ) ?>">
                                 </div>
                             </div>
                             <div class="col-lg-1 col-md-6 col-xs-12">

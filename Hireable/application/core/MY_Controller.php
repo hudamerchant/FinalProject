@@ -10,35 +10,89 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
     } 
-    public function search(){
-        if(isset($_REQUEST['skill']))
+    public function search($role_id = false){
+
+        // loading database tables for search functionalities
+        $this->load->model('Projects');
+        $this->load->model('PCategories');
+        $this->load->model('FCategories');
+
+        // ---  Search Freelancer Through Categories  --- //
+        if (isset($_REQUEST['skill'])) 
         {
-            $skill = $_REQUEST['skill'];
-            if(!empty(trim($skill)))
-            {
-                $this->load->model('FCategories');
+            $category  = $_REQUEST['skill'];
+            if (!empty(trim($category))) {
                 $like = [
-                    'category' =>  $_REQUEST['skill']
+                    'category' =>  $category
                 ];
                 $search_results = $this->FCategories->joins('categories', 'category_id', $like)->result();
+                if (!count($search_results)) {
+                    $freelancers = [];
+                } else {
+                    foreach ($search_results as $search_result) {
+                        $users[] = $search_result->user_id;
+                    }
+                    foreach ($users as $user) {
+                        $where = [
+                            'user_id' => $user
+                        ];
+                        $freelancers[]   = $this->Users->getData($where)->row();
+                    }
+                }
+            } else {
+                $whereRoleId = [
+                    'role_id' => 1
+                ];
+                $freelancers   = $this->Users->getData($whereRoleId)->result();
+            }
+            
+            $this->session->set_flashdata('search', $category);
+            return $freelancers;
+        }       
+        // ---  Search Freelancer Through Categories  --- //
+        elseif(isset($_REQUEST['required-skill']))
+        {
+            $category = $_REQUEST['required-skill'];
+            if(!empty(trim($category)))
+            {
+                $like = [
+                    'category' =>  $category
+                ];
+                $search_results = $this->PCategories->joins('categories', 'category_id', $like)->result();
                 if(!count($search_results))
                 {
-                    $freelancers = [];
+                    $Projects = [];
                 }
                 else
                 {
                     foreach($search_results as $search_result)
                     {
-                        $users[] = $search_result->user_id;
+                        $project_ids[] = $search_result->project_id;
                     }
-                    foreach($users as $user)
+                    $project_ids = array_unique($project_ids);
+                    foreach($project_ids as $project_id)
                     {
                         $where = [
-                            'user_id' => $user
+                            'project_id' => $project_id
                         ];
-                        $freelancers[]   = $this->Users->getData($where)->row();
-                    }    
+                        $projects[]   = $this->Projects->getData($where)->row(); 
+                    }   
                 }                
+            }
+            else
+            {
+                $projects[]   = $this->projects->getData()->result();
+            }
+
+            $this->session->set_flashdata('search', $category);
+            return $projects; 
+        }
+        else
+        {
+            if($role_id == 1)
+            {
+                $projects   = $this->Projects->getData()->result();
+                return $projects;
             }
             else
             {
@@ -46,13 +100,8 @@ class MY_Controller extends CI_Controller
                     'role_id' => 1
                 ];
                 $freelancers   = $this->Users->getData($whereRoleId)->result();
-    
             }
-
-            $this->session->set_flashdata('search', $skill);
-            return $freelancers; 
         }
     }
-}
 
-?>
+}

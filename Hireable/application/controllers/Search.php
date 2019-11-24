@@ -12,12 +12,14 @@
                 $user   = $this->Users->getData($where)->row();
                 
                 if ($user->role_id == 1) {
+                    $role_id = $user->role_id;
                     if(!$user->updated_profile)
                     {
                         return redirect(site_url('updateFProfile'));
                     }
                     else
                     {
+                        $projects = $this->search($role_id);
                         //applied projects
                         $data['applied'] = [];
                         $this->load->model('ProjectBid');
@@ -27,9 +29,15 @@
                             $data['applied'][] = $v->project_id;
                         }
 
-                        $this->load->model('Projects');
-                        $projects = $this->Projects->getData()->result(); 
-                        if($projects){
+                        // $this->load->model('Projects');
+                        // $projects = $this->Projects->getData()->result();
+                        if(!count($projects))
+                        {
+                            $msg = 'Sorry! No Result Found.';
+                            $data['msg'] = $msg;
+                        } 
+                        else
+                        {
                             $count = 0;
                             // var_dump($projects);die; 
                             $this->session->set_flashdata("projectsPresent",true);
@@ -80,13 +88,14 @@
                     }
                 }
                 elseif($user->role_id == 2){
+                    $role_id = $user->role_id;
                     if(!$user->updated_profile)
                     {
                         return redirect(site_url('updateCProfile'));
                     }
                     else
                     {
-                        $freelancers = $this->search();
+                        $freelancers = $this->search($role_id);
                         if(!count($freelancers))
                         {
                             $msg = 'Sorry! No Result Found.';
