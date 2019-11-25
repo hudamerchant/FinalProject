@@ -9,7 +9,7 @@
             if($this->session->userdata('logged_in')){
                 $this->load->model('Users');
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                 if(!$user->updated_profile)
                 {
                     return redirect(site_url('updateFProfile'));

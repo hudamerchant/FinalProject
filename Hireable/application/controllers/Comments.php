@@ -10,7 +10,7 @@
             if($this->session->userdata('logged_in')){
 
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
 
                 if($user->role_id == 2)
                 {       
@@ -32,7 +32,7 @@
                         
                         //loading database table client_rating
                         $this->load->model('Comment');
-                        $reviews = $this->Comment->getData()->result();
+                        $reviews = $this->Comment->getData('DESC')->result();
                         // $this->data['review'] =$Comment; 
                          // var_dump($this->data);die;
                          $arr = [];

@@ -16,14 +16,14 @@
             $this->load->model('FreelancerCategories');
             $this->load->model('FProfile');
             
-            $categories         = $this->Categories->getData()->result();
+            $categories         = $this->Categories->getData('DESC')->result();
             $this->data['categories'] = $categories;
 
 
 
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC' ,$where)->row();
                 
                 if($user->role_id == 2)
                 {

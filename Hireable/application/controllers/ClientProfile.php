@@ -12,7 +12,7 @@ class ClientProfile extends MY_Controller
         $this->load->model('Users');
         if ($this->session->userdata('logged_in')) {
             $where  = ['email' => $this->session->userdata('user_info')];
-            $user   = $this->Users->getData($where)->row();
+            $user   = $this->Users->getData('DESC',$where)->row();
             if ($user->role_id == 2) {
                 if(!$user->updated_profile)
                 {
@@ -30,7 +30,7 @@ class ClientProfile extends MY_Controller
     
                     //loading database table freelancer_rating
                     $this->load->model('CommentsClient');
-                    $reviews = $this->CommentsClient->getData($whereUserId)->result();
+                    $reviews = $this->CommentsClient->getData('DESC',$whereUserId)->result();
                     //  var_dump($reviews);die;
                     $arr = [];
                     foreach ($reviews as $review) {

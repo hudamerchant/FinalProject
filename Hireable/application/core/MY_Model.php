@@ -19,7 +19,8 @@ class MY_Model extends CI_Model
         $query = $this->db->get_where($this->table_name,$data)->row();
         return $query;
     }
-    public function getData(array $where = [] , array $like = []){
+    public function getData($order = 'ASC' , array $where = [] , array $like = []){
+        $this->db->order_by('updated_at' , $order);
         if(count($where) > 0)
         {
             $this->db->where( $where );    
@@ -80,7 +81,8 @@ class MY_Model extends CI_Model
 
         return $query;
     }
-    public function multiple_joins($fetchingProjects,$where,$select){
+    public function multiple_joins($fetchingProjects,$where,$select, $order = 'ASC' ){
+        $this->db->order_by('updated_at' , $order);
         if(count($where) > 0)
         {
             $this->db->where( $where );    
@@ -90,6 +92,7 @@ class MY_Model extends CI_Model
         foreach($fetchingProjects as $fetchingProject){
             $this->db->join($fetchingProject['table_name'], $fetchingProject['column_with']);       
         }
+        
         return $this->db->get();
     }
     public function deleteData(array $where = []){

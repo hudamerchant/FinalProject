@@ -9,7 +9,7 @@
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                 
                 if ($user->role_id == 1) {
                     $role_id = $user->role_id;
@@ -24,7 +24,7 @@
                         $this->data['applied'] = [];
                         $this->load->model('ProjectBid');
                         $where      = ['user_id' => $user->user_id];
-                        $applied    = $this->ProjectBid->getData($where)->result();
+                        $applied    = $this->ProjectBid->getData('DESC',$where)->result();
                         foreach($applied as $v){
                             $this->data['applied'][] = $v->project_id;
                         }
@@ -51,7 +51,7 @@
                                 $whereUserId = [
                                     'user_id' => $project->user_id
                                 ];
-                                $userIdData = $this->Users->getData($whereUserId)->row();
+                                $userIdData = $this->Users->getData('DESC',$whereUserId)->row();
                                 $this->data['projects'][$count]['name'] = $userIdData->name;
                                 $this->data['projects'][$count]['email'] = $userIdData->email;
 
@@ -59,7 +59,7 @@
                                 $projectCategoryWhere = [
                                     'project_id' => $project->project_id
                                 ];
-                                $categoryVariable = $this->ProjectCategories->getData($projectCategoryWhere)->result();
+                                $categoryVariable = $this->ProjectCategories->getData('DESC',$projectCategoryWhere)->result();
                                 foreach ($categoryVariable as $categoryVariable2) {
                                     $category_id[] =    $categoryVariable2->category_id;
                                 }
@@ -76,7 +76,7 @@
                                     'project_id'    => $project_apply_id
                                 ];
                                 $this->load->model('ProjectBid');
-                                $result = $this->ProjectBid->getData($freelanerBidWhere )->row();
+                                $result = $this->ProjectBid->getData('DESC',$freelanerBidWhere )->row();
                                 if($result == null)
                                 {
                                     $this->ProjectBid->insertRecord($freelanerBidWhere);

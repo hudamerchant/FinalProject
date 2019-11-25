@@ -13,7 +13,7 @@ class CommentsClients extends MY_Controller
         if ($this->session->userdata('logged_in')) {
 
             $where  = ['email' => $this->session->userdata('user_info')];
-            $user   = $this->Users->getData($where)->row();
+            $user   = $this->Users->getData('DESC',$where)->row();
 
             if ($user->role_id == 1) {
                 return redirect(site_url('Freelancer'));
@@ -33,7 +33,7 @@ class CommentsClients extends MY_Controller
 
                     //loading database table freelancer_rating
                     $this->load->model('CommentsClient');
-                    $reviews = $this->CommentsClient->getData()->result();
+                    $reviews = $this->CommentsClient->getData('DESC')->result();
                     //  var_dump($reviews);die;
 
                     foreach ($reviews as $review) {

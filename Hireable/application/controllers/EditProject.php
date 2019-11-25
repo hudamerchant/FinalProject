@@ -17,7 +17,7 @@
 
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                 if ($user->role_id == 1) {
                     return redirect(site_url('Freelancer'));
                 } elseif ($user->role_id == 2) {
@@ -26,7 +26,7 @@
                     } else {
                         //loading database table categories
                         $this->load->model('Categories');
-                        $categories         = $this->Categories->getData()->result();
+                        $categories         = $this->Categories->getData('DESC')->result();
                         $this->data['categories'] = $categories;
 
                         if ($project_id) {

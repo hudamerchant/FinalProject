@@ -11,7 +11,7 @@ class Login extends MY_Controller
         if($this->session->userdata('logged_in')){
             $this->load->model('Users');
             $where  = [ 'email' => $this->session->userdata('user_info') ];
-            $user   = $this->Users->getData($where)->row();
+            $user   = $this->Users->getData('DESC' ,$where)->row();
             if($user->role_id == 1)
             {
                 if($user->updated_profile)

@@ -9,7 +9,7 @@
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                 if($user->role_id == 1){
 
                     $this->data['view'] = 'ClientProfileForFreelancers';
@@ -23,7 +23,7 @@
                         $whereUserId = [
                             'user_id' => $client_user_id
                         ];
-                        $clientData = $this->Users->getData($whereUserId)->row();
+                        $clientData = $this->Users->getData('DESC',$whereUserId)->row();
                         $this->data['clientDetails'][$count]['user_id'] = $clientData->user_id;
                         $this->data['clientDetails'][$count]['name'] = $clientData->name;
                         $this->data['clientDetails'][$count]['dob'] = $clientData->dob;
@@ -40,7 +40,7 @@
                         $whereClientId = [
                             'receiver_id' => $client_user_id
                         ];
-                        $reviews = $this->Comment->getData($whereClientId)->result();
+                        $reviews = $this->Comment->getData('DESC',$whereClientId)->result();
                         
                         $arr = [];
                         foreach ($reviews as $review) {
@@ -56,7 +56,7 @@
                     $whereClientId = [
                         'receiver_id' => $client_user_id
                     ];
-                    $reviews = $this->Comment->getData($whereClientId)->result();
+                    $reviews = $this->Comment->getData('DESC',$whereClientId)->result();
                     //  var_dump($reviews);die;
                     $arr = [];
                     foreach ($reviews as $review) {

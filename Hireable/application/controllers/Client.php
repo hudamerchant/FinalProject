@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             if($this->session->userdata('logged_in')){
 
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
 
                 if($user->role_id == 2)
                 {
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $where = [
                             'user_id' => $user->user_id
                         ];
-                        $projects = $this->Projects->getData($where)->result();
+                        $projects = $this->Projects->getData('DESC',$where)->result();
 
 
                         //fetching project status from project bid table
@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $where = [
                             'user_id'       => $user->user_id,
                         ];
-                        $projects = $this->Projects->getData($where)->result();
+                        $projects = $this->Projects->getData('DESC',$where)->result();
 
 
                         $count = 0;
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $projectCategoryWhere = [
                                     'project_id' => $project->project_id
                                 ];
-                                $categoryVariable = $this->ProjectCategories->getData($projectCategoryWhere)->result();
+                                $categoryVariable = $this->ProjectCategories->getData('DESC',$projectCategoryWhere)->result();
         
                                  foreach ($categoryVariable as $categoryVariable2) {
                                      $category_id[] =    $categoryVariable2->category_id;

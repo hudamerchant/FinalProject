@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                 if($user->role_id == 1)
                 {
                     if(!$user->updated_profile)
@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $whereUserId = [
                             'user_id' => $user->user_id
                         ];
-                        $userBids = $this->ProjectBid->getData($whereUserId)->result();
+                        $userBids = $this->ProjectBid->getData('DESC',$whereUserId)->result();
                         
                         if($userBids){
                             $this->session->set_flashdata("freelancerBidsPresent",true);
@@ -39,14 +39,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $fetchingProjects []= ['table_name'=>'project_bids', 'column_with'=>'project_bids.project_id = projects.project_id']; 
                                 $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'projects.user_id = users.user_id']; 
                                 
-                                $selectArray = ['project_bids'.'.user_id', 
-                                'project_bids'.'.project_id',                           
-                                'projects'.'.project_title',                            
-                                'users'.'.name',
-                                'users'.'.email'
+                                $selectArray = [
+                                    'project_bids'.'.user_id', 
+                                    'project_bids'.'.project_id',                           
+                                    'projects'.'.project_title',                            
+                                    'users'.'.name',
+                                    'users'.'.email',
+                                    'projects'.'.updated_at'
                                 ];
     
-                                $results = $this->Projects->multiple_joins($fetchingProjects,$whereUserId,$selectArray)->result();
+                                $results = $this->Projects->multiple_joins($fetchingProjects,$whereUserId,$selectArray , 'DESC')->result();
                                 
                                 $this->data['results'] = $results; 
                         }

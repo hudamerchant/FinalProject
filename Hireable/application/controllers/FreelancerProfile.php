@@ -9,7 +9,7 @@
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                 if($user->role_id == 1)
                 {   
                     if(!$user->updated_profile)
@@ -35,7 +35,7 @@
                         $whereUserId = [
                             'receiver_id' => $user->user_id
                         ];
-                        $reviews = $this->CommentsClient->getData($whereUserId)->result();
+                        $reviews = $this->CommentsClient->getData('DESC',$whereUserId)->result();
                         // $this->data['review'] =$Comment; 
                         //var_dump($this->data);die;
                         $arr = [];
@@ -48,7 +48,7 @@
                                 'user_id' => $senderId,
                                 
                             ];
-                            $sendersData = $this->Users->getData($whereSenderId)->result();
+                            $sendersData = $this->Users->getData('DESC',$whereSenderId)->result();
                             // var_dump($sendersData);die;
                             foreach ($sendersData as $senderData) {
                                 $this->data['senderData'] = $senderData;

@@ -26,7 +26,7 @@ class MY_Controller extends CI_Controller
                 $like = [
                     'category' =>  $category
                 ];
-                $search_results = $this->FCategories->joins('categories', 'category_id', $like)->result();
+                $search_results = $this->FCategories->joins('categories', 'category_id', $like , 'DESC')->result();
                 if (!count($search_results)) {
                     $freelancers = [];
                 } else {
@@ -37,14 +37,14 @@ class MY_Controller extends CI_Controller
                         $where = [
                             'user_id' => $user
                         ];
-                        $freelancers[]   = $this->Users->getData($where)->row();
+                        $freelancers[]   = $this->Users->getData('DESC' , $where)->row();
                     }
                 }
             } else {
                 $whereRoleId = [
                     'role_id' => 1
                 ];
-                $freelancers   = $this->Users->getData($whereRoleId)->result();
+                $freelancers   = $this->Users->getData('DESC' , $whereRoleId)->result();
             }
             
             $this->session->set_flashdata('search', $category);
@@ -59,7 +59,7 @@ class MY_Controller extends CI_Controller
                 $like = [
                     'category' =>  $category
                 ];
-                $search_results = $this->PCategories->joins('categories', 'category_id', $like)->result();
+                $search_results = $this->PCategories->joins('categories', 'category_id', $like , 'DESC')->result();
                 if(!count($search_results))
                 {
                     $projects = [];
@@ -76,13 +76,13 @@ class MY_Controller extends CI_Controller
                         $where = [
                             'project_id' => $project_id
                         ];
-                        $projects[]   = $this->Projects->getData($where)->row(); 
+                        $projects[]   = $this->Projects->getData('DESC' , $where)->row(); 
                     }   
                 }                
             }
             else
             {
-                $projects = $this->Projects->getData()->result();
+                $projects = $this->Projects->getData('DESC')->result();
             }
 
             $this->session->set_flashdata('search', $category);
@@ -92,7 +92,7 @@ class MY_Controller extends CI_Controller
         {
             if($role_id == 1)
             {
-                $projects   = $this->Projects->getData()->result();
+                $projects   = $this->Projects->getData('DESC' ,)->result();
                 return $projects;
             }
             else
@@ -100,7 +100,7 @@ class MY_Controller extends CI_Controller
                 $whereRoleId = [
                     'role_id' => 1
                 ];
-                $freelancers   = $this->Users->getData($whereRoleId)->result();
+                $freelancers   = $this->Users->getData('DESC' , $whereRoleId)->result();
             }
         }
     }

@@ -10,7 +10,7 @@
             if($this->session->userdata('logged_in')){
 
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC' ,$where)->row();
                 
                 if($user->role_id == 1)
                 {       
@@ -28,7 +28,7 @@
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'View Bids - '.$this->data['site_title'];
                         $this->load->model('Projects');
-                        $projects = $this->Projects->getData()->result(); 
+                        $projects = $this->Projects->getData('DESC')->result(); 
                         
                         if($projects){
     
@@ -46,7 +46,7 @@
                                     $whereBid = [
                                         'project_id' => $project_apply_id
                                     ];
-                                    $project_bids = $this->ProjectBid->getData($whereBid)->result();
+                                    $project_bids = $this->ProjectBid->getData('DESC' ,$whereBid)->result();
     
                                     if($project_bids){
                                         $this->session->set_flashdata("projectsBidsPresent",true);
@@ -58,7 +58,7 @@
                                             $whereUserId = [
                                                 'user_id' => $project_bid->user_id
                                             ];
-                                            $userData = $this->Users->getData($whereUserId)->row();
+                                            $userData = $this->Users->getData('DESC' ,$whereUserId)->row();
                                             // var_dump($userData->name);
                                             $this->data['data_project_bids'][$count]['bid_username']      = $userData->name;
                                             $count++;                                        
