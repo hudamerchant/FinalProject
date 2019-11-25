@@ -37,17 +37,35 @@
                         ];
                         $reviews = $this->CommentsClient->getData($whereUserId)->result();
                         // $data['review'] =$Comment; 
-                        //var_dump($this->data);die;
+                        // var_dump($reviews);die;
                         $arr = [];
                         foreach ($reviews as $review) {
             
-                            $arr[] = $review->review;
+                            $arr[] = $review->review ;
+                            $senderId = $review->user_id ;
+
+                            $whereSenderId = [
+                                'user_id' => $senderId,
+                                
+                            ];
+                            $sendersData = $this->Users->getData($whereSenderId)->result();
+                            // var_dump($sendersData);die;
+                            foreach ($sendersData as $senderData) {
+                                $data['senderData'] = $senderData;
+                                var_dump($senderData);
+                            }
+                           
                         }
-                        //var_dump($arr);die;
+                        
 
                         $data['comment'] = $arr;
 
                         $data['freelancer_info'] = $user;
+
+                        // $where = [
+                        //     'receiver_id' => $user->user_id,
+                        //     'user_id' =>
+                        // ];
                         // if(isset($_POST['submit']))
                         
                         // {

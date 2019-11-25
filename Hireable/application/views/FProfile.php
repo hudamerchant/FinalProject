@@ -106,8 +106,8 @@ if(isset($_SESSION['profilePicUploaded'])){
                                                 <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
                                                 <div class="manager-info">
                                                     <div class="manager-name">
-                                                        <h4><a href="#">Client</a></h4>
-                                                        <h5>client@example.com</h5>
+                                                        <h4><a href="#"><?php  echo $senderData->name ?></a></h4>
+                                                        <h5><?php echo $senderData->email ?></h5>
                                                     </div>
                                                 </div>
                                             </div>

@@ -36,57 +36,52 @@
                             
                             $data['clientDetail'] = $clientDetail;
                         }
+                        $this->load->model('Comment');
+                        $whereClientId = [
+                            'receiver_id' => $client_user_id
+                        ];
+                        $reviews = $this->Comment->getData($whereClientId)->result();
+                        
+                        $arr = [];
+                        foreach ($reviews as $review) {
+                            
+                            $arr[] = $review->review;
+                        }
+                        $data['comment'] = $arr;
+        
+                        $data['client_info'] = $user;
 
                     }
-                    $this->load->model('Comment');
-                    $whereClientId = [
-                        'receiver_id' => $client_user_id
-                    ];
-                    $reviews = $this->Comment->getData($whereClientId)->result();
-                    //  var_dump($reviews);die;
-                    $arr = [];
-                    foreach ($reviews as $review) {
-                        // echo $review;
-                        $arr[] = $review->review;
-                    }
-                    // var_dump($arr);die;
-    
-    
-                    $data['comment'] = $arr;
-    
-                    //Client info
-                    $data['client_info'] = $user;
-                    if(isset($_POST['submit']))
+                   
+                    // if(isset($_POST['submit']))
                         
-                    {
-                        $this->form_validation->set_rules('review', 'Review', 'required');
-                        if($this->form_validation->run() == True)
-                        {
-                            $review = $this->input->post('review');
-                            // var_dump($review);die;
-                        
-                            $reviewData = [
-                                'review' => $review,
-                                'user_id' => $user->user_id
-                            ];
+                    // {
+                    //     $this->form_validation->set_rules('review', 'Review', 'required');
+                    //     if($this->form_validation->run() == True)
+                    //     {
+                    //         $review = $this->input->post('review');
+                            
+                    //         $reviewData = [
+                    //             'review' => $review,
+                    //             'user_id' => $user->user_id
+                    //         ];
+                    //         // var_dump($reviewData);die;
     
-                         //var_dump($reviewData);die;
-    
-                            $this->Comments->insertRecord($reviewData);
-                            $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-                            return $this->load->view('layout',$data);
+                    //         $this->Comments->insertRecord($reviewData);
+                    //         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
+                    //         return $this->load->view('layout',$data);
                         
-                        }
+                    //     }
                        
-                        else {
-                            return $this->load->view('layout', $data);
-                        }
-                    }
-                    else
-                        {
-                            return $this->load->view('layout',$data);
+                    //     else {
+                    //         return $this->load->view('layout', $data);
+                    //     }
+                    // }
+                    // else
+                    //     {
+                    //         return $this->load->view('layout',$data);
     
-                        }
+                    //     }
 
                     
                     $this->load->view('layout',$data);

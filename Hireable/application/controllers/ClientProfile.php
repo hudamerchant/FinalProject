@@ -24,11 +24,13 @@ class ClientProfile extends MY_Controller
                     $data['site_title'] = 'Hireable';
                     $data['page_title'] = 'Profile -' . $data['site_title'];
 
-                    
+                    $whereUserId = [
+                        'receiver_id' => $user->user_id
+                    ];
     
                     //loading database table freelancer_rating
                     $this->load->model('CommentsClient');
-                    $reviews = $this->CommentsClient->getData()->result();
+                    $reviews = $this->CommentsClient->getData($whereUserId)->result();
                     //  var_dump($reviews);die;
                     $arr = [];
                     foreach ($reviews as $review) {

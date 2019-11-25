@@ -27,6 +27,7 @@
                             'user_id' => $freelancer_user_id
                         ];
                         $freelancerData = $this->Users->getData($whereUserId)->row();
+                        $data['freelancerDetails'][$count]['user_id'] = $freelancerData->user_id;
                         $data['freelancerDetails'][$count]['name'] = $freelancerData->name;
                         $data['freelancerDetails'][$count]['dob'] = $freelancerData->dob;
                         $data['freelancerDetails'][$count]['gender'] = $freelancerData->gender;
@@ -38,6 +39,21 @@
                             
                             $data['freelancerDetail'] = $freelancerDetail;
                         }
+                        $this->load->model('CommentsClient');
+                        $whereFreelancerID = [
+                            'receiver_id' => $freelancer_user_id
+                        ];
+                        $reviews = $this->CommentsClient->getData($whereFreelancerID)->result();
+                        
+                        $arr = [];
+                        foreach ($reviews as $review) {
+                            
+                            $arr[] = $review->review;
+                        }
+                        $data['comment'] = $arr;
+        
+                        $data['client_info'] = $user;
+
 
                     }
     

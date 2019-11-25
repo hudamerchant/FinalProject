@@ -96,7 +96,8 @@
                     
                         $reviewData = [
                             'review' => $review,
-                            'user_id' => $user->user_id
+                            'user_id' => $user->user_id,
+                            'receiver_id' => $id
                         ];
 
                     //  var_dump($reviewData);die;
