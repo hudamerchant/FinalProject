@@ -46,8 +46,6 @@ if(isset($_SESSION['profilePicUploaded'])){
                         
                         <div class="author-info d-inline-block ml-3">
                             <h3><b><?php echo $client_info->name ?></b></h3>
-                            <p class="sub-title">UI/UX Designer</p>
-                            <p><span class="address"><i class="lni-map-marker"></i>Mahattan, NYC, USA</span> <span><i class="ti-phone"></i>(+01) 211-123-5678</span></p>
                             <div class="social-link">
                                 <a href="#" class="Twitter"><i class="lni-twitter-filled"></i></a>
                                 <a href="#" class="facebook"><i class="lni-facebook-filled"></i></a>

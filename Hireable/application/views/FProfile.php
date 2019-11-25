@@ -30,9 +30,9 @@ if(isset($_SESSION['profilePicUploaded'])){
                         <li><span class="profile-li-span">Email:</span><?php echo $freelancer_info->email ?></li>
                         <li><span class="profile-li-span">Skills:</span>
                             <ul>
-                            <li class="skill-list profile-li-skill-list" >skill 1</li>
-                            <li class="skill-list profile-li-skill-list" >skill 1</li>
-                            <li class="skill-list profile-li-skill-list" >skill 1</li>
+                            <?php foreach($results as $result){ ?>
+                            <li class="skill-list profile-li-skill-list" ><?php echo $result->category ?></li>
+                            <?php } ?>
                             </ul>
                         </li>
                     </ul>

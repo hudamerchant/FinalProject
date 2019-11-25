@@ -76,7 +76,7 @@
                                 }
     
                                 $this->session->set_flashdata("projectInserted","Project inserted successfully!");
-                                return $this->load->view('layout',$data);
+                                return redirect(site_url('Client'));
                                 
                             }
                             else{

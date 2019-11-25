@@ -61,11 +61,23 @@
                         $data['comment'] = $arr;
 
                         $data['freelancer_info'] = $user;
+                        $this->load->model('FCategories');
+                        $fetchingProjects []= ['table_name'=>'categories', 'column_with'=>'freelancer_category.category_id = categories.category_id']; 
+                        $whereUserID = [
+                            'user_id' => $user->user_id
+                        ];
+                        $selectArray = [
+                            'categories'.'.category' 
+                                ];
+                        $results = $this->FCategories->multiple_joins($fetchingProjects,$whereUserID,$selectArray)->result();
+                        $data['results'] = $results;
+                        
+                        // foreach($results as $result){
 
-                        // $where = [
-                        //     'receiver_id' => $user->user_id,
-                        //     'user_id' =>
-                        // ];
+                        //     var_dump($result->category);
+                        // }
+
+
                         // if(isset($_POST['submit']))
                         
                         // {
@@ -127,7 +139,7 @@
                         // }
 
                         if(isset($_POST['file_submit'])){
-                            $this->form_validation->set_rules('userfile', 'image', 'required');
+                            // $this->form_validation->set_rules('userfile', 'image', 'required');
                             // if($this->form_validation->run() == True) {
     
                                     $file = $this->upload_file();

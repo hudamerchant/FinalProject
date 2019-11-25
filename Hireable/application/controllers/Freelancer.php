@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     {
                         $data['view']       = 'FDashboard';
                         $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'Dashboard -'.$data['site_title'];
+                        $data['page_title'] = 'Dashboard - '.$data['site_title'];
                         
                         $this->load->model('ProjectBid');
                         $whereUserId = [
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             
                         
                         $this->load->view('layout',$data);
-                        $data['page_title'] = 'Dashboard -'.$data['site_title'];
+                        $data['page_title'] = 'Dashboard - '.$data['site_title'];
     
                         return $this->load->view('layout',$data);
                     }
