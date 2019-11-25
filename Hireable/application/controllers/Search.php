@@ -76,7 +76,7 @@
                                     'project_id'    => $project_apply_id
                                 ];
                                 $this->load->model('ProjectBid');
-                                $result = $this->ProjectBid->getData($freelanerBidWhere)->row();
+                                $result = $this->ProjectBid->getData($freelanerBidWhere )->row();
                                 if($result == null)
                                 {
                                     $this->ProjectBid->insertRecord($freelanerBidWhere);
@@ -112,7 +112,15 @@
             else
             {  
                 $freelancers = $this->search();
-                $data['freelancers'] = $freelancers;
+                if(!count($freelancers))
+                {
+                    $msg = 'Sorry! No Result Found.';
+                    $data['msg'] = $msg;
+                }
+                else
+                {
+                    $data['freelancers'] = $freelancers;
+                }
                 return $this->load->view('layout',$data);
             }
         }

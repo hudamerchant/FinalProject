@@ -19,7 +19,7 @@ class MY_Model extends CI_Model
         $query = $this->db->get_where($this->table_name,$data)->row();
         return $query;
     }
-    public function getData(array $like = []  , array $where = []){
+    public function getData(array $where = [] , array $like = []){
         if(count($where) > 0)
         {
             $this->db->where( $where );    

@@ -111,7 +111,7 @@ if (isset($_SESSION['projectsPresent'])) {
             <div class="row justify-content-between">
                 <div class="col-lg-8 col-md-12 col-xs-12">
                     <div class="content-area">
-                        <h5 class="client-dashboard-center">No projects yet</h5>
+                        <h5 class="client-dashboard-center"><?php echo $msg; ?></h5>
                     </div>
                 </div>
             </div>

@@ -35,6 +35,7 @@
                             $whereProjectId = [
                                 'project_id'    => $project_apply_id
                             ];
+                            
                             $projects = $this->Projects->getData($whereProjectId)->result();
                             if($projects){
                                 $count = 0;

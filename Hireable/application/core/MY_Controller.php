@@ -61,7 +61,7 @@ class MY_Controller extends CI_Controller
                 $search_results = $this->PCategories->joins('categories', 'category_id', $like)->result();
                 if(!count($search_results))
                 {
-                    $Projects = [];
+                    $projects = [];
                 }
                 else
                 {
@@ -81,7 +81,7 @@ class MY_Controller extends CI_Controller
             }
             else
             {
-                $projects[]   = $this->projects->getData()->result();
+                $projects = $this->Projects->getData()->result();
             }
 
             $this->session->set_flashdata('search', $category);
