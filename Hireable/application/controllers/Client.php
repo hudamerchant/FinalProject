@@ -26,17 +26,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         
                         $this->load->model('Projects');
                         $where = [
-                            'user_id' => $user->user_id
+                            'user_id' => $user->user_id,
+                            'deleted_at' => null
                         ];
                         $projects = $this->Projects->getData('DESC',$where)->result();
 
 
                         //fetching project status from project bid table
-                        $this->load->model('ProjectBid');
-                        $where = [
-                            'user_id'       => $user->user_id,
-                        ];
-                        $projects = $this->Projects->getData('DESC',$where)->result();
+                        // $this->load->model('ProjectBid');
+                        // $where = [
+                        //     'user_id'       => $user->user_id,
+                        //     'deleted_at' => null
+                        // ];
+                        // $projects = $this->Projects->getData($where)->result();
 
 
                         $count = 0;

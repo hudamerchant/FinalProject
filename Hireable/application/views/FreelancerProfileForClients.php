@@ -24,6 +24,13 @@ if ($freelancerDetail) {
                         <li><span class="profile-li-span">Date Of Birth:</span><?php echo $freelancerDetail['dob'] ?></li>
                         <li><span class="profile-li-span">Gender:</span><?php echo $freelancerDetail['gender'] ?></li>
                         <li><span class="profile-li-span">Email:</span><?php echo $freelancerDetail['email'] ?></li>
+                        <li><span class="profile-li-span">Skills:</span>
+                            <ul>
+                            <?php foreach($results as $result){ ?>
+                            <li class="skill-list profile-li-skill-list" ><?php echo $result->category ?></li>
+                            <?php } ?>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

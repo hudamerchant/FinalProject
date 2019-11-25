@@ -22,7 +22,7 @@ if (isset($_SESSION['projectsPresent'])) {
                             <div class="content-area">
                             <div class="manager-info">
                                     <div class="manager-meta search-manager-meta">
-                                        <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php //echo site_url('EditProject/index/'.$project['project_id']) ?>">Delete Project</a></span>
+                                        <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php echo site_url('DeleteProject/index/'.$project['project_id']) ?>">Delete Project</a></span>
                                     </div>
                                 </div>
                                 <div class="manager-info">

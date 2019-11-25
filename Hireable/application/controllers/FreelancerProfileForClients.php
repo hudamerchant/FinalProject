@@ -54,6 +54,18 @@
         
                         $this->data['client_info'] = $user;
 
+                        $this->load->model('FCategories');
+                        $fetchingProjects []= ['table_name'=>'categories', 'column_with'=>'freelancer_category.category_id = categories.category_id']; 
+                        $whereFreelancerID = [
+                            'user_id' => $freelancer_user_id
+                        ];
+                        $selectArray = [
+                            'categories'.'.category' 
+                                ];
+                        $results = $this->FCategories->multiple_joins($fetchingProjects,$whereFreelancerID,$selectArray)->result();
+                        $this->data['results'] = $results;
+                        // var_dump($results);die;
+
 
                     }
     
