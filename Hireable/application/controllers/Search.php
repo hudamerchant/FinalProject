@@ -82,7 +82,7 @@
                                     $this->ProjectBid->insertRecord($freelanerBidWhere);
                                 }
                                 $this->session->set_flashdata("Bid",'Bid success');
-                                return redirect(site_url('Freelancer'));
+                                return redirect(site_url('Search'));
                             }   
                         }
                     }

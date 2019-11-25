@@ -115,7 +115,7 @@
                                                     'updated_at' => date("Y-m-d H:i:s")
                                                 ];
                                             $where_project_category = [
-                                                'project_category_id' => $project_category_ids[$count]
+                                                    'project_category_id' => $project_category_ids[$count]
                                             ];
                                             $this->ProjectCategories->updateData($projectCategoryData, $where_project_category);
                                             $count++;

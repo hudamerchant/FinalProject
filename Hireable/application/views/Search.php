@@ -92,9 +92,9 @@ if (isset($_SESSION['projectsPresent'])) {
                         <div class="resume-exp float-right">
                             <?php if(in_array($project['project_id'], $applied))
                             {?>
-                            <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs disabled bg-success"  >Applied</a>
+                            <a href="<?php echo site_url('Search/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs disabled bg-success"  >Applied</a>
                             <?php }else{?>
-                                <a href="<?php echo site_url('Freelancer/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >Apply</a>
+                                <a href="<?php echo site_url('Search/index/'.$project['project_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >Apply</a>
                             <?php }  ?>
                             
                         </div>
