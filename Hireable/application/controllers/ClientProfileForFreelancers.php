@@ -24,6 +24,7 @@
                             'user_id' => $client_user_id
                         ];
                         $clientData = $this->Users->getData($whereUserId)->row();
+                        $data['clientDetails'][$count]['user_id'] = $clientData->user_id;
                         $data['clientDetails'][$count]['name'] = $clientData->name;
                         $data['clientDetails'][$count]['dob'] = $clientData->dob;
                         $data['clientDetails'][$count]['gender'] = $clientData->gender;
@@ -38,7 +39,10 @@
 
                     }
                     $this->load->model('Comment');
-                    $reviews = $this->Comment->getData()->result();
+                    $whereClientId = [
+                        'receiver_id' => $client_user_id
+                    ];
+                    $reviews = $this->Comment->getData($whereClientId)->result();
                     //  var_dump($reviews);die;
                     $arr = [];
                     foreach ($reviews as $review) {

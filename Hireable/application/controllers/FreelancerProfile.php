@@ -22,11 +22,20 @@
                         $data['site_title'] = 'Hireable';
                         $data['page_title'] = 'Profile -'.$data['site_title']; 
 
+                        // $this->load->model('skill');
+                        // $skills = $this->Comment->getData()->result();
+
+                        // $skill1 = [];
+                        
+
                         //Freelancer info
                         // $data['freelancer_info'] = $user;
 
-                        $this->load->model('Comment');
-                        $reviews = $this->Comment->getData()->result();
+                        $this->load->model('CommentsClient');
+                        $whereUserId = [
+                            'receiver_id' => $user->user_id
+                        ];
+                        $reviews = $this->CommentsClient->getData($whereUserId)->result();
                         // $data['review'] =$Comment; 
                         //var_dump($this->data);die;
                         $arr = [];
@@ -65,6 +74,34 @@
                         //         return $this->load->view('layout', $data);
                         //     }
                         // }
+                        // // // if(isset($_POST['submit']))
+                        
+                        // // // {
+                        // // //     $this->form_validation->set_rules('review', 'Review', 'required');
+                        // // //     if($this->form_validation->run() == True)
+                        // // //     {
+                        // // //         $review = $this->input->post('review');
+                        // // //         // var_dump($review);die;
+                            
+                        // // //         $reviewData = [
+                        // // //             'review' => $review,
+                        // // //             'user_id' => $user->user_id
+                        // // //         ];
+        
+                        // // //     //var_dump($reviewData);die;
+        
+                        // // //         $this->Comment->insertRecord($reviewData);
+                        // // //         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
+
+                            
+                        // // //     }
+
+                    
+                        
+                        // // //     else {
+                        // //         return $this->load->view('layout', $data);
+                        // //     }
+                        // // }
                         // else
                         // {
                         //    return $this->load->view('layout',$data);

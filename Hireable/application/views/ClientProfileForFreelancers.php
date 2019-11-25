@@ -55,7 +55,7 @@ if ($clientDetail) {
                             <div class="item-body">            
                                 <div class="resume-skills project-details-resume-skills profile-view-resume-skills client-profile-manager-content">
                                     <div class="resume-exp float-right">
-                                        <a href="<?php echo site_url('AddFreelancerReview/index')?>"   class="btn btn-common btn-xs "  >Add Review</a>
+                                        <a href="<?php echo site_url('AddFreelancerReview/index/'.$clientDetail['user_id'])?>"   class="btn btn-common btn-xs "  >Add Review</a>
                                     </div>
                                 </div>
                             </div>

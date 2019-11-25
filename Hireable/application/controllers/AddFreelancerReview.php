@@ -30,20 +30,7 @@
                         $data['site_title'] = 'Hireable';
                         $data['page_title'] = 'AddFreelancerReview -'.$data['site_title']; 
                       //  var_dump($id);die;
-                    //   $whereUserId = [];
-                     
-                    //     if($id)
-                    //     {
-                    //         $whereUserId = [
-                    //             'user_id' => $id
-                    //         ];
-                           
-                    //     }
-                    //     $freelancerData1 = $this->Users->getData($whereUserId)->row();
-                    //     var_dump($freelancerData1);die;
-                        // var_dump($whereUserId);die;
-                        
-                       
+                   
                         //Client info
                         $data['freelancer_info'] = $user;
                         $this->load->model('Comment');
@@ -62,7 +49,8 @@
                         
                             $reviewData = [
                                 'review' => $review,
-                                'user_id' => $user->user_id
+                                'user_id' => $user->user_id,
+                                'receiver_id' => $id
                             ];
     
                         //  var_dump($reviewData);die;
