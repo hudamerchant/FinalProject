@@ -81,8 +81,8 @@ class MY_Model extends CI_Model
 
         return $query;
     }
-    public function multiple_joins($fetchingProjects,$where,$select, $order = 'ASC' ){
-        $this->db->order_by('updated_at' , $order);
+    public function multiple_joins($fetchingProjects,$where,$select, $order = 'ASC',$orderby = "" ){
+        $this->db->order_by($orderby , $order);
         if(count($where) > 0)
         {
             $this->db->where( $where );    

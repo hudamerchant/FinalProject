@@ -38,7 +38,7 @@
                         <div class="form-group ">
                             <label class="control-label"></label>   
                             <label class="control-label">Skills</label><br>
-                            <select class="js-example-basic-multiple col-md-12 " name="categories[]" multiple="multiple">
+                            <select class="edit-project-category col-md-12 " name="categories[]" multiple="multiple">
                                     <?php 
                                     foreach($categories as $category){
                                         ?>

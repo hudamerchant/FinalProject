@@ -115,3 +115,8 @@ a.profile-anchor {
 .client-profile-margin{
     margin-right: 26px;
 }
+.custom-file-label::after {
+    content: "Browse";
+    width: 100%;
+    text-align: center;
+}

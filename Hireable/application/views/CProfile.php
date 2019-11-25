@@ -9,12 +9,12 @@
         </div>
     </div>
 </div>
-<?php 
-if(isset($_SESSION['profilePicUploaded'])){
+<?php
+if (isset($_SESSION['profilePicUploaded'])) {
     ?>
-    <p class="alert alert-info"><?php  echo $this->session->flashdata("profilePicUploaded");?></p>
-    <?php
-} 
+    <p class="alert alert-info"><?php echo $this->session->flashdata("profilePicUploaded"); ?></p>
+<?php
+}
 ?>
 <div class="section">
     <div class="container">
@@ -37,13 +37,18 @@ if(isset($_SESSION['profilePicUploaded'])){
                             <div class="user-pic">
                                 <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
                                 <form enctype="multipart/form-data" method="post">
-                                <input type="file" name="userfile">
-                                <?php echo form_error('userfile') ?>
-                                 <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">                                
+                                    <?php echo form_error('userfile') ?>
+                                    <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="userfile" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">
                                 </form>
                             </div>
                         </div>
-                        
+
                         <div class="author-info d-inline-block ml-3">
                             <h3><b><?php echo $client_info->name ?></b></h3>
                             <div class="social-link">
@@ -68,62 +73,61 @@ if(isset($_SESSION['profilePicUploaded'])){
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div class="upload-button">
-                                    <button class="btn btn-common" name="submit">Submit</button>
+                                        <button class="btn btn-common" name="submit">Submit</button>
                                         <!-- <button class="btn btn-common" name="submit">Submit</button>
                         <form action="" method="POST" enctype='multipart/form-data'> -->
-                            <!-- <div class="form-group col-md-5"> -->
-                            <div>
-                            <?php
-                               if(isset($_SESSION['reviewInserted'])){
-                             ?>
-                         <p class="alert alert-info mt-3"><?php  echo $this->session->flashdata("reviewInserted");?></p>
-    
-                          <?php
-                          }
-                          ?>
-                          </div>
-                                                </div>
-                                                <!-- <label for="profile">Profile Photo</label> -->
-                                                <!-- <input class="form-control" type="file" name="profile" id="profile"> -->
+                                        <!-- <div class="form-group col-md-5"> -->
+                                        <div>
+                                            <?php
+                                            if (isset($_SESSION['reviewInserted'])) {
+                                                ?>
+                                                <p class="alert alert-info mt-3"><?php echo $this->session->flashdata("reviewInserted"); ?></p>
 
-                                            </div>
-                                        </form>
-                                        <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
-                                        <?php foreach($comments as $comment)
-                                                    {
-                                                     ?>
-                                        <div class="manager-resumes-item">
-                                            <div class="manager-content">
-                                                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                                                <div class="manager-info">
-                                                    <div class="manager-name">
-                                                        <h4><a href="#">Client</a></h4>
-                                                        <h5>client@example.com</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item-body">
-                                                <div class="content">
-                                                    <b>Review</b>
-                                                    
-                                                    <P><?php echo $comment?>
-                                                    
-                                                </p>
-
-                                                </div>
-                                            </div>
+                                            <?php
+                                            }
+                                            ?>
                                         </div>
-                                        <?php } ?>
+                                    </div>
+                                    <!-- <label for="profile">Profile Photo</label> -->
+                                    <!-- <input class="form-control" type="file" name="profile" id="profile"> -->
+
+                                </div>
+                    </form>
+                    <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
+                    <?php foreach ($comments as $comment) {
+                        ?>
+                        <div class="manager-resumes-item">
+                            <div class="manager-content">
+                                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                                <div class="manager-info">
+                                    <div class="manager-name">
+                                        <h4><a href="#">Client</a></h4>
+                                        <h5>client@example.com</h5>
                                     </div>
                                 </div>
                             </div>
+                            <div class="item-body">
+                                <div class="content">
+                                    <b>Review</b>
+
+                                    <P><?php echo $comment ?>
+
+                                    </p>
+
+                                </div>
+                            </div>
                         </div>
+                    <?php } ?>
                 </div>
             </div>
-
-
         </div>
     </div>
+</div>
+</div>
+
+
+</div>
+</div>
 </div>
 </div>
 </div>

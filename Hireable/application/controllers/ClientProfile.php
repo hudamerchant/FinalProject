@@ -77,11 +77,12 @@ class ClientProfile extends MY_Controller
                     //     }
 
                         if(isset($_POST['file_submit'])){
-                            $this->form_validation->set_rules('userfile', 'image', 'required');
-                            //if($this->form_validation->run() == True) {
+                            // $this->form_validation->set_rules('userfile', 'image', 'required');
+                            // //if($this->form_validation->run() == True) {
     
-                                    $file = $this->upload_file();
-                                    if($file){
+                                    $file = $this->upload_file();\
+                                    var_dump( $file);die;
+                                    if(isset($file['profile_pic'])){
                                         
                                         $fileData = [
                                             'profile_pic' => $file['file_name'],
@@ -89,11 +90,12 @@ class ClientProfile extends MY_Controller
                                         ];
                                         $whereUserID = [
                                             'user_id' => $user->user_id,
-                                            
                                         ];
                                         $this->Users->updateData($fileData, $whereUserID );
-                                        // var_dump($file_name);die;
                                         $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
+                                        // var_dump($file_name);die;
+                                    }else{
+
                                     }
                                 
                                 return $this->load->view('layout',$this->data);

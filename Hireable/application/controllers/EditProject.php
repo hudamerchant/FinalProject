@@ -50,6 +50,7 @@
                             ];
                             
                             $selectArray = [
+                                
                                 'project_category'.'.project_category_id',
                                 'projects'.'.project_title',
                                 'projects'.'.project_descript',
@@ -59,7 +60,9 @@
                             $results = $this->Projects->multiple_joins(
                                 $fetchingProjects,
                                 $whereProjectId,
-                                $selectArray
+                                $selectArray,
+                                "DESC",
+                                "projects.updated_at"
                             )->result();
                             // $project_categories = [];
                             foreach ($results as $result) {
