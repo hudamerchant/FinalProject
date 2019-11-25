@@ -3,9 +3,9 @@
 
     class Search extends MY_Controller{
         public function index($project_apply_id = false){
-            $data['view'] = 'Search';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Search - '.$data['site_title'];
+            $this->data['view'] = 'Search';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'Search - '.$this->data['site_title'];
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
@@ -21,12 +21,12 @@
                     {
                         $projects = $this->search($role_id);
                         //applied projects
-                        $data['applied'] = [];
+                        $this->data['applied'] = [];
                         $this->load->model('ProjectBid');
                         $where      = ['user_id' => $user->user_id];
                         $applied    = $this->ProjectBid->getData($where)->result();
                         foreach($applied as $v){
-                            $data['applied'][] = $v->project_id;
+                            $this->data['applied'][] = $v->project_id;
                         }
 
                         // $this->load->model('Projects');
@@ -34,7 +34,7 @@
                         if(!count($projects))
                         {
                             $msg = 'Sorry! No Result Found.';
-                            $data['msg'] = $msg;
+                            $this->data['msg'] = $msg;
                         } 
                         else
                         {
@@ -44,16 +44,16 @@
                             foreach ($projects as $project) {
                                     
                                 $category_id = [];
-                                $data['projects'][$count]['title'] = $project->project_title;
-                                $data['projects'][$count]['description'] = $project->project_descript;
-                                $data['projects'][$count]['project_id'] = $project->project_id;
-                                $data['projects'][$count]['user_id'] = $project->user_id;
+                                $this->data['projects'][$count]['title'] = $project->project_title;
+                                $this->data['projects'][$count]['description'] = $project->project_descript;
+                                $this->data['projects'][$count]['project_id'] = $project->project_id;
+                                $this->data['projects'][$count]['user_id'] = $project->user_id;
                                 $whereUserId = [
                                     'user_id' => $project->user_id
                                 ];
                                 $userIdData = $this->Users->getData($whereUserId)->row();
-                                $data['projects'][$count]['name'] = $userIdData->name;
-                                $data['projects'][$count]['email'] = $userIdData->email;
+                                $this->data['projects'][$count]['name'] = $userIdData->name;
+                                $this->data['projects'][$count]['email'] = $userIdData->email;
 
                                 $this->load->model('ProjectCategories');
                                 $projectCategoryWhere = [
@@ -66,7 +66,7 @@
                                 $this->load->model('Categories');
                                 $categories = $this->Categories->getDataWhereIn("category_id",$category_id)->result(); 
                                 foreach ($categories as $category) {
-                                    $data['projects'][$count]['categories'][] = $category->category;
+                                    $this->data['projects'][$count]['categories'][] = $category->category;
                                 }
                                 $count++;
                             }
@@ -99,15 +99,15 @@
                         if(!count($freelancers))
                         {
                             $msg = 'Sorry! No Result Found.';
-                            $data['msg'] = $msg;
+                            $this->data['msg'] = $msg;
                         }
                         else
                         {
-                            $data['freelancers'] = $freelancers;
+                            $this->data['freelancers'] = $freelancers;
                         }
                     }
                 }    
-                return $this->load->view('layout',$data);
+                return $this->load->view('layout',$this->data);
             }
             else
             {  
@@ -115,13 +115,13 @@
                 if(!count($freelancers))
                 {
                     $msg = 'Sorry! No Result Found.';
-                    $data['msg'] = $msg;
+                    $this->data['msg'] = $msg;
                 }
                 else
                 {
-                    $data['freelancers'] = $freelancers;
+                    $this->data['freelancers'] = $freelancers;
                 }
-                return $this->load->view('layout',$data);
+                return $this->load->view('layout',$this->data);
             }
         }
     }

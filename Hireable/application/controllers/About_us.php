@@ -3,9 +3,9 @@
 
     class About_us extends MY_Controller{
         public function index(){
-            $data['view'] = 'About_us';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'About Us -'.$data['site_title']; 
+            $this->data['view'] = 'About_us';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'About Us -'.$this->data['site_title']; 
             if($this->session->userdata('logged_in')){
                 $this->load->model('Users');
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
@@ -16,7 +16,7 @@
                 }
     
             }
-            $this->load->view('layout',$data);
+            $this->load->view('layout',$this->data);
         }
     }
 ?>

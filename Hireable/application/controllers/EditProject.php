@@ -9,11 +9,12 @@
         }
         public function index($project_id = false)
         {
-            $data['view']       = 'EditProject';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Edit Project - '.$data['site_title'];
+            $this->data['view']       = 'EditProject';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'Edit Project - '.$this->data['site_title'];
 
             $this->load->model('Users');
+
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData($where)->row();
@@ -26,7 +27,7 @@
                         //loading database table categories
                         $this->load->model('Categories');
                         $categories         = $this->Categories->getData()->result();
-                        $data['categories'] = $categories;
+                        $this->data['categories'] = $categories;
 
                         if ($project_id) {
                             $this->load->model('Projects');
@@ -34,8 +35,8 @@
                             //     'project_id' => $project_id
                             // ];
                             // $project = $this->Projects->getData($whereProjectId)->row();
-                            // $data['project']['project_title'] = $project->project_title;
-                            // $data['project']['project_description'] = $project->project_descript;
+                            // $this->data['project']['project_title'] = $project->project_title;
+                            // $this->data['project']['project_description'] = $project->project_descript;
                             $whereProjectId = [
                                 'projects.project_id' => $project_id
                             ];
@@ -62,14 +63,14 @@
                             )->result();
                             // $project_categories = [];
                             foreach ($results as $result) {
-                                $data['project_data']['project_title'] = $result->project_title;
-                                $data['project_data']['project_description'] = $result->project_descript;
-                                $data['project_data']['categories'][$result->category_id] = $result->category;
+                                $this->data['project_data']['project_title'] = $result->project_title;
+                                $this->data['project_data']['project_description'] = $result->project_descript;
+                                $this->data['project_data']['categories'][$result->category_id] = $result->category;
                                 $category_ids[] = $result->category_id;
                                 $project_category_ids[] = $result->project_category_id;
-                                // $data['project_data']['categoryDetails']['project_categories'][] = $result->category;
-                                // var_dump($data['project_data']['categoryDetails']['category_id'][$count]);                                $count++;
-                                // var_dump($data['project_data']['categoryDetails']['project_categories'][$count]);
+                                // $this->data['project_data']['categoryDetails']['project_categories'][] = $result->category;
+                                // var_dump($this->data['project_data']['categoryDetails']['category_id'][$count]);                                $count++;
+                                // var_dump($this->data['project_data']['categoryDetails']['project_categories'][$count]);
                             }
                             if (isset($_POST['submit'])) {
                                 $this->form_validation->set_rules('project-title', 'project title', 'required');
@@ -171,10 +172,11 @@
                                 }
                             }
                             else {
-                                return $this->load->view('layout', $data);
+                                return $this->load->view('layout', $this->data);
                             }
                         } else {
-                            return $this->load->view('layout', $data);
+
+                            return $this->load->view('layout', $this->data);
                         }
                     } 
                 }             //

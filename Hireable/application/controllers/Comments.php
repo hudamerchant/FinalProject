@@ -33,7 +33,7 @@
                         //loading database table client_rating
                         $this->load->model('Comment');
                         $reviews = $this->Comment->getData()->result();
-                        // $data['review'] =$Comment; 
+                        // $this->data['review'] =$Comment; 
                          // var_dump($this->data);die;
                          $arr = [];
                         foreach ($reviews as $review) {

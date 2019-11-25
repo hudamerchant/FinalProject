@@ -38,9 +38,9 @@ class Login extends MY_Controller
         }
         else
         {
-            $data['view'] = 'Login';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Login - '.$data['site_title'];
+            $this->data['view'] = 'Login';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'Login - '.$this->data['site_title'];
     
             if(isset($_POST['submit'])){
                 $this->form_validation->set_rules('email', 'email', 'required');
@@ -48,10 +48,10 @@ class Login extends MY_Controller
     
                 if($this->form_validation->run() == True) {
                     $this->load->model('Users');
-                    $data = [
+                    $this->data = [
                         'email' => $_POST['email']
                     ];
-                    $query = $this->Users->whereData($data);
+                    $query = $this->Users->whereData($this->data);
                     if($query){
                         $password = $_POST['password'];
                         
@@ -98,10 +98,10 @@ class Login extends MY_Controller
     
                 }
                 else{
-                    $this->load->view('layout',$data);
+                    $this->load->view('layout',$this->data);
                 }
             }
-            $this->load->view('layout',$data);
+            $this->load->view('layout',$this->data);
         }
         
     }

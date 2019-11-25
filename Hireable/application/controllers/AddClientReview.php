@@ -18,13 +18,13 @@
                     }
                     else
                     {
-                        $data['view'] = 'AddClientReview';
-                        $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'AddClientReview -'.$data['site_title']; 
+                        $this->data['view'] = 'AddClientReview';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'AddClientReview -'.$this->data['site_title']; 
     
                         //Client info
-                        $data['client_info'] = $user;
-                        return $this->load->view('layout',$data);
+                        $this->data['client_info'] = $user;
+                        return $this->load->view('layout',$this->data);
                     }
                     
                 }

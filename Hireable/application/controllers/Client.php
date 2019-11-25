@@ -20,9 +20,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else
                     {
-                        $data['view']       = 'CDashboard';
-                        $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'Dashboard -'.$data['site_title'];      
+                        $this->data['view']       = 'CDashboard';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'Dashboard -'.$this->data['site_title'];      
                         
                         $this->load->model('Projects');
                         $where = [
@@ -45,9 +45,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             foreach ($projects as $project) {
     
                                 $category_id = [];
-                                $data['projects'][$count]['title'] = $project->project_title;
-                                $data['projects'][$count]['description'] = $project->project_descript;
-                                $data['projects'][$count]['project_id'] = $project->project_id;
+                                $this->data['projects'][$count]['title'] = $project->project_title;
+                                $this->data['projects'][$count]['description'] = $project->project_descript;
+                                $this->data['projects'][$count]['project_id'] = $project->project_id;
                                 // var_dump($projects);
                                 $this->load->model('ProjectCategories');
                                 $projectCategoryWhere = [
@@ -61,14 +61,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $this->load->model('Categories');
                                 $categories = $this->Categories->getDataWhereIn("category_id",$category_id)->result(); 
                                 foreach ($categories as $category) {
-                                    $data['projects'][$count]['categories'][] = $category->category;
+                                    $this->data['projects'][$count]['categories'][] = $category->category;
                                 }
                                 $count++;
                             }
                             
                         }
                         
-                        return $this->load->view('layout',$data);
+                        return $this->load->view('layout',$this->data);
                     }
                 }
                 elseif($user->role_id == 1)

@@ -18,9 +18,9 @@
                     }
                     else
                     {
-                        $data['view'] = 'FProfile';
-                        $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'Profile -'.$data['site_title']; 
+                        $this->data['view'] = 'FProfile';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'Profile -'.$this->data['site_title']; 
 
                         // $this->load->model('skill');
                         // $skills = $this->Comment->getData()->result();
@@ -29,15 +29,15 @@
                         
 
                         //Freelancer info
-                        // $data['freelancer_info'] = $user;
+                        // $this->data['freelancer_info'] = $user;
 
                         $this->load->model('CommentsClient');
                         $whereUserId = [
                             'receiver_id' => $user->user_id
                         ];
                         $reviews = $this->CommentsClient->getData($whereUserId)->result();
-                        // $data['review'] =$Comment; 
-                        // var_dump($reviews);die;
+                        // $this->data['review'] =$Comment; 
+                        //var_dump($this->data);die;
                         $arr = [];
                         foreach ($reviews as $review) {
             
@@ -51,16 +51,16 @@
                             $sendersData = $this->Users->getData($whereSenderId)->result();
                             // var_dump($sendersData);die;
                             foreach ($sendersData as $senderData) {
-                                $data['senderData'] = $senderData;
+                                $this->data['senderData'] = $senderData;
                                 var_dump($senderData);
                             }
                            
                         }
                         
 
-                        $data['comment'] = $arr;
+                        $this->data['comment'] = $arr;
 
-                        $data['freelancer_info'] = $user;
+                        $this->data['freelancer_info'] = $user;
                         $this->load->model('FCategories');
                         $fetchingProjects []= ['table_name'=>'categories', 'column_with'=>'freelancer_category.category_id = categories.category_id']; 
                         $whereUserID = [
@@ -70,7 +70,7 @@
                             'categories'.'.category' 
                                 ];
                         $results = $this->FCategories->multiple_joins($fetchingProjects,$whereUserID,$selectArray)->result();
-                        $data['results'] = $results;
+                        $this->data['results'] = $results;
                         
                         // foreach($results as $result){
 
@@ -101,7 +101,7 @@
                         //     }
                         
                         //     else {
-                        //         return $this->load->view('layout', $data);
+                        //         return $this->load->view('layout', $this->data);
                         //     }
                         // }
                         // // // if(isset($_POST['submit']))
@@ -129,12 +129,12 @@
                     
                         
                         // // //     else {
-                        // //         return $this->load->view('layout', $data);
+                        // //         return $this->load->view('layout', $this->data);
                         // //     }
                         // // }
                         // else
                         // {
-                        //    return $this->load->view('layout',$data);
+                        //    return $this->load->view('layout',$this->data);
 
                         // }
 
@@ -158,22 +158,22 @@
                                         $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
                                     }
                                 
-                                return $this->load->view('layout',$data);
+                                return $this->load->view('layout',$this->data);
                             // }
                             // else{
-                            //     return $this->load->view('layout',$data);
+                            //     return $this->load->view('layout',$this->data);
                             // }
                             
                         }
                         else
                         {
-                            return $this->load->view('layout',$data);
+                            return $this->load->view('layout',$this->data);
     
                         }
                         
                         
                     
-                        // $this->load->view('layout',$data);
+                        // $this->load->view('layout',$this->data);
                     }     
                        
                 }
@@ -181,7 +181,7 @@
                 {
                     redirect(site_url('Client'));
                 }
-                $this->load->view('layout',$data);
+                $this->load->view('layout',$this->data);
             }
             else
             {

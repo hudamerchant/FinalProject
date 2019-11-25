@@ -6,9 +6,9 @@
             parent::__construct();
             }
         public function index(){
-            $data['view']       = 'updateCProfile';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Update - '.$data['site_title'];
+            $this->data['view']       = 'updateCProfile';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'Update - '.$this->data['site_title'];
              //loading models
              $this->load->model('Users');
              $this->load->model('CProfile');
@@ -59,14 +59,14 @@
                         }
                         else
                         {
-                            $data['client_info'] = $user;
-                            return $this->load->view('layout',$data);
+                            $this->data['client_info'] = $user;
+                            return $this->load->view('layout',$this->data);
                         }
                     }
                     else
                     {
-                        $data['client_info'] = $user;
-                        return $this->load->view('layout',$data);
+                        $this->data['client_info'] = $user;
+                        return $this->load->view('layout',$this->data);
                     }  
                 }
             }

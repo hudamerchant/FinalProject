@@ -18,9 +18,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else
                     {
-                        $data['view']       = 'FDashboard';
-                        $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'Dashboard - '.$data['site_title'];
+                        $this->data['view']       = 'FDashboard';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'Dashboard -'.$this->data['site_title'];
                         
                         $this->load->model('ProjectBid');
                         $whereUserId = [
@@ -48,14 +48,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
                                 $results = $this->Projects->multiple_joins($fetchingProjects,$whereUserId,$selectArray)->result();
                                 
-                                $data['results'] = $results; 
+                                $this->data['results'] = $results; 
                         }
                             
                         
-                        $this->load->view('layout',$data);
-                        $data['page_title'] = 'Dashboard - '.$data['site_title'];
+                        $this->load->view('layout',$this->data);
+                        $this->data['page_title'] = 'Dashboard -'.$this->data['site_title'];
     
-                        return $this->load->view('layout',$data);
+                        return $this->load->view('layout',$this->data);
                     }
                     
                 }
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 {
                     return redirect(site_url('Client'));
                 }
-                return $this->load->view('layout',$data);
+                return $this->load->view('layout',$this->data);
             }
             else
             {

@@ -6,9 +6,9 @@
         parent::__construct();
         }
         public function index(){
-            $data['view']       = 'updateFProfile';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Update -'.$data['site_title'];
+            $this->data['view']       = 'updateFProfile';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'Update -'.$this->data['site_title'];
 
             //loading models
             $this->load->model('Users');
@@ -17,7 +17,7 @@
             $this->load->model('FProfile');
             
             $categories         = $this->Categories->getData()->result();
-            $data['categories'] = $categories;
+            $this->data['categories'] = $categories;
 
 
 
@@ -70,12 +70,12 @@
                             $this->FProfile->insertRecord($profile_data);
                             return redirect(site_url('Freelancer'));
                         } else {
-                            $data['freelancer_info'] = $user;
-                            return $this->load->view('layout', $data);
+                            $this->data['freelancer_info'] = $user;
+                            return $this->load->view('layout', $this->data);
                         }
                     } else {
-                        $data['freelancer_info'] = $user;
-                        return $this->load->view('layout', $data);
+                        $this->data['freelancer_info'] = $user;
+                        return $this->load->view('layout', $this->data);
                     }
                 }
 

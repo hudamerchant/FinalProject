@@ -30,9 +30,9 @@ class Signup extends MY_Controller
         }
         else
         {
-            $data['view'] = 'Signup';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'Signup - '.$data['site_title'];
+            $this->data['view'] = 'Signup';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'Signup - '.$this->data['site_title'];
 
             if(isset($_POST['submit'])){
                 $this->load->helper('Other');
@@ -59,7 +59,7 @@ class Signup extends MY_Controller
                     
 
                         $this->load->model('Users');
-                        $data = [
+                        $this->data = [
                             'name' => $name,
                             'dob' => $dob,
                             'gender' => $gender,
@@ -68,14 +68,14 @@ class Signup extends MY_Controller
                             'role_id' => $role
                         ];
                         
-                        $this->Users->insertRecord($data);
+                        $this->Users->insertRecord($this->data);
                         $this->session->set_flashdata("status","Your account has been created successfully! You can login now.");
                         redirect(site_url('Login'));
                     }
                     else
                     {                    
-                        $data['error']      = 'Passwords dont match';
-                        $this->load->view('layout',$data);
+                        $this->data['error']      = 'Passwords dont match';
+                        $this->load->view('layout',$this->data);
                         
                     }
 
@@ -83,10 +83,10 @@ class Signup extends MY_Controller
 
                 }
                 else{
-                    $this->load->view('layout',$data);
+                    $this->load->view('layout',$this->data);
                 }
             }
-            $this->load->view('layout',$data);
+            $this->load->view('layout',$this->data);
         }
     }
      

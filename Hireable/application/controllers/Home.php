@@ -3,8 +3,8 @@
 
     class Home extends MY_Controller{
         public function index(){
-            $data['view'] = 'Home';
-            $data['page_title'] = 'Home';
+            $this->data['view'] = 'Home';
+            $this->data['page_title'] = 'Home';
             if($this->session->userdata('logged_in')){
                 $this->load->model('Users');
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
@@ -15,13 +15,13 @@
                 }
                 else
                 {
-                    return $this->load->view('layout',$data);
+                    return $this->load->view('layout',$this->data);
                 }
     
             }
             else
             {
-                $this->load->view('layout',$data);
+                $this->load->view('layout',$this->data);
             }
         }
     }

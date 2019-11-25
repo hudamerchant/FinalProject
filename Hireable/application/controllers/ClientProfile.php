@@ -20,9 +20,9 @@ class ClientProfile extends MY_Controller
                 }
                 else
                 {
-                    $data['view'] = 'CProfile';
-                    $data['site_title'] = 'Hireable';
-                    $data['page_title'] = 'Profile -' . $data['site_title'];
+                    $this->data['view'] = 'CProfile';
+                    $this->data['site_title'] = 'Hireable';
+                    $this->data['page_title'] = 'Profile -' . $this->data['site_title'];
 
                     $whereUserId = [
                         'receiver_id' => $user->user_id
@@ -40,10 +40,10 @@ class ClientProfile extends MY_Controller
                     // var_dump($arr);die;
     
     
-                    $data['comments'] = $arr;
+                    $this->data['comments'] = $arr;
     
                     //Client info
-                    $data['client_info'] = $user;
+                    $this->data['client_info'] = $user;
                     // if(isset($_POST['submit']))
                         
                     // {
@@ -62,17 +62,17 @@ class ClientProfile extends MY_Controller
     
                     //         $this->CommentsClient->insertRecord($reviewData);
                     //         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-                    //         return $this->load->view('layout',$data);
+                    //         return $this->load->view('layout',$this->data);
                         
                     //     }
                        
                     //     else {
-                    //         return $this->load->view('layout', $data);
+                    //         return $this->load->view('layout', $this->data);
                     //     }
                     // }
                     // else
                     //     {
-                    //         return $this->load->view('layout',$data);
+                    //         return $this->load->view('layout',$this->data);
     
                     //     }
 
@@ -96,20 +96,20 @@ class ClientProfile extends MY_Controller
                                         $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
                                     }
                                 
-                                return $this->load->view('layout',$data);
+                                return $this->load->view('layout',$this->data);
                             // }
                             // else{
-                            //     return $this->load->view('layout',$data);
+                            //     return $this->load->view('layout',$this->data);
                             // }
                             
                         }
                         else
                         {
-                            return $this->load->view('layout',$data);
+                            return $this->load->view('layout',$this->data);
     
                         }
                     
-                   // $this->load->view('layout', $data);
+                   // $this->load->view('layout', $this->data);
                 }
                 
             } elseif ($user->role_id == 2) {

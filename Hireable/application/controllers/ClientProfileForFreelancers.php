@@ -12,9 +12,9 @@
                 $user   = $this->Users->getData($where)->row();
                 if($user->role_id == 1){
 
-                    $data['view'] = 'ClientProfileForFreelancers';
-                    $data['site_title'] = 'Hireable';
-                    $data['page_title'] = 'Client Profile - '.$data['site_title']; 
+                    $this->data['view'] = 'ClientProfileForFreelancers';
+                    $this->data['site_title'] = 'Hireable';
+                    $this->data['page_title'] = 'Client Profile - '.$this->data['site_title']; 
 
 
 
@@ -24,17 +24,17 @@
                             'user_id' => $client_user_id
                         ];
                         $clientData = $this->Users->getData($whereUserId)->row();
-                        $data['clientDetails'][$count]['user_id'] = $clientData->user_id;
-                        $data['clientDetails'][$count]['name'] = $clientData->name;
-                        $data['clientDetails'][$count]['dob'] = $clientData->dob;
-                        $data['clientDetails'][$count]['gender'] = $clientData->gender;
-                        $data['clientDetails'][$count]['email'] = $clientData->email;
+                        $this->data['clientDetails'][$count]['user_id'] = $clientData->user_id;
+                        $this->data['clientDetails'][$count]['name'] = $clientData->name;
+                        $this->data['clientDetails'][$count]['dob'] = $clientData->dob;
+                        $this->data['clientDetails'][$count]['gender'] = $clientData->gender;
+                        $this->data['clientDetails'][$count]['email'] = $clientData->email;
 
-                        $clientDetails = $data['clientDetails'];
+                        $clientDetails = $this->data['clientDetails'];
 
                         foreach($clientDetails as $clientDetail){
                             
-                            $data['clientDetail'] = $clientDetail;
+                            $this->data['clientDetail'] = $clientDetail;
                         }
                         $this->load->model('Comment');
                         $whereClientId = [
@@ -47,13 +47,30 @@
                             
                             $arr[] = $review->review;
                         }
-                        $data['comment'] = $arr;
+                        $this->data['comment'] = $arr;
         
-                        $data['client_info'] = $user;
+                        $this->data['client_info'] = $user;
 
                     }
-                   
-                    // if(isset($_POST['submit']))
+                    $this->load->model('Comment');
+                    $whereClientId = [
+                        'receiver_id' => $client_user_id
+                    ];
+                    $reviews = $this->Comment->getData($whereClientId)->result();
+                    //  var_dump($reviews);die;
+                    $arr = [];
+                    foreach ($reviews as $review) {
+                        // echo $review;
+                        $arr[] = $review->review;
+                    }
+                    // var_dump($arr);die;
+    
+    
+                    $this->data['comment'] = $arr;
+    
+                    //Client info
+                    $this->data['client_info'] = $user;
+                    //if(isset($_POST['submit']))
                         
                     // {
                     //     $this->form_validation->set_rules('review', 'Review', 'required');
@@ -69,22 +86,22 @@
     
                     //         $this->Comments->insertRecord($reviewData);
                     //         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-                    //         return $this->load->view('layout',$data);
+                    //         return $this->load->view('layout',$this->data);
                         
                     //     }
                        
                     //     else {
-                    //         return $this->load->view('layout', $data);
+                    //         return $this->load->view('layout', $this->data);
                     //     }
                     // }
                     // else
                     //     {
-                    //         return $this->load->view('layout',$data);
+                    //         return $this->load->view('layout',$this->data);
     
                     //     }
 
                     
-                    $this->load->view('layout',$data);
+                    $this->load->view('layout',$this->data);
                     
                 }
                 elseif($user->role_id == 2)

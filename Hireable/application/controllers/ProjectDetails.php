@@ -18,16 +18,16 @@
                     }
                     else
                     {
-                        $data['view'] = 'ProjectDetails';
-                        $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'Project Details - '.$data['site_title']; 
+                        $this->data['view'] = 'ProjectDetails';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'Project Details - '.$this->data['site_title']; 
 
-                        $data['applied'] = [];
+                        $this->data['applied'] = [];
                         $this->load->model('ProjectBid');
                         $where      = ['user_id' => $user->user_id];
                         $applied    = $this->ProjectBid->getData($where)->result();
                         foreach($applied as $v){
-                            $data['applied'][] = $v->project_id;
+                            $this->data['applied'][] = $v->project_id;
                         }
 
                         if($project_apply_id){
@@ -40,17 +40,17 @@
                             if($projects){
                                 $count = 0;
                                 foreach ($projects as $project) {
-                                    $data['projects'][$count]['title'] = $project->project_title;
-                                    $data['projects'][$count]['description'] = $project->project_descript;
-                                    $data['projects'][$count]['project_id'] = $project->project_id;
-                                    $data['projects'][$count]['user_id'] = $project->user_id;
+                                    $this->data['projects'][$count]['title'] = $project->project_title;
+                                    $this->data['projects'][$count]['description'] = $project->project_descript;
+                                    $this->data['projects'][$count]['project_id'] = $project->project_id;
+                                    $this->data['projects'][$count]['user_id'] = $project->user_id;
 
                                     $whereUserId = [
                                         'user_id' => $project->user_id
                                     ];
                                     $userIdData = $this->Users->getData($whereUserId)->row();
-                                    $data['projects'][$count]['name'] = $userIdData->name;
-                                    $data['projects'][$count]['email'] = $userIdData->email;
+                                    $this->data['projects'][$count]['name'] = $userIdData->name;
+                                    $this->data['projects'][$count]['email'] = $userIdData->email;
 
                                     $this->load->model('ProjectCategories');
                                     $projectCategoryWhere = [
@@ -63,7 +63,7 @@
                                     $this->load->model('Categories');
                                     $categories = $this->Categories->getDataWhereIn("category_id",$category_id)->result(); 
                                     foreach ($categories as $category) {
-                                        $data['projects'][$count]['categories'][] = $category->category;
+                                        $this->data['projects'][$count]['categories'][] = $category->category;
                                     }
 
                                     $count++;
@@ -73,7 +73,7 @@
                             //var_dump($projects);die;
                         }
 
-                        return $this->load->view('layout',$data);
+                        return $this->load->view('layout',$this->data);
                     }
                 }
                 elseif($user->role_id == 2)

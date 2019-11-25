@@ -25,14 +25,14 @@
                     }
                     else
                     {
-                        $data['view'] = 'AddProject';
-                        $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'Add project - '.$data['site_title'];  
+                        $this->data['view'] = 'AddProject';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'Add project - '.$this->data['site_title'];  
     
                         //loading database table categories
                         $this->load->model('Categories');
                         $categories         = $this->Categories->getData()->result();
-                        $data['categories'] = $categories;        
+                        $this->data['categories'] = $categories;        
                        
                         if(isset($_POST['submit'])){
     
@@ -80,11 +80,11 @@
                                 
                             }
                             else{
-                                return $this->load->view('layout',$data);
+                                return $this->load->view('layout',$this->data);
                             }
                         }
                         else{
-                            return $this->load->view('layout',$data);
+                            return $this->load->view('layout',$this->data);
                         }
                     }
                     

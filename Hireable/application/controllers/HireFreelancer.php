@@ -9,9 +9,9 @@
         }
         public function index($bid_user_id = false, $bid_project_id = false)
         {
-            $data['view']       = 'Client';
-            $data['site_title'] = 'Hireable';
-            $data['page_title'] = 'View Bids - '.$data['site_title'];
+            $this->data['view']       = 'Client';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'View Bids - '.$this->data['site_title'];
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];

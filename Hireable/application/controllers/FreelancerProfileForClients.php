@@ -17,9 +17,9 @@
                 }
                 elseif($user->role_id == 2)
                 {
-                    $data['view'] = 'FreelancerProfileForClients';
-                    $data['site_title'] = 'Hireable';
-                    $data['page_title'] = 'Freelancer Profile - '.$data['site_title']; 
+                    $this->data['view'] = 'FreelancerProfileForClients';
+                    $this->data['site_title'] = 'Hireable';
+                    $this->data['page_title'] = 'Freelancer Profile - '.$this->data['site_title']; 
 
                     if($freelancer_user_id){
                         $count = 0;
@@ -27,17 +27,17 @@
                             'user_id' => $freelancer_user_id
                         ];
                         $freelancerData = $this->Users->getData($whereUserId)->row();
-                        $data['freelancerDetails'][$count]['user_id'] = $freelancerData->user_id;
-                        $data['freelancerDetails'][$count]['name'] = $freelancerData->name;
-                        $data['freelancerDetails'][$count]['dob'] = $freelancerData->dob;
-                        $data['freelancerDetails'][$count]['gender'] = $freelancerData->gender;
-                        $data['freelancerDetails'][$count]['email'] = $freelancerData->email;
+                        $this->data['freelancerDetails'][$count]['user_id'] = $freelancerData->user_id;
+                        $this->data['freelancerDetails'][$count]['name'] = $freelancerData->name;
+                        $this->data['freelancerDetails'][$count]['dob'] = $freelancerData->dob;
+                        $this->data['freelancerDetails'][$count]['gender'] = $freelancerData->gender;
+                        $this->data['freelancerDetails'][$count]['email'] = $freelancerData->email;
 
-                        $freelancerDetails = $data['freelancerDetails'];
+                        $freelancerDetails = $this->data['freelancerDetails'];
 
                         foreach($freelancerDetails as $freelancerDetail){
                             
-                            $data['freelancerDetail'] = $freelancerDetail;
+                            $this->data['freelancerDetail'] = $freelancerDetail;
                         }
                         $this->load->model('CommentsClient');
                         $whereFreelancerID = [
@@ -50,14 +50,14 @@
                             
                             $arr[] = $review->review;
                         }
-                        $data['comment'] = $arr;
+                        $this->data['comment'] = $arr;
         
-                        $data['client_info'] = $user;
+                        $this->data['client_info'] = $user;
 
 
                     }
     
-                    $this->load->view('layout',$data);
+                    $this->load->view('layout',$this->data);
                 }
             }
             else
