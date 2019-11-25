@@ -13,11 +13,37 @@
 <?php
 if (isset($_SESSION['freelancerBidsPresent'])) {
     foreach ($results as $result) {
+        // var_dump($results['remainingData']);die;
+        // yahan start
+
+        // if($results['profilePicPath']){
+
+        //     if($result->profile_pic != ''){
+        //        $profilePicVariable = $results['profilePicPath'].$result->profile_pic;
+        //     }
+        // }
+
+        // yahan khatam
+        
+        // if($result->profile_pic != ''){
+
+        // }
         ?>
         <div class="col-lg-8 col-md-8 col-xs-8">
             <div class="manager-resumes-item">
                 <div class="manager-content ">
-                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                <?php 
+                        if(isset($profilePicVariable)){
+                            ?>
+                            <img class="resume-thumb" src="<?php echo $profilePicVariable ?>" alt="">
+                            <?php
+                        }
+                        else{
+                            ?>                            
+                            <img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt="">
+                            <?php
+                        }
+                    ?>
                     <div class="manager-info">
                         <div class="manager-name">
                             
@@ -44,7 +70,8 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
             </div>
         </div>
     <?php
-        }
+       
+    }
     } else {
         ?>
     <section class="job-detail section dashboard-section">

@@ -35,7 +35,18 @@ if (isset($_SESSION['profilePicUploaded'])) {
                     <div class="author-resume">
                         <div class="col-md-3 d-inline-block client-profile-margin">
                             <div class="user-pic">
-                                <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
+                                <?php 
+                                    if(isset($profile_pic)){
+                                        ?>
+                                            <img src="<?php echo $profile_pic ?>" class="img-thumbnail" alt="">
+                                        <?php
+                                    }
+                                    else{
+                                        ?>
+                                            <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
+                                        <?php
+                                    }
+                                ?>
                                 <form enctype="multipart/form-data" method="post">
                                     <?php echo form_error('userfile') ?>
                                     <div class="input-group mb-3">

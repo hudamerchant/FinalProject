@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller
     function __construct()
     {
         parent::__construct(); 
-        $this->data['image_path'] =base_url('/assets/uploads/') ;
+        $this->data['image_path'] = base_url('/assets/uploads/') ;
      } 
     public function search($role_id = false){
 

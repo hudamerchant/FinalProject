@@ -13,6 +13,9 @@ class ClientProfile extends MY_Controller
         if ($this->session->userdata('logged_in')) {
             $where  = ['email' => $this->session->userdata('user_info')];
             $user   = $this->Users->getData('DESC',$where)->row();
+            if($user->profile_pic != ''){
+                $this->data['profile_pic'] = $this->data['image_path'].$user->profile_pic;
+            }
             if ($user->role_id == 2) {
                 if(!$user->updated_profile)
                 {

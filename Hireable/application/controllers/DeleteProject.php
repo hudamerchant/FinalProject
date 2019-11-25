@@ -15,7 +15,8 @@
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('',$where)->row();
+                // var_dump($this->db->last_query());die;
                 if ($user->role_id == 1) 
                 {
                     return redirect(site_url('Freelancer'));
@@ -28,6 +29,7 @@
                     }
                     else
                     {
+                        // var_dump($this->db->last_query());die;
                         if ($project_id) {
                             $this->load->model('Projects');
                             $dataToUpdate = [
@@ -37,6 +39,7 @@
                                 'project_id' => $project_id
                             ];
                             $this->Projects->updateData($dataToUpdate,$whereProjectID);
+                            // var_dump($this->db->last_query());die;
                             return redirect(site_url('Client'));
                         }
                         return $this->load->view('layout',$this->data);

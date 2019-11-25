@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             'deleted_at' => null
                         ];
                         $projects = $this->Projects->getData('DESC',$where)->result();
-
+                        // var_dump($this->db->last_query());die;
 
                         //fetching project status from project bid table
                         // $this->load->model('ProjectBid');

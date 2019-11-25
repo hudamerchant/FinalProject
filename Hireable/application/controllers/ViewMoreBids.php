@@ -61,6 +61,7 @@
                                             $userData = $this->Users->getData('DESC' ,$whereUserId)->row();
                                             // var_dump($userData->name);
                                             $this->data['data_project_bids'][$count]['bid_username']      = $userData->name;
+                                            $this->data['data_project_bids'][$count]['bid_email']      = $userData->email;
                                             $count++;                                        
                                         }
                                     }                              

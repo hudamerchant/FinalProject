@@ -23,6 +23,7 @@ if (isset($_SESSION['projectsPresent'])) {
                             <div class="manager-info">
                                     <div class="manager-meta search-manager-meta">
                                         <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php echo site_url('DeleteProject/index/'.$project['project_id']) ?>">Delete Project</a></span>
+                                        <?php //'DeleteProject/index/'.$project['project_id'] ?>
                                     </div>
                                 </div>
                                 <div class="manager-info">
@@ -55,7 +56,7 @@ if (isset($_SESSION['projectsPresent'])) {
                                 <div class="manager-info">
                                     <div class="manager-meta">
                                         <?php //if($project['project_id'] =) ?>
-                                        <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View more bids</a></span>
+                                        <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View bids</a></span>
                                     </div>
                                 </div>
                                 

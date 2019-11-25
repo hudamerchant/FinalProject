@@ -29,9 +29,13 @@
                         $this->data['clientDetails'][$count]['dob'] = $clientData->dob;
                         $this->data['clientDetails'][$count]['gender'] = $clientData->gender;
                         $this->data['clientDetails'][$count]['email'] = $clientData->email;
+                        if($clientData->profile_pic != ''){
+
+                            $this->data['clientDetails'][$count]['profile_pic'] = $this->data['image_path'].$clientData->profile_pic;
+                        }
 
                         $clientDetails = $this->data['clientDetails'];
-
+                        // var_dump($clientDetails);die;
                         foreach($clientDetails as $clientDetail){
                             
                             $this->data['clientDetail'] = $clientDetail;

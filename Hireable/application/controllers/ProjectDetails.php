@@ -37,6 +37,7 @@
                             ];
                             
                             $projects = $this->Projects->getData('DESC' ,$whereProjectId)->result();
+                            // var_dump($projects);die;
                             if($projects){
                                 $count = 0;
                                 foreach ($projects as $project) {
@@ -51,6 +52,10 @@
                                     $userIdData = $this->Users->getData('DESC' ,$whereUserId)->row();
                                     $this->data['projects'][$count]['name'] = $userIdData->name;
                                     $this->data['projects'][$count]['email'] = $userIdData->email;
+                                    if($userIdData->profile_pic != ''){
+                                        $this->data['projects'][$count]['profile_pic'] = $this->data['image_path'].$userIdData->profile_pic;
+                                    }
+                                    // var_dump($this->data['projects'][$count]['profile_pic']);die;
 
                                     $this->load->model('ProjectCategories');
                                     $projectCategoryWhere = [

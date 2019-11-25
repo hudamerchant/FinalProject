@@ -19,7 +19,18 @@ if ($projects) {
         <div class="col-lg-8 col-md-8 col-xs-8 project">
             <div class="manager-resumes-item">
                 <div class="manager-content">
-                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                    <?php 
+                        if(isset($project['profile_pic'])){
+                            ?>
+                            <img class="resume-thumb" src="<?php echo $project['profile_pic'] ?>" alt="">
+                            <?php
+                        }
+                        else{
+                            ?>                            
+                            <img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt="">
+                            <?php
+                        }
+                    ?>
                     <div class="manager-info">
                         <div class="manager-name">
                             <p><?php  ?></p>

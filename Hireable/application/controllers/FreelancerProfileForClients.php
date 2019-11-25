@@ -32,8 +32,13 @@
                         $this->data['freelancerDetails'][$count]['dob'] = $freelancerData->dob;
                         $this->data['freelancerDetails'][$count]['gender'] = $freelancerData->gender;
                         $this->data['freelancerDetails'][$count]['email'] = $freelancerData->email;
+                        if($freelancerData->profile_pic != ''){
+
+                            $this->data['freelancerDetails'][$count]['profile_pic'] = $this->data['image_path'].$freelancerData->profile_pic;
+                        }
 
                         $freelancerDetails = $this->data['freelancerDetails'];
+                        // var_dump($freelancerDetails);die;
 
                         foreach($freelancerDetails as $freelancerDetail){
                             

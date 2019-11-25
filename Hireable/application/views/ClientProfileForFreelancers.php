@@ -33,7 +33,18 @@ if ($clientDetail) {
                     <div class="author-resume">
                         <div class="col-md-3 d-inline-block">
                             <div class="user-pic">
-                                <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
+                            <?php  
+                                    if(isset($clientDetail['profile_pic'])){
+                                        ?>                                        
+                                        <img src="<?php echo $clientDetail['profile_pic'] ?>" class="img-thumbnail" alt="">
+                                        <?php
+                                    }
+                                    else{
+                                        ?>                                        
+                                        <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
+                                        <?php
+                                    }
+                                ?>
                                 <a href="#" class="btn btn-common mt-2 ml-2 faltu-anchor"></a>
                             </div>
                         </div>

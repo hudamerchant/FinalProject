@@ -45,12 +45,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     'projects'.'.project_title',                            
                                     'users'.'.name',
                                     'users'.'.email',
+                                    'users'.'.profile_pic',
                                     'projects'.'.updated_at'
                                 ];
     
                                 $results = $this->Projects->multiple_joins($fetchingProjects,$whereUserId,$selectArray , 'DESC')->result();
                                 
                                 $this->data['results'] = $results; 
+                                // $this->data['results']['profilePicPath'] = $this->data['image_path']; 
+                                    // var_dump($this->data['results']);die;
                         }
                             
                         

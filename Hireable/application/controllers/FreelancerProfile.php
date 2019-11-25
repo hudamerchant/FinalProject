@@ -10,6 +10,12 @@
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData('DESC',$where)->row();
+                if($user->profile_pic != ''){
+                    // $this->session->set_flashdata("profilePicPresent",true);
+                    // var_dump($user->profile_pic);die;
+                    $this->data['profile_pic'] = $this->data['image_path'].$user->profile_pic;
+                }
+                // var_dump($data['profile_pic']);die;
                 if($user->role_id == 1)
                 {   
                     if(!$user->updated_profile)
@@ -52,7 +58,7 @@
                             // var_dump($sendersData);die;
                             foreach ($sendersData as $senderData) {
                                 $this->data['senderData'] = $senderData;
-                                var_dump($senderData);
+                                // var_dump($senderData);
                             }
                            
                         }
@@ -157,6 +163,7 @@
                                         $this->Users->updateData($fileData, $whereUserID );
                                         // var_dump($file_name);die;
                                         $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
+                                        return redirect(site_url('FreelancerProfile'));
                                     }
                                 
                                 return $this->load->view('layout',$this->data);
