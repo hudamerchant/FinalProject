@@ -40,8 +40,8 @@
                         $whereClientId = [
                             'receiver_id' => $client_user_id
                         ];
-                        $reviews = $this->Comment->getData('DESC',$whereClientId)->result();
-                        
+                        $reviews = $this->Comment->getData('ASC',$whereClientId)->result();
+                        // var_dump($reviews);die;
                         $arr = [];
                         foreach ($reviews as $review) {
                             

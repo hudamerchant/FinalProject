@@ -67,9 +67,10 @@
                             'user_id' => $user->user_id
                         ];
                         $selectArray = [
+                            'freelancer_category'.'.updated_at',
                             'categories'.'.category' 
                                 ];
-                        $results = $this->FCategories->multiple_joins($fetchingProjects,$whereUserID,$selectArray)->result();
+                        $results = $this->FCategories->multiple_joins($fetchingProjects,$whereUserID,$selectArray,'DESC')->result();
                         $this->data['results'] = $results;
                         
                         // foreach($results as $result){
