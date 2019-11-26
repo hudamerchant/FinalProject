@@ -189,13 +189,48 @@
             }
                         
         }
-        public function deleteProject($project_id = false) {
-            
-            $msg = [
-                'msg'   => 'hi',
-                'data'  => $_POST['project-id']
-            ];
+        public function deleteProject() {
 
-            echo json_encode($msg);
+            $this->load->model('Users');
+            $this->load->model('ProjectCategories');
+
+            if ($this->session->userdata('logged_in')) {
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData('DESC', $where)->row();
+                if ($user->role_id == 1) {
+                    return redirect(site_url('Freelancer'));
+                }
+                elseif($user->role_id == 2)
+                {
+                    $response = [];
+                    $project_id     = $_POST['project_id'];
+                    $category_id    = $_POST['category_id'];
+        
+                    if(isset($project_id) && isset($category_id))
+                    {
+                        $delete = [
+                            'deleted_at' => date("Y-m-d H:i:s")
+                        ];
+                        $where = [
+                            'project_id'    => $project_id,
+                            'category_id'   => $category_id
+                        ];
+                        $result_set = $this->ProjectCategories->updateData($delete ,$where);
+                        if($result_set)
+                        {
+                            $response = [
+                                'msg' => 'Skill Deleted Successfully'
+                            ];
+                        }
+                    }
+        
+                    echo json_encode($response);
+                }
+            }
+            else
+            {
+                return redirect(site_url('Login'));
+            }
+            
         }
     }

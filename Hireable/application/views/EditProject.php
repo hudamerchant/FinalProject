@@ -45,7 +45,7 @@
                                     <?php 
                                     foreach($categories as $category){
                                         ?>
-                                        <option value="<?php echo $category->category_id ?>"<?php echo (in_array($category->category,$selected_categories) ? 'selected' : ''  ) ?>><?php echo $category->category ?> </option>            
+                                        <option  value="<?php echo $category->category_id ?>"<?php echo (in_array($category->category,$selected_categories) ? 'selected' : ''  ) ?>><?php echo $category->category ?> </option>            
                                         <?php 
                                     } 
                                     ?>
