@@ -16,8 +16,6 @@
                     $this->data['site_title'] = 'Hireable';
                     $this->data['page_title'] = 'Client Profile - '.$this->data['site_title']; 
 
-
-
                     if($client_user_id){
                         $count = 0;
                         $whereUserId = [
@@ -29,96 +27,37 @@
                         $this->data['clientDetails'][$count]['dob'] = $clientData->dob;
                         $this->data['clientDetails'][$count]['gender'] = $clientData->gender;
                         $this->data['clientDetails'][$count]['email'] = $clientData->email;
-                        if($clientData->profile_pic != ''){
 
+                        if($clientData->profile_pic != ''){
                             $this->data['clientDetails'][$count]['profile_pic'] = $this->data['image_path'].$clientData->profile_pic;
                         }
 
                         $clientDetails = $this->data['clientDetails'];
                         // var_dump($clientDetails);die;
-                        foreach($clientDetails as $clientDetail){
-                            
+                        foreach($clientDetails as $clientDetail){                            
                             $this->data['clientDetail'] = $clientDetail;
                         }
-                        $this->load->model('Comment');
+
+                        //loading Reviews
+                        $this->load->model('Reviews_Model');
+                        $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'reviews.sender_id = users.user_id']; 
                         $whereClientId = [
-                            'receiver_id' => $client_user_id
+                            'reviews.receiver_id' => $client_user_id
                         ];
-                        $reviews = $this->Comment->getData('ASC',$whereClientId)->result();
-                        // var_dump($reviews);die;
-                        $arr = [];
-                        foreach ($reviews as $review) {
-                            
-                            $arr[] = $review->review;
-
-                            $senderId = $review->user_id ;
-
-                            $whereSenderId = [
-                                'user_id' => $senderId,
-                                
-                            ];
-                            $sendersData = $this->Users->getData('ASC',$whereSenderId)->result();
-                            // var_dump($sendersData);die;
-                            // foreach ($sendersData as $senderData) {
-                                $this->data['sendersData'] = $sendersData;
-                                // var_dump($senderData);
-                            // }
-                        }
-                        var_dump($arr);die;
-                        $this->data['comment'] = $arr;
-        
-                        $this->data['client_info'] = $user;
-
-                    }
-                    $this->load->model('Comment');
-                    $whereClientId = [
-                        'receiver_id' => $client_user_id
-                    ];
-                    $reviews = $this->Comment->getData('DESC',$whereClientId)->result();
-                    //  var_dump($reviews);die;
-                    $arr = [];
-                    foreach ($reviews as $review) {
-                        // echo $review;
-                        $arr[] = $review->review;
-                    }
-                    // var_dump($arr);die;
-    
-    
-                    $this->data['comment'] = $arr;
-    
-                    //Client info
-                    $this->data['client_info'] = $user;
-                    //if(isset($_POST['submit']))
+                        $selectArray = [
+                            'reviews.sender_id',
+                            'reviews.receiver_id',
+                            'reviews.rating',
+                            'reviews.review',
+                            'reviews.updated_at',
+                            'users.name',
+                            'users.email',
+                            'users.profile_pic'
+                        ];
+                        $reviewResults = $this->Reviews_Model->multiple_joins($fetchingProjects,$whereClientId,$selectArray, 'DESC','reviews.updated_at')->result();
+                        $this->data['reviewResults'] = $reviewResults;
                         
-                    // {
-                    //     $this->form_validation->set_rules('review', 'Review', 'required');
-                    //     if($this->form_validation->run() == True)
-                    //     {
-                    //         $review = $this->input->post('review');
-                            
-                    //         $reviewData = [
-                    //             'review' => $review,
-                    //             'user_id' => $user->user_id
-                    //         ];
-                    //         // var_dump($reviewData);die;
-    
-                    //         $this->Comments->insertRecord($reviewData);
-                    //         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-                    //         return $this->load->view('layout',$this->data);
-                        
-                    //     }
-                       
-                    //     else {
-                    //         return $this->load->view('layout', $this->data);
-                    //     }
-                    // }
-                    // else
-                    //     {
-                    //         return $this->load->view('layout',$this->data);
-    
-                    //     }
-
-                    
+                    }
                     $this->load->view('layout',$this->data);
                     
                 }

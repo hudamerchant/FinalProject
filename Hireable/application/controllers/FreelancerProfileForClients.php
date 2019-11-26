@@ -38,56 +38,44 @@
                         }
 
                         $freelancerDetails = $this->data['freelancerDetails'];
-                        // var_dump($freelancerDetails);die;
 
-                        foreach($freelancerDetails as $freelancerDetail){
-                            
+                        foreach($freelancerDetails as $freelancerDetail){                            
                             $this->data['freelancerDetail'] = $freelancerDetail;
                         }
-                        // var_dump($freelancerDetail);
-                        $this->load->model('CommentsClient');
-                        $whereFreelancerID = [
-                            'receiver_id' => $freelancer_user_id
-                        ];
-                        $reviews = $this->CommentsClient->getData('DESC',$whereFreelancerID)->result();
-                        
-                        $arr = [];
-                        foreach ($reviews as $review) {
-                            
-                            $arr[] = $review->review;
 
-                            $senderId = $review->user_id ;
-
-                            $whereSenderId = [
-                                'user_id' => $senderId,
-                                
-                            ];
-                            $sendersData = $this->Users->getData('DESC',$whereSenderId)->result();
-                            // var_dump($sendersData);die;
-                            foreach ($sendersData as $senderData) {
-                                $this->data['senderData'] = $senderData;
-                                // var_dump($senderData);
-                            }
-                        }
-                        $this->data['comment'] = $arr;
-        
-                        $this->data['client_info'] = $user;
-
+                        //loading freelancer categories
                         $this->load->model('FCategories');
-                        $fetchingProjects []= ['table_name'=>'categories', 'column_with'=>'freelancer_category.category_id = categories.category_id']; 
+                        $fetchingFreelancerCategories []= ['table_name'=>'categories', 'column_with'=>'freelancer_category.category_id = categories.category_id']; 
                         $whereFreelancerID = [
-                            'user_id' => $freelancer_user_id
+                            'freelancer_category.user_id' => $freelancer_user_id
                         ];
                         $selectArray = [
                             'categories'.'.category' 
                                 ];
-                        $results = $this->FCategories->multiple_joins($fetchingProjects,$whereFreelancerID,$selectArray)->result();
+                        $results = $this->FCategories->multiple_joins($fetchingFreelancerCategories,$whereFreelancerID,$selectArray)->result();                        
                         $this->data['results'] = $results;
-                        // var_dump($results);die;
 
+                        //loading Reviews
+                        $this->load->model('Reviews_Model');
+                        $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'reviews.sender_id = users.user_id']; 
+                        $whereFreelancerID = [
+                            'reviews.receiver_id' => $freelancer_user_id
+                        ];
+                        $selectArray = [
+                            'reviews.sender_id',
+                            'reviews.receiver_id',
+                            'reviews.rating',
+                            'reviews.review',
+                            'reviews.updated_at',
+                            'users.name',
+                            'users.email',
+                            'users.profile_pic'
+                        ];
+                        $reviewResults = $this->Reviews_Model->multiple_joins($fetchingProjects,$whereFreelancerID,$selectArray, 'DESC','reviews.updated_at')->result();
+                        // var_dump($reviewResults);die;
+                        $this->data['reviewResults'] = $reviewResults;
 
-                    }
-    
+                    }    
                     $this->load->view('layout',$this->data);
                 }
             }

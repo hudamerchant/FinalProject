@@ -26,84 +26,61 @@ class ClientProfile extends MY_Controller
                     $this->data['view'] = 'CProfile';
                     $this->data['site_title'] = 'Hireable';
                     $this->data['page_title'] = 'Profile -' . $this->data['site_title'];
-
+    
+                    //loading reviews
+                    $this->load->model('Reviews_Model');
+                    $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'reviews.sender_id = users.user_id']; 
                     $whereUserId = [
                         'receiver_id' => $user->user_id
                     ];
-    
-                    //loading database table freelancer_rating
-                    $this->load->model('Comment');//comment
-                    $reviews = $this->CommentsClient->getData('DESC',$whereUserId)->result();
-                    //  var_dump($reviews);die;
-                    $arr = [];
-                    foreach ($reviews as $review) {
-                        //echo $review;
-
-                        $arr[] = $review->review;
-                        $senderId = $review->user_id ;
-
-                        $whereSenderId = [
-                            'user_id' => $senderId,
-                            
-                        ];
-                        $sendersData = $this->Users->getData('DESC',$whereSenderId)->result();
-                         //var_dump($sendersData);die;
-                        foreach ($sendersData as $senderData) {
-                            $this->data['senderData'] = $senderData;
-                           // var_dump($senderData);die;
-                        }
-                    }
-                  
-                    //var_dump($arr);die;
-    
+                    $selectArray = [
+                        'reviews.sender_id',
+                        'reviews.receiver_id',
+                        'reviews.rating',
+                        'reviews.review',
+                        'reviews.updated_at',
+                        'users.name',
+                        'users.email',
+                        'users.profile_pic'
+                    ];
+                    $reviewResults = $this->Reviews_Model->multiple_joins($fetchingProjects,$whereUserId,$selectArray, 'DESC','reviews.updated_at')->result();
+                    // var_dump($reviewResults);die;
+                    $this->data['reviewResults'] = $reviewResults;
                     
-                    $this->data['comments'] = $arr;
-    
                     //Client info
                     $this->data['client_info'] = $user;
  
-                        if(isset($_POST['file_submit'])){
-                            // $this->form_validation->set_rules('userfile', 'image', 'required');
-                            // //if($this->form_validation->run() == True) {
-    
-                                    $file = $this->upload_file();\
-                                    var_dump( $file);die;
-                                    if(isset($file['profile_pic'])){
-                                        
-                                        $fileData = [
-                                            'profile_pic' => $file['file_name'],
-                                            'updated_at' => date("Y-m-d H:i:s")
-                                        ];
-                                        $whereUserID = [
-                                            'user_id' => $user->user_id,
-                                        ];
-                                        $this->Users->updateData($fileData, $whereUserID );
-                                        $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
-                                        // var_dump($file_name);die;
-                                    }else{
-
-                                    }
-                                
-                                return $this->load->view('layout',$this->data);
-                            // }
-                            // else{
-                            //     return $this->load->view('layout',$this->data);
-                            // }
+                    if(isset($_POST['file_submit'])){                            
+                        $file = $this->upload_file();
+                        // var_dump( $file);die;
+                        if(isset($file['profile_pic'])){
                             
-                        }
-                        else
-                        {
-                            return $this->load->view('layout',$this->data);
-    
-                        }
-                    
-                   // $this->load->view('layout', $this->data);
-                }
-                
-            } elseif ($user->role_id == 2) {
+                            $fileData = [
+                                'profile_pic' => $file['file_name'],
+                                'updated_at' => date("Y-m-d H:i:s")
+                            ];
+                            $whereUserID = [
+                                'user_id' => $user->user_id,
+                            ];
+                            $this->Users->updateData($fileData, $whereUserID );
+                            $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
+                        }                                
+                        return $this->load->view('layout',$this->data);                           
+                    }
+                    else
+                    {
+                        return $this->load->view('layout',$this->data);
+
+                    }
+                }                
+            } 
+            elseif($user->role_id == 2) 
+            {
                 return redirect(site_url('Client'));
             }
-        } else {
+        } 
+        else 
+        {
             return redirect(site_url('Login'));
         }
     }

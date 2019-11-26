@@ -11,6 +11,7 @@
 </div>
 <?php
 if (isset($_SESSION['projectsBidsPresent'])) {
+    if($data_project_bids){
 
     foreach ($data_project_bids as $project_bid) {
         ?>
@@ -43,6 +44,7 @@ if (isset($_SESSION['projectsBidsPresent'])) {
         </section>
     <?php
         }
+    }
     } 
     else {
         ?>
