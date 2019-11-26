@@ -95,6 +95,26 @@ include_once('head.php');
             </li>
           <?php }
           ?>
+          <?php 
+          if (isset($_SESSION['ClientRole'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url('/AddProject'); ?>">
+                  Hi, Client
+                </a>
+              </li>
+            <?php
+          }
+          if (isset($_SESSION['freelancerRole'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="<?php echo site_url('/AddProject'); ?>">
+                  Hi, Freelancer
+                </a>
+              </li>
+            <?php
+          }
+          ?>
         </ul>
       </div>
     </div>

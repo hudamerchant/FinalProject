@@ -62,6 +62,9 @@
                                             // var_dump($userData->name);
                                             $this->data['data_project_bids'][$count]['bid_username']      = $userData->name;
                                             $this->data['data_project_bids'][$count]['bid_email']      = $userData->email;
+                                            if($userData->profile_pic != ''){
+                                                $this->data['data_project_bids'][$count]['profile_pic'] = $this->data['image_path'].$userData->profile_pic;
+                                            }
                                             $count++;                                        
                                         }
                                     }                              

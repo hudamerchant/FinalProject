@@ -72,6 +72,7 @@
                         </div>
                         <div class="author-info d-inline-block ml-3">
                             <h3><b><?php echo $client_info->name ?></b></h3>
+                            <p class="sub-title"><?php echo $client_info->email ?></p>
                             <div class="social-link">
                                 <a href="#" class="Twitter"><i class="lni-twitter-filled"></i></a>
                                 <a href="#" class="facebook"><i class="lni-facebook-filled"></i></a>
@@ -117,6 +118,9 @@
                                         <div class="manager-name">
                                             <h4><a href="#"><?php echo $reviewResult->name ?></a></h4>
                                             <h5><?php echo $reviewResult->email ?></h5>
+                                        </div>
+                                        <div class="manager-meta view-bids-button">
+                                            <span><a href="<?php echo site_url('FreelancerProfileForClients/index/'.$reviewResult->user_id) ?>" class="btn btn-common view-bids-anchor">View Profile</a></span>
                                         </div>
                                     </div>
                                 </div>

@@ -53,6 +53,7 @@
                             'reviews.rating',
                             'reviews.review',
                             'reviews.updated_at',
+                            'users'.'.user_id',
                             'users.name',
                             'users.email',
                             'users.profile_pic'
