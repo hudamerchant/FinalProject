@@ -21,6 +21,7 @@
                     {
                         $projects = $this->search($role_id);
                         //applied projects
+                        // var_dump($projects);die;
                         $this->data['applied'] = [];
                         $this->load->model('ProjectBid');
                         $where      = ['user_id' => $user->user_id];
@@ -54,6 +55,12 @@
                                 $userIdData = $this->Users->getData('DESC',$whereUserId)->row();
                                 $this->data['projects'][$count]['name'] = $userIdData->name;
                                 $this->data['projects'][$count]['email'] = $userIdData->email;
+                                if($userIdData->profile_pic){
+
+                                    $this->data['projects'][$count]['profile_pic_path'] = $this->data['image_path'];
+                                    $this->data['projects'][$count]['profile_pic'] = $userIdData->profile_pic;
+                                }
+                                // var_dump($this->data['projects']);die;
 
                                 $this->load->model('ProjectCategories');
                                 $projectCategoryWhere = [
@@ -96,6 +103,10 @@
                     else
                     {
                         $freelancers = $this->search($role_id);
+                            
+                        // if($freelancers == null){
+
+                        // }
                         if(!count($freelancers))
                         {
                             $msg = 'Sorry! No Result Found.';
@@ -104,6 +115,8 @@
                         else
                         {
                             $this->data['freelancers'] = $freelancers;
+                            // $this->data['freelancers'] .= $this->data['image_path'];
+                            // var_dump($this->data['freelancers']);die;
                         }
                     }
                 }    

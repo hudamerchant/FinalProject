@@ -26,7 +26,7 @@ class MY_Controller extends CI_Controller
                 $like = [
                     'category' =>  $category
                 ];
-                $search_results = $this->FCategories->joins('categories', 'category_id', $like , 'DESC')->result();
+                $search_results = $this->FCategories->joins('categories', 'category_id', $like , 'DESC' , 'freelancer_category.updated_at')->result();
                 if (!count($search_results)) {
                     $freelancers = [];
                 } else {
@@ -59,8 +59,8 @@ class MY_Controller extends CI_Controller
                 $like = [
                     'category' =>  $category
                 ];
-                $search_results = $this->PCategories->joins('categories', 'category_id', $like , 'DESC')->result();
-                if(!count($search_results))
+                $search_results = $this->PCategories->joins('categories', 'category_id', $like , 'DESC' , 'project_category.updated_at')->result();
+                if($search_results == null)
                 {
                     $projects = [];
                 }

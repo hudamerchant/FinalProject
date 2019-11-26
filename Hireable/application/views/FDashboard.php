@@ -18,24 +18,26 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
 
         // if($results['profilePicPath']){
 
-        //     if($result->profile_pic != ''){
-        //        $profilePicVariable = $results['profilePicPath'].$result->profile_pic;
-        //     }
+            if($result->profile_pic != ''){
+                $profilePicPath = $this->data['image_path'];
+               $profilePicVariable = $result->profile_pic;
+            }
+            elseif($result->profile_pic == ''){
+                $profilePicVariable = '';
+            }
         // }
 
         // yahan khatam
         
-        // if($result->profile_pic != ''){
-
-        // }
+        
         ?>
         <div class="col-lg-8 col-md-8 col-xs-8">
             <div class="manager-resumes-item">
                 <div class="manager-content ">
                 <?php 
-                        if(isset($profilePicVariable)){
+                        if(isset($profilePicVariable) && $profilePicVariable != ''){
                             ?>
-                            <img class="resume-thumb" src="<?php echo $profilePicVariable ?>" alt="">
+                            <img class="resume-thumb" src="<?php echo $profilePicPath.$profilePicVariable ?>" alt="">
                             <?php
                         }
                         else{

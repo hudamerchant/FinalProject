@@ -65,7 +65,8 @@ class MY_Model extends CI_Model
         $query = $this->db->update($this->table_name, $data , $where );    
         return $query;
     }
-    public function joins($firstTableForJoin , $joinWithColumnName , array $like = [] , array $where = []){
+    public function joins($firstTableForJoin , $joinWithColumnName , array $like = [] ,$order = 'ASC',$orderby = "", array $where = []){
+        $this->db->order_by($orderby , $order);
         if(count($like) > 0)
         {
             $this->db->like( $like );    
@@ -81,7 +82,7 @@ class MY_Model extends CI_Model
 
         return $query;
     }
-    public function multiple_joins($fetchingProjects,$where,$select, $order = 'ASC',$orderby = "" ){
+    public function multiple_joins($JoinWith,$where,$select, $order = 'ASC',$orderby = "" ){
         $this->db->order_by($orderby , $order);
         if(count($where) > 0)
         {
@@ -89,8 +90,8 @@ class MY_Model extends CI_Model
         }
         $this->db->select($select);
         $this->db->from($this->table_name);
-        foreach($fetchingProjects as $fetchingProject){
-            $this->db->join($fetchingProject['table_name'], $fetchingProject['column_with']);       
+        foreach($JoinWith as $JoinWithValue){
+            $this->db->join($JoinWithValue['table_name'], $JoinWithValue['column_with']);       
         }
         
         return $this->db->get();

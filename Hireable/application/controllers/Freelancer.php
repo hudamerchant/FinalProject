@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 
                                 $this->data['results'] = $results; 
                                 // $this->data['results']['profilePicPath'] = $this->data['image_path']; 
-                                    // var_dump($this->data['results']);die;
+                                    // var_dump($results);die;
                         }
                             
                         

@@ -46,13 +46,28 @@ if(isset($_SESSION['Bid'])){
 <?php
 if (isset($_SESSION['projectsPresent'])) {
     // var_dump($projects);die;
+    if(isset($projects)){
     foreach ($projects as $project) {
-        //var_dump($project['user_id']);
+        // if($project['profile_pic']){
+        //     echo "Hey";
+        // }
+        // var_dump($project['profile_pic']);
         ?>
         <div class="col-lg-8 col-md-8 col-xs-8 project">
             <div class="manager-resumes-item">
                 <div class="manager-content">
-                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                <?php 
+                        if(isset($project['profile_pic'])){
+                            ?>
+                            <img class="resume-thumb" src="<?php echo $project['profile_pic_path'].$project['profile_pic'] ?>" alt="">
+                            <?php
+                        }
+                        else{
+                            ?>                            
+                            <img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt="">
+                            <?php
+                        }
+                    ?>
                     <div class="manager-info">
                         <div class="manager-name">
                             <h4><a href="#"><?php echo $project['name'] ?></a></h4>
@@ -104,7 +119,8 @@ if (isset($_SESSION['projectsPresent'])) {
         </div>
     <?php
         }
-    } else {
+    }
+     else {
         ?>
     <section class="job-detail section dashboard-section">
         <div class="container">
@@ -118,6 +134,7 @@ if (isset($_SESSION['projectsPresent'])) {
         </div>
     </section>
 <?php
+}
 }
 ?>
 <?php
@@ -143,23 +160,41 @@ if (isset($_SESSION['projectsPresent'])) {
             </div>
         </div>
     </div>
-    <div class="col-lg-8 col-md-12 col-xs-12">
-        <div class="job-alerts-item candidates">
+    
             <!-- <h3 class="alerts-title">Manage Resumes</h3> -->
 
 <?php
-    if(isset($msg))
-    {?>
-        <p><?php echo $msg ?></p>
-    <?php }
-    elseif(isset($freelancers)){
+    
+    if(isset($freelancers)){
         foreach ($freelancers as $freelancer) {
+            // var_dump($freelancer->profile_pic);die;
+            if($freelancer->profile_pic != ''){
+                $profilePicPath = $this->data['image_path'];
+                $profilePicVariable = $freelancer->profile_pic;
+                // var_dump($profilePicPath);
+            }
+            elseif($freelancer->profile_pic == ''){
+                // var_dump('nhi');die;
+                $profilePicVariable = '';
+            }
         
 ?>
-
+    <div class="col-lg-8 col-md-12 col-xs-12">
+        <div class="job-alerts-item candidates">
             <div class="manager-resumes-item">
                 <div class="manager-content">
-                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
+                <?php 
+                        if(isset($profilePicVariable) && $profilePicVariable != ''){
+                            ?>
+                            <img class="resume-thumb" src="<?php echo $profilePicPath.$profilePicVariable ?>" alt="">
+                            <?php
+                        }
+                        else{
+                            ?>                            
+                            <img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt="">
+                            <?php
+                        }
+                    ?>
                     <div class="manager-info">
                         <div class="manager-name">
                             
@@ -179,14 +214,29 @@ if (isset($_SESSION['projectsPresent'])) {
                     </div>
                 </div>
             </div>
+            </div>
+    </div>
 
 <?php
         }
+    }else{
+        ?>
+        <section class="job-detail section dashboard-section">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-8 col-md-12 col-xs-12">
+                        <div class="content-area">
+                            <h5 class="client-dashboard-center"><?php echo $msg; ?></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php
     }
 ?>
 
-        </div>
-    </div>
+       
     </div>
 <?php
 }
