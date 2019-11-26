@@ -82,14 +82,32 @@ if ($freelancerDetail) {
                         
                                         <?php 
                                          $where  = [ 'email' => $this->session->userdata('user_info') ];
-                                         $user   = $this->Users->getData($where)->row();
+                                         $user   = $this->Users->getData('DESC',$where)->row();
                                         if($user->role_id == 2)
                                         foreach($comment as $comments)
                                                     {
+                                                        if($senderData->profile_pic != ''){
+                                                            $profilePicPath = $this->data['image_path'];
+                                                           $profilePicVariable = $senderData->profile_pic;
+                                                        }
+                                                        elseif($senderData->profile_pic == ''){
+                                                            $profilePicVariable = '';
+                                                        }
                                                      ?>
                                         <div class="manager-resumes-item">
                                             <div class="manager-content">
-                                                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
+                                            <?php 
+                        if(isset($profilePicVariable) && $profilePicVariable != ''){
+                            ?>
+                            <img class="resume-thumb" src="<?php echo $profilePicPath.$profilePicVariable ?>" alt="">
+                            <?php
+                        }
+                        else{
+                            ?>                            
+                            <img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt="">
+                            <?php
+                        }
+                    ?>
                                                 <div class="manager-info">
                                                     <div class="manager-name">
                                                         <h4><a href="#"><?php echo $senderData->name ?></a></h4>

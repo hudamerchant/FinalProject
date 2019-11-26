@@ -13,7 +13,7 @@ class ClientProfile extends MY_Controller
         if ($this->session->userdata('logged_in')) {
             $where  = ['email' => $this->session->userdata('user_info')];
             $user   = $this->Users->getData('DESC',$where)->row();
-            if($user->profile_pic != ''){
+             if($user->profile_pic != ''){
                 $this->data['profile_pic'] = $this->data['image_path'].$user->profile_pic;
             }
             if ($user->role_id == 2) {
@@ -46,10 +46,10 @@ class ClientProfile extends MY_Controller
                             'user_id' => $senderId,
                             
                         ];
-                        $sendersData = $this->Users->getData($whereSenderId)->result();
-                        // var_dump($sendersData);die;
+                        $sendersData = $this->Users->getData('DESC',$whereSenderId)->result();
+                         //var_dump($sendersData);die;
                         foreach ($sendersData as $senderData) {
-                            $data['senderData'] = $senderData;
+                            $this->data['senderData'] = $senderData;
                            // var_dump($senderData);die;
                         }
                     }
@@ -57,12 +57,11 @@ class ClientProfile extends MY_Controller
                     //var_dump($arr);die;
     
                     
-                    $data['comments'] = $arr;
+                    $this->data['comments'] = $arr;
     
                     //Client info
-                    $data['client_info'] = $user;
-            
-
+                    $this->data['client_info'] = $user;
+ 
                         if(isset($_POST['file_submit'])){
                             // $this->form_validation->set_rules('userfile', 'image', 'required');
                             // //if($this->form_validation->run() == True) {

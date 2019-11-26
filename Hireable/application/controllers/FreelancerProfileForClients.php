@@ -62,10 +62,10 @@
                                 'user_id' => $senderId,
                                 
                             ];
-                            $sendersData = $this->Users->getData($whereSenderId)->result();
-                            //var_dump($sendersData);die;
+                            $sendersData = $this->Users->getData('DESC',$whereSenderId)->result();
+                            // var_dump($sendersData);die;
                             foreach ($sendersData as $senderData) {
-                                $data['senderData'] = $senderData;
+                                $this->data['senderData'] = $senderData;
                                 // var_dump($senderData);
                             }
                         }

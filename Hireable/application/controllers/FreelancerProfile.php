@@ -15,7 +15,7 @@
                     // var_dump($user->profile_pic);die;
                     $this->data['profile_pic'] = $this->data['image_path'].$user->profile_pic;
                 }
-                // var_dump($data['profile_pic']);die;
+                // var_dump($this->data['profile_pic']);die;
                 if($user->role_id == 1)
                 {   
                     if(!$user->updated_profile)

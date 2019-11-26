@@ -9,7 +9,7 @@
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                
                 if($user->role_id == 1)
                 {
@@ -20,12 +20,12 @@
                     }
                     else
                     {
-                        $data['view'] = 'AddReview';
-                        $data['site_title'] = 'Hireable';
-                        $data['page_title'] = 'AddFreelancerReview -'.$data['site_title']; 
+                        $this->data['view'] = 'AddReview';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'AddFreelancerReview -'.$this->data['site_title']; 
                    
                         //Client info
-                        $data['freelancer_info'] = $user;
+                        $this->data['freelancer_info'] = $user;
                         $this->load->model('Comment');
 
                         if(isset($_POST['submit']))
@@ -51,23 +51,23 @@
                         
                        
                         else {
-                            $this->load->view('layout', $data);
+                            $this->load->view('layout', $this->data);
                         }
                     }
 
 
-                        return $this->load->view('layout',$data);
+                        return $this->load->view('layout',$this->data);
                     }
                    
                 }
                 elseif($user->role_id == 2)
                 {
-                    $data['view'] = 'AddReview';
-                    $data['site_title'] = 'Hireable';
-                    $data['page_title'] = 'AddReview -'.$data['site_title']; 
+                    $this->data['view'] = 'AddReview';
+                    $this->data['site_title'] = 'Hireable';
+                    $this->data['page_title'] = 'AddReview -'.$this->data['site_title']; 
 
                     //Client info
-                    $data['client_info'] = $user;
+                    $this->data['client_info'] = $user;
                     $this->load->model('CommentsClient');
 
                     if(isset($_POST['submit']))
@@ -98,7 +98,7 @@
                 }
 
 
-                    return $this->load->view('layout',$data);
+                    return $this->load->view('layout',$this->data);
                 }
                 }
                  

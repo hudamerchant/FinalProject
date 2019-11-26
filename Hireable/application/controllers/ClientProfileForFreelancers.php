@@ -57,13 +57,14 @@
                                 'user_id' => $senderId,
                                 
                             ];
-                            $sendersData = $this->Users->getData($whereSenderId)->result();
+                            $sendersData = $this->Users->getData('ASC',$whereSenderId)->result();
                             // var_dump($sendersData);die;
-                            foreach ($sendersData as $senderData) {
-                                $data['senderData'] = $senderData;
+                            // foreach ($sendersData as $senderData) {
+                                $this->data['sendersData'] = $sendersData;
                                 // var_dump($senderData);
-                            }
+                            // }
                         }
+                        var_dump($arr);die;
                         $this->data['comment'] = $arr;
         
                         $this->data['client_info'] = $user;
