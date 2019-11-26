@@ -9,6 +9,7 @@
         }
         public function index($project_id = false)
         {
+
             $this->data['view']       = 'EditProject';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'Edit Project - '.$this->data['site_title'];
@@ -30,6 +31,7 @@
                         $this->data['categories'] = $categories;
 
                         if ($project_id) {
+                            $this->data['project_data']['project_id'] = $project_id;
                             $this->load->model('Projects');
                             // $whereProjectId = [
                             //     'project_id' => $project_id
@@ -86,7 +88,6 @@
                                     $categoriesInput = $this->input->post('categories');
                                     
                                     $this->load->model('Projects');
-        
                                     $projectData = [
                                         'project_id'        => $project_id,
                                         'project_title'     => $project_title,
@@ -187,5 +188,14 @@
                 return redirect(site_url('Login'));
             }
                         
+        }
+        public function deleteProject($project_id = false) {
+            
+            $msg = [
+                'msg'   => 'hi',
+                'data'  => $_POST['project-id']
+            ];
+
+            echo json_encode($msg);
         }
     }

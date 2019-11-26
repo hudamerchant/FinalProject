@@ -3,16 +3,26 @@ $(document).ready(function() {
     
     $('.edit-project-category').select2();
     $('.edit-project-category').on('select2:unselect',function(){
-        console.log('testing')
+        formData = {
+            'project_id' : $(".user_id").val()
+        };
+
+
+        $.ajax({
+            url         : SITE_URL+"/EditProject/deleteProject" ,
+            type        : "POST" ,
+            data        : formData ,
+            dataType    : "JSON",
+            cache       : false ,
+            success : function(response){
+                console.log(response);
+            }
+
+        })
     });
     
     $('.custom-file-input').on('change',function(){
         
         console.log('testing')
     });
-    // $(document).on('click', '#hide' , function () {
-    //     $( ".project" ).hide(3000);
-    //   }); 
-
-
 });
