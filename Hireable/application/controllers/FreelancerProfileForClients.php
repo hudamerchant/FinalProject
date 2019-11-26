@@ -9,7 +9,7 @@
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData('DESC',$where)->row();
+                $user   = $this->Users->getData($where)->row();
                 if($user->role_id == 1){
 
                     redirect(site_url('Client'));
@@ -49,7 +49,7 @@
                         $whereFreelancerID = [
                             'receiver_id' => $freelancer_user_id
                         ];
-                        $reviews = $this->CommentsClient->getData('DESC',$whereFreelancerID)->result();
+                        $reviews = $this->CommentsClient->getData($whereFreelancerID)->result();
                         
                         $arr = [];
                         foreach ($reviews as $review) {
