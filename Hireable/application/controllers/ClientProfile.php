@@ -32,7 +32,7 @@ class ClientProfile extends MY_Controller
                     ];
     
                     //loading database table freelancer_rating
-                    $this->load->model('CommentsClient');//comment
+                    $this->load->model('Comment');//comment
                     $reviews = $this->CommentsClient->getData('DESC',$whereUserId)->result();
                     //  var_dump($reviews);die;
                     $arr = [];
