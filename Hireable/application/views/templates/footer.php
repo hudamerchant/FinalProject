@@ -16,16 +16,16 @@
           <div class="widget">
             <h3 class="block-title">Quick Links</h3>
             <ul class="menu">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Support</a></li>
-              <li><a href="#">License</a></li>
-              <li><a href="#">Contact</a></li>
+              <li><a href="<?php echo site_url('About_us/index/')?>">About Us</a></li>
+              <li><a href="#job">Post A Job</a></li>
+              <li><a href="#home">Search Skills</a></li>
+              <li><a href="#support">How It Works?</a></li>
             </ul>
             <ul class="menu">
-              <li><a href="#">Terms & Conditions</a></li>
-              <li><a href="#">Privacy</a></li>
-              <li><a href="#">Refferal Terms</a></li>
-              <li><a href="#">Product License</a></li>
+            <li><a href="<?php echo site_url('Login/index/')?>">Login</a></li>
+              <li><a href="#supports">Support</a></li>
+              <li><a href="<?php echo site_url('signup/index/')?>">Join Now</a></li>
+              <li><a href="#category">Categories</a></li>
             </ul>
           </div>
         </div>

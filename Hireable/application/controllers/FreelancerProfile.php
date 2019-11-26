@@ -28,15 +28,6 @@
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'Profile -'.$this->data['site_title']; 
 
-                        // $this->load->model('skill');
-                        // $skills = $this->Comment->getData()->result();
-
-                        // $skill1 = [];
-                        
-
-                        //Freelancer info
-                        // $this->data['freelancer_info'] = $user;
-
                         $this->load->model('CommentsClient');
                         $whereUserId = [
                             'receiver_id' => $user->user_id
@@ -85,66 +76,7 @@
                         // }
 
 
-                        // if(isset($_POST['submit']))
-                        
-                        // {
-                        //     $this->form_validation->set_rules('review', 'Review', 'required');
-                        //     if($this->form_validation->run() == True)
-                        //     {
-                        //         $review = $this->input->post('review');
-                        //         // var_dump($review);die;
-                            
-                        //         $reviewData = [
-                        //             'review' => $review,
-                        //             'user_id' => $user->user_id
-                        //         ];
-        
-                        //     //var_dump($reviewData);die;
-        
-                        //         $this->Comment->insertRecord($reviewData);
-                        //         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-
-                            
-                        //     }
-                        
-                        //     else {
-                        //         return $this->load->view('layout', $this->data);
-                        //     }
-                        // }
-                        // // // if(isset($_POST['submit']))
-                        
-                        // // // {
-                        // // //     $this->form_validation->set_rules('review', 'Review', 'required');
-                        // // //     if($this->form_validation->run() == True)
-                        // // //     {
-                        // // //         $review = $this->input->post('review');
-                        // // //         // var_dump($review);die;
-                            
-                        // // //         $reviewData = [
-                        // // //             'review' => $review,
-                        // // //             'user_id' => $user->user_id
-                        // // //         ];
-        
-                        // // //     //var_dump($reviewData);die;
-        
-                        // // //         $this->Comment->insertRecord($reviewData);
-                        // // //         $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-
-                            
-                        // // //     }
-
-                    
-                        
-                        // // //     else {
-                        // //         return $this->load->view('layout', $this->data);
-                        // //     }
-                        // // }
-                        // else
-                        // {
-                        //    return $this->load->view('layout',$this->data);
-
-                        // }
-
+                       
                         if(isset($_POST['file_submit'])){
                             // $this->form_validation->set_rules('userfile', 'image', 'required');
                             // if($this->form_validation->run() == True) {

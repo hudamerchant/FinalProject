@@ -44,7 +44,8 @@
         
         
                         $this->data['comment'] = $arr;
-                        var_dump($this->data['comment'] = $arr);die;
+
+                        var_dump($this->data['comment'] = $arr);
                         if(isset($_POST['submit']))
                         
                         {

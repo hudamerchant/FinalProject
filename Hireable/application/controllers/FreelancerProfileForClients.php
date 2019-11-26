@@ -44,6 +44,7 @@
                             
                             $this->data['freelancerDetail'] = $freelancerDetail;
                         }
+                        // var_dump($freelancerDetail);
                         $this->load->model('CommentsClient');
                         $whereFreelancerID = [
                             'receiver_id' => $freelancer_user_id
@@ -54,6 +55,19 @@
                         foreach ($reviews as $review) {
                             
                             $arr[] = $review->review;
+
+                            $senderId = $review->user_id ;
+
+                            $whereSenderId = [
+                                'user_id' => $senderId,
+                                
+                            ];
+                            $sendersData = $this->Users->getData($whereSenderId)->result();
+                            //var_dump($sendersData);die;
+                            foreach ($sendersData as $senderData) {
+                                $data['senderData'] = $senderData;
+                                // var_dump($senderData);
+                            }
                         }
                         $this->data['comment'] = $arr;
         

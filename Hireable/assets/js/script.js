@@ -7,6 +7,16 @@ $(document).ready(function() {
             'project_id' : $(".user_id").val()
         };
 
+    $(function () {
+ 
+        $("#rateYo").rateYo({
+       
+          onSet: function (rating, rateYoInstance) {
+       
+           $(".rating").val(rating);
+          }
+        });
+      });
 
         $.ajax({
             url         : SITE_URL+"/EditProject/deleteProject" ,

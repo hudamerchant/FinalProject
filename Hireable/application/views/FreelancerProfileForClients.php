@@ -72,14 +72,19 @@ if ($freelancerDetail) {
                             <div class="item-body">            
                                 <div class="resume-skills project-details-resume-skills profile-view-resume-skills client-profile-manager-content">
                                     <div class="resume-exp float-right">
-                                        <a href="<?php echo site_url('AddFreelancerReview/index/'.$freelancerDetail['user_id'])?>"   class="btn btn-common btn-xs "  >Add Review</a>
+                                        <a href="<?php echo site_url('AddReview/index/'.$freelancerDetail['user_id'])?>"   class="btn btn-common btn-xs "  >Add Review</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         </div>
+
                         
-                                        <?php foreach($comment as $comments)
+                                        <?php 
+                                         $where  = [ 'email' => $this->session->userdata('user_info') ];
+                                         $user   = $this->Users->getData($where)->row();
+                                        if($user->role_id == 2)
+                                        foreach($comment as $comments)
                                                     {
                                                      ?>
                                         <div class="manager-resumes-item">
@@ -87,8 +92,8 @@ if ($freelancerDetail) {
                                                 <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
                                                 <div class="manager-info">
                                                     <div class="manager-name">
-                                                        <h4><a href="#">Client</a></h4>
-                                                        <h5>client@example.com</h5>
+                                                        <h4><a href="#"><?php echo $senderData->name ?></a></h4>
+                                                        <h5><?php echo $senderData->email ?></h5>
                                                     </div>
                                                 </div>
                                             </div>

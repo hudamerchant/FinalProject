@@ -66,7 +66,7 @@ if ($clientDetail) {
                             <div class="item-body">            
                                 <div class="resume-skills project-details-resume-skills profile-view-resume-skills client-profile-manager-content">
                                     <div class="resume-exp float-right">
-                                        <a href="<?php echo site_url('AddFreelancerReview/index/'.$clientDetail['user_id'])?>"   class="btn btn-common btn-xs "  >Add Review</a>
+                                        <a href="<?php echo site_url('AddReview/index/'.$clientDetail['user_id'])?>"   class="btn btn-common btn-xs "  >Add Review</a>
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +86,8 @@ if ($clientDetail) {
                                                 <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
                                                 <div class="manager-info">
                                                     <div class="manager-name">
-                                                        <h4><a href="#"><?php echo $clientDetail['name'] ?></a></h4>
-                                                        <h5><?php echo $clientDetail['email'] ?></h5>
+                                                        <h4><a href="#"><?php echo $senderData->name ?></a></h4>
+                                                        <h5><?php echo $senderData->email ?></h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -95,6 +95,7 @@ if ($clientDetail) {
                                                 <div class="content">
                                                     <b>Review</b>
                                                     
+                                                    <P><?php echo $comments?>
                                                     <P><?php echo $comments?>
                                                     
                                                 </p>

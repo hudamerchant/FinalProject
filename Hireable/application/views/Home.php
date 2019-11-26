@@ -28,13 +28,13 @@
 <!-- Header Section End -->
 
 <!-- How It Work Section Start -->
-<section class="how-it-works section">
+<section id="support" class="how-it-works section">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title"> Need work done?</h2>
     </div>
     <div class="row">
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      <div  id="job" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
         <div class="work-process">
           <span class="process-icon">
             <i class="lni-user"></i>
@@ -66,7 +66,7 @@
 </section>
 <!-- How It Work Section End -->
 <!-- Category Section Start -->
-<section class="category section bg-gray">
+<section id="category" class="category section bg-gray">
   <div class="container">
     <div class="section-header">
       <h2 class="section-title">What's great about it?</h2>
@@ -87,7 +87,7 @@
         <h3>View bids</h3>
         <p>Receive free bids from our talented freelancers within seconds.</p>
       </div>
-      <div class="col-lg-4 col-md-6 col-xs-12 f-category border-right-0 border-bottom-0">
+      <div   id="supports" class="col-lg-4 col-md-6 col-xs-12 f-category border-right-0 border-bottom-0">
         <div class="icon bg-color-3">
           <i class="lni-book"></i>
         </div>
