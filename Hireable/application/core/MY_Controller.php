@@ -130,8 +130,6 @@ class MY_Controller extends CI_Controller
     }
 
     function sendMail(string $sender_email , string $receiver_email){
-        var_dump($sender_email);
-        var_dump($receiver_email);die;
         $this->load->model('Users');
         $whereReciever = [
             'email' => $receiver_email
@@ -145,8 +143,8 @@ class MY_Controller extends CI_Controller
         $mail->SMTPAuth     = $this->config->item('smtp_auth');
         $mail->Username     = $this->config->item('smtp_user');
         $mail->Password     = $this->config->item('smtp_pass');
-        $mail->SMTPSecure   = $this->config->item('smtp_host');
-        $mail->Port         = $this->config->item('smtp_crypto');
+        $mail->SMTPSecure   = $this->config->item('smtp_crypto');
+        $mail->Port         = $this->config->item('smtp_port');
 
         $mail->setFrom($sender_email);
 
@@ -158,7 +156,8 @@ class MY_Controller extends CI_Controller
         $mail->isHTML(true);
 
         // Email body content
-        $mailContent = $this->load->view('email');
+        $mailContent = $this->load->view('email','', true);
+       
         $mail->Body = $mailContent;
         // Send email
         if(!$mail->send()){
