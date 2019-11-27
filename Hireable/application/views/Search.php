@@ -201,7 +201,7 @@ if (isset($_SESSION['projectsPresent'])) {
                             <h4><a href="#"><?php echo $freelancer->name ?></a></h4>
                             <h5><?php echo $freelancer->email ?></h5>
                             <div class="rating-star">
-                                <div id="rateYo-<?php echo $freelancer->user_id ?>" data-rating="<?php echo $ratings[$freelancer->user_id]['avg(rating)'] ?>" class="fetch-rating"> 
+                                <div id="rateYoReadOnly-<?php echo $freelancer->user_id ?>" data-rating="<?php echo isset($ratings[$freelancer->user_id]['avg(rating)'] ) ? $ratings[$freelancer->user_id]['avg(rating)'] : 0 ;  ?>" class="fetch-rating"> 
                                 </div>
                             </div>
                         </div>

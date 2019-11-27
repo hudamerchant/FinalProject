@@ -77,6 +77,10 @@ if (isset($_SESSION['profilePicUploaded'])) {
                         <div class="author-info d-inline-block ml-3">
                             <h3><b><?php echo $freelancer_info->name ?></b></h3>
                             <p class="sub-title"><?php echo $freelancer_info->email ?></p>
+                            <div class="rating-star">
+                                <div id="rateYoReadOnly-<?php echo $freelancer_info->user_id ?>" data-rating="<?php echo isset($ratings[$freelancer_info->user_id]['avg(rating)'] ) ? $ratings[$freelancer_info->user_id]['avg(rating)'] : 0 ;  ?>" class="fetch-rating"> 
+                                </div>
+                            </div>
                             
                             <div class="social-link">
                                 <a href="#" class="Twitter"><i class="lni-twitter-filled"></i></a>
@@ -124,6 +128,7 @@ if (isset($_SESSION['profilePicUploaded'])) {
                                         <div class="manager-name">
                                             <h4><a href="#"><?php echo $reviewResult->name ?></a></h4>
                                             <h5><?php echo $reviewResult->email ?></h5>
+                                            
                                         </div>
                                         <div class="manager-meta view-bids-button">
                                             <span><a href="<?php echo site_url('ClientProfileForFreelancers/index/'.$reviewResult->user_id) ?>" class="btn btn-common view-bids-anchor">View Profile</a></span>

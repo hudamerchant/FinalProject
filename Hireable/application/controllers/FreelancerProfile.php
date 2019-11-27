@@ -61,6 +61,18 @@
                         $reviewResults = $this->Reviews_Model->multiple_joins($fetchingProjects,$whereUserId,$selectArray, 'DESC','reviews.updated_at')->result();
                         // var_dump($reviewResults);die;
                         $this->data['reviewResults'] = $reviewResults;
+                        $avg_rating = [];
+
+                        foreach($reviewResults as $reviewResult){
+                            $userID = $reviewResult->receiver_id;
+                            $where  = ['receiver_id'=>$userID];
+                            $select = 'avg(rating)';
+                            
+                            $Ratings = $this->Reviews_Model->retrieve_ratings('DESC',$select,$where);
+                            $avg_rating[$userID] = $Ratings ;
+                            // var_dump($avg_rating);die;
+                        }
+                        $this->data['ratings'] = $avg_rating;
 
                        
                         if(isset($_POST['file_submit'])){

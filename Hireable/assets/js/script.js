@@ -85,7 +85,9 @@ $(document).ready(function() {
       shading  = $(this).attr('data-rating');
       console.log(identity);
       $('#'+identity).rateYo({
-          rating : shading
+          rating : shading,
+          readOnly: true,
+          starWidth: "25px"
       })
     })
     $(function () {
@@ -98,6 +100,16 @@ $(document).ready(function() {
           }
         });
       });
+    // $(function () {
+ 
+    //     $("#rateYoReadOnly").rateYo({
+       
+    //       onSet: function (rating, rateYoInstance) {
+       
+    //        $(".rating").val(rating);
+    //       }
+    //     });
+    //   });
 
 
 });

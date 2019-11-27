@@ -9,7 +9,7 @@
             $this->load->model('Users');
             if($this->session->userdata('logged_in')){
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData($where)->row();
+                $user   = $this->Users->getData('DESC',$where)->row();
                 if($user->role_id == 1){
 
                     redirect(site_url('Client'));
@@ -41,6 +41,7 @@
 
                         foreach($freelancerDetails as $freelancerDetail){                            
                             $this->data['freelancerDetail'] = $freelancerDetail;
+                            // var_dump($freelancerDetail);die;
                         }
 
                         //loading freelancer categories
@@ -50,7 +51,7 @@
                             'freelancer_category.user_id' => $freelancer_user_id
                         ];
                         $selectArray = [
-                            'categories.category' 
+                            'categories'.'.category' 
                                 ];
                         $results = $this->FCategories->multiple_joins($fetchingFreelancerCategories,$whereFreelancerID,$selectArray)->result();                        
                         $this->data['results'] = $results;
@@ -74,6 +75,18 @@
                         $reviewResults = $this->Reviews_Model->multiple_joins($fetchingProjects,$whereFreelancerID,$selectArray, 'DESC','reviews.updated_at')->result();
                         // var_dump($reviewResults);die;
                         $this->data['reviewResults'] = $reviewResults;
+                        $avg_rating = [];
+
+                        foreach($reviewResults as $reviewResult){
+                            $userID = $reviewResult->receiver_id;
+                            $where  = ['receiver_id'=>$userID];
+                            $select = 'avg(rating)';
+                            
+                            $Ratings = $this->Reviews_Model->retrieve_ratings('DESC',$select,$where);
+                            $avg_rating[$userID] = $Ratings ;
+                            // var_dump($avg_rating);die;
+                        }
+                        $this->data['ratings'] = $avg_rating;
 
                     }    
                     $this->load->view('layout',$this->data);

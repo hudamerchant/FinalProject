@@ -18,10 +18,11 @@
                         <div class="form-group">
                             <label class="control-label pt-3"><h6>Please add your reviews here</h6></label>                            
                             <textarea class="form-control" rows="5" name="review"></textarea>
+                            <?php echo form_error('review') ?>
                         </div>
                         <div id="rateYo"></div>
                         <input type ="hidden" name="stars" class="rating">
-                        <div class="form-group">
+                        <div class="form-group mt-3">
                             <div class="button-group">
                                 <div class="action-buttons">
                                 <!-- <div class="action-buttons"> -->
