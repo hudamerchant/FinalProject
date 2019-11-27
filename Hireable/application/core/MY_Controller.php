@@ -129,7 +129,7 @@ class MY_Controller extends CI_Controller
         }
     }
 
-    function sendMail(string $sender_email , string $receiver_email){
+    function sendMail(string $receiver_email , string $sender_email = '' ){
         $this->load->model('Users');
         $whereReciever = [
             'email' => $receiver_email
