@@ -23,6 +23,7 @@ if ($clientDetail) {
                             <li><span class="profile-li-span">Date Of Birth:</span><?php echo $clientDetail['dob'] ?></li>
                             <li><span class="profile-li-span">Gender:</span><?php echo $clientDetail['gender'] ?></li>
                             <li><span class="profile-li-span">Email:</span><?php echo $clientDetail['email'] ?></li>
+                            <li><span class="profile-li-span">Organization Description:</span><br><?php echo isset($orgDescription) ? $orgDescription : 'None' ?></li>
                         </ul>
                     </div>
                 </div>

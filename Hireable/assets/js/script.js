@@ -1,9 +1,4 @@
 $(document).ready(function() {
-    // $( function() {
-    //     $( "#datepicker" ).datepicker({
-    //         maxDate: new Date
-    //     });
-    // });
     $('.js-example-basic-multiple').select2();
     
     $('.edit-project-category').select2();

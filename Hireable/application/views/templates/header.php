@@ -99,7 +99,7 @@ include_once('head.php');
           if (isset($_SESSION['ClientRole'])) {
             ?>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('/AddProject'); ?>">
+              <a class="nav-link header-anchor">
                   Hi, Client
                 </a>
               </li>
@@ -108,7 +108,7 @@ include_once('head.php');
           if (isset($_SESSION['freelancerRole'])) {
             ?>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('/AddProject'); ?>">
+                <a class="nav-link header-anchor">
                   Hi, Freelancer
                 </a>
               </li>

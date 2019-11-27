@@ -38,6 +38,16 @@
                             $this->data['clientDetail'] = $clientDetail;
                         }
 
+                        $this->load->model('CProfile');
+                        $whereClientId       =   [  
+                            'user_id'         => $client_user_id
+                        ];
+                        $gettingClientProfileData = $this->CProfile->getData('DESC',$whereClientId)->row();
+                        if($gettingClientProfileData != null){
+                            $this->data['orgDescription'] = $gettingClientProfileData->org_description;
+                            // var_dump($this->data['orgDescription']);die;
+                        }
+
                         //loading Reviews
                         $this->load->model('Reviews_Model');
                         $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'reviews.sender_id = users.user_id']; 

@@ -218,3 +218,10 @@ input.chatbox-form-control {
 .chatbox-li{
     width: 100%;
 } 
+.navbar-expand-lg .navbar-nav .header-anchor {
+    font-size: 17px;
+    font-weight: bold;
+}
+.navbar-expand-lg .navbar-nav li .header-anchor:hover{
+    color: black !important;
+}

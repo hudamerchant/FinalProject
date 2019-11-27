@@ -82,12 +82,12 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
                 <div class="col-lg-8 col-md-12 col-xs-12">
                     <div class="content-area">
                         <h5 class="client-dashboard-center">No bids yet</h5>
-                        <p class="client-dashboard-center">Go back to your dashboard</p>
+                        <p class="client-dashboard-center">Search Projects</p>
                         <div class="form-group">
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div class="client-dashboard-center">
-                                        <a href="<?php echo site_url('Freelancer'); ?>"><button class="btn btn-common " type="submit" name="submit" value="">Dashboard</button></a>
+                                        <a href="<?php echo site_url('Search'); ?>"><button class="btn btn-common " type="submit" name="submit" value="">Search</button></a>
                                     </div>
                                 </div>
                             </div>

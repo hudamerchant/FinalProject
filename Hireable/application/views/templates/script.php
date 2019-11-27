@@ -13,5 +13,4 @@
     <script src= "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/script.js?t="<?php echo time() ?>></script>
     <script src="<?php echo base_url(); ?>assets/js/my-js.js"></script>
-    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    

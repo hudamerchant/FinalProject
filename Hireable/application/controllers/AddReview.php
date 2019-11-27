@@ -37,7 +37,7 @@
 
                             $this->Reviews_Model->insertRecord($reviewData);
                             $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-                            // redirect(site_url('Client')); 
+                            redirect(site_url('Client')); 
                         }
                         else {
                             $this->load->view('layout', $this->data);
