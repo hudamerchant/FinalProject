@@ -113,4 +113,12 @@ class MY_Model extends CI_Model
         }
         return $this->db->get()->row_array();
     }
+    // public function offset_retrieving($offset= 0 ,$limit = 100000000000)
+    // {
+    //     $arr = ['client_id' => 5, 'frrlancer_id' => 6];
+    //     return $this->db->where($arr)->limit($limit,$offset)->get('chats')->result();
+    // }
+    // public function inserting($data){
+    //     $this->db->insert('chats',$data);
+    // }
 } 

@@ -2,6 +2,10 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor\autoload.php';
+
 class MY_Controller extends CI_Controller
 {
     // protected $data;
@@ -122,6 +126,46 @@ class MY_Controller extends CI_Controller
             $response = ['response' => $this->upload->data()];
             return $response;   
 
+        }
+    }
+
+    function sendMail(string $sender_email , string $receiver_email){
+        var_dump($sender_email);
+        var_dump($receiver_email);die;
+        $this->load->model('Users');
+        $whereReciever = [
+            'email' => $receiver_email
+        ];
+        $receiver_info = $this->Users->getData( 'ASC' , $whereReciever)->row();
+        $name = $receiver_info->name;
+        $mail = new PHPMailer(true);
+        
+        $mail->isSMTP();
+        $mail->Host         = $this->config->item('smtp_host');
+        $mail->SMTPAuth     = $this->config->item('smtp_auth');
+        $mail->Username     = $this->config->item('smtp_user');
+        $mail->Password     = $this->config->item('smtp_pass');
+        $mail->SMTPSecure   = $this->config->item('smtp_host');
+        $mail->Port         = $this->config->item('smtp_crypto');
+
+        $mail->setFrom($sender_email);
+
+        $mail->addAddress($receiver_email);
+
+        $mail->Subject = 'Hey '.$name.', I want to hire you for my project.';
+
+        // Set email format to HTML
+        $mail->isHTML(true);
+
+        // Email body content
+        $mailContent = $this->load->view('email');
+        $mail->Body = $mailContent;
+        // Send email
+        if(!$mail->send()){
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        }else{
+            echo 'Message has been sent';
         }
     }
 }

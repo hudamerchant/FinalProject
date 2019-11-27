@@ -39,39 +39,39 @@
                                 
                             }
                             
-                                if($project_apply_id){
-                                    
-                                    $this->data['project_apply_id'] = $project_apply_id;
-                                    $this->load->model('ProjectBid');
-                                    $whereBid = [
-                                        'project_id' => $project_apply_id
-                                    ];
-                                    $project_bids = $this->ProjectBid->getData('DESC' ,$whereBid)->result();
-    
-                                    if($project_bids){
-                                        $this->session->set_flashdata("projectsBidsPresent",true);
-                                        foreach ($project_bids as $project_bid) {
-                                            $this->data['data_project_bids'][$count]['bid_user_id']= $project_bid->user_id;
-                                            $this->data['data_project_bids'][$count]['bid_project_id']= $project_bid->project_id;
-                                            
-                                            //var_dump($this->data['project_bids']);
-                                            $whereUserId = [
-                                                'user_id' => $project_bid->user_id
-                                            ];
-                                            $userData = $this->Users->getData('DESC' ,$whereUserId)->row();
-                                            // var_dump($userData->name);
-                                            $this->data['data_project_bids'][$count]['bid_username']      = $userData->name;
-                                            $this->data['data_project_bids'][$count]['bid_email']      = $userData->email;
-                                            if($userData->profile_pic != ''){
-                                                $this->data['data_project_bids'][$count]['profile_pic'] = $this->data['image_path'].$userData->profile_pic;
-                                            }
-                                            $count++;                                        
+                            if($project_apply_id){
+                                
+                                $this->data['project_apply_id'] = $project_apply_id;
+                                $this->load->model('ProjectBid');
+                                $whereBid = [
+                                    'project_id' => $project_apply_id
+                                ];
+                                $project_bids = $this->ProjectBid->getData('DESC' ,$whereBid)->result();
+
+                                if($project_bids){
+                                    $this->session->set_flashdata("projectsBidsPresent",true);
+                                    foreach ($project_bids as $project_bid) {
+                                        $this->data['data_project_bids'][$count]['bid_user_id']= $project_bid->user_id;
+                                        $this->data['data_project_bids'][$count]['bid_project_id']= $project_bid->project_id;
+                                        
+                                        //var_dump($this->data['project_bids']);
+                                        $whereUserId = [
+                                            'user_id' => $project_bid->user_id
+                                        ];
+                                        $userData = $this->Users->getData('DESC' ,$whereUserId)->row();
+                                        // var_dump($userData->name);
+                                        $this->data['data_project_bids'][$count]['bid_username']      = $userData->name;
+                                        $this->data['data_project_bids'][$count]['bid_email']      = $userData->email;
+                                        if($userData->profile_pic != ''){
+                                            $this->data['data_project_bids'][$count]['profile_pic'] = $this->data['image_path'].$userData->profile_pic;
                                         }
-                                    }                              
-                                    
-                                }else{
-                                    redirect('Client');
-                                }
+                                        $count++;                                        
+                                    }
+                                }                              
+                                
+                            }else{
+                                redirect('Client');
+                            }
                         }
                         $this->load->view('layout',$this->data);                        
                     }

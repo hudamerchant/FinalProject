@@ -12,7 +12,7 @@
                 $user   = $this->Users->getData('DESC',$where)->row();
                 if($user->role_id == 1){
 
-                    redirect(site_url('Client'));
+                    redirect(site_url('Freelancer'));
                     
                 }
                 elseif($user->role_id == 2)

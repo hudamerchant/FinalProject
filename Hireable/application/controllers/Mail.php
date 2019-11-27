@@ -6,7 +6,12 @@ class Mail extends MY_Controller{
         parent::__construct();
     }
     function index(){
-        $this->load->helper('other_helper');
-        echo sendMail();
+        // $email = $this->load->view('email');
+        // return $email;
+        $sender     = 'user1@email.com';
+        $reciever   = 'huda@email.com';
+
+        $this->sendMail($sender ,$reciever );
+        
     }
 }
