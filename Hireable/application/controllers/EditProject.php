@@ -53,11 +53,12 @@
                             
                             $selectArray = [
                                 
-                                'project_category'.'.project_category_id',
-                                'projects'.'.project_title',
-                                'projects'.'.project_descript',
-                                'categories'.'.category',
-                                'categories'.'.category_id'
+                                'project_category.project_category_id',
+                                'projects.project_title',
+                                'projects.project_descript',
+                                'categories.category',
+                                'categories.category_id',
+                                'project_category.deleted_at',
                             ];
                             $results = $this->Projects->multiple_joins(
                                 $fetchingProjects,
@@ -70,9 +71,12 @@
                             foreach ($results as $result) {
                                 $this->data['project_data']['project_title'] = $result->project_title;
                                 $this->data['project_data']['project_description'] = $result->project_descript;
-                                $this->data['project_data']['categories'][$result->category_id] = $result->category;
-                                $category_ids[] = $result->category_id;
-                                $project_category_ids[] = $result->project_category_id;
+                                if($result->deleted_at != null)
+                                {
+                                    $this->data['project_data']['categories'][$result->category_id] = $result->category;
+                                }
+                                // $category_ids[] = $result->category_id;
+                                // $project_category_ids[] = $result->project_category_id;
                                 // $this->data['project_data']['categoryDetails']['project_categories'][] = $result->category;
                                 // var_dump($this->data['project_data']['categoryDetails']['category_id'][$count]);                                $count++;
                                 // var_dump($this->data['project_data']['categoryDetails']['project_categories'][$count]);
@@ -83,10 +87,9 @@
                                 $this->form_validation->set_rules('categories[]', 'skills', 'required');
 
                                 if ($this->form_validation->run() == true) {
-                                    $project_title = $this->input->post('project-title');
+                                    $project_title       = $this->input->post('project-title');
                                     $project_description = $this->input->post('project-description');
-                                    $categoriesInput = $this->input->post('categories');
-                                    
+                                    $categoriesInput     = $this->input->post('categories[]');
                                     $this->load->model('Projects');
                                     $projectData = [
                                         'project_id'        => $project_id,
@@ -99,79 +102,20 @@
                                         'project_id' => $project_id
                                     ];
                                     $this->Projects->updateData($projectData, $whereProjectId);
+                                
                                     $this->load->model('ProjectCategories');
-                                    //if user deletes the categories
-                                    if (count($category_ids) > count($categoriesInput)) //decrease
-                                    {
-                                        $delete_categories_id = array_diff($category_ids, $categoriesInput);
-                                        foreach ($delete_categories_id as $category_id) {
-                                            $where = [
-                                                'category_id' => $category_id,
-                                                'project_id' => $project_id
-                                            ];
-                                            $this->ProjectCategories->deleteData($where);
-                                        }
-                                        
-                                        $count = 0 ;
-                                        foreach ($categoriesInput as $category_id) {
-                                            $projectCategoryData = [
-                                                    'category_id' => $category_id,
-                                                    'project_id' => $project_id,
-                                                    'updated_at' => date("Y-m-d H:i:s")
-                                                ];
-                                            $where_project_category = [
-                                                    'project_category_id' => $project_category_ids[$count]
-                                            ];
-                                            $this->ProjectCategories->updateData($projectCategoryData, $where_project_category);
-                                            $count++;
-                                        }
+    
+                                    foreach ($categoriesInput as $categoryInput) {
+        
+                                        $projectCategoryData = [
+                                            'category_id' => $categoryInput,
+                                            'project_id' => $project_id
+                                        ];
+
+                                        $this->ProjectCategories->insertRecord($projectCategoryData);
+
                                     }
-                                    //if user add select more categories
                                     
-                                    elseif(count($categoriesInput) > count($category_ids))//increase
-                                    {
-                                        $insert_categories_id = array_diff($categoriesInput,$category_ids);
-
-                                        foreach($insert_categories_id as $category_id)
-                                        {
-                                            $insert_data = [
-                                                'category_id'   => $category_id,
-                                                'project_id'    => $project_id,
-                                                'updated_at'    => date("Y-m-d H:i:s")
-                                            ];
-                                            $this->ProjectCategories->insertRecord( $insert_data );
-                                        }
-
-                                        // $count = 0 ;
-                                        // foreach ($categoriesInput as $category_id) {
-                                        //     $projectCategoryData = [
-                                        //             'category_id' => $category_id,
-                                        //             'project_id' => $project_id,
-                                        //             'updated_at' => date("Y-m-d H:i:s")
-                                        //         ];
-                                        //     $where_project_category = [
-                                        //         'project_category_id' => $project_category_ids[$count]
-                                        //     ];
-                                        //     $this->ProjectCategories->updateData($projectCategoryData, $where_project_category);
-                                        //     $count++;
-                                        // }
-                                    }
-                                    else
-                                    {
-                                        $count = 0 ;
-                                        foreach ($categoriesInput as $category_id) {
-                                            $projectCategoryData = [
-                                                    'category_id' => $category_id,
-                                                    'project_id' => $project_id,
-                                                    'updated_at' => date("Y-m-d H:i:s")
-                                                ];
-                                            $where_project_category = [
-                                                'project_category_id' => $project_category_ids[$count]
-                                            ];
-                                            $this->ProjectCategories->updateData($projectCategoryData, $where_project_category);
-                                            $count++;
-                                        }
-                                    }
                                     return redirect(site_url('Client'));
                                 }
                             }
@@ -183,7 +127,7 @@
                             return $this->load->view('layout', $this->data);
                         }
                     } 
-                }             //
+                }             
             } else {
                 return redirect(site_url('Login'));
             }

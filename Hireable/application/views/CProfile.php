@@ -62,7 +62,7 @@
                                     <?php //echo form_error('userfile') ?>
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="userfile" id="inputGroupFile01">
+                                            <input type="file" class="custom-file-input client-image" name="userfile" id="inputGroupFile01">
                                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                         </div>
                                     </div>

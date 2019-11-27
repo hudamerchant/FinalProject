@@ -29,6 +29,14 @@
                         if ($bid_user_id && $bid_project_id) {
 
                             $this->load->model('Projects');
+                            $this->load->model('Users');
+                            
+                            $where_freelancer = [
+                                'user_id'   => $bid_user_id
+                            ];
+                            $user_info = $this->Users->getData('ASC', $where_freelancer)->row();
+                            // var_dump($user_info);die;
+
                             $where = [
                                 'project_id'    => $bid_project_id
                             ];
@@ -41,6 +49,13 @@
                             $bid_accepted = $this->Projects->updateData($status_update, $where);
                             if($bid_accepted)
                             {
+                                $reciever       = $user_info->email;
+                                $subject        = 'Project Agreement';
+                                $data['name']   = $user_info->name;
+                                $mailContent = $this->load->view('email',$data, true);
+    
+                                $this->sendMail($subject, $mailContent, $reciever);
+                                
                                 return redirect(site_url('Client/index/'.$bid_project_id));
                             }
                         }

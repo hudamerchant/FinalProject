@@ -8,7 +8,7 @@ class ClientProfile extends MY_Controller
         parent::__construct();
     }
     public function index()
-    {
+    {   
         $this->load->model('Users');
         if ($this->session->userdata('logged_in')) {
             $where  = ['email' => $this->session->userdata('user_info')];
@@ -50,32 +50,9 @@ class ClientProfile extends MY_Controller
                     
                     //Client info
                     $this->data['client_info'] = $user;
- 
-                    if(isset($_POST['file_submit'])){                            
-                        $file = $this->upload_file();
-                        // var_dump( $file);die;
-                        if(isset($file['file_name'])){
-                            
-                            $fileData = [
-                                'profile_pic' => $file['file_name'],
-                                'updated_at' => date("Y-m-d H:i:s")
-                            ];
-                            $whereUserID = [
-                                'user_id' => $user->user_id,
-                            ];
-                            $this->Users->updateData($fileData, $whereUserID );
-                            $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
-                        }  
-                        else{
-                            $this->data['file_error_key'] = $file;
-                        }                              
-                        return $this->load->view('layout',$this->data);                           
-                    }
-                    else
-                    {
-                        return $this->load->view('layout',$this->data);
+                    
+                    return $this->load->view('layout',$this->data);
 
-                    }
                 }                
             } 
             elseif($user->role_id == 2) 
@@ -88,63 +65,38 @@ class ClientProfile extends MY_Controller
             return redirect(site_url('Login'));
         }
     }
-    public function upload_file(){
+    public function upload(){
         $this->load->model('Users');
         if ($this->session->userdata('logged_in')) {
             $where  = ['email' => $this->session->userdata('user_info')];
             $user   = $this->Users->getData('DESC', $where)->row();
-            if ($user->profile_pic != '') {
-                $this->data['profile_pic'] = $this->data['image_path'].$user->profile_pic;
-            }
+        
             if ($user->role_id == 1) {
                 return redirect(site_url('Freelancer'));
             } elseif ($user->role_id == 2) {
                 if (!$user->updated_profile) {
                     return redirect(site_url('updateCProfile'));
                 } else {
-                    if(isset($_POST['file_name']))
-                    {
-                        $config['upload_path']          = 'assets/uploads/';
-                        $config['allowed_types']        = 'gif|jpg|png';
-                        $config['max_size']             = 5000;
-                        $config['max_width']            = 1024;
-                        $config['max_height']           = 768;
-                
-                        $this->load->library('upload', $config);
-                
-                        if ( ! $this->upload->do_upload($_POST['file_name']))
-                        {
-                            $response = [ 'response' => $this->upload->display_errors()];
-                        }
-                        else{
-                            $response = ['response' => $this->upload->data()];
-                        }
-                    }
-                        
-                    echo json_encode($response);
-                    // if (isset($_POST['file_submit'])) {
-                    //     $file = $this->upload_file();
-                    //     var_dump($file);
-                    //     die;
-                    //     if (isset($file['profile_pic'])) {
-                    //         $fileData = [
-                    //             'profile_pic' => $file['file_name'],
-                    //             'updated_at' => date("Y-m-d H:i:s")
-                    //         ];
-                    //         $whereUserID = [
-                    //             'user_id' => $user->user_id,
-                    //         ];
-                    //         $this->Users->updateData($fileData, $whereUserID);
-                    //         $this->session->set_flashdata("profilePicUploaded", " Your profile pic has been uploaded successfully!");
-                    //     } else {
-                    //     }
-                    
-                    //     return $this->load->view('layout', $this->data);
-                    // } else {
-                    //     return $this->load->view('layout', $this->data);
-                    // }
+                    $user_file = $_FILES['file_name']['name'];
+                    $file = $this->upload_file($user_file);
+                    if(isset($file['file_name']))
+                    {    
+                        $fileData = [
+                            'profile_pic' => $file['file_name'],
+                            'updated_at' => date("Y-m-d H:i:s")
+                        ];
+                        $whereUserID = [
+                            'user_id' => $user->user_id,
+                        ];
+                        $this->Users->updateData($fileData, $whereUserID );
+                        $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
+                    }else{
+                        $this->data['file_error_key'] = $file;
+                    }  
                 }
             }
+        
         }
+        // var_dump($_FILES);die;
     }
 }

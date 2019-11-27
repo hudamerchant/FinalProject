@@ -62,15 +62,21 @@ if (isset($_SESSION['profilePicUploaded'])) {
                                     }
                                 ?>
                                 <form enctype="multipart/form-data" method="post">
-                                    <input type="file" name="userfile">
                                     <?php //echo form_error('userfile') ?>
+                                    <div class="input-group mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input freelancer-image" name="userfile" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
                                     <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">
                                     <?php 
                                     // var_dump($file_error_key);die;
                                         if(isset($file_error_key)){
-                                            ?><div class="error text-danger"><?php echo $file_error_key; ?></div><?php
+                                            ?><p><?php echo $file_error_key; ?></p><?php
                                         }
                                     ?>
+                                    
                                 </form>
                             </div>
                         </div>

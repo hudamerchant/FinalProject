@@ -6,20 +6,26 @@ $(document).ready(function() {
     $('.edit-project-category').on('select2:unselecting',function(e){
         select_id = e.params.args.data.id;
         select_text = e.params.args.data.text;
+        
+        formData = {
+            'project_id'    : $(".user_id").val(),
+            'category_id'   : select_id
+        };
+
         // e.preventDefault();
-        console.log(e);
-        e.preventDefault();
-        swal({
-            text        : "Are you sure you want to delete this skill?",
-            buttons     : true,
-            dangerMode  : true,
-          })
-        .then((willDelete) => {
-        if (willDelete) {
-            formData = {
-                'project_id'    : $(".user_id").val(),
-                'category_id'   : select_id
-            };
+        // console.log(e);
+        // e.preventDefault();
+        // swal({
+        //     text        : "Are you sure you want to delete this skill?",
+        //     buttons     : true,
+        //     dangerMode  : true,
+        //   })
+        // .then((willDelete) => {
+        // if (willDelete) {
+        //     formData = {
+        //         'project_id'    : $(".user_id").val(),
+        //         'category_id'   : select_id
+        //     };
 
             $.ajax({
                 url         : SITE_URL+"/EditProject/deleteProject" ,
@@ -28,48 +34,67 @@ $(document).ready(function() {
                 dataType    : "JSON",
                 cache       : false ,
                 success     : function(response){
-                    if(response.msg != null)
-                    {
-                        swal(response.msg, {
-                            icon: "success",
-                            });
-                    }
+                    // if(response.msg != null)
+                    // {
+                    //     swal(response.msg, {
+                    //         icon: "success",
+                    //         });
+                    // }
                 }
     
             })
-            $(this).select2({
-                unselect:true
-                });
-        }
-        else
-        {
-            var data = {
-                "id": select_id,
-                "text": select_text
-            }; 
-        }
+        //     $(this).select2({
+        //         unselect:true
+        //         });
+        // }
+        // else
+        // {
+        //     var data = {
+        //         "id": select_id,
+        //         "text": select_text
+        //     }; 
+        // }
     });
     $(this).data('unselect', true);
         
     });
     
-    $('.custom-file-input').on('change',function(){
-        path = $('.custom-file-input').prop('files')[0];
+    $('.client-image').on('change',function(){        
+        var formData = new FormData(); 
+        formData.append('file_name', $(this).prop('files')[0]);
+        console.log(formData);
+        
+        $.ajax({
+            url         : SITE_URL+"/ClientProfile/upload",
+            type        : "POST",
+            contentType : false,
+            processData : false,  
+            data        : formData,
+            dataType    : "JSON",
+            cache       : false,
+            success     : function(response){
+                console.log(response);
+            }
+        })
 
-        console.log(path);
-        // formData = {
-        //     'file_name' : path.replace(/^.*\\/, "")
-        // }
-        // $.ajax({
-        //     url         : SITE_URL+"/ClientProfile/upload_file",
-        //     type        : "POST",
-        //     data        : formData,
-        //     dataType    : "JSON",
-        //     cache       : false,
-        //     success     : function(response){
-        //         console.log(response);
-        //     }
-        // })
+    });
+    $('.freelancer-image').on('change',function(){        
+        var formData = new FormData(); 
+        formData.append('file_name', $(this).prop('files')[0]);
+        console.log(formData);
+        
+        $.ajax({
+            url         : SITE_URL+"/FreelancerProfile/upload",
+            type        : "POST",
+            contentType : false,
+            processData : false,  
+            data        : formData,
+            dataType    : "JSON",
+            cache       : false,
+            success     : function(response){
+                console.log(response);
+            }
+        })
 
     });
     $('.fetch-rating').each(function(){
@@ -93,8 +118,7 @@ $(document).ready(function() {
         });
       });
 
-});
-$(document).ready(function(){
+
     $('.send').on('click',function(e){
        e.preventDefault();
         msg = $('input[name=message]').val();
@@ -108,8 +132,7 @@ $(document).ready(function(){
                }
            })
     });
-   });
-
+   
      console.log(SITE_URL)
     setInterval(function(){
        li_length = $('.chatbox-listing > li.chatbox-li').length;

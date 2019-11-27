@@ -108,7 +108,7 @@ class MY_Controller extends CI_Controller
             }
         }
     }
-    public function upload_file(){
+    public function upload_file($user_file){
         $config['upload_path']          = 'assets/uploads/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 5000;
@@ -117,7 +117,7 @@ class MY_Controller extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if ( ! $this->upload->do_upload('userfile'))
+        if ( ! $this->upload->do_upload($user_file))
         {
             $response = [ 'response' => $this->upload->display_errors()];
             return $response;   
@@ -129,13 +129,8 @@ class MY_Controller extends CI_Controller
         }
     }
 
-    function sendMail(string $receiver_email , string $sender_email = '' ){
-        $this->load->model('Users');
-        $whereReciever = [
-            'email' => $receiver_email
-        ];
-        $receiver_info = $this->Users->getData( 'ASC' , $whereReciever)->row();
-        $name = $receiver_info->name;
+    function sendMail($subject, $mailContent, string $receiver_email , string $sender_email = 'noreply@hireable.com' ){
+
         $mail = new PHPMailer(true);
         
         $mail->isSMTP();
@@ -150,14 +145,12 @@ class MY_Controller extends CI_Controller
 
         $mail->addAddress($receiver_email);
 
-        $mail->Subject = 'Hey '.$name.', I want to hire you for my project.';
+        $mail->Subject = $subject;
 
         // Set email format to HTML
         $mail->isHTML(true);
 
         // Email body content
-        $mailContent = $this->load->view('email','', true);
-       
         $mail->Body = $mailContent;
         // Send email
         if(!$mail->send()){

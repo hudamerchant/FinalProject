@@ -74,35 +74,8 @@
                         }
                         $this->data['ratings'] = $avg_rating;
 
-                       
-                        if(isset($_POST['file_submit'])){
-                            $file = $this->upload_file();
-                            // var_dump($file);die;
-                            if(isset($file['file_name'])){                                
-                                $fileData = [
-                                    'profile_pic' => $file['file_name'],
-                                    'updated_at' => date("Y-m-d H:i:s")
-                                ];
-                                $whereUserID = [
-                                    'user_id' => $user->user_id,
-                                    
-                                ];
-                                $this->Users->updateData($fileData, $whereUserID );
-                                
-                                $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
-                                return redirect(site_url('FreelancerProfile'));
-                            }
-                            else{
-                                // die('abcd');
-                                $this->data['file_error_key'] = $file;
-                            }                        
-                            return $this->load->view('layout',$this->data);
-                        }
-                        else
-                        {
-                            return $this->load->view('layout',$this->data);
-    
-                        }
+                        return $this->load->view('layout',$this->data);
+
                     }     
                        
                 }
@@ -116,6 +89,40 @@
             {
                 redirect(site_url('Login'));
             }         
+        }
+        public function upload(){
+            $this->load->model('Users');
+            if ($this->session->userdata('logged_in')) {
+                $where  = ['email' => $this->session->userdata('user_info')];
+                $user   = $this->Users->getData('DESC', $where)->row();
+            
+                if ($user->role_id == 2) {
+                    return redirect(site_url('Client'));
+                } elseif ($user->role_id == 1) {
+                    if (!$user->updated_profile) {
+                        return redirect(site_url('updateFProfile'));
+                    } else {
+                        $user_file = $_FILES['file_name']['name'];
+                        $file = $this->upload_file($user_file);
+                        if(isset($file['file_name']))
+                        {    
+                            $fileData = [
+                                'profile_pic' => $file['file_name'],
+                                'updated_at' => date("Y-m-d H:i:s")
+                            ];
+                            $whereUserID = [
+                                'user_id' => $user->user_id,
+                            ];
+                            $this->Users->updateData($fileData, $whereUserID );
+                            $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
+                        }else{
+                            $this->data['file_error_key'] = $file;
+                        }  
+                    }
+                }
+            
+            }
+            // var_dump($_FILES);die;
         }
     }
 
