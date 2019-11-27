@@ -11,6 +11,7 @@
 </div>
 <?php
 if (isset($_SESSION['projectsBidsPresent'])) {
+    if($data_project_bids){
 
     foreach ($data_project_bids as $project_bid) {
         ?>
@@ -21,7 +22,18 @@ if (isset($_SESSION['projectsBidsPresent'])) {
                         <div class="content-area">
                             <div class="manager-resumes-item">
                                 <div class="manager-content">
-                                    <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.jpg" alt=""></a>
+                                <?php 
+                                    if(isset($project_bid['profile_pic'])){
+                                        ?>
+                                        <img class="resume-thumb" height="64" src="<?php echo $project_bid['profile_pic'] ?>" alt="">
+                                        <?php
+                                    }
+                                    else{
+                                        ?>                            
+                                        <img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt="">
+                                        <?php
+                                    }
+                                ?>
                                     <div class="manager-info">
                                         <div class="manager-name">
                                             <h4 class="view-bids-h4"><a href="#"><?php echo $project_bid['bid_username'] ?></a></h4>
@@ -43,6 +55,7 @@ if (isset($_SESSION['projectsBidsPresent'])) {
         </section>
     <?php
         }
+    }
     } 
     else {
         ?>

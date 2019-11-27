@@ -51,12 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
                                 $results = $this->Projects->multiple_joins($fetchingProjects,$whereUserId,$selectArray , 'DESC')->result();
                                 
-                                $this->data['results'] = $results; 
-                                // $this->data['results']['profilePicPath'] = $this->data['image_path']; 
-                                    // var_dump($results);die;
+                                $this->data['results'] = $results;  
+                                // var_dump($results);die;
                         }
-                            
-                        
                         $this->load->view('layout',$this->data);
                         $this->data['page_title'] = 'Dashboard -'.$this->data['site_title'];
     

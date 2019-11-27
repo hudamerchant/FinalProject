@@ -1,12 +1,3 @@
-<div>
-    <?php
-     if(isset($_SESSION['reviewInserted'])){
-    ?>
-     <p class="alert alert-info mt-3"><?php  echo $this->session->flashdata("reviewInserted");?></p>
-    <?php
-      }
-    ?>
-    </div>
 <div class="page-header">
     <div class="container">
         <div class="row">
@@ -19,11 +10,20 @@
     </div>
 </div>
 <?php
-if (isset($_SESSION['profilePicUploaded'])) {
-    ?>
-    <p class="alert alert-info"><?php echo $this->session->flashdata("profilePicUploaded"); ?></p>
+    // if(isset($_SESSION['reviewInserted'])) 
+    // {
+?>
+        <!-- <p class="alert alert-info mt-3"><?php // echo $this->session->flashdata("reviewInserted"); ?></p> -->
 <?php
-}
+    // }
+?>
+<?php
+    if(isset($_SESSION['profilePicUploaded'])) 
+    {
+?>
+        <p class="alert alert-info"><?php echo $this->session->flashdata("profilePicUploaded"); ?></p>
+<?php
+    }
 ?>
 <div class="section">
     <div class="container">
@@ -44,20 +44,22 @@ if (isset($_SESSION['profilePicUploaded'])) {
                     <div class="author-resume">
                         <div class="col-md-3 d-inline-block client-profile-margin">
                             <div class="user-pic">
-                                <?php 
-                                    if(isset($profile_pic)){
-                                        ?>
-                                            <img src="<?php echo $profile_pic ?>" class="img-thumbnail" alt="">
-                                        <?php
-                                    }
-                                    else{
-                                        ?>
-                                            <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
-                                        <?php
+                                <?php
+                                    if(isset($profile_pic)) 
+                                    {
+                                ?>
+                                        <img src="<?php echo $profile_pic ?>" class="img-thumbnail" alt="">
+                                <?php
+                                    } 
+                                    else 
+                                    {
+                                ?>
+                                        <img src="<?php echo base_url(); ?>assets/img/dp.png" class="img-thumbnail" alt="">
+                                <?php
                                     }
                                 ?>
                                 <form enctype="multipart/form-data" method="post">
-                                    <?php echo form_error('userfile') ?>
+                                    <?php //echo form_error('userfile') ?>
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" name="userfile" id="inputGroupFile01">
@@ -65,12 +67,18 @@ if (isset($_SESSION['profilePicUploaded'])) {
                                         </div>
                                     </div>
                                     <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">
+                                    <?php 
+                                    // var_dump($file_error_key);die;
+                                        if(isset($file_error_key)){
+                                            ?><p><?php echo $file_error_key; ?></p><?php
+                                        }
+                                    ?>
                                 </form>
                             </div>
                         </div>
-
                         <div class="author-info d-inline-block ml-3">
                             <h3><b><?php echo $client_info->name ?></b></h3>
+                            <p class="sub-title"><?php echo $client_info->email ?></p>
                             <div class="social-link">
                                 <a href="#" class="Twitter"><i class="lni-twitter-filled"></i></a>
                                 <a href="#" class="facebook"><i class="lni-facebook-filled"></i></a>
@@ -80,44 +88,78 @@ if (isset($_SESSION['profilePicUploaded'])) {
                         </div>
                     </div>
 
-
-
-                    
-                    <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
-                    <?php foreach ($comments as $comment) {
-                        ?>
-                        <div class="manager-resumes-item">
-                            <div class="manager-content">
-                                <a href="resume.html"><img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt=""></a>
-                                <div class="manager-info">
-                                    <div class="manager-name">
-                                        <h4><a href="#"><?php echo $senderData->name ?></a></h4>
-                                        <h5><?php echo $senderData->email ?></h5>
+                    <h6 class="client-profile-h6"><b class="mt-5 text-dark">REVIEWS</b></h6>
+                    <?php
+                        if(!empty($reviewResults)) 
+                        {
+                            foreach($reviewResults as $reviewResult) 
+                            {
+                                if($reviewResult->profile_pic != '') 
+                                {
+                                    $profilePicPath = $this->data['image_path'];
+                                    $profilePicVariable = $reviewResult->profile_pic;
+                                } 
+                                elseif ($reviewResult->profile_pic == '') 
+                                {
+                                    $profilePicVariable = '';
+                                }
+                    ?>
+                            <div class="manager-resumes-item">
+                                <div class="manager-content">
+                                    <?php
+                                        if(isset($profilePicVariable) && $profilePicVariable != '') 
+                                        {
+                                    ?>
+                                            <img class="resume-thumb" src="<?php echo $profilePicPath . $profilePicVariable ?>" alt="">
+                                    <?php
+                                        } 
+                                        else 
+                                        {
+                                    ?>
+                                            <img class="resume-thumb" src="<?php echo base_url(); ?>assets/img/jobs/avatar-1.png" alt="">
+                                    <?php
+                                        }
+                                    ?>
+                                    <div class="manager-info">
+                                        <div class="manager-name">
+                                            <h4><a href="#"><?php echo $reviewResult->name ?></a></h4>
+                                            <h5><?php echo $reviewResult->email ?></h5>
+                                        </div>
+                                        <div class="manager-meta view-bids-button">
+                                            <span><a href="<?php echo site_url('FreelancerProfileForClients/index/'.$reviewResult->user_id) ?>" class="btn btn-common view-bids-anchor">View Profile</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="content">
+                                        <b>Review</b>
+                                        <p><?php echo $reviewResult->review ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item-body">
-                                <div class="content">
-                                    <b>Review</b>
-
-                                    <P><?php echo $comment ?>
-
-                                    </p>
-
+                    <?php 
+                            }
+                        } 
+                        else 
+                        {
+                    ?>
+                        <section class="job-detail section dashboard-section">
+                            <div class="container">
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-8 col-md-12 col-xs-12">
+                                        <div class="content-area">
+                                            <h5 class="client-dashboard-center">No Reviews yet</h5>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php } ?>
+                        </section>
+                    <?php
+                        } 
+                    ?>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-
-
-</div>
-</div>
-</div>
-</div>
 </div>
