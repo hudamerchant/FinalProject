@@ -23,13 +23,13 @@
                     
                 </ul>
                 <div class="chatarea">
-                    <form method="post">
-                            <div class="view">
-                                <div class="col-80">
-                                    <input class="form-control" name="message" class="message-text" type="text"> 
+                    <form method="post" class="chatbox-form">
+                            <div class="view chatbox-view">
+                                <div class="col-80 chatbox-column">
+                                    <input class="form-control chatbox-form-control" name="message" class="message-text" type="text"> 
                                 </div>
                                 <div class="col-20">
-                                    <input class="btn btn-danger send" type="button" name="send" value="send">
+                                    <input class="btn btn-danger send chatbox-button" type="button" name="send" value="send">
                                 </div>
                             </div>
                     </form>

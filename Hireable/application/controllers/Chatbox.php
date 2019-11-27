@@ -11,10 +11,37 @@
             $this->load->model('Userchat');
             
         }
-        function index(){
-            $data['view'] = 'Chatbox';
-            $data['site_title'] = 'Chat Assignment';
-            $data['page_title'] = 'Chat -'.$data['site_title'];
+        function index($freelancerID = true){
+            
+            $this->load->model('Users');
+            if ($this->session->userdata('logged_in')) {
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData('DESC',$where)->row();
+                if ($user->role_id == 1) 
+                {
+                    return redirect(site_url('Freelancer'));
+                } 
+                elseif ($user->role_id == 2) 
+                {
+                    if(!$user->updated_profile)
+                    {
+                        return redirect(site_url('updateCProfile'));
+                    }
+                    else
+                    {
+                        $data['view'] = 'Chatbox';
+                        $data['site_title'] = 'Chat Assignment';
+                        $data['page_title'] = 'Chat - '.$data['site_title'];
+
+                        if ($freelancerID) {
+                            // echo "Hogaya";die;
+                        }
+                    }
+
+
+                }
+            }
+
             $this->load->view('layout', $data);
         }
 

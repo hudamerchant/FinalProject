@@ -2,14 +2,6 @@ $(document).ready(function() {
     $('.js-example-basic-multiple').select2();
     
     $('.edit-project-category').select2();
-    
-
-    // --
-    // --
-    // DONT REMOVE THIS COMMENT //
-    // --
-    // --
-
 
     $('.edit-project-category').on('select2:unselecting',function(e){
         select_id = e.params.args.data.id;
@@ -100,44 +92,33 @@ $(document).ready(function() {
           }
         });
       });
-    // $(function () {
- 
-    //     $("#rateYoReadOnly").rateYo({
-       
-    //       onSet: function (rating, rateYoInstance) {
-       
-    //        $(".rating").val(rating);
-    //       }
-    //     });
-    //   });
-
 
 });
-// $(document).ready(function(){
-//     $('.send').on('click',function(e){
-//        e.preventDefault();
-//         msg = $('input[name=message]').val();
+$(document).ready(function(){
+    $('.send').on('click',function(e){
+       e.preventDefault();
+        msg = $('input[name=message]').val();
          
-//         data = {msg:msg}; 
-//            $.ajax({
-//                url:SITE_URL+"/Chatbox/insert_messages",
-//                data:data,
-//                success:function(){
-//                    $('input[name=message]').val('')
-//                }
-//            })
-//     });
-//    });
+        data = {msg:msg}; 
+           $.ajax({
+               url:SITE_URL+"/Chatbox/insert_messages",
+               data:data,
+               success:function(){
+                   $('input[name=message]').val('')
+               }
+           })
+    });
+   });
 
-//      console.log(SITE_URL)
-//     setInterval(function(){
-//        li_length = $('.chatbox-listing > li').length;
-//        data = {offset:li_length}
-//        $.ajax({
-//            url:SITE_URL+"/chatbox/get_messages",
-//            data:data,
-//            success:function(data){
-//                $('.chatbox-listing').append(data);
-//            }
-//        }) 
-//     }, 2000);
+     console.log(SITE_URL)
+    setInterval(function(){
+       li_length = $('.chatbox-listing > li.chatbox-li').length;
+       data = {offset:li_length}
+       $.ajax({
+           url:SITE_URL+"/chatbox/get_messages",
+           data:data,
+           success:function(data){
+               $('.chatbox-listing').append(data);
+           }
+       }) 
+    }, 2000);

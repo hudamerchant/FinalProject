@@ -20,7 +20,6 @@
                     else
                     {
                         $projects = $this->search($role_id);
-
                         //applied projects
                         // var_dump($projects);die;
                         $this->data['applied'] = [];
@@ -104,7 +103,7 @@
                     else
                     {
                         $freelancers = $this->search($role_id);
-                        // var_dump($freelancers);die;
+                            
                         // if($freelancers == null){
 
                         // }
@@ -117,18 +116,7 @@
                         {
                             $this->data['freelancers'] = $freelancers;
                             // $this->data['freelancers'] .= $this->data['image_path'];
-                            $avg_rating = [];
-                            foreach($freelancers as $freelancer){
-                                $whereFreelancerId = [
-                                    'receiver_id' => $freelancer->user_id
-                                ];
-                                $select = 'avg(rating)';
-                                $this->load->model('Reviews_Model');
-                                $Ratings = $this->Reviews_Model->retrieve_ratings('DESC',$select,$whereFreelancerId);
-                                $avg_rating[$freelancer->user_id] = $Ratings;
-                                // var_dump($avg_rating);
-                            }
-                            $this->data['ratings'] = $avg_rating;
+                            // var_dump($this->data['freelancers']);die;
                         }
                     }
                 }    

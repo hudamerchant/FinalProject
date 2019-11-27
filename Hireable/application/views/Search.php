@@ -167,7 +167,7 @@ if (isset($_SESSION['projectsPresent'])) {
     
     if(isset($freelancers)){
         foreach ($freelancers as $freelancer) {
-            // var_dump($freelancer->profile_pic);die;
+            // var_dump($freelancer);die;
             if($freelancer->profile_pic != ''){
                 $profilePicPath = $this->data['image_path'];
                 $profilePicVariable = $freelancer->profile_pic;
@@ -212,7 +212,7 @@ if (isset($_SESSION['projectsPresent'])) {
                         </div>
                         <div class="manager-info">
                             <div class="manager-meta search-manager-meta">
-                                <span><a class="btn btn-common view-more-bids-anchor" href="">Contact</a></span>
+                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('Chatbox/index/'.$freelancer->user_id) ?>">Contact</a></span>
                             </div>
                         </div>
                     </div>
