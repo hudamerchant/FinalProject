@@ -50,6 +50,16 @@ class ClientProfile extends MY_Controller
                     
                     //Client info
                     $this->data['client_info'] = $user;
+
+                    $this->load->model('CProfile');
+                    $whereClientId       =   [  
+                        'user_id'         => $user->user_id
+                    ];
+                    $gettingClientProfileData = $this->CProfile->getData('DESC',$whereClientId)->row();
+                    if($gettingClientProfileData != null){
+                        $this->data['orgDescription'] = $gettingClientProfileData->org_description;
+                        // var_dump($this->data['orgDescription']);die;
+                    }
                     
                     return $this->load->view('layout',$this->data);
 

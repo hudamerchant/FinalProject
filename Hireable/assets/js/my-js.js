@@ -1,5 +1,8 @@
 $(document).ready(function(){
     $( function() {
-        $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker({
+            // dateFormat: "yyyy-mm-dd",  
+            maxDate: new Date()  
+        });
     });
 });

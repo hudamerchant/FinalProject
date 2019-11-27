@@ -22,12 +22,21 @@
                 }
                 else
                 {
+                    $whereClientId       =   [  
+                        'user_id'         => $user->user_id
+                    ];
+                    $gettingClientProfileData = $this->CProfile->getData('DESC',$whereClientId)->row();
+                    if($gettingClientProfileData != null){
+                        $this->data['orgDescription'] = $gettingClientProfileData->org_description;
+                        // var_dump($this->data['orgDescription']);die;
+                    }
                     if(isset($_POST['submit']))
                     {
                         $this->form_validation->set_rules('name', 'name', 'required');
                         $this->form_validation->set_rules('dob', 'dob', 'required');
                         $this->form_validation->set_rules('gender', 'gender', 'required');
                         $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+                        
                         if($this->form_validation->run() == True) {
     
                             $name               = $this->input->post('name');
@@ -47,8 +56,22 @@
                                 $org_data       =   [   'org_description' => $org_description,
                                                         'user_id'         => $user->user_id
                                                     ];
-                                //insert organization description in profile table
-                                $this->CProfile->insertRecord($org_data);
+                                if($gettingClientProfileData == null){
+
+                                    //insert organization description in profile table
+                                    $this->CProfile->insertRecord($org_data);
+                                }
+                                else{
+                                    $org_data = [  
+                                        'user_id' => $user->user_id
+                                    ];
+                                    $updateOrganization = [
+                                        'org_description' => $org_description,
+                                        'updated_at'    => date("Y-m-d H:i:s")
+                                    ];
+                                    //update organization description in profile table
+                                    $this->CProfile->updateData($updateOrganization,$org_data);
+                                }
                             }
                             
                             $where = ['user_id' => $user->user_id];
