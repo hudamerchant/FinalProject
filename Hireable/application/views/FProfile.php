@@ -65,6 +65,12 @@ if (isset($_SESSION['profilePicUploaded'])) {
                                     <input type="file" name="userfile">
                                     <?php //echo form_error('userfile') ?>
                                     <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">
+                                    <?php 
+                                    // var_dump($file_error_key);die;
+                                        if(isset($file_error_key)){
+                                            ?><div class="error text-danger"><?php echo $file_error_key; ?></div><?php
+                                        }
+                                    ?>
                                 </form>
                             </div>
                         </div>
@@ -81,7 +87,7 @@ if (isset($_SESSION['profilePicUploaded'])) {
                         </div>
                     </div>
             
-                    <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
+                    <h6 class="client-profile-h6"><b class="mt-5 text-dark">REVIEWS</b></h6>
                     <?php
                         if(!empty($reviewResults)) 
                         {

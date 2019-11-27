@@ -50,7 +50,7 @@
                             'freelancer_category.user_id' => $freelancer_user_id
                         ];
                         $selectArray = [
-                            'categories'.'.category' 
+                            'categories.category' 
                                 ];
                         $results = $this->FCategories->multiple_joins($fetchingFreelancerCategories,$whereFreelancerID,$selectArray)->result();                        
                         $this->data['results'] = $results;

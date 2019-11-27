@@ -54,7 +54,7 @@ class ClientProfile extends MY_Controller
                     if(isset($_POST['file_submit'])){                            
                         $file = $this->upload_file();
                         // var_dump( $file);die;
-                        if(isset($file['profile_pic'])){
+                        if(isset($file['file_name'])){
                             
                             $fileData = [
                                 'profile_pic' => $file['file_name'],
@@ -65,7 +65,10 @@ class ClientProfile extends MY_Controller
                             ];
                             $this->Users->updateData($fileData, $whereUserID );
                             $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
-                        }                                
+                        }  
+                        else{
+                            $this->data['file_error_key'] = $file;
+                        }                              
                         return $this->load->view('layout',$this->data);                           
                     }
                     else

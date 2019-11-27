@@ -35,9 +35,9 @@
                             'freelancer_category.user_id' => $user->user_id
                         ];
                         $selectArray = [
-                            'freelancer_category'.'.updated_at',
-                            'categories'.'.category' 
-                                ];
+                            'freelancer_category.updated_at',
+                            'categories.category' 
+                        ];
                         $results = $this->FCategories->multiple_joins($fetchingFreelancerCategories,$whereUserID,$selectArray,'DESC')->result();
                         $this->data['results'] = $results;
                         
@@ -53,7 +53,7 @@
                             'reviews.rating',
                             'reviews.review',
                             'reviews.updated_at',
-                            'users'.'.user_id',
+                            'users.user_id',
                             'users.name',
                             'users.email',
                             'users.profile_pic'
@@ -65,7 +65,8 @@
                        
                         if(isset($_POST['file_submit'])){
                             $file = $this->upload_file();
-                            if($file){                                
+                            // var_dump($file);die;
+                            if(isset($file['file_name'])){                                
                                 $fileData = [
                                     'profile_pic' => $file['file_name'],
                                     'updated_at' => date("Y-m-d H:i:s")
@@ -78,6 +79,10 @@
                                 
                                 $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
                                 return redirect(site_url('FreelancerProfile'));
+                            }
+                            else{
+                                // die('abcd');
+                                $this->data['file_error_key'] = $file;
                             }                        
                             return $this->load->view('layout',$this->data);
                         }

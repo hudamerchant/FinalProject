@@ -67,6 +67,12 @@
                                         </div>
                                     </div>
                                     <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">
+                                    <?php 
+                                    // var_dump($file_error_key);die;
+                                        if(isset($file_error_key)){
+                                            ?><p><?php echo $file_error_key; ?></p><?php
+                                        }
+                                    ?>
                                 </form>
                             </div>
                         </div>
@@ -82,7 +88,7 @@
                         </div>
                     </div>
 
-                    <h6><b class="mt-5 text-dark">REVIEWS</b></h6>
+                    <h6 class="client-profile-h6"><b class="mt-5 text-dark">REVIEWS</b></h6>
                     <?php
                         if(!empty($reviewResults)) 
                         {
