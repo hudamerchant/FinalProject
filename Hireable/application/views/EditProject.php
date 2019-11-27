@@ -26,7 +26,7 @@
                     <form class="form-ad" method="post" autocomplete="off">
                         <h3>Edit your project</h3>
                         <div class="form-group">
-                            <input type="hidden" class="form-control user_id" name="project-id" value="<?php echo $project_data['project_id'] ?>">
+                            <input type="hidden" class="form-control user_id" name="project_id" value="<?php echo $project_data['project_id'] ?>">
                         </div>
                         <div class="form-group">
                             <label class="control-label">Project title</label>

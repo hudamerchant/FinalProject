@@ -71,7 +71,7 @@
                             foreach ($results as $result) {
                                 $this->data['project_data']['project_title'] = $result->project_title;
                                 $this->data['project_data']['project_description'] = $result->project_descript;
-                                if($result->deleted_at != null)
+                                if($result->deleted_at == null)
                                 {
                                     $this->data['project_data']['categories'][$result->category_id] = $result->category;
                                 }
