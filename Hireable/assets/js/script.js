@@ -80,7 +80,14 @@ $(document).ready(function() {
         // })
 
     });
-
+    $('.fetch-rating').each(function(){
+      identity = $(this).attr('id');
+      shading  = $(this).attr('data-rating');
+      console.log(identity);
+      $('#'+identity).rateYo({
+          rating : shading
+      })
+    })
     $(function () {
  
         $("#rateYo").rateYo({

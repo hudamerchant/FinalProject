@@ -104,4 +104,13 @@ class MY_Model extends CI_Model
         $query = $this->db->delete($this->table_name);
         return $query; 
     }
+    public function retrieve_ratings( $order='ASC', $select = '*', array $where = []){
+        $this->db->order_by('updated_at' , $order);
+        $this->db->select($select);
+        $this->db->from($this->table_name);
+        if(count($where) > 0){
+            $this->db->where($where);
+        }
+        return $this->db->get()->row_array();
+    }
 } 

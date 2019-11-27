@@ -200,6 +200,10 @@ if (isset($_SESSION['projectsPresent'])) {
                             
                             <h4><a href="#"><?php echo $freelancer->name ?></a></h4>
                             <h5><?php echo $freelancer->email ?></h5>
+                            <div class="rating-star">
+                                <div id="rateYo-<?php echo $freelancer->user_id ?>" data-rating="<?php echo $ratings[$freelancer->user_id]['avg(rating)'] ?>" class="fetch-rating"> 
+                                </div>
+                            </div>
                         </div>
                         <div class="manager-info">
                             <div class="manager-meta search-manager-meta">
