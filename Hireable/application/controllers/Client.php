@@ -25,32 +25,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         $this->data['page_title'] = 'Dashboard -'.$this->data['site_title'];      
                         
                         $this->load->model('Projects');
+
                         $where = [
-                            'user_id' => $user->user_id,
-                            'deleted_at' => null
+                            'user_id'   => $user->user_id,
+                            'deleted_at'    => null
                         ];
                         $projects = $this->Projects->getData('DESC',$where)->result();
-                        // var_dump($this->db->last_query());die;
 
-                        //fetching project status from project bid table
+                        // var_dump($projects);die;
+
                         // $this->load->model('ProjectBid');
+
                         // $where = [
-                        //     'user_id'       => $user->user_id,
-                        //     'deleted_at' => null
+                        //     'projects.user_id'   => $user->user_id,
+                        //     'projects.deleted_at'    => null
                         // ];
-                        // $projects = $this->Projects->getData($where)->result();
-
-
+                        // $like = [];
+                        // $projects = $this->ProjectBid->joins('projects','project_id',$like,'DESC','projects.updated_at',$where)->result();
+                        // var_dump($projects);die;
+                        // var_dump($this->db->last_query());die;
+                        
+                        $this->load->model('ProjectBid');
+                        
                         $count = 0;
                         if($projects){
                             $this->session->set_flashdata("projectsPresent",true);
                             foreach ($projects as $project) {
-    
+                                
+                                // var_dump($projects);die;
+
                                 $category_id = [];
                                 $this->data['projects'][$count]['title'] = $project->project_title;
                                 $this->data['projects'][$count]['description'] = $project->project_descript;
                                 $this->data['projects'][$count]['project_id'] = $project->project_id;
-                                // var_dump($projects);
+                                $this->data['projects'][$count]['bid_status'] = $project->project_status;
                                 $this->load->model('ProjectCategories');
                                 $projectCategoryWhere = [
                                     'project_id' => $project->project_id
@@ -65,6 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 foreach ($categories as $category) {
                                     $this->data['projects'][$count]['categories'][] = $category->category;
                                 }
+                                
                                 $count++;
                             }
                             

@@ -115,10 +115,13 @@ class MY_Controller extends CI_Controller
 
         if ( ! $this->upload->do_upload('userfile'))
         {
-            return $this->upload->display_errors();   
+            $response = [ 'response' => $this->upload->display_errors()];
+            return $response;   
         }
         else{
-            return $this->upload->data();
+            $response = ['response' => $this->upload->data()];
+            return $response;   
+
         }
     }
 }
