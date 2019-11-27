@@ -78,6 +78,7 @@
                         }
                     }
 
+
                     if (isset($_POST['submit'])) {
                         $this->form_validation->set_rules('name', 'name', 'required');
                         $this->form_validation->set_rules('categories[]', 'skills', 'required');
