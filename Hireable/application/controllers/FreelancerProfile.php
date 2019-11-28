@@ -117,7 +117,7 @@
                         if(isset($file['file_name']))
                         {    
                             $fileData = [
-                                'profile_pic' => $file['file_name'],
+                                'profile_pic'=> $file['file_name'],
                                 'updated_at' => date("Y-m-d H:i:s")
                             ];
                             $whereUserID = [
