@@ -1,2 +1,5 @@
-<h1>Hey <?php $user_info->name ?>,</h1>
-<p>I want to hire you for my project.</p>
+
+<table>
+<th>Hey <?php //echo $user_info->name ?>,</th>
+<td>I want to hire you for my project.</td>    
+</table>
