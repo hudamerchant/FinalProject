@@ -113,7 +113,7 @@ class MY_Model extends CI_Model
         }
         return $this->db->get()->row_array();
     }
-    public function offset_retrieving($offset= 0 ,$limit = 100000000000 , $receiver_id , $sender_id)
+    public function offset_retrieving($offset= 0 ,$limit = 100000000000 , $sender_id , $receiver_id)
     {
         $arr = ['sender_id' => $sender_id, 'receiver_id' => $receiver_id];
         return $this->db->where($arr)->limit($limit,$offset)->get('chats')->result();

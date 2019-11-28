@@ -133,15 +133,21 @@ $(document).ready(function() {
            })
     });
    
-     console.log(SITE_URL)
-    setInterval(function(){
+    //  console.log(SITE_URL)
+     function recursively_ajax()
+    {
+    // setInterval(function(){
        li_length = $('.chatbox-listing > li.chatbox-li').length;
        data = {offset:li_length}
        $.ajax({
-           url:SITE_URL+"/chatbox/get_messages",
+           url:SITE_URL+"/Chatbox/get_messages",
            data:data,
            success:function(data){
-               $('.chatbox-listing').append(data);
+            recursively_ajax();
            }
        }) 
-    }, 2000);
+    // , 2000);
+    }
+    if($('.chatbox-form').length) {
+        recursively_ajax()
+    }

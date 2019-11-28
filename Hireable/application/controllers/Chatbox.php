@@ -83,12 +83,13 @@
                     $senderID = $user->user_id;
                     $offset = $_REQUEST['offset'];
 
-                    $data   = $this->Chats->offset_retrieving($offset,5,$senderID,$ReceiverId); 
+                    $data   = $this->Chats->offset_retrieving($offset,1,$senderID,$ReceiverId); 
+                    // var_dump($this->db->last_query());die;
                     $html   = '';
 
                     foreach($data as $chat_obj){
                         // var_dump($chat_obj);die;
-                        $html .= "<li class='for_del'>".$chat_obj->chats_msg."</li>";
+                        $html .= "<li class='chatbox-li'>".$chat_obj->message."</li>";
                     }
                     echo $html;
                 }
