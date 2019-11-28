@@ -45,9 +45,9 @@ if(isset($_SESSION['Bid'])){
 ?>
 <?php
 if (isset($_SESSION['projectsPresent'])) {
-    // var_dump($projects);die;
     if(isset($projects)){
-    foreach ($projects as $project) {
+        foreach ($projects as $project) {
+            // var_dump($project);die;
         // if($project['profile_pic']){
         //     echo "Hey";
         // }
@@ -75,9 +75,12 @@ if (isset($_SESSION['projectsPresent'])) {
                         </div>
                         <div class="manager-content project-details-manager-content">
                             <div class="item-body">            
-                                <div class="resume-skills project-details-resume-skills profile-view-resume-skills">
-                                    <div class="resume-exp float-right">
+                                <div class="resume-skills project-details-resume-skills search-resume-skills profile-view-resume-skills">
+                                    <div class="resume-exp search-resume-exp">
                                         <a href="<?php echo site_url('ClientProfileForFreelancers/index/'.$project['user_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >View Profile</a>
+                                    </div>
+                                    <div class="resume-exp search-resume-exp">
+                                        <a href="<?php echo site_url('Chatbox/index/'.$project['user_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >Contact</a>
                                     </div>
                                 </div>
                             </div>

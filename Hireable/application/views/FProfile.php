@@ -70,7 +70,7 @@ if (isset($_SESSION['profilePicUploaded'])) {
                                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                         </div>
                                     </div>
-                                    <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2">
+                                    <!-- <input type="submit" value="Upload" name="file_submit" class="btn btn-common mt-2 ml-2"> -->
                                     <?php 
                                     // var_dump($file_error_key);die;
                                         if(isset($file_error_key)){

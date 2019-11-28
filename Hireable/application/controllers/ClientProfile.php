@@ -100,6 +100,7 @@ class ClientProfile extends MY_Controller
                         ];
                         $this->Users->updateData($fileData, $whereUserID );
                         $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
+                        redirect(site_url('ClientProfile'));
                     }else{
                         $this->data['file_error_key'] = $file;
                     }  

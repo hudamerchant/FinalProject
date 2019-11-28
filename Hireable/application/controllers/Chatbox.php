@@ -13,31 +13,31 @@
         }
         function index(){
             
-            $this->load->model('Users');
-            if ($this->session->userdata('logged_in')) {
-                $where  = [ 'email' => $this->session->userdata('user_info') ];
-                $user   = $this->Users->getData('DESC',$where)->row();
-                if ($user->role_id == 1) 
-                {
-                    return redirect(site_url('Freelancer'));
-                } 
-                elseif ($user->role_id == 2) 
-                {
-                    if(!$user->updated_profile)
-                    {
-                        return redirect(site_url('updateCProfile'));
-                    }
-                    else
-                    {
+            // $this->load->model('Users');
+            // if ($this->session->userdata('logged_in')) {
+            //     $where  = [ 'email' => $this->session->userdata('user_info') ];
+            //     $user   = $this->Users->getData('DESC',$where)->row();
+            //     if ($user->role_id == 1) 
+            //     {
+            //         return redirect(site_url('Freelancer'));
+            //     } 
+            //     elseif ($user->role_id == 2) 
+            //     {
+            //         if(!$user->updated_profile)
+            //         {
+            //             return redirect(site_url('updateCProfile'));
+            //         }
+            //         else
+            //         {
                         $data['view'] = 'Chatbox';
                         $data['site_title'] = 'Chat Assignment';
                         $data['page_title'] = 'Chat - '.$data['site_title'];
 
-                    }
+            //         }
 
 
-                }
-            }
+            //     }
+            // }
 
             $this->load->view('layout', $data);
         }
@@ -99,6 +99,7 @@
 
                     }
                     echo $html;
+                    // var_dump($this->db->last_query());die;
                 }
             }
           
