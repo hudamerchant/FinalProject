@@ -39,10 +39,8 @@
                         }
 
                         $this->load->model('CProfile');
-                        $whereClientId       =   [  
-                            'user_id'         => $client_user_id
-                        ];
-                        $gettingClientProfileData = $this->CProfile->getData('DESC',$whereClientId)->row();
+                        
+                        $gettingClientProfileData = $this->CProfile->getData('DESC',$whereUserId)->row();
                         if($gettingClientProfileData != null){
                             $this->data['orgDescription'] = $gettingClientProfileData->org_description;
                             // var_dump($this->data['orgDescription']);die;

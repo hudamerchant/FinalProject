@@ -44,6 +44,14 @@
                             // var_dump($freelancerDetail);die;
                         }
 
+                        $this->load->model('FProfile');
+                        
+                        $gettingFreelancerProfileData = $this->FProfile->getData('DESC',$whereUserId)->row();
+                        if($gettingFreelancerProfileData != null){
+                            $this->data['profileDescription'] = $gettingFreelancerProfileData->profile_description;
+                           
+                        }
+
                         //loading freelancer categories
                         $this->load->model('FCategories');
                         $fetchingFreelancerCategories []= ['table_name'=>'categories', 'column_with'=>'freelancer_category.category_id = categories.category_id']; 

@@ -117,12 +117,25 @@
                             //insert profile description in profile table
                             $this->FProfile->updateData($profile_data,$where);
                             return redirect(site_url('Freelancer'));
+                            
                         } else {
                             $this->data['freelancer_info'] = $user;
                             return $this->load->view('layout', $this->data);
                         }
                     } else {
+                        //Rida ka kaam, don't remove, yahan se
 
+                        // $where = [
+                        //     'user_id'=> $user->user_id
+                        // ];
+                        // $RetrievingProfileDescription = $this->FProfile->getData('DESC',$where)->result();
+                        // foreach($RetrievingProfileDescription as $ProfileDescription){
+
+                        //     var_dump($ProfileDescription->profile_description);
+                        // }
+
+                        //yahan tk
+                            
                         return $this->load->view('layout', $this->data);
                     }
                     return $this->load->view('layout', $this->data);

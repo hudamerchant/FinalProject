@@ -28,15 +28,15 @@
                         
                         $this->data['freelancer_info'] = $user;
 
-                        // $this->load->model('CProfile');
-                        // $whereClientId       =   [  
-                        //     'user_id'         => $user->user_id
-                        // ];
-                        // $gettingClientProfileData = $this->CProfile->getData('DESC',$whereClientId)->row();
-                        // if($gettingClientProfileData != null){
-                        //     $this->data['orgDescription'] = $gettingClientProfileData->org_description;
-                        //     // var_dump($this->data['orgDescription']);die;
-                        // }
+                        $this->load->model('FProfile');
+                        $whereFreelancerId       =   [  
+                            'user_id'         => $user->user_id
+                        ];
+                        $gettingFreelancerProfileData = $this->FProfile->getData('DESC',$whereFreelancerId)->row();
+                        if($gettingFreelancerProfileData != null){
+                            $this->data['profileDescription'] = $gettingFreelancerProfileData->profile_description;
+                            // var_dump($this->data['profileDescription']);die;
+                        }
                         
                         // loading freelancer categories
                         $this->load->model('FCategories');

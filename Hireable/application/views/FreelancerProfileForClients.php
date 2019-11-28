@@ -36,6 +36,7 @@ if ($freelancerDetail)
                                     ?>
                                 </ul>
                             </li>
+                            <li><span class="profile-li-span">Profile Description:</span><p class="para-description"><?php echo isset($profileDescription) ? $profileDescription : 'None' ?></p></li>
                         </ul>
                     </div>
                 </div>

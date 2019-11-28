@@ -117,6 +117,18 @@
                             $this->data['freelancers'] = $freelancers;
                             // $this->data['freelancers'] .= $this->data['image_path'];
                             // var_dump($this->data['freelancers']);die;
+                            $avg_rating = [];
+                            foreach($freelancers as $freelancer){
+                                $whereFreelancerId = [
+                                    'receiver_id' => $freelancer->user_id
+                                ];
+                                $select = 'avg(rating)';
+                                $this->load->model('Reviews_Model');
+                                $Ratings = $this->Reviews_Model->retrieve_ratings('DESC',$select,$whereFreelancerId);
+                                $avg_rating[$freelancer->user_id] = $Ratings;
+                                // var_dump($avg_rating);
+                            }
+                            $this->data['ratings'] = $avg_rating;
                         }
                     }
                 }    
