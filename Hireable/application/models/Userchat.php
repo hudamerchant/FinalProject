@@ -3,11 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Userchat extends MY_Model
 {
-    function add_message($message, $nickname, $guid)
+    function add_message($message)
     {
         $data = array(
             'message'   => (string) $message,
-            'name'      => (string) $name,
             'created_at' => time(),
         );
           
