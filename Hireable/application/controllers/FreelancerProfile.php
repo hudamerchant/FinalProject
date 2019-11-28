@@ -112,7 +112,7 @@
                     if (!$user->updated_profile) {
                         return redirect(site_url('updateFProfile'));
                     } else {
-                        $user_file = $_FILES['file_name']['name'];
+                        $user_file = 'file_name';
                         $file = $this->upload_file($user_file);
                         if(isset($file['file_name']))
                         {    

@@ -115,17 +115,13 @@ class MY_Controller extends CI_Controller
         $config['max_width']            = 1024;
         $config['max_height']           = 768;
 
-        $this->load->library('upload', $config);
-
+        $this->load->library('upload', $config); 
         if ( ! $this->upload->do_upload($user_file))
         {
-            $response = [ 'response' => $this->upload->display_errors()];
-            return $response;   
-        }
+            return  $this->upload->display_errors();
+         }
         else{
-            $response = ['response' => $this->upload->data()];
-            return $response;   
-
+            return $this->upload->data();
         }
     }
 

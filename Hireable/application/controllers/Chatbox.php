@@ -11,7 +11,7 @@
             $this->load->model('Userchat');
             
         }
-        function index($freelancerID = true){
+        function index(){
             
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
@@ -33,9 +33,12 @@
                         $data['site_title'] = 'Chat Assignment';
                         $data['page_title'] = 'Chat - '.$data['site_title'];
 
-                        if ($freelancerID) {
-                            // echo "Hogaya";die;
-                        }
+                        
+                        // $chats = $this->Chats->getData()->result();
+                        // var_dump($chats);die;
+                        // if ($freelancerID) {
+                        //     // echo "Hogaya";die;
+                        // }
                     }
 
 
@@ -45,28 +48,52 @@
             $this->load->view('layout', $data);
         }
 
-        function insert_messages(){
-                $msg = [
-                    'client_id'     => 5,
-                    'frrlancer_id'     => 6,
-                    'chats_msg' => $_REQUEST['msg']
-                ];
+        function insert_messages($freelancerID = true){
+            $this->load->model('Users');
+            if ($this->session->userdata('logged_in')) {
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData('DESC',$where)->row();
+                if ($freelancerID) {
+                    if(isset($_REQUEST['msg'])){
 
-                $this->Userchat->inserting($msg);
+                    
+                        $msg = [
+                            'sender_id'     => $user->user_id,
+                            'receiver_id'     => $freelancerID,
+                            'message' => $_REQUEST['msg']
+                        ];
+                        $this->load->model('Chats');
+                        $this->Chats->insertRecord($msg);
 
-            $data['view'] = 'Chatbox';
-            $this->load->view('layout', $data);
+                    $data['view'] = 'Chatbox';
+                    $this->load->view('layout', $data);
+                    }
+                }
+            }
         }
 
-        function get_messages( ){
-          
-            $offset = $_REQUEST['offset'];
-            $data   = $this->Userchat->offset_retrieving($offset,5); 
-            $html   = '';
+        function get_messages( $ReceiverId = true){
 
-            foreach($data as $chat_obj){
-                $html .= "<li class='for_del'>".$chat_obj->chats_msg."</li>";
+            $this->load->model('Users');
+            if ($this->session->userdata('logged_in')) {
+                $where  = [ 'email' => $this->session->userdata('user_info') ];
+                $user   = $this->Users->getData('DESC',$where)->row();
+                if ($ReceiverId) {
+                    $this->load->model('Chats');
+                    $senderID = $user->user_id;
+                    $offset = $_REQUEST['offset'];
+
+                    $data   = $this->Chats->offset_retrieving($offset,5,$senderID,$ReceiverId); 
+                    $html   = '';
+
+                    foreach($data as $chat_obj){
+                        // var_dump($chat_obj);die;
+                        $html .= "<li class='for_del'>".$chat_obj->chats_msg."</li>";
+                    }
+                    echo $html;
+                }
             }
-            echo $html;
+          
+            
         }
     }

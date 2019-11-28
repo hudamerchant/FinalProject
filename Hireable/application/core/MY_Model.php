@@ -113,12 +113,21 @@ class MY_Model extends CI_Model
         }
         return $this->db->get()->row_array();
     }
-    // public function offset_retrieving($offset= 0 ,$limit = 100000000000)
-    // {
-    //     $arr = ['client_id' => 5, 'frrlancer_id' => 6];
-    //     return $this->db->where($arr)->limit($limit,$offset)->get('chats')->result();
-    // }
-    // public function inserting($data){
-    //     $this->db->insert('chats',$data);
-    // }
+    public function offset_retrieving($offset= 0 ,$limit = 100000000000 , $receiver_id , $sender_id)
+    {
+        $arr = ['sender_id' => $sender_id, 'receiver_id' => $receiver_id];
+        return $this->db->where($arr)->limit($limit,$offset)->get('chats')->result();
+    }
+    public function inserting($data){
+        $this->db->insert('chats',$data);
+    }
+    function get_messages($timestamp)
+    {
+        $this->db->where('timestamp >', $timestamp);
+        $this->db->order_by('timestamp', 'DESC');
+        $this->db->limit(10); 
+        $query = $this->db->get('chats');
+        
+        return array_reverse($query->result_array());
+    }
 } 

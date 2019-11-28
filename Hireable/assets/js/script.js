@@ -119,29 +119,29 @@ $(document).ready(function() {
       });
 
 
-    // $('.send').on('click',function(e){
-    //    e.preventDefault();
-    //     msg = $('input[name=message]').val();
+    $('.send').on('click',function(e){
+       e.preventDefault();
+        msg = $('input[name=message]').val();
          
-    //     data = {msg:msg}; 
-    //        $.ajax({
-    //            url:SITE_URL+"/Chatbox/insert_messages",
-    //            data:data,
-    //            success:function(){
-    //                $('input[name=message]').val('')
-    //            }
-    //        })
-    // });
+        data = {msg:msg}; 
+           $.ajax({
+               url:SITE_URL+"/Chatbox/insert_messages",
+               data:data,
+               success:function(){
+                   $('input[name=message]').val('')
+               }
+           })
+    });
    
-    //  console.log(SITE_URL)
-    // setInterval(function(){
-    //    li_length = $('.chatbox-listing > li.chatbox-li').length;
-    //    data = {offset:li_length}
-    //    $.ajax({
-    //        url:SITE_URL+"/chatbox/get_messages",
-    //        data:data,
-    //        success:function(data){
-    //            $('.chatbox-listing').append(data);
-    //        }
-    //    }) 
-    // }, 2000);
+     console.log(SITE_URL)
+    setInterval(function(){
+       li_length = $('.chatbox-listing > li.chatbox-li').length;
+       data = {offset:li_length}
+       $.ajax({
+           url:SITE_URL+"/chatbox/get_messages",
+           data:data,
+           success:function(data){
+               $('.chatbox-listing').append(data);
+           }
+       }) 
+    }, 2000);
