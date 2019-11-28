@@ -33,12 +33,6 @@
                         $data['site_title'] = 'Chat Assignment';
                         $data['page_title'] = 'Chat - '.$data['site_title'];
 
-                        
-                        // $chats = $this->Chats->getData()->result();
-                        // var_dump($chats);die;
-                        // if ($freelancerID) {
-                        //     // echo "Hogaya";die;
-                        // }
                     }
 
 
@@ -83,13 +77,26 @@
                     $senderID = $user->user_id;
                     $offset = $_REQUEST['offset'];
 
-                    $data   = $this->Chats->offset_retrieving($offset,1,$senderID,$ReceiverId); 
+                    $data   = $this->Chats->offset_retrieving($offset,$senderID,$ReceiverId); 
                     // var_dump($this->db->last_query());die;
+                    // var_dump($data);die;
                     $html   = '';
 
                     foreach($data as $chat_obj){
+                        // var_dump($data);die;
                         // var_dump($chat_obj);die;
-                        $html .= "<li class='chatbox-li'>".$chat_obj->message."</li>";
+                        // var_dump($user->user_id);die;
+                        if($user->user_id == $chat_obj->sender_id)
+                        {
+                            $html .= "<li class='chatbox-li sender'>".$chat_obj->message."</li>";
+
+                        }
+                        elseif($user->user_id == $chat_obj->receiver_id)
+                        {
+                            $html .= "<li class='chatbox-li receiver'>".$chat_obj->message."</li>";
+                        }
+
+
                     }
                     echo $html;
                 }

@@ -225,3 +225,9 @@ input.chatbox-form-control {
 .navbar-expand-lg .navbar-nav li .header-anchor:hover{
     color: black !important;
 }
+.reciever{
+    color: green; 
+}
+.sender{
+    color: red; 
+}

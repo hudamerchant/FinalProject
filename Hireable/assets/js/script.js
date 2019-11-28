@@ -133,21 +133,44 @@ $(document).ready(function() {
            })
     });
    
-    //  console.log(SITE_URL)
-     function recursively_ajax()
+    recursively_ajax();
+    function recursively_ajax()
     {
-    // setInterval(function(){
-       li_length = $('.chatbox-listing > li.chatbox-li').length;
-       data = {offset:li_length}
-       $.ajax({
-           url:SITE_URL+"/Chatbox/get_messages",
-           data:data,
-           success:function(data){
-            recursively_ajax();
-           }
-       }) 
-    // , 2000);
+        if ($('.chatbox-form').length) {
+            li_length = $('.chatbox-listing > li').length;
+            
+                data = { offset: li_length}
+                $.ajax({
+                    url: SITE_URL + "/Chatbox/get_messages",
+                    data: data,
+                    success: function (data) {
+                        $('.chatbox-listing').append(data);
+                        li_length = $('.chatbox-listing > li').length;
+                        recursively_ajax();
+                    }
+                }) 
+    
+    
+        }
+
     }
-    if($('.chatbox-form').length) {
-        recursively_ajax()
-    }
+    // //  console.log(SITE_URL)
+    //  function recursively_ajax()
+    // {
+    // // setInterval(function(){
+    //    li_length = $('.chatbox-listing > li.chatbox-li').length;
+    //    data = {offset:li_length}
+    //    $.ajax({
+    //        url:SITE_URL+"/Chatbox/get_messages",
+    //        data:data,
+    //        success:function(data){
+    //         recursively_ajax();
+    //         $('.chatbox-listing').append(data);
+
+    //        }
+    //    }) 
+    // // , 2000);
+    // }
+    // if($('.chatbox-form').length) {
+    //     recursively_ajax()
+    // }
