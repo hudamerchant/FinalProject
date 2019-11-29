@@ -70,10 +70,14 @@ $(document).ready(function() {
             contentType : false,
             processData : false,  
             data        : formData,
-            dataType    : "JSON",
+            dataType    : "json",
             cache       : false,
             success     : function(response){
                 console.log(response);
+                swal("", response.message, response.status)
+                .then(function(e){
+                    window.location.reload();
+                });
             }
         })
 
@@ -89,10 +93,14 @@ $(document).ready(function() {
             contentType : false,
             processData : false,  
             data        : formData,
-            dataType    : "JSON",
+            dataType    : "json",
             cache       : false,
             success     : function(response){
                 console.log(response);
+                swal("", response.message, response.status)
+                .then(function(e){
+                    window.location.reload();
+                });
             }
         })
 

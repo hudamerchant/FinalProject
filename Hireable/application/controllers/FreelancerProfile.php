@@ -112,6 +112,7 @@
                     if (!$user->updated_profile) {
                         return redirect(site_url('updateFProfile'));
                     } else {
+                        $response = [];
                         $user_file = 'file_name';
                         $file = $this->upload_file($user_file);
                         if(isset($file['file_name']))
@@ -124,10 +125,14 @@
                                 'user_id' => $user->user_id,
                             ];
                             $this->Users->updateData($fileData, $whereUserID );
-                            $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
+                            $response["status"]  = "success";
+                            $response["message"] = "Profile Pic has been uploaded successfully";
                         }else{
                             $this->data['file_error_key'] = $file;
-                        }  
+                            $response["status"]  = "error";
+                            $response["message"] = $this->data['file_error_key'];
+                        } 
+                        echo json_encode($response);  
                     }
                 }
             

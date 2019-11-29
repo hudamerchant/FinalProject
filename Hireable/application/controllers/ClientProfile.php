@@ -99,11 +99,15 @@ class ClientProfile extends MY_Controller
                             'user_id' => $user->user_id,
                         ];
                         $this->Users->updateData($fileData, $whereUserID );
-                        $this->session->set_flashdata("profilePicUploaded"," Your profile pic has been uploaded successfully!");
-                        redirect(site_url('ClientProfile'));
-                    }else{
+                        $response["status"]  = "success";
+                        $response["message"] = "Profile Pic has been uploaded successfully";
+                    }
+                    else{
                         $this->data['file_error_key'] = $file;
-                    }  
+                        $response["status"]  = "error";
+                            $response["message"] = $this->data['file_error_key'];
+                        } 
+                        echo json_encode($response);
                 }
             }
         
