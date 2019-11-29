@@ -110,8 +110,8 @@
 
                                 $this->FreelancerCategories->insertRecord($freelancerCategoryData);
                             }
-
-                            // $this->FreelancerCategories->insertRecord($freelancerCategoryData);
+                            
+                            $this->FProfile->insertRecord($profile_data);
                         
                             //update users table
                             $where = ['user_id' => $user->user_id];
