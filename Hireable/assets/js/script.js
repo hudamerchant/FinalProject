@@ -137,13 +137,11 @@ $(document).ready(function() {
     });
    
     function recursively_ajax()
-    {
-        if ($('.chatbox-form').length) {
-            console.log($('.receiver_id').val());
+    { 
             li_length = $('.chatbox-listing > li').length;
             
             data = { 
-                offset          : li_length ,
+                    offset          : li_length ,
                     receiver_id     : $('.receiver_id').val()
                 }
                 
@@ -151,15 +149,15 @@ $(document).ready(function() {
                 url: SITE_URL + "/Chatbox/get_messages",
                 data: data,
                 success: function (data) {
-                    $('.chatbox-listing').append(data);
-                    li_length = $('.chatbox-listing > li').length;
+                    $('.chatbox-listing').append(data); 
                     recursively_ajax();
                 }
-            })                
-        }
-            
+            })
     }
+    
+    if ($('.chatbox-form').length) {
         recursively_ajax();
+    }
     // //  console.log(SITE_URL)
     //  function recursively_ajax()
     // {

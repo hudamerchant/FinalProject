@@ -138,7 +138,7 @@
                             
                         return $this->load->view('layout', $this->data);
                     }
-                    return $this->load->view('layout', $this->data);
+                    // return $this->load->view('layout', $this->data);
                 }
 
             }

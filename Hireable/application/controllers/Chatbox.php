@@ -75,9 +75,9 @@
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData('DESC',$where)->row();
                     $this->load->model('Chats');
-                    $senderID = $user->user_id;
-                    $receiverID = $_REQUEST['receiver_id'];
-                    $offset = $_REQUEST['offset'];
+                    $senderID       = $user->user_id;
+                    $receiverID     = $_REQUEST['receiver_id'];
+                    $offset         = $_REQUEST['offset'];
 
                     $data   = $this->Chats->offset_retrieving($offset,$senderID,$receiverID); 
                     // var_dump($this->db->last_query());die;
@@ -99,9 +99,9 @@
                         {
                             $html .= "<li class='chatbox-li'>".$chat_obj->message."</li>";
                         }
+                        // var_dump($this->db->last_query());die;
+                    }
                     echo $html;
-                    // var_dump($this->db->last_query());die;
-                }
             }
           
             
