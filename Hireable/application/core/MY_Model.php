@@ -115,13 +115,44 @@ class MY_Model extends CI_Model
     }
     public function offset_retrieving($offset= 0 , $sender_id , $receiver_id, $limit = 100000000000 )
     {
+        // $OR = 'OR';
+        // $where1  = [
+        //     'sender_id'     => $sender_id,
+        //     'receiver_id'   => $receiver_id
+        // ];
+        // $where2  = [
+        //     'sender_id'     => $receiver_id,
+        //     'receiver_id'   => $sender_id
+        // ];
+        // // $where2  = 'sender_id = '.$receiver_id.' OR receiver_id = '.$receiver_id;
+        // return $this->db->where($where1)
+        //                 ->where($where2)
+        //                 ->limit($limit,$offset)
+        //                 ->get('chats')->result();
+        // $OR = 'OR';
+        // $where1  = 'sender_id = '.$sender_id.' AND receiver_id = '.$receiver_id;
+        // $where2  = 'sender_id = '.$sender_id.' AND receiver_id = '.$receiver_id;
+        // return $this->db->where($where1)
+        //                 ->where($where2)
+        //                 ->limit($limit,$offset)
+        //                 ->get('chats')->result();
+        
         $OR = 'OR';
-        $where1  = 'sender_id = '.$sender_id.' OR receiver_id = '.$sender_id;
-        $where2  = 'sender_id = '.$receiver_id.' OR receiver_id = '.$receiver_id;
+        $where1  = 'sender_id = '.$sender_id.' AND receiver_id = '.$receiver_id;
+        $where2  = 'sender_id = '.$receiver_id.' AND receiver_id = '.$sender_id;
         return $this->db->where($where1)
-                        ->where($where2)
+                        ->or_where($where2)
                         ->limit($limit,$offset)
                         ->get('chats')->result();
+        
+        // $OR = 'OR';
+        // $where  = [
+        //     'sender_id'   => $sender_id,
+        //     'receiver_id' => $receiver_id
+        // ];
+        // return $this->db->where($where)
+        //                 ->limit($limit,$offset)
+        
     }
     public function inserting($data){
         $this->db->insert('chats',$data);

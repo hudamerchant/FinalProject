@@ -26,7 +26,10 @@
                     <form method="post" class="chatbox-form">
                             <div class="view chatbox-view">
                                 <div class="col-80 chatbox-column">
-                                    <input class="form-control chatbox-form-control" name="message" class="message-text" type="text"> 
+                                    <input class="form-control chatbox-form-control receiver_id" name="message" class="message-text" type="hidden" value="<?php echo $receiver_id ?>"> 
+                                </div>
+                                <div class="col-80 chatbox-column">
+                                    <input class="form-control chatbox-form-control message" name="message" class="message-text" type="text"> 
                                 </div>
                                 <div class="col-20">
                                     <input class="btn btn-danger send chatbox-button" type="button" name="send" value="send">

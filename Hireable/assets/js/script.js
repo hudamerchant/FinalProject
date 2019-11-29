@@ -123,7 +123,10 @@ $(document).ready(function() {
        e.preventDefault();
         msg = $('input[name=message]').val();
          
-        data = {msg:msg}; 
+        data = {
+            msg             : $('.message').val(),
+            receiver_id     : $('.receiver_id').val()
+        }; 
            $.ajax({
                url:SITE_URL+"/Chatbox/insert_messages",
                data:data,
@@ -133,27 +136,30 @@ $(document).ready(function() {
            })
     });
    
-    recursively_ajax();
     function recursively_ajax()
     {
         if ($('.chatbox-form').length) {
+            console.log($('.receiver_id').val());
             li_length = $('.chatbox-listing > li').length;
             
-                data = { offset: li_length}
-                $.ajax({
-                    url: SITE_URL + "/Chatbox/get_messages",
-                    data: data,
-                    success: function (data) {
-                        $('.chatbox-listing').append(data);
-                        li_length = $('.chatbox-listing > li').length;
-                        recursively_ajax();
-                    }
-                }) 
-    
-    
+            data = { 
+                offset          : li_length ,
+                    receiver_id     : $('.receiver_id').val()
+                }
+                
+            $.ajax({
+                url: SITE_URL + "/Chatbox/get_messages",
+                data: data,
+                success: function (data) {
+                    $('.chatbox-listing').append(data);
+                    li_length = $('.chatbox-listing > li').length;
+                    recursively_ajax();
+                }
+            })                
         }
-
+            
     }
+        recursively_ajax();
     // //  console.log(SITE_URL)
     //  function recursively_ajax()
     // {

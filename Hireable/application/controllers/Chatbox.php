@@ -11,7 +11,7 @@
             $this->load->model('Userchat');
             
         }
-        function index(){
+        function index($ReceiverId = false){
             
             // $this->load->model('Users');
             // if ($this->session->userdata('logged_in')) {
@@ -29,9 +29,12 @@
             //         }
             //         else
             //         {
-                        $data['view'] = 'Chatbox';
-                        $data['site_title'] = 'Chat Assignment';
-                        $data['page_title'] = 'Chat - '.$data['site_title'];
+                        $this->data['view'] = 'Chatbox';
+                        $this->data['site_title'] = 'Hireable';
+                        $this->data['page_title'] = 'Chat - '.$this->data['site_title'];
+                        $this->data['receiver_id'] = $ReceiverId;
+
+
 
             //         }
 
@@ -39,65 +42,63 @@
             //     }
             // }
 
-            $this->load->view('layout', $data);
+            $this->load->view('layout', $this->data);
         }
 
-        function insert_messages($freelancerID = true){
+        function insert_messages(){
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData('DESC',$where)->row();
-                if ($freelancerID) {
                     if(isset($_REQUEST['msg'])){
 
+                        $receiver_id = $_REQUEST['receiver_id'];
                     
                         $msg = [
                             'sender_id'     => $user->user_id,
-                            'receiver_id'     => $freelancerID,
-                            'message' => $_REQUEST['msg']
+                            'receiver_id'   => $receiver_id,
+                            'message'       => $_REQUEST['msg']
                         ];
                         $this->load->model('Chats');
                         $this->Chats->insertRecord($msg);
 
                     $data['view'] = 'Chatbox';
                     $this->load->view('layout', $data);
-                    }
                 }
             }
         }
 
-        function get_messages( $ReceiverId = true){
-
+        function get_messages(){
+            // var_dump($ReceiverId);die;
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData('DESC',$where)->row();
-                if ($ReceiverId) {
                     $this->load->model('Chats');
                     $senderID = $user->user_id;
+                    $receiverID = $_REQUEST['receiver_id'];
                     $offset = $_REQUEST['offset'];
 
-                    $data   = $this->Chats->offset_retrieving($offset,$senderID,$ReceiverId); 
+                    $data   = $this->Chats->offset_retrieving($offset,$senderID,$receiverID); 
                     // var_dump($this->db->last_query());die;
                     // var_dump($data);die;
                     $html   = '';
 
                     foreach($data as $chat_obj){
                         // var_dump($data);die;
-                        // var_dump($chat_obj);die;
+                        // var_dump($receiverID);die;
+                        // var_dump($chat_obj->receiver_id);die;
                         // var_dump($user->user_id);die;
-                        if($user->user_id == $chat_obj->sender_id)
+                        if($chat_obj->sender_id == $user->user_id)
                         {
                             $html .= "<li class='chatbox-li sender'>".$chat_obj->message."</li>";
 
                         }
-                        elseif($user->user_id == $chat_obj->receiver_id)
+                        // if($chat_obj->receiver_id == $receiverID)
+                        else
                         {
-                            $html .= "<li class='chatbox-li receiver'>".$chat_obj->message."</li>";
+                            $html .= "<li class='chatbox-li'>".$chat_obj->message."</li>";
                         }
-
-
-                    }
                     echo $html;
                     // var_dump($this->db->last_query());die;
                 }
