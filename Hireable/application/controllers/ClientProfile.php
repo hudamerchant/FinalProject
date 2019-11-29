@@ -87,6 +87,7 @@ class ClientProfile extends MY_Controller
                 if (!$user->updated_profile) {
                     return redirect(site_url('updateCProfile'));
                 } else {
+                    $response = [];
                     $user_file = 'file_name';
                     $file = $this->upload_file($user_file);
                     if(isset($file['file_name']))
