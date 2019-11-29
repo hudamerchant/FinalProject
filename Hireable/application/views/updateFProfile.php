@@ -12,7 +12,10 @@
 
 <?php if($freelancer_info){
     // var_dump($freelancer_info);die;
-        $selected_categories = $freelancer_info['categories'];
+        if(isset($freelancer_info['categories'])){
+
+            $selected_categories = $freelancer_info['categories'];
+        }
 ?>
 <section id="content">
     <div class="container">
@@ -42,7 +45,7 @@
                                     <?php 
                                     foreach($categories as $category){
                                         ?>
-                                        <option  value="<?php echo $category->category_id ?>"<?php echo (in_array($category->category,$selected_categories) ? 'selected' : ''  ) ?>><?php echo $category->category ?> </option>            
+                                        <option  value="<?php echo $category->category_id ?>"<?php echo isset($selected_categories) ? (in_array($category->category,$selected_categories) ? 'selected' : ''  ) : $category->category ?>><?php echo $category->category ?> </option>            
                                         <?php 
                                     } 
                                     ?>
@@ -52,7 +55,7 @@
                                     // foreach ($project_data['categoryDetails']['project_categories'] as $categoryDetails) {
                                         
                                             ?>
-                                                <!-- <option selected value="<?php //echo $project_data['categoryDetails']['category_id'][$count] ?>"><?php echo $project_data['categoryDetails']['project_categories'][$count] ?></option> -->
+                                                <!-- <option selected value="<?php //echo $project_data['categoryDetails']['category_id'][$count] ?>"><?php echo isset($project_data['categoryDetails']['project_categories'][$count]) ? $project_data['categoryDetails']['project_categories'][$count] : '' ?></option> -->
                                             <?php
                                        
                                     //     $count++;
@@ -64,7 +67,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">Profile Description</label>
-                            <textarea name="p_description" class="form-control" rows="7"><?php echo $freelancer_info['profile_description']?></textarea>
+                            <textarea name="p_description" class="form-control" rows="7"><?php echo isset($freelancer_info['profile_description']) ? $freelancer_info['profile_description'] : '' ?></textarea>
                             <?php echo form_error('p_description') ?>
                         </div>
                         

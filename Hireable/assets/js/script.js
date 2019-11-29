@@ -57,7 +57,7 @@ $(document).ready(function() {
     });
     $(this).data('unselect', true);
         
-    });
+    
     
     $('.client-image').on('change',function(){        
         var formData = new FormData(); 
@@ -136,6 +136,7 @@ $(document).ready(function() {
            })
     });
    
+    recursively_ajax();
     function recursively_ajax()
     { 
             li_length = $('.chatbox-listing > li').length;
@@ -178,3 +179,4 @@ $(document).ready(function() {
     // if($('.chatbox-form').length) {
     //     recursively_ajax()
     // }
+});

@@ -78,6 +78,9 @@
                         }
                     }
 
+                    $this->data['freelancer_info']['id'] = $user->user_id;
+                    $this->data['freelancer_info']['name'] = $user->name;
+                    $this->data['freelancer_info']['email'] = $user->email;
 
                     if (isset($_POST['submit'])) {
                         $this->form_validation->set_rules('name', 'name', 'required');
@@ -119,7 +122,7 @@
                             return redirect(site_url('Freelancer'));
                             
                         } else {
-                            $this->data['freelancer_info'] = $user;
+                            // $this->data['freelancer_info'] = $user;
                             return $this->load->view('layout', $this->data);
                         }
                     } else {
