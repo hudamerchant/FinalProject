@@ -51,19 +51,27 @@
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData('DESC',$where)->row();
                     if(isset($_REQUEST['msg'])){
+                        $this->form_validation->set_rules('msg', 'message', 'required');
+                        if($this->form_validation->run() == True) {
 
-                        $receiver_id = $_REQUEST['receiver_id'];
-                    
-                        $msg = [
-                            'sender_id'     => $user->user_id,
-                            'receiver_id'   => $receiver_id,
-                            'message'       => $_REQUEST['msg']
-                        ];
-                        $this->load->model('Chats');
-                        $this->Chats->insertRecord($msg);
+                            $receiver_id = $_REQUEST['receiver_id'];
+                        
+                            $msg = [
+                                'sender_id'     => $user->user_id,
+                                'receiver_id'   => $receiver_id,
+                                'message'       => $_REQUEST['msg']
+                            ];
+                            $this->load->model('Chats');
+                            $this->Chats->insertRecord($msg);
+                            return $this->load->view('layout',$this->data);
+                        }
+                        else{
+                            return $this->load->view('layout',$this->data);
+                        }
 
-                    $data['view'] = 'Chatbox';
-                    $this->load->view('layout', $data);
+
+                    $this->data['view'] = 'Chatbox';
+                    return $this->load->view('layout',$this->data);
                 }
             }
         }
@@ -79,13 +87,13 @@
                     $receiverID     = $_REQUEST['receiver_id'];
                     $offset         = $_REQUEST['offset'];
 
-                    $data   = $this->Chats->offset_retrieving($offset,$senderID,$receiverID); 
+                    $this->data   = $this->Chats->offset_retrieving($offset,$senderID,$receiverID); 
                     // var_dump($this->db->last_query());die;
-                    // var_dump($data);die;
+                    // var_dump($this->data);die;
                     $html   = '';
 
-                    foreach($data as $chat_obj){
-                        // var_dump($data);die;
+                    foreach($this->data as $chat_obj){
+                        // var_dump($this->data);die;
                         // var_dump($receiverID);die;
                         // var_dump($chat_obj->receiver_id);die;
                         // var_dump($user->user_id);die;
@@ -97,7 +105,7 @@
                         // if($chat_obj->receiver_id == $receiverID)
                         else
                         {
-                            $html .= "<li class='chatbox-li'>".$chat_obj->message."</li>";
+                            $html .= "<li class='chatbox-li receiver' >".$chat_obj->message."</li>";
                         }
                         // var_dump($this->db->last_query());die;
                     }

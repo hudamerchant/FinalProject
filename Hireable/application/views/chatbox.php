@@ -25,14 +25,15 @@
                 <div class="chatarea">
                     <form method="post" class="chatbox-form">
                             <div class="view chatbox-view">
-                                <div class="col-80 chatbox-column">
+<!--                                 <div class="col-80 chatbox-column"> -->
                                     <input class="form-control chatbox-form-control receiver_id" name="message" class="message-text" type="hidden" value="<?php echo $receiver_id ?>"> 
-                                </div>
+ <!--                                </div> -->
                                 <div class="col-80 chatbox-column">
-                                    <input class="form-control chatbox-form-control message" name="message" class="message-text" type="text"> 
+                                    <input class="form-control chat-filed chatbox-form-control message" name="message" class="message-text" type="text">
+                                    <?php echo form_error('message') ?> 
                                 </div>
                                 <div class="col-20">
-                                    <input class="btn btn-danger send chatbox-button" type="button" name="send" value="send">
+                                    <input id="text-button" class="btn btn-danger send chatbox-button" type="button" name="send" value="send">
                                 </div>
                             </div>
                     </form>

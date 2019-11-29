@@ -82,6 +82,11 @@
                     $this->data['freelancer_info']['name'] = $user->name;
                     $this->data['freelancer_info']['email'] = $user->email;
 
+                    $where = [
+                        'user_id'=> $user->user_id
+                    ];
+                    $RetrievingProfileDescription = $this->FProfile->getData('DESC',$where)->result();
+                    
                     if (isset($_POST['submit'])) {
                         $this->form_validation->set_rules('name', 'name', 'required');
                         $this->form_validation->set_rules('categories[]', 'skills', 'required');
@@ -111,14 +116,26 @@
                                 $this->FreelancerCategories->insertRecord($freelancerCategoryData);
                             }
                             
-                            $this->FProfile->insertRecord($profile_data);
-                        
                             //update users table
                             $where = ['user_id' => $user->user_id];
                             $this->Users->updateData($update_data, $where);
 
-                            //insert profile description in profile table
-                            $this->FProfile->updateData($profile_data,$where);
+                            if(empty($RetrievingProfileDescription)){
+
+                                // var_dump($RetrievingProfileDescription);die;
+                                $this->FProfile->insertRecord($profile_data);
+                            }
+                            else{
+                                $profile_data   =   [   'profile_description' => $p_description,
+                                                        'user_id'             => $user->user_id,
+                                                        'updated_at'        => date("Y-m-d H:i:s")
+                                                ];
+                                
+                                //insert profile description in profile table
+                                $this->FProfile->updateData($profile_data,$where);
+                            }
+                        
+                            
                             return redirect(site_url('Freelancer'));
                             
                         } else {
