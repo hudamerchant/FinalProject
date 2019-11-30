@@ -7,7 +7,7 @@
         {
             parent::__construct();
         }
-        public function index($bid_user_id = false, $bid_project_id = false)
+        public function index($bid_user_id = false, $bid_project_id = false , $project_user_id = false)
         {
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
@@ -26,7 +26,7 @@
                     else
                     {
 
-                        if ($bid_user_id && $bid_project_id) {
+                        if ($bid_user_id && $bid_project_id && $project_user_id) {
 
                             $this->load->model('Projects');
                             $this->load->model('Users');
@@ -34,9 +34,13 @@
                             $where_freelancer = [
                                 'user_id'   => $bid_user_id
                             ];
-                            $user_info = $this->Users->getData('ASC', $where_freelancer)->row();
-                            // var_dump($user_info);die;
+                            $freelancer_info = $this->Users->getData('ASC', $where_freelancer)->row();
 
+                            $where_client = [
+                                'user_id'   => $project_user_id
+                            ];
+                            $client_info = $this->Users->getData('ASC', $where_client)->row();
+                            
                             $where = [
                                 'project_id'    => $bid_project_id
                             ];
@@ -49,16 +53,16 @@
                             $bid_accepted = $this->Projects->updateData($status_update, $where);
                             if($bid_accepted)
                             {
-                                $reciever       = $user_info->email;
-                                // $reciever       = 'hudazehra2510@gmail.com';
+                                $reciever       = $freelancer_info->email;
+                                $sender         = $client_info->email;
                                 $subject        = 'Project Agreement';
                                 
-                                $this->data['view'] = 'hiremaile';
-                                $this->data['name']   = $user_info->name;
+                                $this->data['view'] = 'hiremail';
+                                $this->data['name']   = $freelancer_info->name;
 
                                 $mailContent = $this->load->view('email/email_layout',$this->data, true);
                                 
-                                $this->sendMail($subject, $mailContent, $reciever);
+                                $this->sendMail($subject, $mailContent, $reciever, $sender);
                                 
                                 return redirect(site_url('Client/index/'.$bid_project_id));
                             }

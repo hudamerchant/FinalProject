@@ -125,7 +125,7 @@ class MY_Controller extends CI_Controller
         }
     }
 
-    function sendMail($subject, $mailContent, string $receiver_email , string $sender_email = 'noreply@hireable.com' ){
+    function sendMail($subject, $mailContent, string $receiver_email , string $sender_email = 'hireable123@gmail.com'){
 
         $mail = new PHPMailer(true);
         

@@ -70,6 +70,17 @@ class Signup extends MY_Controller
                         
                         $this->Users->insertRecord($this->data);
                         $this->session->set_flashdata("status","Your account has been created successfully! You can login now.");
+
+                        $reciever       = $email;
+                        $subject        = 'Confirm Registeration ';
+                        
+                        $this->data['view'] = 'register_email';
+                        $this->data['name']   = $name;
+
+                        $mailContent = $this->load->view('email/email_layout',$this->data, true);
+                        
+                        $this->sendMail($subject, $mailContent, $reciever );
+
                         redirect(site_url('Login'));
                     }
                     else

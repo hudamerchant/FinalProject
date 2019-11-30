@@ -12,7 +12,7 @@
 <?php
 if (isset($_SESSION['projectsBidsPresent'])) {
     if($data_project_bids){
-
+        // var_dump($data_project_bids);die;
     foreach ($data_project_bids as $project_bid) {
         ?>
         <section class="job-detail section dashboard-section">
@@ -43,7 +43,7 @@ if (isset($_SESSION['projectsBidsPresent'])) {
                                             <span><a href="<?php echo site_url('FreelancerProfileForClients/index/'.$project_bid['bid_user_id']) ?>" class="btn btn-common view-bids-anchor">View Profile</a></span>
                                         </div>
                                         <div class="manager-meta view-bids-button">
-                                            <span><a href="<?php echo site_url('HireFreelancer/index/'.$project_bid['bid_user_id'].'/'.$project_bid['bid_project_id']) ?>" class="btn btn-common view-bids-anchor">Hire</a></span>
+                                            <span><a href="<?php echo site_url('HireFreelancer/index/'.$project_bid['bid_user_id'].'/'.$project_bid['bid_project_id'].'/'.$project_bid['project_user_id']) ?>" class="btn btn-common view-bids-anchor">Hire</a></span>
                                         </div>
                                     </div>
                                 </div>

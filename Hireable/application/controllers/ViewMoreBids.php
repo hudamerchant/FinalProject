@@ -51,6 +51,7 @@
                                 if($project_bids){
                                     $this->session->set_flashdata("projectsBidsPresent",true);
                                     foreach ($project_bids as $project_bid) {
+                                        $this->data['data_project_bids'][$count]['project_user_id']= $user->user_id;
                                         $this->data['data_project_bids'][$count]['bid_user_id']= $project_bid->user_id;
                                         $this->data['data_project_bids'][$count]['bid_project_id']= $project_bid->project_id;
                                         

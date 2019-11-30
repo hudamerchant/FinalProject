@@ -54,6 +54,7 @@
                                     'user_id' => $project->user_id
                                 ];
                                 $userIdData = $this->Users->getData('DESC',$whereUserId)->row();
+                
                                 $this->data['projects'][$count]['name'] = $userIdData->name;
                                 $this->data['projects'][$count]['email'] = $userIdData->email;
                                 if($userIdData->profile_pic){
@@ -79,6 +80,7 @@
                                 $count++;
                             }
                             if($project_apply_id){
+                                // var_dump($project_apply_id);die;
                                 $freelanerBidWhere = [
                                     'user_id'       => $user->user_id,
                                     'project_id'    => $project_apply_id
@@ -89,6 +91,7 @@
                                 {
                                     $this->ProjectBid->insertRecord($freelanerBidWhere);
                                     $reciever       = $userIdData->email;
+                                    $sender         = $user->email;
                                     $subject        = 'Freelancer Bid For Your Project ';
                                     
                                     $this->data['view'] = 'applyemail';
@@ -96,7 +99,7 @@
 
                                     $mailContent = $this->load->view('email/email_layout',$this->data, true);
                                     
-                                    $this->sendMail($subject, $mailContent, $reciever);
+                                    $this->sendMail($subject, $mailContent, $reciever , $sender);
                                 }
                                 $this->session->set_flashdata("Bid",'Bid success');
                                 return redirect(site_url('Search'));
