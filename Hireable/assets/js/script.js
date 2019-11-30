@@ -4,6 +4,8 @@ $(document).ready(function() {
     $('.edit-project-category').select2();
 
     $('.edit-project-category').on('select2:unselecting',function(e){
+        e.preventDefault(); 
+
         select_id = e.params.args.data.id;
         select_text = e.params.args.data.text;
         
@@ -12,20 +14,17 @@ $(document).ready(function() {
             'category_id'   : select_id
         };
 
-        // e.preventDefault();
-        // console.log(e);
-        // e.preventDefault();
-        // swal({
-        //     text        : "Are you sure you want to delete this skill?",
-        //     buttons     : true,
-        //     dangerMode  : true,
-        //   })
-        // .then((willDelete) => {
-        // if (willDelete) {
-        //     formData = {
-        //         'project_id'    : $(".user_id").val(),
-        //         'category_id'   : select_id
-        //     };
+        swal({
+            text        : "Are you sure you want to delete this skill?",
+            buttons     : true,
+            dangerMode  : true,
+          })
+        .then((willDelete) => {
+        if (willDelete) {
+            formData = {
+                'project_id'    : $(".user_id").val(),
+                'category_id'   : select_id
+            };
 
             $.ajax({
                 url         : SITE_URL+"/EditProject/deleteProject" ,
@@ -34,29 +33,22 @@ $(document).ready(function() {
                 dataType    : "JSON",
                 cache       : false ,
                 success     : function(response){
-                    // if(response.msg != null)
-                    // {
-                    //     swal(response.msg, {
-                    //         icon: "success",
-                    //         });
-                    // }
+                    if(response.msg != null)
+                    {
+                        swal(response.msg, {
+                            icon: "success",
+                            }).then(() => {
+                                $('.edit-project-category').find('option[value="'+select_id+'"]').remove();
+                               $('.edit-project-category').select2();
+                            });
+                    }
                 }
     
-            })
-        //     $(this).select2({
-        //         unselect:true
-        //         });
-        // }
-        // else
-        // {
-        //     var data = {
-        //         "id": select_id,
-        //         "text": select_text
-        //     }; 
-        // }
+            }) 
+        } 
     });
-    $(this).data('unselect', true);
-        
+    });
+         
     
     
     $('.client-image').on('change',function(){        

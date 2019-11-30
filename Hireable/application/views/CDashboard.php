@@ -59,7 +59,7 @@ if (isset($_SESSION['projectsPresent'])) {
                                 <div class="manager-info">
                                     <div class="manager-meta">
                                         <?php if($project['bid_status'] == 1){?>
-                                            <span><a class="btn btn-common view-more-bids-anchor disabled bg-success" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>"  >Freelancer Hired</a></span>
+                                            <span><a class="btn btn-common view-more-bids-anchor disabled bg-success" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>"  > Hired <?php echo $project['hired_freelancer'] ?></a></span>
                                         <?php }else{?>
                                             <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View bids</a></span>
                                         <?php } ?>

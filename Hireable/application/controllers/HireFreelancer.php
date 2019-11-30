@@ -49,11 +49,11 @@
                             $bid_accepted = $this->Projects->updateData($status_update, $where);
                             if($bid_accepted)
                             {
-                                // $reciever       = $user_info->email;
-                                $reciever       = 'hudazehra2510@gmail.com';
+                                $reciever       = $user_info->email;
+                                // $reciever       = 'hudazehra2510@gmail.com';
                                 $subject        = 'Project Agreement';
                                 
-                                $this->data['view'] = 'email_format';
+                                $this->data['view'] = 'hiremaile';
                                 $this->data['name']   = $user_info->name;
 
                                 $mailContent = $this->load->view('email/email_layout',$this->data, true);

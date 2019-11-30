@@ -49,16 +49,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         
                         $count = 0;
                         if($projects){
+                            
                             $this->session->set_flashdata("projectsPresent",true);
+                            // var_dump($projects);die;
                             foreach ($projects as $project) {
-                                
-                                // var_dump($projects);die;
+                                $where      = ['user_id' => $project->hired_freelancer_id ];
+                                $freelancer = $this->Users->getData('DESC',$where)->row();
+                                // var_dump($freelancer);die;
 
                                 $category_id = [];
                                 $this->data['projects'][$count]['title'] = $project->project_title;
-                                $this->data['projects'][$count]['description'] = $project->project_descript;
-                                $this->data['projects'][$count]['project_id'] = $project->project_id;
-                                $this->data['projects'][$count]['bid_status'] = $project->project_status;
+                                $this->data['projects'][$count]['description']      = $project->project_descript;
+                                $this->data['projects'][$count]['project_id']       = $project->project_id;
+                                $this->data['projects'][$count]['bid_status']       = $project->project_status;
+
+                                if(isset($freelancer))
+                                {
+                                    $this->data['projects'][$count]['hired_freelancer'] = $freelancer->name;
+                                }
                                 $this->load->model('ProjectCategories');
                                 $projectCategoryWhere = [
                                     'project_id' => $project->project_id

@@ -3,6 +3,7 @@
 
     class Search extends MY_Controller{
         public function index($project_apply_id = false){
+            
             $this->data['view'] = 'Search';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'Search - '.$this->data['site_title'];
@@ -87,6 +88,15 @@
                                 if($result == null)
                                 {
                                     $this->ProjectBid->insertRecord($freelanerBidWhere);
+                                    $reciever       = $userIdData->email;
+                                    $subject        = 'Freelancer Bid For Your Project ';
+                                    
+                                    $this->data['view'] = 'applyemail';
+                                    $this->data['name']   = $userIdData->name;
+
+                                    $mailContent = $this->load->view('email/email_layout',$this->data, true);
+                                    
+                                    $this->sendMail($subject, $mailContent, $reciever);
                                 }
                                 $this->session->set_flashdata("Bid",'Bid success');
                                 return redirect(site_url('Search'));
@@ -137,7 +147,7 @@
             else
             {  
                 $freelancers = $this->search();
-                if(!count($freelancers))
+                if(!$freelancers)
                 {
                     $msg = 'Sorry! No Result Found.';
                     $this->data['msg'] = $msg;
@@ -149,6 +159,7 @@
                 return $this->load->view('layout',$this->data);
             }
         }
+
     }
 
 ?>
