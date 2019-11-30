@@ -126,15 +126,14 @@
                             ];
                             $this->Users->updateData($fileData, $whereUserID );
                             $response["status"]  = "success";
-                            $response["message"] = "Profile Pic has been uploaded successfully";
+                            $response["message"] = "Your profile picture has been uploaded successfully";
                         }else{
                             $this->data['file_error_key'] = $file;
                             if($this->data['file_error_key']){
-                                $this->data['file_error_key'] = str_replace('<p>','',$this->data['file_error_key']);
-                                $this->data['file_error_key'] = str_replace('</p>','',$this->data['file_error_key']);
+                                $strippingTags = strip_tags($this->data['file_error_key']);
                             }
                             $response["status"]  = "error";
-                            $response["message"] = $this->data['file_error_key'];
+                            $response["message"] = $strippingTags;
                         } 
                         echo json_encode($response);  
                     }
