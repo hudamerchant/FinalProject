@@ -44,8 +44,9 @@ if(isset($_SESSION['Bid'])){
 }
 ?>
 <?php
-if (isset($_SESSION['projectsPresent'])) {
+    // var_dump($projects);die;
     if(isset($projects)){
+        
         foreach ($projects as $project) {
             // var_dump($project);die;
         // if($project['profile_pic']){
@@ -138,7 +139,7 @@ if (isset($_SESSION['projectsPresent'])) {
     </section>
 <?php
 }
-}
+
 ?>
 <?php
 } else {

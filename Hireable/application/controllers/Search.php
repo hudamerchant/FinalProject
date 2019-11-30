@@ -41,7 +41,7 @@
                         {
                             $count = 0;
                             // var_dump($projects);die; 
-                            $this->session->set_flashdata("projectsPresent",true);
+                            
                             foreach ($projects as $project) {
                                     
                                 $category_id = [];
