@@ -29,7 +29,7 @@
             //         }
             //         else
             //         {
-                        $this->data['view'] = 'Chatbox';
+                        $this->data['view'] = 'chatbox';
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'Chat - '.$this->data['site_title'];
                         $this->data['receiver_id'] = $ReceiverId;
@@ -45,17 +45,23 @@
             $this->load->view('layout', $this->data);
         }
 
-        function insert_messages(){
+        function insert_messages(//$receiver_id = false
+            ){
+            $this->data['view'] = 'chatbox';
+            $this->data['site_title'] = 'Hireable';
+            $this->data['page_title'] = 'Chat - '.$this->data['site_title'];
+            // $this->data['receiver_id'] = $receiver_id;
+
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData('DESC',$where)->row();
                     if(isset($_REQUEST['msg'])){
-                        $this->form_validation->set_rules('msg', 'message', 'required');
-                        if($this->form_validation->run() == True) {
+                        // $this->form_validation->set_rules('msg', 'message', 'required');
+                        // if($this->form_validation->run() == True) {
 
                             $receiver_id = $_REQUEST['receiver_id'];
-                        
+                            $this->data['receiver_id'] = $receiver_id;
                             $msg = [
                                 'sender_id'     => $user->user_id,
                                 'receiver_id'   => $receiver_id,
@@ -63,15 +69,16 @@
                             ];
                             $this->load->model('Chats');
                             $this->Chats->insertRecord($msg);
-                            return $this->load->view('layout',$this->data);
-                        }
-                        else{
-                            return $this->load->view('layout',$this->data);
-                        }
+                            // var_dump($this->db->last_query());die;
+                            // return $this->load->view('layout',$this->data);
+                        // }
+                        // else{
+                        //     return $this->load->view('layout',$this->data);
+                        // }
 
 
-                    $this->data['view'] = 'Chatbox';
-                    return $this->load->view('layout',$this->data);
+                    // $this->data['view'] = 'Chatbox';
+                    // return $this->load->view('layout',$this->data);
                 }
             }
         }
@@ -87,20 +94,19 @@
                     $receiverID     = $_REQUEST['receiver_id'];
                     $offset         = $_REQUEST['offset'];
 
-                    $this->data   = $this->Chats->offset_retrieving($offset,$senderID,$receiverID); 
+                    $get_Chats   = $this->Chats->offset_retrieving($offset,$senderID,$receiverID); 
                     // var_dump($this->db->last_query());die;
-                    // var_dump($this->data);die;
+                    // var_dump($get_Chats);die;
                     $html   = '';
 
-                    foreach($this->data as $chat_obj){
-                        // var_dump($this->data);die;
+                    foreach($get_Chats as $chat_obj){
+                        // var_dump($get_Chats);die;
                         // var_dump($receiverID);die;
                         // var_dump($chat_obj->receiver_id);die;
                         // var_dump($user->user_id);die;
                         if($chat_obj->sender_id == $user->user_id)
                         {
                             $html .= "<li class='chatbox-li sender'>".$chat_obj->message."</li>";
-
                         }
                         // if($chat_obj->receiver_id == $receiverID)
                         else
@@ -111,7 +117,5 @@
                     }
                     echo $html;
             }
-          
-            
         }
     }

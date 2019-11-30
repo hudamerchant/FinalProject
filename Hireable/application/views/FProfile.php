@@ -62,7 +62,7 @@ if (isset($_SESSION['profilePicUploaded'])) {
                                 <?php
                                     }
                                 ?>
-                                <form enctype="multipart/form-data" method="post">
+                                <form enctype="multipart/form-data" method="post">                                
                                     <?php //echo form_error('userfile') ?>
                                     <div class="input-group mb-3">
                                         <div class="custom-file">

@@ -3,6 +3,21 @@ $(document).ready(function() {
     
     $('.edit-project-category').select2();
 
+    // $('#preloader').bind('ajaxStart', function(){
+    //     $(this).show();
+    // }).bind('ajaxStop', function(){
+    //     $(this).fadeOut("slow");
+    // });
+
+    $(document).ajaxStart(function(){
+        // Show image container
+        $("#preloader").show();
+      });
+      $(document).ajaxComplete(function(){
+        // Hide image container
+        $("#preloader").fadeOut("slow");
+      });
+
     $('.edit-project-category').on('select2:unselecting',function(e){
         e.preventDefault(); 
 
@@ -32,6 +47,12 @@ $(document).ready(function() {
                 data        : formData ,
                 dataType    : "JSON",
                 cache       : false ,
+                beforeSend: function() {
+                    $("#preloader").show();
+                 },
+                 complete: function(){
+                    $("#preloader").fadeOut("slow");
+                },
                 success     : function(response){
                     if(response.msg != null)
                     {
@@ -64,8 +85,14 @@ $(document).ready(function() {
             data        : formData,
             dataType    : "json",
             cache       : false,
+            beforeSend: function() {
+                $("#preloader").show();
+             },
+             complete: function(){
+                $("#preloader").fadeOut("slow");
+            },
             success     : function(response){
-                console.log(response);
+                
                 swal("", response.message, response.status)
                 .then(function(e){
                     window.location.reload();
@@ -87,8 +114,14 @@ $(document).ready(function() {
             data        : formData,
             dataType    : "json",
             cache       : false,
+            beforeSend: function() {
+                $("#preloader").show();
+             },
+             complete: function(){
+                $("#preloader").fadeOut("slow");
+            },
             success     : function(response){
-                console.log(response);
+                
                 swal("", response.message, response.status)
                 .then(function(e){
                     window.location.reload();
@@ -121,6 +154,16 @@ $(document).ready(function() {
 
     $('.send').on('click',function(e){
        e.preventDefault();
+       $(".send").attr("disabled", true);
+
+    //    if($('.message').val().length != 0){
+            
+    //         $('.send').attr("disabled", false);
+    //    }
+    //    else{
+    //         $(".send").attr("disabled", true);
+    //    }
+
         msg = $('input[name=message]').val();
          
         data = {
@@ -130,13 +173,31 @@ $(document).ready(function() {
            $.ajax({
                url:SITE_URL+"/Chatbox/insert_messages",
                data:data,
+               type: 'POST',
+               beforeSend: function() {
+                // $(".send").attr("disabled", true);
+                // $("#preloader").show();
+                $( ".send" ).addClass("disabledClass");
+                
+                    $(".send").attr("disabled", true);
+                
+                },
                success:function(){
+                   
                    $('input[name=message]').val('')
-               }
+                   $( ".send" ).removeClass("disabledClass");
+                $(".send").attr("disabled", false);
+                   
+                   
+               },
+               complete: function(){
+                //$(".send").attr("disabled", false);
+                // $("#preloader").fadeOut("slow");
+                
+                }
            })
     });
-   
-    recursively_ajax();
+    
     function recursively_ajax()
     { 
             li_length = $('.chatbox-listing > li').length;
@@ -149,34 +210,24 @@ $(document).ready(function() {
             $.ajax({
                 url: SITE_URL + "/Chatbox/get_messages",
                 data: data,
+                
                 success: function (data) {
                     $('.chatbox-listing').append(data); 
                     recursively_ajax();
                 }
             })
     }
+    $('.message').on('keyup',function(e){
+        if(e.keyCode == 13){
+            $('.send').trigger('click');
+        } 
+    });
     
     if ($('.chatbox-form').length) {
         recursively_ajax();
     }
-    // //  console.log(SITE_URL)
-    //  function recursively_ajax()
-    // {
-    // // setInterval(function(){
-    //    li_length = $('.chatbox-listing > li.chatbox-li').length;
-    //    data = {offset:li_length}
-    //    $.ajax({
-    //        url:SITE_URL+"/Chatbox/get_messages",
-    //        data:data,
-    //        success:function(data){
-    //         recursively_ajax();
-    //         $('.chatbox-listing').append(data);
+    
+    
 
-    //        }
-    //    }) 
-    // // , 2000);
-    // }
-    // if($('.chatbox-form').length) {
-    //     recursively_ajax()
-    // }
+
 });

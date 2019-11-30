@@ -14,12 +14,12 @@ if(isset($_SESSION['projectInserted'])){
                         <h3>Add new project</h3>
                         <div class="form-group">
                             <label class="control-label">Project title</label>
-                            <input type="text" class="form-control" name="project-title">
+                            <input type="text" class="form-control" name="project-title" value="<?php echo isset($_POST['project-title']) && !empty($_POST['project-title']) ? $_POST['project-title'] : '' ?>">
                             <?php echo form_error('project-title') ?>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Project Description</label>
-                            <textarea class="form-control" rows="7" name="project-description"></textarea>
+                            <textarea class="form-control" rows="7" name="project-description"><?php echo isset($_POST['project-description']) && !empty($_POST['project-description']) ? $_POST['project-description'] : '' ?></textarea>
                             <?php echo form_error('project-description') ?>
                         </div>
                         <div class="form-group ">
@@ -27,7 +27,7 @@ if(isset($_SESSION['projectInserted'])){
                             <label class="control-label">Skills</label><br>
                             <select class="js-example-basic-multiple col-md-12 " name="categories[]" multiple="multiple">
                                 <?php foreach($categories as $category){?>
-                                        <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
+                                        <option value="<?php echo $category->category_id ?>"<?php echo isset($_POST['categories[]']) ? (in_array($category->category,$_POST['categories[]']) ? 'selected' : ''  ) : $category->category ?>><?php echo $category->category ?></option>            
                                     <?php } ?>
                             </select>
                             <?php echo form_error('categories[]') ?>

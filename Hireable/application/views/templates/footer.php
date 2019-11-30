@@ -31,20 +31,20 @@
         </div>
         <div class="col-lg-3 col-md-4 col-xs-12">
           <div class="widget">
-            <h3 class="block-title">Subscribe Now</h3>
+            <h3 class="block-title">Join us</h3>
             <p>Join over 10,500 people who receive bi-weekly web marketing tips.</p>
-            <form method="post" id="subscribe-form" name="subscribe-form" class="validate">
+            <!-- <form method="post" id="subscribe-form" name="subscribe-form" class="validate">
               <div class="form-group is-empty">
                 <input type="email" value="" name="Email" class="form-control" id="EMAIL" placeholder="Enter Email..." required="">
                 <button type="submit" name="subscribe" id="subscribes" class="btn btn-common sub-btn"><i class="lni-envelope"></i></button>
                 <div class="clearfix"></div>
               </div>
-            </form>
+            </form> -->
             <ul class="mt-3 footer-social">
-              <li><a class="facebook" href="#"><i class="lni-facebook-filled"></i></a></li>
-              <li><a class="twitter" href="#"><i class="lni-twitter-filled"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="lni-linkedin-fill"></i></a></li>
-              <li><a class="google-plus" href="#"><i class="lni-google-plus"></i></a></li>
+              <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="lni-facebook-filled"></i></a></li>
+              <li><a class="twitter" href="https://twitter.com/Twitter" target="_blank"><i class="lni-twitter-filled"></i></a></li>
+              <li><a class="linkedin" href="https://pk.linkedin.com" target="_blank"><i class="lni-linkedin-fill"></i></a></li>
+              <li><a class="google-plus" href="https://aboutme.google.com" target="_blank"><i class="lni-google-plus"></i></a></li>
             </ul>
           </div>
         </div>
@@ -72,7 +72,7 @@
   </a>
 
   <!-- Preloader -->
-  <div id="preloader">
+  <div id="preloader" class="extra-ajax-preloader">
     <div class="loader" id="loader-1"></div>
   </div>
   <!-- End Preloader -->
