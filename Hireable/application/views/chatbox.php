@@ -23,7 +23,7 @@
                     
                 </ul>
                 <div class="chatarea">
-                    <form method="post" class="chatbox-form">
+                    <form method="post" class="chatbox-form" autocomplete="off">
                             <div class="view chatbox-view">
 <!--                                 <div class="col-80 chatbox-column"> -->
                                     <input class="form-control chatbox-form-control receiver_id" name="message" class="message-text" type="hidden" value="<?php echo $receiver_id ?>"> 

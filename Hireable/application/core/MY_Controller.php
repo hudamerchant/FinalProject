@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'vendor\autoload.php';
+require 'vendor/autoload.php';
 
 class MY_Controller extends CI_Controller
 {
@@ -96,7 +96,7 @@ class MY_Controller extends CI_Controller
         {
             if($role_id == 1)
             {
-                $projects   = $this->Projects->getData('DESC' ,)->result();
+                $projects   = $this->Projects->getData('DESC')->result();
                 return $projects;
             }
             else
