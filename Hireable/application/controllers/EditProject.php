@@ -118,6 +118,9 @@
                                     
                                     return redirect(site_url('Client'));
                                 }
+                                else {
+                                    return $this->load->view('layout', $this->data);
+                                }
                             }
                             else {
                                 return $this->load->view('layout', $this->data);
