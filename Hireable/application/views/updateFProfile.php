@@ -32,12 +32,6 @@
                             <input type="text" name="name" class="form-control" placeholder="Name" value="<?php echo isset($_POST['name']) ? $_POST['name'] : $freelancer_info['name'] ?>">
                             <?php echo form_error('name') ?>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label"></label>
-                            <label class="control-label">Email</label>
-                            <input type="text" name="email" class="form-control" placeholder="Your@domain.com" value="<?php echo isset($_POST['email']) ? $_POST['email'] : $freelancer_info['email'] ?>">
-                            <?php echo form_error('email') ?>
-                        </div>
                         <div class="form-group ">
                             <label class="control-label"></label>   
                             <label class="control-label">Skills</label><br>

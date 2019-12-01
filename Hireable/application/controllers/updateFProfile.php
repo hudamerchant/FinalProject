@@ -89,17 +89,14 @@
                     
                     if (isset($_POST['submit'])) {
                         $this->form_validation->set_rules('name', 'name', 'required');
-                        $this->form_validation->set_rules('categories[]', 'skills', 'required');
-                        $this->form_validation->set_rules('email', 'e-mail', 'required|valid_email');
+                        $this->form_validation->set_rules('categories[]', 'skills', 'required');                        
                         $this->form_validation->set_rules('p_description', 'project description', 'required');
                         if ($this->form_validation->run() == true) {
                             $name          = $this->input->post('name');
-                            $email         = $this->input->post('email');
                             $categories    = $this->input->post('categories');
                             $p_description = $this->input->post('p_description');
 
                             $update_data    =   [   'name'              => $name,
-                                                    'email'             => $email,
                                                     'updated_profile'   => 1
                                                 ];
                                                 
@@ -142,20 +139,9 @@
                             // $this->data['freelancer_info'] = $user;
                             return $this->load->view('layout', $this->data);
                         }
-                    } else {
-                        //Rida ka kaam, don't remove, yahan se
-
-                        // $where = [
-                        //     'user_id'=> $user->user_id
-                        // ];
-                        // $RetrievingProfileDescription = $this->FProfile->getData('DESC',$where)->result();
-                        // foreach($RetrievingProfileDescription as $ProfileDescription){
-
-                        //     var_dump($ProfileDescription->profile_description);
-                        // }
-
-                        //yahan tk
-                            
+                    } 
+                    else 
+                    {
                         return $this->load->view('layout', $this->data);
                     }
                     // return $this->load->view('layout', $this->data);

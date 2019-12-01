@@ -10,18 +10,10 @@
     </div>
 </div>
 <?php
-    // if(isset($_SESSION['reviewInserted'])) 
-    // {
-?>
-        <!-- <p class="alert alert-info mt-3"><?php // echo $this->session->flashdata("reviewInserted"); ?></p> -->
-<?php
-    // }
-?>
-<?php
     if(isset($_SESSION['profilePicUploaded'])) 
     {
 ?>
-        <p class="alert alert-info"><?php echo $this->session->flashdata("profilePicUploaded"); ?></p>
+        <p class="alert alert-success"><?php echo $this->session->flashdata("profilePicUploaded"); ?></p>
 <?php
     }
 ?>
@@ -146,17 +138,9 @@
                         else 
                         {
                     ?>
-                        <section class="job-detail section dashboard-section">
-                            <div class="container">
-                                <div class="row justify-content-between">
-                                    <div class="col-lg-8 col-md-12 col-xs-12">
-                                        <div class="content-area">
-                                            <h5 class="client-dashboard-center">No Reviews yet</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                        <div class="row justify-content-between dashboard-section">                              
+                            <h6 class="client-dashboard-center profile-h6">No Reviews yet</h6>                               
+                        </div>   
                     <?php
                         } 
                     ?>

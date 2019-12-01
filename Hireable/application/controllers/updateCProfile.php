@@ -35,20 +35,17 @@
                         $this->form_validation->set_rules('name', 'name', 'required');
                         $this->form_validation->set_rules('dob', 'dob', 'required');
                         $this->form_validation->set_rules('gender', 'gender', 'required');
-                        $this->form_validation->set_rules('email', 'email', 'required|valid_email');
                         
                         if($this->form_validation->run() == True) {
     
                             $name               = $this->input->post('name');
                             $dob                = $this->input->post('dob');
                             $gender             = $this->input->post('gender');
-                            $email              = $this->input->post('email');
                             $org_description    = $this->input->post('org_description');
     
                             $update_data    =   [   'name'              => $name,
                                                     'dob'               => $dob,
-                                                    'gender'            => $gender,                        
-                                                    'email'             => $email,
+                                                    'gender'            => $gender,
                                                     'updated_profile'   => 1
                                                 ];
     

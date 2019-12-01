@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['status'])) {
     ?>
-    <p class="alert alert-info"><?php echo $this->session->flashdata("status"); ?></p>
+    <p class="alert alert-success"><?php echo $this->session->flashdata("status"); ?></p>
 <?php
 } else {
     ?>

@@ -1,12 +1,12 @@
 <?php
 if (isset($_SESSION['error'])) {
     ?>
-    <p class="alert alert-info"><?php echo $this->session->flashdata("error"); ?></p>
+    <p class="alert alert-danger"><?php echo $this->session->flashdata("error"); ?></p>
 <?php
 }
 if (isset($_SESSION['status'])) {
     ?>
-    <p class="alert alert-info"><?php echo $this->session->flashdata("status"); ?></p>
+    <p class="alert alert-success"><?php echo $this->session->flashdata("status"); ?></p>
 <?php
 }
 ?>

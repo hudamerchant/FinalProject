@@ -1,22 +1,7 @@
-<?php
-//if(isset($_SESSION['projectInserted'])){
-    ?>
-    <!-- <p class="alert alert-info"><?php  //echo $this->session->flashdata("projectInserted");?></p> -->
-    <?php
-//}
-?>
+
 <?php 
     if($project_data){
         $selected_categories = $project_data['categories'];
-        // $count = 0;
-        // foreach ($project_data['categoryDetails'] as $key => $categoryDetails) {
-        //     foreach ($categoryDetails as $categoryDetail) {
-        //         var_dump($categoryDetail);
-                    // var_dump($project_data['categoryDetails'][$categoryDetails][$count]);
-                
-        //     }
-        //     $count++;
-        // }
 ?>
 <section id="content">
     <div class="container">

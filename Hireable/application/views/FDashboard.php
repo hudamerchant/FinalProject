@@ -13,11 +13,7 @@
 <?php
 if (isset($_SESSION['freelancerBidsPresent'])) {
     foreach ($results as $result) {
-        // var_dump($results['remainingData']);die;
-        // yahan start
-
-        // if($results['profilePicPath']){
-
+        
             if($result->profile_pic != ''){
                 $profilePicPath = $this->data['image_path'];
                $profilePicVariable = $result->profile_pic;
@@ -25,10 +21,7 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
             elseif($result->profile_pic == ''){
                 $profilePicVariable = '';
             }
-        // }
-
-        // yahan khatam
-        
+       
         
         ?>
         <div class="col-lg-8 col-md-8 col-xs-8">

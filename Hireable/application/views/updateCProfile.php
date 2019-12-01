@@ -31,12 +31,7 @@
                             <input type="radio" name="gender" value="male" <?php echo isset($_POST['gender']) && $_POST['gender']=="male" ? "checked" : $client_info->gender == "male" ? 'checked' : '' ?>> Male
                             <input type="radio" name="gender" value="female" <?php  echo isset($_POST['gender']) && $_POST['gender']=="female" ? "checked" : $client_info->gender == "female" ? 'checked' : '' ?> >   Female
                             <?php echo form_error('gender') ?>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Email</label>
-                            <input type="text" class="form-control" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : $client_info->email ?>">
-                            <?php echo form_error('email') ?>
-                        </div>
+                        </div>                        
                         <div class="form-group">
                             <label class="control-label">Organization Description</label>
                             <textarea name="org_description" class="form-control" rows="7"><?php echo isset($orgDescription) ? $orgDescription : '' ?></textarea>

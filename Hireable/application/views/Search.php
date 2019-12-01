@@ -39,7 +39,7 @@ if (isset($_SESSION['freelancerRole'])) {
     <?php
 if(isset($_SESSION['Bid'])){
     ?>
-    <p class="alert alert-info"><?php  echo $this->session->flashdata("Bid");?></p>
+    <p class="alert alert-success"><?php  echo $this->session->flashdata("Bid");?></p>
     <?php
 }
 ?>
