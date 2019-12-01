@@ -27,8 +27,8 @@ if(isset($_SESSION['projectInserted'])){
                             <label class="control-label">Skills</label><br>
                             <select class="js-example-basic-multiple col-md-12 " name="categories[]" multiple="multiple">
                                 <?php foreach($categories as $category){?>
-                                        <option value="<?php echo $category->category_id ?>"<?php echo isset($_POST['categories[]']) ? (in_array($category->category,$_POST['categories[]']) ? 'selected' : ''  ) : $category->category ?>><?php echo $category->category ?></option>            
-                                    <?php } ?>
+                                    <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
+                                <?php } ?>
                             </select>
                             <?php echo form_error('categories[]') ?>
                             

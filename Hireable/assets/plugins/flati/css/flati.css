@@ -1,0 +1,312 @@
+/*
+Plugin Made by void Tricks
+URI : https://www.voidtricks.com/flati-social-share-plugin-jquery/
+*/
+body,html{
+    padding: 0;
+    margin:0;
+}
+.flati_holder{
+    position: fixed;
+    top:-80px;
+    right: 0;
+    width: 100%;
+    height: 80px;
+    background: #1c1c1c;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    display: flex;
+    
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.flati_trigger{
+    font-size: 24px;
+    margin: 0 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: fixed;
+    right:20px;
+    bottom:20px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.flati_trigger.left{
+    right: inherit !important;
+    left:20px;
+}
+
+.flati_holder .i{
+    padding: 8px;
+    background: #000;
+    margin: 0 5px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.flati_holder .i.square{
+    border-radius: 4px;
+}
+
+.flati_holder .i.facebook{
+    background-color: #3b5998;
+    background-image: url("../icons/facebook.svg");
+}
+.flati_holder .i.twitter{
+    background-color: #55acee;
+    background-image: url("../icons/twitter.svg");
+}
+.flati_holder .i.google-plus{
+    background-color: #dd4b39;
+    background-image: url("../icons/google-plus.svg");
+}
+.flati_holder .i.linked-in{
+    background-color: #007bb5;
+    background-image: url("../icons/linked-in.svg");
+}
+.flati_holder .i.whatsapp{
+    background-color: #4dc247;
+    background-image: url("../icons/whatsapp.svg");
+}
+.flati_holder .i.pinterest{
+    background-color: #cb2027;
+    background-image: url("../icons/pinterest.svg");
+}
+.flati_holder .i.reddit{
+    background-color: #ff4500;
+    background-image: url("../icons/reddit.svg");
+}
+.flati_holder .i.vk{
+    background-color: #45668e;
+    background-image: url("../icons/vk.svg");
+}
+
+.flati_trigger .on{
+    background: #29b179 url('../icons/share.svg') center center no-repeat;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 999;
+    opacity: 1;
+    -webkit-transition: opacity 0.4s ease;
+    -moz-transition: opacity 0.4s ease;
+    -o-transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease;
+}
+.flati_trigger .text{
+    color: #29b179;
+    font-size: 18px;
+    position: fixed;
+    right: 90px;
+    bottom: 32px;
+}
+.flati_trigger.left .text{
+    left: 80px;
+}
+.flati_trigger.triggered .text{
+    color: #fb3636;
+}
+
+.flati_trigger .off{
+    background: #fb3636 url('../icons/cancel.svg') center center no-repeat;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    position: absolute;
+    left:50%;
+    top:50%;
+    z-index: 1000;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.flati_trigger.triggered .off{
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.flati_trigger.triggered .on{
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease;
+    -moz-transition: opacity 0.4s ease;
+    -o-transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease;
+}
+
+.flati_holder.triggered{
+    opacity: 1;
+    top:0;
+    -webkit-transition: top 0.3s ease;
+    -moz-transition: top 0.3s ease;
+    -o-transition: top 0.3s ease;
+    transition: top 0.3s ease;
+}
+.flati_holder.triggered .i{
+    margin-top: -100px;
+}
+.flati_holder.triggered .i.show{
+    margin-top: 0;
+    -webkit-transition: margin-top 0.3s ease;
+    -moz-transition: margin-top 0.3s ease;
+    -o-transition: margin-top 0.3s ease;
+    transition: margin-top 0.3s ease;
+}
+
+.flati_holder.triggered .i.show:hover{
+    margin-top:-10px;
+    -webkit-transition: margin-top 0.2s ease;
+    -moz-transition: margin-top 0.2s ease;
+    -o-transition: margin-top 0.2s ease;
+    transition: margin-top 0.2s ease;
+}
+
+/* Themes */
+.flati_holder.nobg{
+    background: transparent;
+}
+
+.flati_holder.space{
+    background: #2a1350;
+}
+.flati_holder.space .i{
+    background-color: #000;
+}
+
+.flati_holder.mars{
+    background: #ff8347;
+}
+.flati_holder.mars .i{
+    background-color:#ba3f1b;
+}
+
+.flati_holder.titan{
+    background: #52d4b6;
+}
+.flati_holder.titan .i{
+    background-color:#ff6638;
+}
+
+.flati_holder.moon{
+    background: #ffffffd6;
+}
+.flati_holder.moon .i{
+    background-color:#8d8c8c;
+}
+
+.flati_holder.neptune{
+    background: #2e2291;
+}
+.flati_holder.neptune .i{
+    background-color:#ff2f7c;
+}
+
+.flati_holder.right{
+    width: 100px;
+    right:-100px;
+    height: 100%;
+    top: 0;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.flati_holder.right .i{
+    margin-bottom:10px;
+}
+.flati_holder.right.triggered .i{
+    margin-right: -150px;
+    margin-top:0;
+}
+.flati_holder.right.triggered{
+    opacity: 1;
+    right: 0;
+    -webkit-transition: right 0.3s ease;
+    -moz-transition: right 0.3s ease;
+    -o-transition: right 0.3s ease;
+    transition: right 0.3s ease;
+}
+.flati_holder.right.triggered .i.show{
+    margin-right: 5px;
+    margin-top:0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.flati_holder.right.triggered .i.show:hover{
+    margin-top:0;
+    -webkit-transition: margin-top 0.2s ease;
+    -moz-transition: margin-top 0.2s ease;
+    -o-transition: margin-top 0.2s ease;
+    transition: margin-top 0.2s ease;
+}
+
+@media screen and (max-width: 500px){
+    .flati_holder{
+        width: 100px;
+        right:-100px;
+        height: 100%;
+        top: 0;
+        flex-direction: column;
+        justify-content: center;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .flati_holder .i{
+        margin-bottom:5px;
+        width: 25px;
+        height: 25px;
+        background-size: 60%;
+    }
+    .flati_holder.triggered .i{
+        margin-right: -150px;
+        margin-top:0;
+    }
+    .flati_holder.triggered{
+        opacity: 1;
+        right: 0;
+        -webkit-transition: right 0.3s ease;
+        -moz-transition: right 0.3s ease;
+        -o-transition: right 0.3s ease;
+        transition: right 0.3s ease;
+    }
+    .flati_holder.triggered .i.show{
+        margin-right: 5px;
+        margin-top:0;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .flati_holder.triggered .i.show:hover{
+        margin-top:0;
+        -webkit-transition: margin-top 0.3s ease;
+        -moz-transition: margin-top 0.3s ease;
+        -o-transition: margin-top 0.3s ease;
+        transition: margin-top 0.2s ease;
+    }
+}
