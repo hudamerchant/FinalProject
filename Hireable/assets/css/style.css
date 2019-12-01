@@ -124,8 +124,8 @@ a.profile-anchor {
     margin-bottom: 0;
 }
 .manager-resumes-item .manager-content .manager-info .view-bids-button{
-    float: none;
     margin-top: 3px;
+    margin-left: 3px;
 }
 .view-bids-anchor{
     padding: 5px 14px;
@@ -301,4 +301,12 @@ input.disabledClass {
     color: #fff;
     background-color: #c4c6c8;
     border-color: #c4c6c8;
+}
+.job-detail .content-area .freelancer-details-h6{
+    text-align: center;
+    padding-top: 8px;
+    margin: 6px 0;
+}
+.freelancer-tag-skills{
+    margin-left: 89px;
 }
