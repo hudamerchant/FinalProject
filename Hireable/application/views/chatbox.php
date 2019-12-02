@@ -19,9 +19,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="chatbox">
-                <ul class="chatbox-listing">
+                <div class="scroll_body">
+                    <ul class="chatbox-listing">
                     
-                </ul>
+                    </ul>
+                </div>
                 <div class="chatarea">
                     <form method="post" class="chatbox-form" autocomplete="off" onsubmit="return false;">
                             <div class="view chatbox-view">
