@@ -2,7 +2,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class AddProject extends MY_Controller{
+    class Add_project extends MY_Controller{
         function __construct(){
             parent::__construct();
         }
@@ -25,7 +25,7 @@
                     }
                     else
                     {
-                        $this->data['view'] = 'AddProject';
+                        $this->data['view'] = 'add_project';
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'Add project - '.$this->data['site_title'];  
     
@@ -76,7 +76,7 @@
                                 }
     
                                 $this->session->set_flashdata("projectInserted","Project inserted successfully!");
-                                return redirect(site_url('Client'));
+                                return redirect(site_url('Client_dashboard'));
                                 
                             }
                             else{

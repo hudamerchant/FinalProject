@@ -59,17 +59,17 @@ include_once('head.php');
           if (isset($_SESSION['ClientRole'])) {
             ?>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('/ClientProfile'); ?>">
+              <a class="nav-link" href="<?php echo site_url('/Client_profile'); ?>">
                 Profile
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('/Client'); ?>">
+              <a class="nav-link" href="<?php echo site_url('/Client_dashboard'); ?>">
                 Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('/AddProject'); ?>">
+              <a class="nav-link" href="<?php echo site_url('/Add_project'); ?>">
                 Post a Project
               </a>
             </li>

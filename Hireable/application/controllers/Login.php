@@ -28,7 +28,7 @@ class Login extends MY_Controller
             {
                 if($user->updated_profile)
                 {
-                    redirect(site_url('Client'));
+                    redirect(site_url('Client_dashboard'));
                 }
                 else
                 {
@@ -75,7 +75,7 @@ class Login extends MY_Controller
                                 $this->session->set_userdata('ClientRole','2');
                                 if($query->updated_profile)
                                 {
-                                    return redirect(site_url('Client'));
+                                    return redirect(site_url('Client_dashboard'));
                                 }
                                 else
                                 {

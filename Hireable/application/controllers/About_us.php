@@ -3,7 +3,7 @@
 
     class About_us extends MY_Controller{
         public function index(){
-            $this->data['view'] = 'About_us';
+            $this->data['view'] = 'about_us';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'About Us -'.$this->data['site_title']; 
             if($this->session->userdata('logged_in')){

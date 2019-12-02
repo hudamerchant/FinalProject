@@ -83,7 +83,7 @@
                 }
                 elseif($user->role_id == 2)
                 {
-                    return redirect(site_url('Client'));
+                    return redirect(site_url('Client_dashboard'));
                 }
             }
             else

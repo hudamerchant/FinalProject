@@ -162,7 +162,7 @@
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
                 $user   = $this->Users->getData('DESC', $where)->row();
                 if ($user->role_id == 2) {
-                    return redirect(site_url('Client'));
+                    return redirect(site_url('Client_dashboard'));
                 }
                 elseif($user->role_id == 1)
                 {

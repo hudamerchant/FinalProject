@@ -74,7 +74,7 @@
                             $where = ['user_id' => $user->user_id];
                             $this->Users->updateData($update_data , $where);
                             
-                            return redirect(site_url('ClientProfile'));
+                            return redirect(site_url('Client_profile'));
     
                         }
                         else

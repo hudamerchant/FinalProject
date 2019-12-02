@@ -114,7 +114,7 @@
                                 }                              
                                 
                             }else{
-                                redirect('Client');
+                                redirect('Client_dashboard');
                             }
                         }
                         $this->load->view('layout',$this->data);                        

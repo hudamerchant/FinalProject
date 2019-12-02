@@ -28,7 +28,7 @@
                     ];
                     $this->AcceptedProjects->updateData($update_status ,$where );
                     
-                    return redirect(site_url('Client'));
+                    return redirect(site_url('Client_dashboard'));
                 }
             }
             else

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ClientProfile extends MY_Controller
+class Client_profile extends MY_Controller
 {
     function __construct()
     {
@@ -23,7 +23,7 @@ class ClientProfile extends MY_Controller
                 }
                 else
                 {
-                    $this->data['view'] = 'CProfile';
+                    $this->data['view'] = 'client_profile';
                     $this->data['site_title'] = 'Hireable';
                     $this->data['page_title'] = 'Profile -' . $this->data['site_title'];
     
@@ -67,7 +67,7 @@ class ClientProfile extends MY_Controller
             } 
             elseif($user->role_id == 2) 
             {
-                return redirect(site_url('Client'));
+                return redirect(site_url('Client_dashboard'));
             }
         } 
         else 

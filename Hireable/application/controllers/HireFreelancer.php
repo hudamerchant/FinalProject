@@ -61,7 +61,7 @@
                             
                             $this->sendMail($subject, $mailContent, $reciever, $sender);
                             
-                            return redirect(site_url('Client/index/'.$bid_project_id));
+                            return redirect(site_url('Client_dashboard/index/'.$bid_project_id));
                             
                         }
         

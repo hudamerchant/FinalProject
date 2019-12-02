@@ -40,7 +40,7 @@
                             ];
                             $this->Projects->updateData($dataToUpdate,$whereProjectID);
                             // var_dump($this->db->last_query());die;
-                            return redirect(site_url('Client'));
+                            return redirect(site_url('Client_dashboard'));
                         }
                         return $this->load->view('layout',$this->data);
 

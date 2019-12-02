@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Client extends MY_Controller{
+    class Client_dashboard extends MY_Controller{
         function __construct(){
             parent::__construct();
         }
@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else
                     {
-                        $this->data['view']       = 'CDashboard';
+                        $this->data['view']       = 'client_dashboard';
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'Dashboard -'.$this->data['site_title'];      
                         

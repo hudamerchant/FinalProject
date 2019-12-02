@@ -91,7 +91,7 @@
                 }
                 elseif($user->role_id == 2)
                 {
-                    redirect(site_url('Client'));
+                    redirect(site_url('Client_dashboard'));
                 }
                 $this->load->view('layout',$this->data);
             }
@@ -107,7 +107,7 @@
                 $user   = $this->Users->getData('DESC', $where)->row();
             
                 if ($user->role_id == 2) {
-                    return redirect(site_url('Client'));
+                    return redirect(site_url('Client_dashboard'));
                 } elseif ($user->role_id == 1) {
                     if (!$user->updated_profile) {
                         return redirect(site_url('updateFProfile'));

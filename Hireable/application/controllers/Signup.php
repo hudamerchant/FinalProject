@@ -25,7 +25,7 @@ class Signup extends MY_Controller
             }
             elseif($user->role_id == 2)
             {
-                redirect(site_url('Client'));
+                redirect(site_url('Client_dashboard'));
             }
         }
         else

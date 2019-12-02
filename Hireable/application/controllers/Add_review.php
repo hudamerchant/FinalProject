@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class AddReview extends MY_Controller{
+    class Add_review extends MY_Controller{
         function __construct(){
             parent::__construct();
         }
@@ -16,7 +16,7 @@
                 }
                 else
                 {
-                    $this->data['view'] = 'AddReview';
+                    $this->data['view'] = 'add_review';
                     $this->data['site_title'] = 'Hireable';
                     $this->data['page_title'] = 'Add Review -'.$this->data['site_title']; 
                     
@@ -37,7 +37,7 @@
 
                             $this->Reviews_Model->insertRecord($reviewData);
                             $this->session->set_flashdata("reviewInserted","Review inserted successfully!");
-                            redirect(site_url('Client')); 
+                            redirect(site_url('Client_dashboard')); 
                         }
                         else {
                             $this->load->view('layout', $this->data);

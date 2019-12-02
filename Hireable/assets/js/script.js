@@ -78,7 +78,7 @@ $(document).ready(function() {
         console.log(formData);
         
         $.ajax({
-            url         : SITE_URL+"/ClientProfile/upload",
+            url         : SITE_URL+"/Client_profile/upload",
             type        : "POST",
             contentType : false,
             processData : false,  

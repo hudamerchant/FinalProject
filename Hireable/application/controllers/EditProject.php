@@ -116,7 +116,7 @@
 
                                     }
                                     
-                                    return redirect(site_url('Client'));
+                                    return redirect(site_url('Client_dashboard'));
                                 }
                                 else {
                                     return $this->load->view('layout', $this->data);

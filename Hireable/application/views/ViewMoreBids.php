@@ -123,7 +123,7 @@ if (isset($_SESSION['projectsBidsPresent'])) {
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div class="client-dashboard-center">
-                                        <a href="<?php echo site_url('Client'); ?>"><button class="btn btn-common " type="submit" name="submit" value="">Dashboard</button></a>
+                                        <a href="<?php echo site_url('Client_dashboard'); ?>"><button class="btn btn-common " type="submit" name="submit" value="">Dashboard</button></a>
                                     </div>
                                 </div>
                             </div>

@@ -117,7 +117,7 @@ else
                             <div class="button-group">
                                 <div class="action-buttons">
                                     <div class="client-dashboard-center">
-                                        <a href="<?php echo site_url('AddProject'); ?>"><button class="btn btn-common " type="submit" name="submit" value=""> Add Project</button></a>
+                                        <a href="<?php echo site_url('Add_project'); ?>"><button class="btn btn-common " type="submit" name="submit" value=""> Add Project</button></a>
                                     </div>
                                 </div>
                             </div>
