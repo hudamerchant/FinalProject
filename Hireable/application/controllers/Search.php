@@ -86,10 +86,13 @@
                                     'project_id'    => $project_apply_id
                                 ];
                                 $this->load->model('ProjectBid');
+                                
+                                
                                 $result = $this->ProjectBid->getData('DESC',$freelanerBidWhere )->row();
                                 if($result == null)
                                 {
                                     $this->ProjectBid->insertRecord($freelanerBidWhere);
+                                    
                                     $reciever       = $userIdData->email;
                                     $sender         = $user->email;
                                     $subject        = 'Freelancer Bid For Your Project ';

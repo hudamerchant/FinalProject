@@ -30,6 +30,7 @@
 
                             $this->load->model('Projects');
                             $this->load->model('Users');
+                            $this->load->model('AcceptedProjects');
                             
                             $where_freelancer = [
                                 'user_id'   => $bid_user_id
@@ -41,16 +42,12 @@
                             ];
                             $client_info = $this->Users->getData('ASC', $where_client)->row();
                             
-                            $where = [
-                                'project_id'    => $bid_project_id
-                            ];
-                            
-                            $status_update = [
-                                'project_status'        => 1 ,
-                                'hired_freelancer_id'   => $bid_user_id
-                            ];
-        
-                            $bid_accepted = $this->Projects->updateData($status_update, $where);
+                            $Project_status = [
+                                        'project_bid_id'    => $bid_project_id,
+                                        'status'            => 'Ongoing',
+                                        'hired_freelancer'  => $bid_user_id
+                                ]; 
+                            $bid_accepted = $this->AcceptedProjects->insertRecord($Project_status);
                             if($bid_accepted)
                             {
                                 $reciever       = $freelancer_info->email;

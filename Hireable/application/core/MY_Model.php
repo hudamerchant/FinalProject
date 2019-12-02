@@ -82,7 +82,7 @@ class MY_Model extends CI_Model
 
         return $query;
     }
-    public function multiple_joins($JoinWith,$where,$select, $order = 'ASC',$orderby = "" ){
+    public function multiple_joins($JoinWith,$where,$select, $order = 'ASC',$orderby = "" , $join = 'join' ){
         $this->db->order_by($orderby , $order);
         if(count($where) > 0)
         {
@@ -91,7 +91,7 @@ class MY_Model extends CI_Model
         $this->db->select($select);
         $this->db->from($this->table_name);
         foreach($JoinWith as $JoinWithValue){
-            $this->db->join($JoinWithValue['table_name'], $JoinWithValue['column_with']);       
+            $this->db->join($JoinWithValue['table_name'], $JoinWithValue['column_with'] , $join);       
         }
         
         return $this->db->get();
