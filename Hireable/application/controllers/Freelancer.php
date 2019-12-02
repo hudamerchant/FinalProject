@@ -36,8 +36,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 
                                 $this->load->model('Projects');
                                 
-                                $fetchingProjects []= ['table_name'=>'project_bids', 'column_with'=>'project_bids.project_id = projects.project_id']; 
-                                $fetchingProjects []= ['table_name'=>'users', 'column_with'=>'projects.user_id = users.user_id']; 
+                                $fetchingProjects []= [
+                                    'table_name'    =>'project_bids',
+                                    'column_with'   =>'project_bids.project_id = projects.project_id'
+                                ]; 
+                                $fetchingProjects []= [
+                                    'table_name'    =>'users',
+                                    'column_with'   =>'projects.user_id = users.user_id'
+                                ]; 
+                                $fetchingProjects []= [
+                                    'table_name'    =>'accepted_projects',
+                                    'column_with'   =>'projects.project_id = accepted_projects.project_id'
+                                ];
                                 
                                 $selectArray = [
                                     'project_bids'.'.user_id', 
@@ -46,6 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     'users'.'.name',
                                     'users'.'.email',
                                     'users'.'.profile_pic',
+                                    'accepted_projects'.'.status',
                                     'projects'.'.updated_at'
                                 ];
     

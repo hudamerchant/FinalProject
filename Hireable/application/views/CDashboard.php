@@ -37,7 +37,13 @@ if (isset($_SESSION['projectsPresent'])) {
                                     ?>
                                         <div class="manager-info">
                                             <div class="manager-meta search-manager-meta">
+                                            <?php if($project['bid_status'] == 'Ongoing') {?>
                                                 <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-success" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Ongoing</a></span>
+                                            <?php } elseif($project['bid_status'] == 'Cancelled') {?>
+                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-danger" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Project Cancelled</a></span>
+                                            <?php } elseif($project['bid_status'] == 'Completed') {?>
+                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-success" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Project Completed</a></span>
+                                            <?php }?>
                                             </div>
                                         </div>
                                     <?php
@@ -67,12 +73,18 @@ if (isset($_SESSION['projectsPresent'])) {
                                 <h5>Project Bids</h5>
                                 <div class="manager-info">
                                     <div class="manager-meta">
-                                        <?php if($project['bid_status'] != Null){?>
+                                        <?php if($project['bid_status'] != Null && $project['bid_status'] == 'Ongoing'){?>
                                             <span><a class="btn btn-common view-more-bids-anchor disabled bg-success" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>"  > Hired <?php echo $project['hired_freelancer'] ?></a></span>
-                                            <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php echo site_url(''); ?>">Cancel Project</a></span>
-                                            <span><a class="btn btn-common view-more-bids-anchor float-right" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">Completed</a></span>                                            
-                                        <?php }else{?>
-                                            <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url(''); ?>">View bids</a></span>
+                                            <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php echo site_url('/Projectstatus/index/' . $project['project_id'].'/Cancelled'); ?>">Cancel Project</a></span>
+                                            <span><a class="btn btn-common view-more-bids-anchor float-right" href="<?php echo site_url('/Projectstatus/index/' . $project['project_id'].'/Completed'); ?>">Completed</a></span>                                            
+                                        <?php }
+                                        elseif($project['bid_status'] == 'Cancelled' || $project['bid_status'] == 'Completed'){
+                                            ?>
+                                                <span><a class="btn btn-common view-more-bids-anchor disabled bg-success" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>"  > Hired <?php echo $project['hired_freelancer'] ?></a></span>
+                                            <?php
+                                        }                                        
+                                        else{?>
+                                            <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View bids</a></span>
                                         <?php } ?>
                                         
                                     </div>

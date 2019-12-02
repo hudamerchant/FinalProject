@@ -13,7 +13,7 @@
 <?php
 if (isset($_SESSION['freelancerBidsPresent'])) {
     foreach ($results as $result) {
-        
+        // var_dump($results);die;
             if($result->profile_pic != ''){
                 $profilePicPath = $this->data['image_path'];
                $profilePicVariable = $result->profile_pic;
@@ -55,9 +55,27 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
                     <div class="manager-content project-details-manager-content">
                         <div class="item-body">            
                             <div class="resume-skills project-details-resume-skills">
-                                <div class="resume-exp float-right">
-                                    <a href="<?php echo site_url('ProjectDetails/index/'.$result->project_id) ?>"  name="submit" class="btn btn-common btn-xs "  >View project</a>
-                                </div>
+                                <?php 
+                                    if($result->status == 'Ongoing' || $result->status == 'Completed'){
+                                        ?>
+                                            <div class="resume-exp float-right ml-1">
+                                                <a href="<?php echo site_url('ProjectDetails/index/'.$result->project_id) ?>"  name="submit" class="btn btn-common btn-xs "  >View project</a>
+                                            </div>
+                                            <div class="resume-exp float-right ">
+                                                <a   name="submit" class="btn btn-common btn-xs disabled bg-success "  ><?php echo $result->status ?></a>
+                                            </div>
+                                        <?php
+                                    }
+                                    elseif($result->status == 'Cancelled'){
+                                        ?>
+                                            <div class="resume-exp float-right ">
+                                                <a   name="submit" class="btn btn-common btn-xs disabled bg-danger "  ><?php echo $result->status ?></a>
+                                            </div>
+                                        <?php
+                                    }
+                                ?>
+                                
+
                             </div>
                         </div>
                     </div>
