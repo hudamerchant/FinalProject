@@ -29,10 +29,19 @@ if (isset($_SESSION['projectsPresent'])) {
                                     </div>
                                     <div class="manager-info">
                                         <div class="manager-meta search-manager-meta">
-                                            <span><a class="btn btn-common view-more-bids-anchor float-right" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Edit Project</a></span>
+                                            <span><a class="btn btn-common view-more-bids-anchor float-right" href="<?php echo site_url(''); ?>">Edit Project</a></span>
                                         </div>
                                     </div>
-                                <?php } ?>
+                                <?php }
+                                else{
+                                    ?>
+                                        <div class="manager-info">
+                                            <div class="manager-meta search-manager-meta">
+                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-success" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Ongoing</a></span>
+                                            </div>
+                                        </div>
+                                    <?php
+                                } ?>
                                     
                                 <h4>Project</h4>
                                 <h5>Project Title</h5>
@@ -60,8 +69,10 @@ if (isset($_SESSION['projectsPresent'])) {
                                     <div class="manager-meta">
                                         <?php if($project['bid_status'] != Null){?>
                                             <span><a class="btn btn-common view-more-bids-anchor disabled bg-success" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>"  > Hired <?php echo $project['hired_freelancer'] ?></a></span>
+                                            <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php echo site_url(''); ?>">Cancel Project</a></span>
+                                            <span><a class="btn btn-common view-more-bids-anchor float-right" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">Completed</a></span>                                            
                                         <?php }else{?>
-                                            <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('/ViewMoreBids/index/' . $project['project_id']); ?>">View bids</a></span>
+                                            <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url(''); ?>">View bids</a></span>
                                         <?php } ?>
                                         
                                     </div>
