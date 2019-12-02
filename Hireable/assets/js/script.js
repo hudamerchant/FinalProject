@@ -3,12 +3,6 @@ $(document).ready(function() {
     
     $('.edit-project-category').select2();
 
-    // $('#preloader').bind('ajaxStart', function(){
-    //     $(this).show();
-    // }).bind('ajaxStop', function(){
-    //     $(this).fadeOut("slow");
-    // });
-
     $(document).ajaxStart(function(){
         // Show image container
         $("#preloader").show();
@@ -70,8 +64,7 @@ $(document).ready(function() {
     });
     });
          
-    
-    
+
     $('.client-image').on('change',function(){        
         var formData = new FormData(); 
         formData.append('file_name', $(this).prop('files')[0]);
@@ -154,14 +147,6 @@ $(document).ready(function() {
 
     $('.send').on('click',function(e){
       
-    //    if($('.message').val().length != 0){
-            
-    //         $('.send').attr("disabled", false);
-    //    }
-    //    else{
-    //         $(".send").attr("disabled", true);
-    //    }
-
         msg = $('input[name=message]').val();
          if(msg != ''){
             e.preventDefault();
@@ -177,8 +162,6 @@ $(document).ready(function() {
                     data:data,
                     type: 'POST',
                     beforeSend: function() {
-                     // $(".send").attr("disabled", true);
-                     // $("#preloader").show();
                      $( ".send" ).addClass("disabledClass");
                      
                          $(".send").attr("disabled", true);
@@ -193,9 +176,6 @@ $(document).ready(function() {
                         
                     },
                     complete: function(){
-                     //$(".send").attr("disabled", false);
-                     // $("#preloader").fadeOut("slow");
-                     
                      }
                 })
          }

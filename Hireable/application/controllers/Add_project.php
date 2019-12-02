@@ -39,13 +39,15 @@
                             $this->form_validation->set_rules('project-title', 'project title', 'required');
                             $this->form_validation->set_rules('project-description', 'project description', 'required');
                             $this->form_validation->set_rules('categories[]', 'skills', 'required');
-                            
+
+                            $this->data['selected_categories'] = $categoriesInput[] = $this->input->post('categories');
+
                             if($this->form_validation->run() == True) {
     
                                 $project_title = $this->input->post('project-title');
                                 $project_description = $this->input->post('project-description');                            
                                 $categoriesInput[] = $this->input->post('categories');
-                                
+
                                 $this->load->model('Projects');
     
                                 $projectData = [
@@ -80,6 +82,7 @@
                                 
                             }
                             else{
+
                                 return $this->load->view('layout',$this->data);
                             }
                         }

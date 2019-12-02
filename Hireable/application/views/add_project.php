@@ -1,5 +1,7 @@
 <?php
+//  var_dump($categories);die;
 if(isset($_SESSION['projectInserted'])){
+   
     ?>
     <p class="alert alert-success"><?php  echo $this->session->flashdata("projectInserted");?></p>
     <?php
@@ -26,8 +28,9 @@ if(isset($_SESSION['projectInserted'])){
                             <label class="control-label"></label>   
                             <label class="control-label">Skills</label><br>
                             <select class="js-example-basic-multiple col-md-12 " name="categories[]" multiple="multiple">
-                                <?php foreach($categories as $category){?>
-                                    <option value="<?php echo $category->category_id ?>"><?php echo $category->category ?></option>            
+                                <?php foreach($categories as $category){
+                                    ?>
+                                    <option value="<?php echo $category->category_id ?>" <?php echo (isset($_POST['categories']) ? (in_array($category->category_id ,$_POST['categories']) ? 'selected="selected"' : '') :  '') ?>><?php echo $category->category ?></option>            
                                 <?php } ?>
                             </select>
                             <?php echo form_error('categories[]') ?>
