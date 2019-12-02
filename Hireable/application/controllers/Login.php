@@ -38,7 +38,7 @@ class Login extends MY_Controller
         }
         else
         {
-            $this->data['view'] = 'Login';
+            $this->data['view'] = 'login';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'Login - '.$this->data['site_title'];
     

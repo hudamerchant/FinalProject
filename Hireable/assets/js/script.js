@@ -42,7 +42,7 @@ $(document).ready(function() {
             };
 
             $.ajax({
-                url         : SITE_URL+"/EditProject/deleteProject" ,
+                url         : SITE_URL+"/Edit_project/deleteProject" ,
                 type        : "POST" ,
                 data        : formData ,
                 dataType    : "JSON",
@@ -107,7 +107,7 @@ $(document).ready(function() {
         console.log(formData);
         
         $.ajax({
-            url         : SITE_URL+"/FreelancerProfile/upload",
+            url         : SITE_URL+"/Freelancer_profile/upload",
             type        : "POST",
             contentType : false,
             processData : false,  

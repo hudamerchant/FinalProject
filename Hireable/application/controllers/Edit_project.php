@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class EditProject extends MY_Controller
+    class Edit_project extends MY_Controller
     {
         public function __construct()
         {
@@ -10,7 +10,7 @@
         public function index($project_id = false)
         {
 
-            $this->data['view']       = 'EditProject';
+            $this->data['view']       = 'edit_project';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'Edit Project - '.$this->data['site_title'];
 

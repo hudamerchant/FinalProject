@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class HireFreelancer extends MY_Controller
+    class Hire_freelancer extends MY_Controller
     {
         public function __construct()
         {

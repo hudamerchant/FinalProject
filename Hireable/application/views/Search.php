@@ -78,7 +78,7 @@ if(isset($_SESSION['Bid'])){
                             <div class="item-body">            
                                 <div class="resume-skills project-details-resume-skills search-resume-skills profile-view-resume-skills">
                                     <div class="resume-exp search-resume-exp">
-                                        <a href="<?php echo site_url('ClientProfileForFreelancers/index/'.$project['user_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >View Profile</a>
+                                        <a href="<?php echo site_url('Client_profile_for_freelancers/index/'.$project['user_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >View Profile</a>
                                     </div>
                                     <div class="resume-exp search-resume-exp">
                                         <a href="<?php echo site_url('Chatbox/index/'.$project['user_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >Chat</a>
@@ -211,7 +211,7 @@ if(isset($_SESSION['Bid'])){
                         </div>
                         <div class="manager-info">
                             <div class="manager-meta search-manager-meta">
-                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('FreelancerProfileForClients/index/'.$freelancer->user_id) ?>">View Profile</a></span>
+                                <span><a class="btn btn-common view-more-bids-anchor" href="<?php echo site_url('Freelancer_profile_for_clients/index/'.$freelancer->user_id) ?>">View Profile</a></span>
                             </div>
                         </div>
                         <div class="manager-info">

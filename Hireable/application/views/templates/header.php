@@ -33,7 +33,7 @@ include_once('head.php');
           if (isset($_SESSION['freelancerRole'])) {
             ?>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('/FreelancerProfile'); ?>">
+              <a class="nav-link" href="<?php echo site_url('/Freelancer_profile'); ?>">
                 Profile
               </a>
             </li>

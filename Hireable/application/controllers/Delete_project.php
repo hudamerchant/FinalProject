@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     
-    class DeleteProject extends MY_Controller
+    class Delete_project extends MY_Controller
     {
         public function __construct()
         {
@@ -9,9 +9,7 @@
         }
         public function index($project_id = false)
         {
-            $this->data['view']       = 'DeleteProject';
-            $this->data['site_title'] = 'Hireable';
-            $this->data['page_title'] = 'Delete Project - '.$this->data['site_title'];
+            
             $this->load->model('Users');
             if ($this->session->userdata('logged_in')) {
                 $where  = [ 'email' => $this->session->userdata('user_info') ];
@@ -39,11 +37,10 @@
                                 'project_id' => $project_id
                             ];
                             $this->Projects->updateData($dataToUpdate,$whereProjectID);
-                            // var_dump($this->db->last_query());die;
+                            
                             return redirect(site_url('Client_dashboard'));
                         }
-                        return $this->load->view('layout',$this->data);
-
+                        
         
                     }
                 }

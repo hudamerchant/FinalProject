@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class FreelancerProfile extends MY_Controller{
+    class Freelancer_profile extends MY_Controller{
         function __construct(){
             parent::__construct();
         }
@@ -22,7 +22,7 @@
                     }
                     else
                     {
-                        $this->data['view'] = 'FProfile';
+                        $this->data['view'] = 'freelancer_profile';
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'Profile - '.$this->data['site_title']; 
                         

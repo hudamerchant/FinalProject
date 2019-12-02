@@ -3,7 +3,7 @@
 
     class Logout extends MY_Controller{
         public function index(){
-            $this->data['view'] = 'Logout';
+            $this->data['view'] = 'logout';
             $this->session->unset_userdata('logged_in');
             if(isset($_SESSION['freelancerRole'])){
                 $this->session->unset_userdata('freelancerRole'); 

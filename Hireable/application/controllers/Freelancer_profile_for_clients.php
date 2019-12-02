@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class FreelancerProfileForClients extends MY_Controller{
+    class Freelancer_profile_for_clients extends MY_Controller{
         public function index($freelancer_user_id = false){
             function __construct(){
                 parent::__construct();
@@ -17,7 +17,7 @@
                 }
                 elseif($user->role_id == 2)
                 {
-                    $this->data['view'] = 'FreelancerProfileForClients';
+                    $this->data['view'] = 'freelancer_profile_for_clients';
                     $this->data['site_title'] = 'Hireable';
                     $this->data['page_title'] = 'Freelancer Profile - '.$this->data['site_title']; 
 

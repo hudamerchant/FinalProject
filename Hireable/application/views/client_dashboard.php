@@ -23,8 +23,8 @@ if (isset($_SESSION['projectsPresent'])) {
                             <div class="manager-info">
                                 <?php if(!$project['bid_status']){ ?>
                                     <div class="manager-meta search-manager-meta">
-                                        <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php echo site_url('DeleteProject/index/'.$project['project_id']) ?>">Delete Project</a></span>
-                                        <?php //'DeleteProject/index/'.$project['project_id'] ?>
+                                        <span><a class="btn btn-common view-more-bids-anchor float-right ml-1" href="<?php echo site_url('Delete_project/index/'.$project['project_id']) ?>">Delete Project</a></span>
+                                        
                                     </div>
                                     </div>
                                     <div class="manager-info">
@@ -38,11 +38,11 @@ if (isset($_SESSION['projectsPresent'])) {
                                         <div class="manager-info">
                                             <div class="manager-meta search-manager-meta">
                                             <?php if($project['bid_status'] == 'Ongoing') {?>
-                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-success" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Ongoing</a></span>
+                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-success" href="<?php echo site_url('Edit_project/index/'.$project['project_id']) ?>">Ongoing</a></span>
                                             <?php } elseif($project['bid_status'] == 'Cancelled') {?>
-                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-danger" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Project Cancelled</a></span>
+                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-danger" href="<?php echo site_url('Edit_project/index/'.$project['project_id']) ?>">Project Cancelled</a></span>
                                             <?php } elseif($project['bid_status'] == 'Completed') {?>
-                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-success" href="<?php echo site_url('EditProject/index/'.$project['project_id']) ?>">Project Completed</a></span>
+                                                <span><a class="btn btn-common view-more-bids-anchor float-right disabled bg-success" href="<?php echo site_url('Edit_project/index/'.$project['project_id']) ?>">Project Completed</a></span>
                                             <?php }?>
                                             </div>
                                         </div>

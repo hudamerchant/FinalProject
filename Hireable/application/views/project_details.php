@@ -41,7 +41,7 @@ if ($projects) {
                             <div class="item-body">            
                                 <div class="resume-skills project-details-resume-skills profile-view-resume-skills">
                                     <div class="resume-exp float-right">
-                                        <a href="<?php echo site_url('ClientProfileForFreelancers/index/'.$project['user_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >View Profile</a>
+                                        <a href="<?php echo site_url('Client_profile_for_freelancers/index/'.$project['user_id']) ?>"  name="submit" class="btn btn-common btn-xs "  >View Profile</a>
                                     </div>
                                 </div>
                             </div>

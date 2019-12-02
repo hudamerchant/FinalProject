@@ -120,7 +120,7 @@
                                             <h5><?php echo $reviewResult->email ?></h5>
                                         </div>
                                         <div class="manager-meta view-bids-button">
-                                            <span><a href="<?php echo site_url('FreelancerProfileForClients/index/'.$reviewResult->user_id) ?>" class="btn btn-common view-bids-anchor">View Profile</a></span>
+                                            <span><a href="<?php echo site_url('Freelancer_profile_for_clients/index/'.$reviewResult->user_id) ?>" class="btn btn-common view-bids-anchor">View Profile</a></span>
                                         </div>
                                     </div>
                                 </div>

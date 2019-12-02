@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else
                     {
-                        $this->data['view']       = 'FDashboard';
+                        $this->data['view']       = 'freelancer';
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'Dashboard -'.$this->data['site_title'];
                         

@@ -59,7 +59,7 @@ if (isset($_SESSION['freelancerBidsPresent'])) {
                                     if($result->status == 'Ongoing' || $result->status == 'Completed'){
                                         ?>
                                             <div class="resume-exp float-right ml-1">
-                                                <a href="<?php echo site_url('ProjectDetails/index/'.$result->project_id) ?>"  name="submit" class="btn btn-common btn-xs "  >View project</a>
+                                                <a href="<?php echo site_url('Project_details/index/'.$result->project_id) ?>"  name="submit" class="btn btn-common btn-xs "  >View project</a>
                                             </div>
                                             <div class="resume-exp float-right ">
                                                 <a   name="submit" class="btn btn-common btn-xs disabled bg-success "  ><?php echo $result->status ?></a>
