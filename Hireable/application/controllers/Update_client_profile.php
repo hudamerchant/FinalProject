@@ -1,12 +1,12 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class updateCProfile extends MY_Controller{
+    class Update_client_profile extends MY_Controller{
         function __construct(){
             parent::__construct();
             }
         public function index(){
-            $this->data['view']       = 'updateCProfile';
+            $this->data['view']       = 'update_client_profile';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'Update - '.$this->data['site_title'];
              //loading models
@@ -18,7 +18,7 @@
                 $user   = $this->Users->getData('DESC' ,$where)->row();
                 if($user->role_id == 1)
                 {
-                    return redirect(site_url('updateFProfile'));
+                    return redirect(site_url('Update_freelancer_profile'));
                 }
                 else
                 {

@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-xs-12">
                 <div class="right-sideabr">
-                    <h4>Manage Account<a href='<?php echo site_url('updateCProfile') ?>' class="profile-anchor"> Edit </a></h4>
+                    <h4>Manage Account<a href='<?php echo site_url('Update_client_profile') ?>' class="profile-anchor"> Edit </a></h4>
                     <ul class="list-item">
                         <li><span class="profile-li-span">Name:</span><?php echo $client_info->name ?></li>
                         <li><span class="profile-li-span">Date Of Birth:</span><?php echo $client_info->dob ?></li>

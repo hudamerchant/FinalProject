@@ -12,7 +12,7 @@
                 $user   = $this->Users->getData('DESC',$where)->row();
                 if(!$user->updated_profile)
                 {
-                    return redirect(site_url('updateFProfile'));
+                    return redirect(site_url('Update_freelancer_profile'));
                 }
                 else
                 {

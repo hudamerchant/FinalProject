@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class Projectstatus extends MY_Controller
+    class Project_status extends MY_Controller
     {
         public function __construct()
         {

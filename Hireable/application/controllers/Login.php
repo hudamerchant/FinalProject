@@ -20,7 +20,7 @@ class Login extends MY_Controller
                 }
                 else
                 {
-                    return redirect(site_url('updateFProfile'));
+                    return redirect(site_url('Update_freelancer_profile'));
                 }
 
             }
@@ -32,7 +32,7 @@ class Login extends MY_Controller
                 }
                 else
                 {
-                    return redirect(site_url('updateCProfile'));
+                    return redirect(site_url('Update_client_profile'));
                 }
             }
         }
@@ -67,7 +67,7 @@ class Login extends MY_Controller
                                 }
                                 else
                                 {
-                                    return redirect(site_url('updateFProfile'));
+                                    return redirect(site_url('Update_freelancer_profile'));
                                 }
                             }
                             elseif($query->role_id == 2)
@@ -79,7 +79,7 @@ class Login extends MY_Controller
                                 }
                                 else
                                 {
-                                    return redirect(site_url('updateCProfile'));
+                                    return redirect(site_url('Update_client_profile'));
                                 }
                             }
                             

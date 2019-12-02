@@ -23,7 +23,7 @@
                     return redirect(site_url('Freelancer'));
                 } elseif ($user->role_id == 2) {
                     if (!$user->updated_profile) {
-                        return redirect(site_url('updateCProfile'));
+                        return redirect(site_url('Update_client_profile'));
                     } else {
                         //loading database table categories
                         $this->load->model('Categories');

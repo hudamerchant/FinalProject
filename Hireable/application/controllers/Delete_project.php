@@ -23,7 +23,7 @@
                 {
                     if(!$user->updated_profile)
                     {
-                        return redirect(site_url('updateCProfile'));
+                        return redirect(site_url('Update_client_profile'));
                     }
                     else
                     {

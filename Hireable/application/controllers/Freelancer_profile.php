@@ -18,7 +18,7 @@
                 {   
                     if(!$user->updated_profile)
                     {
-                        return redirect(site_url('updateFProfile'));
+                        return redirect(site_url('Update_freelancer_profile'));
                     }
                     else
                     {
@@ -110,7 +110,7 @@
                     return redirect(site_url('Client_dashboard'));
                 } elseif ($user->role_id == 1) {
                     if (!$user->updated_profile) {
-                        return redirect(site_url('updateFProfile'));
+                        return redirect(site_url('Update_freelancer_profile'));
                     } else {
                         $response = [];
                         $user_file = 'file_name';

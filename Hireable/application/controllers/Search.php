@@ -4,7 +4,7 @@
     class Search extends MY_Controller{
         public function index($project_apply_id = false){
             
-            $this->data['view'] = 'Search';
+            $this->data['view'] = 'search';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'Search - '.$this->data['site_title'];
             $this->load->model('Users');
@@ -16,7 +16,7 @@
                     $role_id = $user->role_id;
                     if(!$user->updated_profile)
                     {
-                        return redirect(site_url('updateFProfile'));
+                        return redirect(site_url('Update_freelancer_profile'));
                     }
                     else
                     {
@@ -114,7 +114,7 @@
                     $role_id = $user->role_id;
                     if(!$user->updated_profile)
                     {
-                        return redirect(site_url('updateCProfile'));
+                        return redirect(site_url('Update_client_profile'));
                     }
                     else
                     {

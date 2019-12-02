@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 {
                     if(!$user->updated_profile)
                     {
-                        return redirect(site_url('updateFProfile'));
+                        return redirect(site_url('Update_freelancer_profile'));
                     }
                     else
                     {

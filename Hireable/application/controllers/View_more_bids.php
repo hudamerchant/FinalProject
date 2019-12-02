@@ -1,7 +1,7 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    class ViewMoreBids extends MY_Controller{
+    class View_more_bids extends MY_Controller{
         function __construct(){
             parent::__construct();
         }
@@ -20,11 +20,11 @@
                 {                    
                     if(!$user->updated_profile)
                     {
-                        return redirect(site_url('updateCProfile'));
+                        return redirect(site_url('Update_client_profile'));
                     }
                     else
                     {
-                        $this->data['view'] = 'ViewMoreBids';
+                        $this->data['view'] = 'view_more_bids';
                         $this->data['site_title'] = 'Hireable';
                         $this->data['page_title'] = 'View Bids - '.$this->data['site_title'];
                         $this->load->model('Projects');

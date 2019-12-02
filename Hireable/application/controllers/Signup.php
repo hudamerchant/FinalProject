@@ -16,7 +16,7 @@ class Signup extends MY_Controller
             {
                 if($user->updated_profile == 0)
                 {
-                    return redirect(site_url('updateFProfile'));
+                    return redirect(site_url('Update_freelancer_profile'));
                 }
                 else
                 {
@@ -30,7 +30,7 @@ class Signup extends MY_Controller
         }
         else
         {
-            $this->data['view'] = 'Signup';
+            $this->data['view'] = 'signup';
             $this->data['site_title'] = 'Hireable';
             $this->data['page_title'] = 'Signup - '.$this->data['site_title'];
 
