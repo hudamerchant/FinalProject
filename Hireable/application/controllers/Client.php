@@ -32,8 +32,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             'table_name'=>'accepted_projects',
                             'column_with'=>'projects.project_id = accepted_projects.project_id'
                         ];
-                        
-                        $projects = $this->Projects->multiple_joins($fetchingProjects,[] , '*', "DESC", "projects.updated_at" , 'left')->result(); 
+                        $select = [
+                            'projects.project_id',
+                            'projects.project_title',
+                            'projects.project_descript',
+                            'projects.user_id',
+                            'projects.created_at',
+                            'projects.deleted_at',
+                            'projects.updated_at',
+                            'accepted_projects.accepted_project_id',
+                            'accepted_projects.status',
+                            'accepted_projects.hired_freelancer'
+                        ];
+                        $projects = $this->Projects->multiple_joins($fetchingProjects,[] , $select, "DESC", "projects.updated_at" , 'left')->result(); 
                         // var_dump($projects);die;
                     
                         $count = 0;
@@ -45,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 $freelancer = $this->Users->getData('DESC',$where)->row();
 
                                 $category_id = [];
-                                $this->data['projects'][$count]['title'] = $project->project_title;
+                                $this->data['projects'][$count]['title']            = $project->project_title;
                                 $this->data['projects'][$count]['description']      = $project->project_descript;
                                 $this->data['projects'][$count]['project_id']       = $project->project_id;
                                 $this->data['projects'][$count]['bid_status']       = $project->status;
@@ -59,8 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     'project_id' => $project->project_id
                                 ];
                                 $categoryVariable = $this->ProjectCategories->getData('DESC',$projectCategoryWhere)->result();
-                                if($categoryVariable)
-                                {
+                                
                                     foreach ($categoryVariable as $categoryVariable2) {
                                         $category_id[] =    $categoryVariable2->category_id;
                                     }
@@ -71,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     foreach ($categories as $category) {
                                         $this->data['projects'][$count]['categories'][] = $category->category;
                                     }
-                                }
+                                
                                 
                                 $count++;
                             }

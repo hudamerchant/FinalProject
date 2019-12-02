@@ -43,26 +43,26 @@
                             $client_info = $this->Users->getData('ASC', $where_client)->row();
                             
                             $Project_status = [
-                                        'project_bid_id'    => $bid_project_id,
+                                        'project_id'        => $bid_project_id,
                                         'status'            => 'Ongoing',
                                         'hired_freelancer'  => $bid_user_id
                                 ]; 
-                            $bid_accepted = $this->AcceptedProjects->insertRecord($Project_status);
-                            if($bid_accepted)
-                            {
-                                $reciever       = $freelancer_info->email;
-                                $sender         = $client_info->email;
-                                $subject        = 'Project Agreement';
-                                
-                                $this->data['view'] = 'hiremail';
-                                $this->data['name']   = $freelancer_info->name;
+                            
+                            $this->AcceptedProjects->insertRecord($Project_status);
+                            
+                            $reciever       = $freelancer_info->email;
+                            $sender         = $client_info->email;
+                            $subject        = 'Project Agreement';
+                            
+                            $this->data['view'] = 'hiremail';
+                            $this->data['name']   = $freelancer_info->name;
 
-                                $mailContent = $this->load->view('email/email_layout',$this->data, true);
-                                
-                                $this->sendMail($subject, $mailContent, $reciever, $sender);
-                                
-                                return redirect(site_url('Client/index/'.$bid_project_id));
-                            }
+                            $mailContent = $this->load->view('email/email_layout',$this->data, true);
+                            
+                            $this->sendMail($subject, $mailContent, $reciever, $sender);
+                            
+                            return redirect(site_url('Client/index/'.$bid_project_id));
+                            
                         }
         
                     }
