@@ -153,9 +153,7 @@ $(document).ready(function() {
 
 
     $('.send').on('click',function(e){
-       e.preventDefault();
-       $(".send").attr("disabled", true);
-
+      
     //    if($('.message').val().length != 0){
             
     //         $('.send').attr("disabled", false);
@@ -165,37 +163,42 @@ $(document).ready(function() {
     //    }
 
         msg = $('input[name=message]').val();
-         
-        data = {
-            msg             : $('.message').val(),
-            receiver_id     : $('.receiver_id').val()
-        }; 
-           $.ajax({
-               url:SITE_URL+"/Chatbox/insert_messages",
-               data:data,
-               type: 'POST',
-               beforeSend: function() {
-                // $(".send").attr("disabled", true);
-                // $("#preloader").show();
-                $( ".send" ).addClass("disabledClass");
-                
-                    $(".send").attr("disabled", true);
-                
-                },
-               success:function(){
-                   
-                   $('input[name=message]').val('')
-                   $( ".send" ).removeClass("disabledClass");
-                $(".send").attr("disabled", false);
-                   
-                   
-               },
-               complete: function(){
-                //$(".send").attr("disabled", false);
-                // $("#preloader").fadeOut("slow");
-                
-                }
-           })
+         if(msg != ''){
+            e.preventDefault();
+            $(".send").attr("disabled", true);
+     
+             
+             data = {
+                 msg             : $('.message').val(),
+                 receiver_id     : $('.receiver_id').val()
+             }; 
+                $.ajax({
+                    url:SITE_URL+"/Chatbox/insert_messages",
+                    data:data,
+                    type: 'POST',
+                    beforeSend: function() {
+                     // $(".send").attr("disabled", true);
+                     // $("#preloader").show();
+                     $( ".send" ).addClass("disabledClass");
+                     
+                         $(".send").attr("disabled", true);
+                     
+                     },
+                    success:function(){
+                        
+                        $('input[name=message]').val('')
+                        $( ".send" ).removeClass("disabledClass");
+                     $(".send").attr("disabled", false);
+                        
+                        
+                    },
+                    complete: function(){
+                     //$(".send").attr("disabled", false);
+                     // $("#preloader").fadeOut("slow");
+                     
+                     }
+                })
+         }
     });
     
     function recursively_ajax()
